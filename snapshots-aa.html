@@ -29,7 +29,7 @@
                 }
 
                 if (chartType == 'sc') {
-                    addSCImage(codes[i]);
+                    addImage(codes[i] + ".US", 7);
                 }
             }
         }
@@ -45,16 +45,7 @@
             img_home.appendChild(img);
         }
 
-        function addSCImage(stockCode) {
-            const chartWidth = 400;
-            const chartHeight = 350;
-            const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1716723549953&chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg][ilM12]";
-            const tempChartLink = stockChartLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode);
-        
-            var img = new Image();
-            img.src = tempChartLink;
-            img_home.appendChild(img);
-        }        
+      
         
         window.onload = parseLocationAndShowCharts;
         </script>
