@@ -8,6 +8,7 @@
             const params = new URLSearchParams(document.location.search);
             const o = params.get("o");
             const t = params.get("t");
+            chartType = 'aa';
         
             if(o == null) {
                 console.info("parameter o is null!!"); //show 1
@@ -16,7 +17,8 @@
 
             if(t == null) {
                 console.info("parameter t is null!!"); //show 1
-                chartType = 'aa';
+            } else if (t == 'sc') {
+                chartType = 'sc';
             }
         
             const codes = o.split(',');
@@ -25,8 +27,9 @@
                 if (chartType == 'aa') {
                     addImage(codes[i], 7);
                 }
-                else {
-                    addSCImage(codes[i], 7);
+
+                if (chartType == 'sc') {
+                    addSCImage(codes[i]);
                 }
             }
         }
