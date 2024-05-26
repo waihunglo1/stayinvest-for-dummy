@@ -49,7 +49,7 @@
             const chartWidth = 400;
             const chartHeight = 350;
             const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1716723549953&chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg][ilM12]";
-            const tempChartLink = stockChartLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode).replace(/{period}/i,period);
+            const tempChartLink = stockChartLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode);
         
             var img = new Image();
             img.src = tempChartLink;
