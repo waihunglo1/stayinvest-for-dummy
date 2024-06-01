@@ -23,7 +23,7 @@
             }
         }
 
-        function clickText() {
+        function gotoStockCharts() {
             var stockCodes = document.getElementById("convertedText").value;
             console.log("goto", stockCodes);
 
@@ -33,14 +33,20 @@
             window.location = tempChartLink;
         }
 
+        function removeLinesCommaJoin() {
+            var tempStr = document.getElementById("convertedText").value;
+            var commaString = tempStr.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r]/g, ',');
+            document.getElementById("convertedText").value = commaString;
+        }
+
     </script>
 
 </head>
 
 <body>
-    <textarea cols="20" name="original" rows="10" style="width: 100%;" id="convertedText"></textarea>
-    <button onclick="clickText()">see charts</button>
-    <p id="btn"></p>
+    <textarea cols="20" name="original" rows="10" style="width: 50%;" id="convertedText"></textarea>
+    <button onclick="removeLinesCommaJoin()">Clean Data</button>
+    <button onclick="gotoStockCharts()">See Charts</button>
     <div id="imageDiv1"></div>
 </textarea>
 
