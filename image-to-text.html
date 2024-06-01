@@ -9,7 +9,7 @@
 
             Tesseract.recognize(items[items.length - 1].getAsFile()).then(function (result) {
                 console.log("recognizeText: result.text:", result.text);
-                var commaString = result.text.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r]/g, ',');
+                var commaString = result.text.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
                 document.getElementById("convertedText").value = commaString;
             });
 
@@ -35,7 +35,7 @@
 
         function removeLinesCommaJoin() {
             var tempStr = document.getElementById("convertedText").value;
-            var commaString = tempStr.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r]/g, ',');
+            var commaString = tempStr.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
             document.getElementById("convertedText").value = commaString;
         }
 
