@@ -9,7 +9,8 @@
 
             Tesseract.recognize(items[items.length - 1].getAsFile()).then(function (result) {
                 console.log("recognizeText: result.text:", result.text);
-                document.getElementById("convertedText").value = result.text;
+                var commaString = result.text.replace(/[\n\r]/g, ',');
+                document.getElementById("convertedText").value = commaString;
             });
 
             var blob = items[items.length - 1].getAsFile();
