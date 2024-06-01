@@ -23,22 +23,6 @@
         }
     </script>
 
-    <script>
-        var myFile = document.getElementById('myFile');
-        myFile.addEventListener('change', recognizeText);
-
-        async function recognizeText({ target: { files } }) {
-            Tesseract.recognize(files[0]).then(function (result) {
-                var str = result.text;
-                str.replace(/'\n'/g, ',');
-                console.log("recognizeText: result.text:", result.text);
-                document.getElementById("convertedText").value = str;
-            });
-        }
-
-    </script>
-
-
 </head>
 
 <body>
