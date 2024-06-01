@@ -19,7 +19,7 @@
             reader.onload = function (event) {
                 const img1 = document.createElement("img");
                 img1.src = event.target.result; // Appending image data to img tag
-                document.getElementById('MyDiv1').appendChild(img1);
+                document.getElementById('imageDiv1').appendChild(img1);
             }
         }
     </script>
@@ -27,14 +27,10 @@
 </head>
 
 <body>
+    <textarea cols="30" name="original" rows="10" style="width: 100%;" id="convertedText" />
+    <div id="imageDiv1"></div>
 
-    <p> Right click on any image in chrome and press copy image.<br>
-        Press Ctrl + V to pase your image. Works on chrome </p>
-
-    <div id='MyDiv1'></div>
-
-    <label><b>Your Converted Text:</b></label><br><br>
-    <textarea cols="30" name="original" rows="10" style="width: 100%;" id="convertedText">
+    
 </textarea>
 
 

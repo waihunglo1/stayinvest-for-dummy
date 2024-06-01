@@ -81,6 +81,30 @@ body {
 }
 
 </style>
+
+<script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
+
+<script type="text/javascript">
+	document.onpaste = function (event) {
+		var items = (event.clipboardData || event.originalEvent.clipboardData).items;
+
+		Tesseract.recognize(items[items.length - 1].getAsFile()).then(function (result) {
+			console.log("recognizeText: result.text:", result.text);
+			var commaString = result.text.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r]/g, ',');
+			document.getElementById("convertedText").value = commaString;
+		});
+
+		var blob = items[items.length - 1].getAsFile();
+		var reader = new FileReader();
+		reader.readAsDataURL(blob);
+		reader.onload = function (event) {
+			const img1 = document.createElement("img");
+			img1.src = event.target.result; // Appending image data to img tag
+			document.getElementById('imageDiv1').appendChild(img1);
+		}
+	}
+</script>
+
 </head>
 
 <!-- body -->
@@ -255,11 +279,8 @@ body {
 
 	<div class="grid-item" style="color: #666666;">
 		<!-- Column 03 -->
-		<table>
-			<!-- row 05 Magazine -->		
-		
-
-		</table>
+		<textarea cols="30" name="original" rows="10" style="width: 100%;" id="convertedText" />
+		<div id="imageDiv1"></div>
 	</div>
 
 	
