@@ -29,11 +29,12 @@
 
         async function recognizeText({ target: { files } }) {
             Tesseract.recognize(files[0]).then(function (result) {
+                var str = result.text;
+                str.replace(/'\n'/g, ',');
                 console.log("recognizeText: result.text:", result.text);
-                document.getElementById("convertedText").value = result.text;
+                document.getElementById("convertedText").value = str;
             });
         }
-
 
     </script>
 
@@ -42,17 +43,12 @@
 
 <body>
 
-    <input type="file" id="myFile" name="filename">
-    <br><br>
-
     <p> Right click on any image in chrome and press copy image.<br>
         Press Ctrl + V to pase your image. Works on chrome </p>
 
     <div id='MyDiv1'></div>
 
-
     <label><b>Your Converted Text:</b></label><br><br>
-
     <textarea cols="30" name="original" rows="10" style="width: 100%;" id="convertedText">
 </textarea>
 
