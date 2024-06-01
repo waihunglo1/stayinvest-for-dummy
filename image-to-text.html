@@ -1,8 +1,31 @@
 <html>
+    <head>
+        <script type="text/javascript">
+            document.onpaste = function (event) {
+              var items = (event.clipboardData || event.originalEvent.clipboardData).items;
+              var blob = items[items.length - 1].getAsFile();
+              var reader = new FileReader();
+              reader.readAsDataURL(blob);
+              reader.onload = function (event) {
+                const img1 = document.createElement("img");
+                img1.src = event.target.result; // Appending image data to img tag
+                document.getElementById('MyDiv1').appendChild(img1);
+              } 
+            }
+            
+            </script>
+
+    </head>
 <body>
 
 <input type="file" id="myFile" name="filename">  
 <br><br>
+
+<p> Right click on any image in chrome and press copy image.<br>
+    Press Ctrl + V to pase your image. Works on chrome </p>
+    
+    <div id='MyDiv1'></div>
+
 
 <label><b>Your Converted Text:</b></label><br><br>
 
