@@ -22,6 +22,17 @@
                 document.getElementById('imageDiv1').appendChild(img1);
             }
         }
+
+        function clickText() {
+            var stockCodes = document.getElementById("convertedText").value;
+            console.log("goto", stockCodes);
+
+            const stockChartLink = "snapshots-aa.html?t=SC&o={stockCodes}";
+            const tempChartLink = stockChartLink.replace(/{stockCodes}/i, stockCodes);
+
+            window.location = 'snapshots-aa.html?t=SC&o=';
+        }
+
     </script>
 
 </head>
@@ -29,8 +40,8 @@
 <body>
     <textarea cols="30" name="original" rows="10" style="width: 100%;" id="convertedText"></textarea>
     <div id="imageDiv1"></div>
-
-    
+    <button onclick="clickText()">see charts</button>
+    <p id="btn"></p>
 </textarea>
 
 
