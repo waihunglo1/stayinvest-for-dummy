@@ -56,6 +56,7 @@
             const tempChartLink = stockChartLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode).replace(/{period}/i,period);
         
             var img = new Image();
+            img.setAttribute("referrerpolicy","no-referrer");
             img.src = tempChartLink;
             img_home.appendChild(img);
         }        
