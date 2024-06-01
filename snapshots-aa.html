@@ -8,7 +8,7 @@
             const params = new URLSearchParams(document.location.search);
             const o = params.get("o");
             const t = params.get("t");
-            chartType = 'aa';
+            chartType = 'HK';
         
             if(o == null) {
                 console.info("parameter o is null!!"); //show 1
@@ -17,20 +17,24 @@
 
             if(t == null) {
                 console.info("parameter t is null!!"); //show 1
-            } else if (t == 'sc') {
-                chartType = 'sc';
+            } else if (t == 'US') {
+                chartType = 'US';
             }
         
             const codes = o.split(',');
         
             for (i = 0; i < codes.length; i++) {
-                if (chartType == 'aa') {
+                if (chartType == 'HK') {
                     addImage(codes[i], 7);
                 }
 
-                if (chartType == 'sc') {
+                if (chartType == 'US') {
                     addImage(codes[i] + ".US", 7);
                 }
+
+                if (chartType == 'SC') {
+                    addImageStockCharts(codes[i], 7);
+                }                
             }
         }
         
@@ -44,6 +48,17 @@
             img.src = tempChartLink;
             img_home.appendChild(img);
         }
+
+        function addImageStockCharts(stockCode, period) {
+            const chartWidth = 400;
+            const chartHeight = 350;
+            const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717214376037&chart=AAPL,uu[305,a]dacayaci[pb20!b50][dg]";
+            const tempChartLink = stockChartLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode).replace(/{period}/i,period);
+        
+            var img = new Image();
+            img.src = tempChartLink;
+            img_home.appendChild(img);
+        }        
 
       
         
