@@ -33,16 +33,16 @@
     </div>
 
     <script type="text/javascript">
-        const recognizeFunction = async ({ target: { file } }) => {
+        const recognizeFunction = async (pasteFile) => {
             const worker = await Tesseract.createWorker("eng", 1, {
                 // corePath: '/tesseract-core-simd.wasm.js',
                 workerPath: "https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.0/worker.min.js",
                 tessedit_char_whitelist: "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ/' '",
                 user_defined_dpi: "300"
             });
-            const ret = await worker.recognize(file, { rotateAuto: true }, { imageColor: true, imageGrey: true, imageBinary: true });
+            const ret = await worker.recognize(pasteFile, { rotateAuto: true }, { imageColor: true, imageGrey: true, imageBinary: true });
 
-            document.getElementById("imgInput").src = URL.createObjectURL(file);
+            document.getElementById("imgInput").src = URL.createObjectURL(pasteFile);
             document.getElementById("imgOriginal").src = ret.data.imageColor;
             document.getElementById("imgGrey").src = ret.data.imageGrey;
             document.getElementById("imgBinary").src = ret.data.imageBinary;
