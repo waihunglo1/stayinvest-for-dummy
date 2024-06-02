@@ -2,36 +2,6 @@
 
 <head>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.0/tesseract.min.js'></script>
-    <style>
-        .column {
-            float: left;
-            width: 20%;
-            padding: 5px;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="row">
-        <div class="column">
-            <p>Input Image</p>
-            <img id="imgInput" style="max-width:500px;">
-        </div>
-        <div class="column">
-            <p>Rotated, Original Color</p>
-            <img id="imgOriginal" style="max-width:500px;">
-        </div>
-        <div class="column">
-            <p>Rotated, Grey</p>
-            <img id="imgGrey" style="max-width:500px;">
-        </div>
-        <div class="column">
-            <p>Rotated, Binary</p>
-            <img id="imgBinary" style="max-width:500px;">
-        </div>
-    </div>
-
     <script type="text/javascript">
         const recognizeFunction = async (pasteFile) => {
             const worker = await Tesseract.createWorker("eng", 1, {
@@ -52,13 +22,76 @@
             console.log("cleanTextWithComma     : ", cleanTextWithComma);
         }
 
+        function gotoStockCharts() {
+            var stockCodes = document.getElementById("convertedText").value;
+            console.log("goto", stockCodes);
+
+            const stockChartLink = "snapshots-aa.html?t=SC&o={stockCodes}";
+            const tempChartLink = stockChartLink.replace(/{stockCodes}/i, stockCodes);
+
+            window.location = tempChartLink;
+        }
+
+        function removeLinesCommaJoin() {
+            var tempStr = document.getElementById("convertedText").value;
+            var commaString = tempStr.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
+            document.getElementById("convertedText").value = commaString;
+        }  
+
         // paste image to trigger recognize
         document.onpaste = function (event) {
             var items = (event.clipboardData || event.originalEvent.clipboardData).items;
             var uploadFile = items[items.length - 1].getAsFile();
             recognizeFunction(uploadFile);
         }
+
+
     </script>
+
+    <style>
+        .column {
+            float: left;
+            width: 20%;
+            padding: 5px;
+        }
+    
+        .topRow {
+            width: 100%;
+            clear: both;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="column">
+            <p>Input Image</p>
+            <img id="imgInput" style="max-width:200px;">
+        </div>
+        <div class="column">
+            <p>Rotated, Original Color</p>
+            <img id="imgOriginal" style="max-width:200px;">
+        </div>
+        <div class="column">
+            <p>Rotated, Grey</p>
+            <img id="imgGrey" style="max-width:200px;">
+        </div>
+        <div class="column">
+            <p>Rotated, Binary</p>
+            <img id="imgBinary" style="max-width:200px;">
+        </div>
+    </div>
+
+    <div class="topRow">
+        <textarea cols="20" name="original" rows="10" style="width: 50%;" id="convertedText"></textarea>
+        <br/>
+        <button onclick="removeLinesCommaJoin()">🚿 Clean Data</button>
+        <button onclick="gotoStockCharts()">📈 See Charts</button>
+        🌽<a href="https://www.imagetotext.info/" target="_blank">Image-to-text</a>
+    </div>
+
 
 </body>
 
