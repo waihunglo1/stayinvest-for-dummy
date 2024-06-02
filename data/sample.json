@@ -57,7 +57,7 @@
         },
         {
             "name": "NQ100",
-            "holding": [
+            "holdings": [
                 "ADBE",
                 "ADP",
                 "ABNB",
@@ -163,7 +163,7 @@
         },
         {
             "name": "SP500",
-            "holding": [
+            "holdings": [
                 "MMM",
                 "AOS",
                 "ABT",
