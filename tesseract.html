@@ -47,11 +47,11 @@
             document.getElementById("imgGrey").src = ret.data.imageGrey;
             document.getElementById("imgBinary").src = ret.data.imageBinary;
 
-            var c = ret.text.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
-            console.log("recognizeText: ", ret.text);
-            console.log("commaString  : ", commaString);
-
+            var cleanTextWithComma = ret.data.text.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
+            console.log("recognizeText          : ", ret.data.text);
+            console.log("cleanTextWithComma     : ", cleanTextWithComma);
         }
+        
         const elm = document.getElementById('uploader');
         elm.addEventListener('change', recognize);
     </script>
