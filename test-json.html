@@ -38,9 +38,16 @@
 
                     var o = getObjectByValue(data.themes, "name", "DOW")[0];
                     console.log(o);
-                    
+
                     var s1 = o.holdings.join();
                     console.log(s1);
+
+                    var linkElement = document.createElement('a');
+                    linkElement.href = "snapshots-aa.html?t=US&o=" + o.holdings.join();
+                    linkElement.setAttribute("target", "_blank");
+                    linkElement.text = o.name;
+
+                    img_home.appendChild(linkElement);
                 })
                 .catch((error) => {
                     console.error("Unable to fetch data:", error);
@@ -48,6 +55,8 @@
         }
         fetchJSONData();
     </script>
+
+    <div id="img_home"></div>
 </body>
 
 </html>
