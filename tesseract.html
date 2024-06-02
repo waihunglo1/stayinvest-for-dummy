@@ -20,6 +20,8 @@
             var cleanTextWithComma = ret.data.text.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
             console.log("recognizeText          : ", ret.data.text);
             console.log("cleanTextWithComma     : ", cleanTextWithComma);
+
+            return cleanTextWithComma;
         }
 
         function gotoStockCharts() {
@@ -42,7 +44,11 @@
         document.onpaste = function (event) {
             var items = (event.clipboardData || event.originalEvent.clipboardData).items;
             var uploadFile = items[items.length - 1].getAsFile();
-            recognizeFunction(uploadFile);
+            recognizeFunction(uploadFile)
+              .then(function (cleanTextWithComma) {
+                console.log("return = " + cleanTextWithComma);
+                document.getElementById("convertedText").value = cleanTextWithComma;
+            });
         }
 
 
