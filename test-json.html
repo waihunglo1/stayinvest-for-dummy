@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0">
+    <title>Read JSON File</title>
+</head>
+<body>
+    <h1>GeeksforGeeks</h1>
+    <h3>
+        Go to the console to see the 
+        fetched data!!
+    </h3>
+    <script>
+        function fetchJSONData() {
+            fetch("data/sample.json")
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error
+                            (`HTTP error! Status: ${res.status}`);
+                    }
+                    return res.json();
+                })
+                .then((data) => 
+                      console.log(data))
+                .catch((error) => 
+                       console.error("Unable to fetch data:", error));
+        }
+        fetchJSONData();
+    </script>
+</body>
+</html>
