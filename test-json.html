@@ -27,6 +27,9 @@
                     console.log(data);
                     console.log(data.themes[0].name);
                     console.log(data.themes[0].holdings);
+
+                    var s = JSON.stringify(data.themes[0].holdings);
+                    console.log(s);
                 })
                 .catch((error) => {
                     console.error("Unable to fetch data:", error);
