@@ -36,8 +36,9 @@
                     var s = data.themes[0].holdings.join();
                     console.log(s);
 
-                    var o = getObjectByValue(data.themes, "name", "DOW");
+                    var o = getObjectByValue(data.themes, "name", "DOW")[0];
                     console.log(o);
+                    
                     var s1 = o.holdings.join();
                     console.log(s1);
                 })
