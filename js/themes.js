@@ -4,7 +4,7 @@ var getObjectByValue = function (array, key, value) {
     });
 };
 
-function appendThemesLink(data, key, linkDesc, hrefAddr, parent) {
+function appendThemesLink(data, key, linkDesc, hrefAddr, parentId) {
     // retrieve data from json
     var themes = getObjectByValue(data.themes, "name", key)[0];
     const tempChartLink = hrefAddr.replace(/{stockCodes}/i, themes.holdings.join());
@@ -16,10 +16,10 @@ function appendThemesLink(data, key, linkDesc, hrefAddr, parent) {
     linkElement.text = linkDesc;
 
     // append
-    parent.appendChild(linkElement);
+    document.getElementById(parentId).appendChild(linkElement);
 }
 
-function fetchJSONData(key, linkDesc, hrefAddr, parent) {
+function fetchJSONData(key, linkDesc, hrefAddr, parentId) {
     const jsonDataFile = "data/equity-holdings.json"
     fetch(jsonDataFile)
         .then((res) => {
@@ -31,7 +31,7 @@ function fetchJSONData(key, linkDesc, hrefAddr, parent) {
         })
         .then((data) => {
             console.log(data);
-            appendThemesLink(data, key, linkDesc, hrefAddr, parent);
+            appendThemesLink(data, key, linkDesc, hrefAddr, parentId);
         })
         .catch((error) => {
             console.error("Unable to fetch data:", error);
