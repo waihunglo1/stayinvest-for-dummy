@@ -6,16 +6,26 @@
     <script type="text/javascript">
         document.onpaste = function (event) {
             var items = (event.clipboardData || event.originalEvent.clipboardData).items;
+            var uploadedFile = items[items.length - 1].getAsFile();
 
-            Tesseract.recognize(items[items.length - 1].getAsFile()).then(function (result) {
-                console.log("recognizeText: result.text:", result.text);
-                var commaString = result.text.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
-                document.getElementById("convertedText").value = commaString;
-            });
+            Tesseract tesseract = new Tesseract();
+            // tesseract.setDatapath(path);
+            tesseract.setLanguage("eng");
+            tesseract.setTessVariable("user_defined_dpi", "300");
+            tesseract.setTessVariable("tessedit_char_whitelist","0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ/' '");
 
-            var blob = items[items.length - 1].getAsFile();
+            tesseract.recognize(
+                uploadedFile
+            ).then(
+                function (result) {
+                    console.log("recognizeText: result.text:", result.text);
+                    var commaString = result.text.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
+                    document.getElementById("convertedText").value = commaString;
+                }
+            );
+
             var reader = new FileReader();
-            reader.readAsDataURL(blob);
+            reader.readAsDataURL(uploadedFile);
             reader.onload = function (event) {
                 const img1 = document.createElement("img");
                 img1.src = event.target.result; // Appending image data to img tag
