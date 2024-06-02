@@ -25,8 +25,8 @@
                 })
                 .then((data) => {
                     console.log(data);
-                    console.log(data.themes["DOW"]);
-                    console.log(data.themes["DOW"].holdings);
+                    console.log(data.themes[0].name);
+                    console.log(data.themes[0].holdings);
                 })
                 .catch((error) => {
                     console.error("Unable to fetch data:", error);
