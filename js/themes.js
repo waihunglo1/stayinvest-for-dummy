@@ -30,3 +30,4 @@ function fetchJSONData() {
             console.error("Unable to fetch data:", error);
         });
 }
+fetchJSONData();
