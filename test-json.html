@@ -37,7 +37,7 @@
                     console.log(s);
 
                     var o = getObjectByValue(data.themes, "name", "DOW");
-                    console.log(o);
+                    console.log(o.holdings.join());
                 })
                 .catch((error) => {
                     console.error("Unable to fetch data:", error);
