@@ -1,264 +1,273 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong|Platypi|Noto Sans Traditional Chinese">
-<title>Stay Invest</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong|Platypi|Noto Sans Traditional Chinese">
+	<script type="text/javascript" src="js/themes.js"></script>
+	<title>Stay Invest for Dummy</title>
 
-<style>
+	<style>
+		/* table style */
+		table,
+		td,
+		th {
+			border: 0px solid rgba(0, 0, 0, 0.8);
+		}
 
-/* table style */	
-table, td, th {
-	border: 0px solid rgba(0, 0, 0, 0.8);	
-}
+		table {
+			border-collapse: collapse;
+			width: 400px;
+		}
 
-table {
-	border-collapse: collapse;
-	width: 400px;
-}
+		td {
+			vertical-align: top;
+		}
 
-td {
-	vertical-align: top;
-}
+		/* 2 columns ccs */
+		* {
+			box-sizing: border-box;
+		}
 
-/* 2 columns ccs */
-* {
-  box-sizing: border-box;
-}
+		/* Create two equal columns that floats next to each other */
+		.column {
+			float: left;
+			width: 50%;
+			padding: 10px;
+			height: 300px;
+			/* Should be removed. Only for demonstration */
+		}
 
-/* Create two equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 50%;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-}
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+		/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+		@media screen and (max-width: 600px) {
+			.column {
+				width: 100%;
+			}
+		}
 
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
-}
+		h1 {
+			font-family: "Audiowide", sans-serif;
+			font-size: 40px;
+			text-shadow: 3px 3px 3px #ababab;
+		}
 
-h1 {
-  font-family: "Audiowide", sans-serif;
-  font-size: 40px;
-  text-shadow: 3px 3px 3px #ababab;	
-}
+		h2 {
+			font-family: "Audiowide", sans-serif;
+			font-size: 20px;
+			text-shadow: 2px 2px 2px #ababab;
+		}
 
-h2 {
-  font-family: "Audiowide", sans-serif;
-  font-size: 20px;
-  text-shadow: 2px 2px 2px #ababab;	
-}
+		body {
+			font-family: "Platypi", sans-serif;
+			font-size: 17px;
+			text-shadow: 0px 0px 0px #ababab;
+		}
 
-body {
-  font-family: "Platypi", sans-serif;
-  font-size: 17px;
-  text-shadow: 0px 0px 0px #ababab;
-}
+		.grid-container {
+			display: grid;
+			grid-template-columns: auto auto auto;
+			padding: 1px;
+		}
 
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  padding: 1px;
-}
-
-.grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 0px solid rgba(0, 0, 0, 0.8);
-  padding: 2px;
-  text-align: left;
-}
-
-</style>
+		.grid-item {
+			background-color: rgba(255, 255, 255, 0.8);
+			border: 0px solid rgba(0, 0, 0, 0.8);
+			padding: 2px;
+			text-align: left;
+		}
+	</style>
 
 </head>
 
 <!-- body -->
 
 <body>
-<H1>Stay Invest for Dummy</H1>
+	<script type="text/javascript">
+		const stockChartLink = "snapshots-aa.html?t=SC&o={stockCodes}";
+		fetchJSONData("DOW30",   "DOW30", stockChartLink, "DOW30-DIV");
+		fetchJSONData("NQ100", "NQ100", stockChartLink, "NQ100-DIV");
+		fetchJSONData("SP500", "SP500", stockChartLink, "SP500-DIV");
 
-<div class="grid-container">
-	<div class="grid-item" style="color: #666666;">
-		<!-- Column 01 -->
-		<table>
-			<!-- Market Sentiment -->
-			<tr>
-				<td><img src="images/presentation.gif" width="50" height="50"
-					style="width: 100px; height: 90px;" /></td>
-				<td>
-				<h2>Market Sentiment</h2> 
-				😱 <a href="https://edition.cnn.com/markets/fear-and-greed">Fear And Greed</a></br>
-				⛅ <a href="https://www.barchart.com/stocks/momentum">Market Momentum</a></br>
-				🎊 <a href="https://www.barchart.com/etfs-funds/price-surprises/bullish?viewName=main&timeFrame=daily&leverage=-3x,3x&orderBy=dailyPercentChange&orderDir=desc">ETF Surprise</a></br>
-				✋ <a href="https://www.google.com/finance/quote/MOVE:INDEXNYSEGIS?sa=X&ved=2ahUKEwi_38q0itf4AhVXpVYBHUquBWEQ3ecFegQIHxAg&comparison=INDEXCBOE%3AVIX&window=1Y">MOVE Index</a></br>
-				👀 <a href="https://stockcharts.com/freecharts/candleglance.html?$COMPQ,$NAA20R,$NAA50R,$NAA200R,$SPX,$SPXA20R,$SPXA50R,$SPXA200R,$INDU,$DOWA20R,$DOWA50R,$DOWA200R|B|M12|0">20MA 50MA Market Breath</a></br>
-				🆅  <a href="https://stockcharts.com/freecharts/candleglance.html?$SPX,$NAMO,$NYMO,$BTCUSD,$VIX,GLD,$MOVE,$CPCE,$MOVE,$CPCE|B|M12|0">VIX / MOVE / CPCE</a></br>
-				💱 <a href="https://www.google.com/finance/quote/nzd-HKD?comparison=JPY-HKD%2CAUD-HKD%2CCAD-HKD%2CGBP-HKD&window=6M">Currency</a></br>
+	</script>
 
-				<h2>Weekly Market Sentiment</h2> 
-				📊 <a href="https://www.aaii.com/sentimentsurvey">AAII sentiment Survery</a></br>				
-				🤯 <a href="https://schrts.co/cBietXFq">!NAAIM Exposure</a></br>
-				💩 <a href="https://sentimentrader.com/dumb-money">Dumb money confidence</a></br>
-				📆 <a href="https://www.futunn.com/en/quote/calendar">Earning Calendlar</a></br>
-				🩳 <a href="https://www.stockfisher.com.hk/us-stock/scanner?page=1&portfolio=Portfolio&order_by=ShortPercent&order=DESC&Code=&index=1&marketcap=1&tab=technical&group=all">Short Interest</a>
-				</td>
-			</tr>
-			<!-- empty row -->
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
+	<H1>Stay Invest for Dummy</H1>
 
-			<!-- row 06 香港地產 -->	
-			<tr>
-				<td><img src="images/deal.png" width="50" height="50"
-					style="width: 100px; height: 90px;" />
-				</td>
-				<td>
-				<h2>香港股市</h2>				
-				🐮 <a href="https://warrants-hk.credit-suisse.com/tc/cbbc/outstanding-chart">牛証總街貨量</a></br>
-				📈 <a href="https://360miq.com/market?data=HKEX">港股市場寬度</a></br>
-				🦍 <a href="snapshots-aa.html?o=000941.HK,000700.HK,000939.HK,000883.HK,001211.HK,002020.HK,002018.HK,001088.HK,002057.HK,001929.HK,000016.HK,009633.HK,001698.HK,000293.HK,000002.HK,000066.HK,006160.HK,000267.HK,001299.HK,000388.HK,009988.HK,009961.HK,003311.HK">
-				港股活躍股票</a></br>
-				🍇 <a href="https://www.stheadline.com/columnists/author/1359/%E9%AE%AE%E8%82%A1%E8%90%BD%E9%91%8A">鮮股落鑊</a></br>
-				📰 <a href="https://www1.hkej.com/dailynews/headline">今日信報</a></br>
-				
-				<h2>香港地產</h2>
-				📈 <a href="https://www.house730.com/market-data/">地產市場動向</a></br>
-				🏠 <a href="https://hk.centanet.com/CCI/index">CCL Index</a></br>
-				🏢 <a href="https://finance.mingpao.com/fin/specialpage3.php?tag=%E9%A6%99%E6%B8%AF%E5%9C%B0%E7%94%A2">明報 - 香港地產</a></br>
-				🏪 <a href="https://www.midlandici.com.hk/ics/property/research/trend">工商舖指數走勢圖</a></br>
-				🔊 <a href="https://hk.centanet.com/findproperty/list/transaction">成交概況</a></br>
-				</td>
-			</tr>
-			<!-- empty row -->
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
+	<div class="grid-container">
+		<div class="grid-item" style="color: #666666;">
+			<!-- Column 01 -->
+			<table>
+				<!-- Market Sentiment -->
+				<tr>
+					<td><img src="images/presentation.gif" width="50" height="50" style="width: 100px; height: 90px;" />
+					</td>
+					<td>
+						<h2>Market Sentiment</h2>
+						😱 <a href="https://edition.cnn.com/markets/fear-and-greed">Fear And Greed</a></br>
+						⛅ <a href="https://www.barchart.com/stocks/momentum">Market Momentum</a></br>
+						🎊 <a href="https://www.barchart.com/etfs-funds/price-surprises/bullish?viewName=main&timeFrame=daily&leverage=-3x,3x&orderBy=dailyPercentChange&orderDir=desc">ETF	Surprise</a></br>
+						✋ <a href="https://www.google.com/finance/quote/MOVE:INDEXNYSEGIS?sa=X&ved=2ahUKEwi_38q0itf4AhVXpVYBHUquBWEQ3ecFegQIHxAg&comparison=INDEXCBOE%3AVIX&window=1Y">MOVE	Index</a></br>
+						👀 <a href="https://stockcharts.com/freecharts/candleglance.html?$COMPQ,$NAA20R,$NAA50R,$NAA200R,$SPX,$SPXA20R,$SPXA50R,$SPXA200R,$INDU,$DOWA20R,$DOWA50R,$DOWA200R|B|M12|0">20MA 50MA Market Breath</a></br>
+						🆅 <a href="https://stockcharts.com/freecharts/candleglance.html?$SPX,$NAMO,$NYMO,$BTCUSD,$VIX,GLD,$MOVE,$CPCE,$MOVE,$CPCE|B|M12|0">VIX	/ MOVE / CPCE</a></br>
+						💱 <a href="https://www.google.com/finance/quote/nzd-HKD?comparison=JPY-HKD%2CAUD-HKD%2CCAD-HKD%2CGBP-HKD&window=6M">Currency</a></br>
 
-			<!-- row 04 Celebrity Ideas -->
-			<tr>
-				<td><img src="images/investing.png" width="50" height="50"
-					style="width: 100px; height: 90px;" />
-				</td>
-				<td><h2>Celebrity Ideas</h2>
-				👩 <a href="https://stockcircle.com/portfolio/stanley-druckenmiller">Stock Circles - Stanley</a></br>
-				💡 <a href="https://hedgefollow.com/funds/Duquesne+Family+Office">HedgeFollow - Stanley</a></br>
-				🚀 <a href="snapshots-aa.html?t=SC&o=MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR,GE,WWD,STX,ANET,FLEX,ZI,NWSA,DFS,VRT,KMI,FCX,KBR,MRVL,WAB,LLY,PANW,CCJ,META,NWS,KEY,C,DAKT,MSGE,OPCH,AAPL,CNK,PLTR,STLA,SPHR,COF,KRE,IQV,CRNX,BAH,OZK,ARGT,BMA,BCS,SANA,RDDT,FUSN,SLN,TTWO">SC - Stanley</a></br>
-				👄 <a href="https://stockcircle.com/">Stock Circles</a></br>
-				👿 <a href="https://www.capitoltrades.com/">Capitol Hill Trades</a></br>
-				</td>
-			</tr>
-			<!-- empty row -->
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
+						<h2>Weekly Market Sentiment</h2>
+						📊 <a href="https://www.aaii.com/sentimentsurvey">AAII sentiment Survery</a></br>
+						🤯 <a href="https://schrts.co/cBietXFq">!NAAIM Exposure</a></br>
+						💩 <a href="https://sentimentrader.com/dumb-money">Dumb money confidence</a></br>
+						📆 <a href="https://www.futunn.com/en/quote/calendar">Earning Calendlar</a></br>
+						🩳 <a href="https://www.stockfisher.com.hk/us-stock/scanner?page=1&portfolio=Portfolio&order_by=ShortPercent&order=DESC&Code=&index=1&marketcap=1&tab=technical&group=all">Short Interest</a>
+					</td>
+				</tr>
+				<!-- empty row -->
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
 
-		</table>			
+				<!-- row 06 香港地產 -->
+				<tr>
+					<td><img src="images/deal.png" width="50" height="50" style="width: 100px; height: 90px;" />
+					</td>
+					<td>
+						<h2>香港股市</h2>
+						🐮 <a href="https://warrants-hk.credit-suisse.com/tc/cbbc/outstanding-chart">牛証總街貨量</a></br>
+						📈 <a href="https://360miq.com/market?data=HKEX">港股市場寬度</a></br>
+						🦍 <a href="snapshots-aa.html?o=000941.HK,000700.HK,000939.HK,000883.HK,001211.HK,002020.HK,002018.HK,001088.HK,002057.HK,001929.HK,000016.HK,009633.HK,001698.HK,000293.HK,000002.HK,000066.HK,006160.HK,000267.HK,001299.HK,000388.HK,009988.HK,009961.HK,003311.HK">港股活躍股票</a></br>
+						🍇 <a href="https://www.stheadline.com/columnists/author/1359/%E9%AE%AE%E8%82%A1%E8%90%BD%E9%91%8A">鮮股落鑊</a></br>
+						📰 <a href="https://www1.hkej.com/dailynews/headline">今日信報</a></br>
+
+						<h2>香港地產</h2>
+						📈 <a href="https://www.house730.com/market-data/">地產市場動向</a></br>
+						🏠 <a href="https://hk.centanet.com/CCI/index">CCL Index</a></br>
+						🏢 <a href="https://finance.mingpao.com/fin/specialpage3.php?tag=%E9%A6%99%E6%B8%AF%E5%9C%B0%E7%94%A2">明報 - 香港地產</a></br>
+						🏪 <a href="https://www.midlandici.com.hk/ics/property/research/trend">工商舖指數走勢圖</a></br>
+						🔊 <a href="https://hk.centanet.com/findproperty/list/transaction">成交概況</a></br>
+					</td>
+				</tr>
+				<!-- empty row -->
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+
+				<!-- row 04 Celebrity Ideas -->
+				<tr>
+					<td><img src="images/investing.png" width="50" height="50" style="width: 100px; height: 90px;" />
+					</td>
+					<td>
+						<h2>Celebrity Ideas</h2>
+						👩 <a href="https://stockcircle.com/portfolio/stanley-druckenmiller">Stock Circles - Stanley</a></br>
+						💡 <a href="https://hedgefollow.com/funds/Duquesne+Family+Office">HedgeFollow - Stanley</a></br>
+						🚀 <a href="snapshots-aa.html?t=SC&o=MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR,GE,WWD,STX,ANET,FLEX,ZI,NWSA,DFS,VRT,KMI,FCX,KBR,MRVL,WAB,LLY,PANW,CCJ,META,NWS,KEY,C,DAKT,MSGE,OPCH,AAPL,CNK,PLTR,STLA,SPHR,COF,KRE,IQV,CRNX,BAH,OZK,ARGT,BMA,BCS,SANA,RDDT,FUSN,SLN,TTWO">SC - Stanley</a></br>
+						👄 <a href="https://stockcircle.com/">Stock Circles</a></br>
+						👿 <a href="https://www.capitoltrades.com/">Capitol Hill Trades</a></br>
+					</td>
+				</tr>
+				<!-- empty row -->
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+
+			</table>
+		</div>
+
+		<div class="grid-item" style="color: #666666;">
+			<!-- Column 02 -->
+
+			<table>
+				<!-- Sector Performance -->
+				<tr>
+					<td><img src="images/rocket.gif" width="50" height="50" style="width: 100px; height: 90px;" />
+					</td>
+					<td>
+						<h2>Sector Perf</h2>
+
+						👽 <a href="https://stockcharts.com/freecharts/marketsummary.html?v=E#&t=T">Market Perf</a></br>
+						🌽 <a href="https://stockcharts.com/freecharts/candleglance.html?$UST7Y,$UST6M,$UST5Y,$UST3Y,$UST3M,$UST30Y,$UST2Y,$UST20Y,$UST1Y,$UST1M,$UST10Y,$USB|B|M12|1">Bond Yield Perf</a></br>
+						🏦 <a href="https://stockcharts.com/freecharts/candleglance.html?[SECT]&|B|M12|1">Sector Perf 2M</a></br>
+						🏋️ <a href="https://stockcharts.com/freecharts/candleglance.html?[SECTEW]&|B|M12|1">Sector Perf EW 2M</a><br>
+						🪟 <a href="https://stockcharts.com/freecharts/candleglance.html?[SECT]&|C|M12|1">Sector Perf 6M</a></br>
+						🔣 <a href="https://stockcharts.com/freecharts/candleglance.html?[SECT]&|B|M12|1">Sector Perf YTD</a></br>
+						🪙 <a href="https://stockcharts.com/freecharts/candleglance.html?[CRYPTO]&|B|M12|1">Crypto Perf 2M</a></br>
+
+						<h2>US Big Corp Perf</h2>
+						📻 <a href="https://stockcharts.com/freecharts/sctr.html">SCTR Report</a></br>
+						7️⃣ <a href="https://stockcharts.com/freecharts/candleglance.html?AMZN,AAPL,META,GOOGL,MSFT,NFLX,TSLA|B|M12|1">MI-7</a></br>
+						💽 <a href="https://stockcharts.com/freecharts/candleglance.html?NVDA,ADBE,AMD,CRM,NOW,SHOP|B|M12|1">Software-01</a></br>
+						🌅 <a href="snapshots-aa.html?t=US&o=BA,BAC,CAT,COST,F,FCX,GS,HD,IBM,KO,LOW,MA,MCD,SHW,V,XOM,OXY">Routine-01</a></br>
+						💎 <a href="https://stockcharts.com/freecharts/candleglance.html?[DOW]&|B|M12|1">DOW</a> |
+						<div id="DOW30-DIV" /> |
+						<div id="NQ100-DIV" /> |
+						<div id="SP500-DIV" /> </br>
+
+						<h2>Sector ETF Perf</h2>
+						🧲 <a href="https://stockcharts.com/freecharts/candleglance.html?CTA,SLV,CEF,$CRB,DJP,GDX,LAND,XME,URA,$WTIC,XLE,MOO|B|M12|1">Commodity ETF</a></br>
+						🏳‍🌈 <a href="https://stockcharts.com/freecharts/candleglance.html?XLK,XLP,ARKK,SPMO,VOO,MTUM,EQAL,VYM,IWM,XMMO,XLF,BRK/B|B|M12|1">US Market ETF</a></br>
+						⛩️ <a href="https://stockcharts.com/freecharts/candleglance.html?EWJV,EWT,INDA,VNM,AVDV,SMIN,IEMG,EWZ,KWEB,IDOG,EIDO,EWW|B|M12|1">Asia Market ETF</a></br>
+						🏦 <a href="https://stockcharts.com/freecharts/candleglance.html?KRE,XHB,IGV,VNQ|B|M12|1">INT Sensitive ETF</a></br>
+						📈 <a href="tesseract.html" target="_blank">Image-to-SC</a></br>
+
+					</td>
+				</tr>
+				<!-- empty row -->
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+
+				<!-- row 03 Heat Map -->
+				<tr>
+					<td><img src="images/business.png" width="50" height="50" style="width: 100px; height: 90px;" />
+					</td>
+					<td>
+						<h2>Heat Map</h2>
+						㏠ <a href="https://finviz.com/screener.ashx?v=711&f=sh_relvol_o1%2Cta_perf_dup%2Cta_perf2_1wup%2Cta_sma20_pa%2Cta_sma200_pa&ft=3">Daily Performance</a></br>
+						㏤ <a href="https://finviz.com/screener.ashx?v=711&f=sh_relvol_o1%2Cta_perf_dup%2Cta_perf2_1wup%2Cta_sma20_pa%2Cta_sma200_pa&ft=3&st=w1">Weekly Performance</a></br>
+						🗽 <a href="https://finviz.com/map.ashx?t=sec">S&P500</a> / <a href="https://finviz.com/map.ashx?t=etf">ETF</a></br>
+						🧧 <a href="https://finviz.com/screener.ashx?v=711&f=geo_chinahongkong">China / Hong Kong</a></br>
+						🐉 <a href="https://www.futunn.com/hk/heatmap-hk/stock?global_content=%7B%22promote_id%22%3A13766,%22sub_promote_id%22%3A2%7D">港股熱力圖</a></br>
+					</td>
+				</tr>
+				<!-- empty row -->
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+
+				<tr>
+					<td><img src="images/magazine.png" width="50" height="50" style="width: 100px; height: 90px;" />
+					</td>
+					<td>
+						<h2>Magazine</h2>
+						🎴 <a href="https://magazinelib.com/?s=barron">Barron's</a></br>
+						📢 <a href="https://magazinelib.com/?s=Economist">Economist</a></br>
+						🅱️ <a href="https://magazinelib.com/?s=bloomberg">Bloomberg</a></br>
+					</td>
+				</tr>
+				<!-- empty row -->
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+
+			</table>
+		</div>
+
+		<div class="grid-item" style="color: #666666;">
+			<!-- Column 03 -->
+		</div>
+
+
 	</div>
-
-	<div class="grid-item" style="color: #666666;">
-		<!-- Column 02 -->
-
-		<table>
-			<!-- Sector Performance -->
-			<tr>
-				<td><img src="images/rocket.gif" width="50" height="50"
-					style="width: 100px; height: 90px;" />
-				</td>
-				<td>
-				<h2>Sector Perf</h2>
-
-				👽 <a href="https://stockcharts.com/freecharts/marketsummary.html?v=E#&t=T">Market Perf</a></br>
-				🌽 <a href="https://stockcharts.com/freecharts/candleglance.html?$UST7Y,$UST6M,$UST5Y,$UST3Y,$UST3M,$UST30Y,$UST2Y,$UST20Y,$UST1Y,$UST1M,$UST10Y,$USB|B|M12|1">Bond Yield Perf</a></br>
-				🏦 <a href="https://stockcharts.com/freecharts/candleglance.html?[SECT]&|B|M12|1">Sector Perf 2M</a></br>
-				🏋️ <a href="https://stockcharts.com/freecharts/candleglance.html?[SECTEW]&|B|M12|1">Sector Perf EW 2M</a><br>
-				🪟 <a href="https://stockcharts.com/freecharts/candleglance.html?[SECT]&|C|M12|1">Sector Perf 6M</a></br>
-				🔣 <a href="https://stockcharts.com/freecharts/candleglance.html?[SECT]&|B|M12|1">Sector Perf YTD</a></br>
-				🪙 <a href="https://stockcharts.com/freecharts/candleglance.html?[CRYPTO]&|B|M12|1">Crypto Perf 2M</a></br>
-
-				<h2>US Big Corp Perf</h2>
-				📻 <a href="https://stockcharts.com/freecharts/sctr.html">SCTR Report</a></br>
-				7️⃣ <a href="https://stockcharts.com/freecharts/candleglance.html?AMZN,AAPL,META,GOOGL,MSFT,NFLX,TSLA|B|M12|1">MI-7</a></br>
-				💽 <a href="https://stockcharts.com/freecharts/candleglance.html?NVDA,ADBE,AMD,CRM,NOW,SHOP|B|M12|1">Software-01</a></br>
-				🌅 <a href="snapshots-aa.html?t=US&o=BA,BAC,CAT,COST,F,FCX,GS,HD,IBM,KO,LOW,MA,MCD,SHW,V,XOM,OXY">Routine-01</a></br>
-				💎 <a href="https://stockcharts.com/freecharts/candleglance.html?[DOW]&|B|M12|1">DOW</a> | 
-				<a href="snapshots-aa.html?t=US&o=AMZN,AXP,AMGN,AAPL,BA,CAT,CSCO,CVX,GS,HD,HON,IBM,INTC,JNJ,KO,JPM,MCD,MMM,MRK,MSFT,NKE,PG,TRV,UNH,CRM,VZ,V,WMT,DIS,DOW">DOW-AA</a></br>
-				🚀 <a href="snapshots-aa.html?t=SC&o=ADBE,ADP,ABNB,GOOGL,GOOG,AMZN,AMD,AEP,AMGN,ADI,ANSS,AAPL,AMAT,ASML,AZN,TEAM,ADSK,BKR,BIIB,BKNG,AVGO,CDNS,CDW,CHTR,CTAS,CSCO,CCEP,CTSH,CMCSA,CEG,CPRT,CSGP,COST,CRWD,CSX,DDOG,DXCM,FANG,DLTR,DASH,EA,EXC,FAST,FTNT,GEHC,GILD,GFS,HON,IDXX,ILMN,INTC,INTU,ISRG,KDP,KLAC,KHC,LRCX,LIN,LULU,MAR,MRVL,MELI,META,MCHP,MU,MSFT,MRNA,MDLZ,MDB,MNST,NFLX,NVDA,NXPI,ORLY,ODFL,ON,PCAR,PANW,PAYX,PYPL,PDD,PEP,QCOM,REGN,ROP,ROST,SIRI,SBUX,SNPS,TTWO,TMUS,TSLA,TXN,TTD,VRSK,VRTX,WBA,WBD,WDAY,XEL,ZS">NQ100</a> | 
-				<a href="snapshots-aa.html?t=SC&o=MMM,AOS,ABT,ABBV,ACN,ADBE,AMD,AES,AFL,A,APD,ABNB,AKAM,ALB,ARE,ALGN,ALLE,LNT,ALL,GOOGL,GOOG,MO,AMZN,AMCR,AEE,AAL,AEP,AXP,AIG,AMT,AWK,AMP,AME,AMGN,APH,ADI,ANSS,AON,APA,AAPL,AMAT,APTV,ACGL,ADM,ANET,AJG,AIZ,T,ATO,ADSK,ADP,AZO,AVB,AVY,AXON,BKR,BALL,BAC,BK,BBWI,BAX,BDX,BRK.B,BBY,BIO,TECH,BIIB,BLK,BX,BA,BKNG,BWA,BXP,BSX,BMY,AVGO,BR,BRO,BF.B,BLDR,BG,CDNS,CZR,CPT,CPB,COF,CAH,KMX,CCL,CARR,CTLT,CAT,CBOE,CBRE,CDW,CE,COR,CNC,CNP,CF,CHRW,CRL,SCHW,CHTR,CVX,CMG,CB,CHD,CI,CINF,CTAS,CSCO,C,CFG,CLX,CME,CMS,KO,CTSH,CL,CMCSA,CMA,CAG,COP,ED,STZ,CEG,COO,CPRT,GLW,CPAY,CTVA,CSGP,COST,CTRA,CCI,CSX,CMI,CVS,DHR,DRI,DVA,DAY,DECK,DE,DAL,DVN,DXCM,FANG,DLR,DFS,DG,DLTR,D,DPZ,DOV,DOW,DHI,DTE,DUK,DD,EMN,ETN,EBAY,ECL,EIX,EW,EA,ELV,LLY,EMR,ENPH,ETR,EOG,EPAM,EQT,EFX,EQIX,EQR,ESS,EL,ETSY,EG,EVRG,ES,EXC,EXPE,EXPD,EXR,XOM,FFIV,FDS,FICO,FAST,FRT,FDX,FIS,FITB,FSLR,FE,FI,FMC,F,FTNT,FTV,FOXA,FOX,BEN,FCX,GRMN,IT,GE,GEHC,GEV,GEN,GNRC,GD,GIS,GM,GPC,GILD,GPN,GL,GS,HAL,HIG,HAS,HCA,DOC,HSIC,HSY,HES,HPE,HLT,HOLX,HD,HON,HRL,HST,HWM,HPQ,HUBB,HUM,HBAN,HII,IBM,IEX,IDXX,ITW,ILMN,INCY,IR,PODD,INTC,ICE,IFF,IP,IPG,INTU,ISRG,IVZ,INVH,IQV,IRM,JBHT,JBL,JKHY,J,JNJ,JCI,JPM,JNPR,K,KVUE,KDP,KEY,KEYS,KMB,KIM,KMI,KLAC,KHC,KR,LHX,LH,LRCX,LW,LVS,LDOS,LEN,LIN,LYV,LKQ,LMT,L,LOW,LULU,LYB,MTB,MRO,MPC,MKTX,MAR,MMC,MLM,MAS,MA,MTCH,MKC,MCD,MCK,MDT,MRK,META,MET,MTD,MGM,MCHP,MU,MSFT,MAA,MRNA,MHK,MOH,TAP,MDLZ,MPWR,MNST,MCO,MS,MOS,MSI,MSCI,NDAQ,NTAP,NFLX,NEM,NWSA,NWS,NEE,NKE,NI,NDSN,NSC,NTRS,NOC,NCLH,NRG,NUE,NVDA,NVR,NXPI,ORLY,OXY,ODFL,OMC,ON,OKE,ORCL,OTIS,PCAR,PKG,PANW,PARA,PH,PAYX,PAYC,PYPL,PNR,PEP,PFE,PCG,PM,PSX,PNW,PNC,POOL,PPG,PPL,PFG,PG,PGR,PLD,PRU,PEG,PTC,PSA,PHM,QRVO,PWR,QCOM,DGX,RL,RJF,RTX,O,REG,REGN,RF,RSG,RMD,RVTY,RHI,ROK,ROL,ROP,ROST,RCL,SPGI,CRM,SBAC,SLB,STX,SRE,NOW,SHW,SPG,SWKS,SJM,SNA,SOLV,SO,LUV,SWK,SBUX,STT,STLD,STE,SYK,SMCI,SYF,SNPS,SYY,TMUS,TROW,TTWO,TPR,TRGP,TGT,TEL,TDY,TFX,TER,TSLA,TXN,TXT,TMO,TJX,TSCO,TT,TDG,TRV,TRMB,TFC,TYL,TSN,USB,UBER,UDR,ULTA,UNP,UAL,UPS,URI,UNH,UHS,VLO,VTR,VLTO,VRSN,VRSK,VZ,VRTX,VTRS,VICI,V,VST,VMC,WRB,GWW,WAB,WBA,WMT,DIS,WBD,WM,WAT,WEC,WFC,WELL,WST,WDC,WRK,WY,WMB,WTW,WYNN,XEL,XYL,YUM,ZBRA,ZBH,ZTS">S&P500</a></br>
-
-				<h2>Sector ETF Perf</h2>
-				🧲 <a href="https://stockcharts.com/freecharts/candleglance.html?CTA,SLV,CEF,$CRB,DJP,GDX,LAND,XME,URA,$WTIC,XLE,MOO|B|M12|1">Commodity ETF</a></br>
-				🏳‍🌈 <a href="https://stockcharts.com/freecharts/candleglance.html?XLK,XLP,ARKK,SPMO,VOO,MTUM,EQAL,VYM,IWM,XMMO,XLF,BRK/B|B|M12|1">US Market ETF</a></br>
-				⛩️ <a href="https://stockcharts.com/freecharts/candleglance.html?EWJV,EWT,INDA,VNM,AVDV,SMIN,IEMG,EWZ,KWEB,IDOG,EIDO,EWW|B|M12|1">Asia Market ETF</a></br>
-				🏦 <a href="https://stockcharts.com/freecharts/candleglance.html?KRE,XHB,IGV,VNQ|B|M12|1">INT Sensitive ETF</a></br>
-				📈 <a href="tesseract.html" target="_blank">Image-to-SC</a></br>
-				
-			</td>
-			</tr>
-			<!-- empty row -->
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-
-			<!-- row 03 Heat Map -->
-			<tr>
-				<td><img src="images/business.png" width="50" height="50"
-					style="width: 100px; height: 90px;" />
-				</td>
-				<td><h2>Heat Map</h2>
-				㏠ <a href="https://finviz.com/screener.ashx?v=711&f=sh_relvol_o1%2Cta_perf_dup%2Cta_perf2_1wup%2Cta_sma20_pa%2Cta_sma200_pa&ft=3">Daily Performance</a></br>
-				㏤ <a href="https://finviz.com/screener.ashx?v=711&f=sh_relvol_o1%2Cta_perf_dup%2Cta_perf2_1wup%2Cta_sma20_pa%2Cta_sma200_pa&ft=3&st=w1">Weekly Performance</a></br>
-				🗽 <a href="https://finviz.com/map.ashx?t=sec">S&P500</a> / <a href="https://finviz.com/map.ashx?t=etf">ETF</a></br>
-				🧧 <a href="https://finviz.com/screener.ashx?v=711&f=geo_chinahongkong">China / Hong Kong</a></br>
-				🐉 <a href="https://www.futunn.com/hk/heatmap-hk/stock?global_content=%7B%22promote_id%22%3A13766,%22sub_promote_id%22%3A2%7D">港股熱力圖</a></br>
-				</td>
-			</tr>
-			<!-- empty row -->
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			
-			<tr>
-				<td><img src="images/magazine.png" width="50" height="50"
-					style="width: 100px; height: 90px;" />
-				</td>
-				<td><h2>Magazine</h2>
-					🎴 <a href="https://magazinelib.com/?s=barron">Barron's</a></br>
-					📢 <a href="https://magazinelib.com/?s=Economist">Economist</a></br>
-					🅱️ <a href="https://magazinelib.com/?s=bloomberg">Bloomberg</a></br>
-				</td>
-			</tr>
-			<!-- empty row -->
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-
-		</table>
-	</div>
-
-	<div class="grid-item" style="color: #666666;">
-		<!-- Column 03 -->
-	</div>
-
-	
-</div>
 </body>
+
 </html>
