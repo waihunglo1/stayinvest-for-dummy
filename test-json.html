@@ -14,6 +14,11 @@
         fetched data!!
     </h3>
     <script>
+        var getObjectByValue = function (array, key, value) {
+            return array.filter(function (object) {
+                return object[key] === value;
+            });
+        };
         function fetchJSONData() {
             fetch("data/sample.json")
                 .then((res) => {
@@ -30,6 +35,9 @@
 
                     var s = data.themes[0].holdings.join();
                     console.log(s);
+
+                    var o = getObjectByValue(data, "name", "DOW");
+                    console.log(o);
                 })
                 .catch((error) => {
                     console.error("Unable to fetch data:", error);
