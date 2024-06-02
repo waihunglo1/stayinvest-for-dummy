@@ -16,7 +16,7 @@ function appendThemesLink(data, key, linkDesc, hrefAddr, parentId) {
     linkElement.text = linkDesc;
 
     // append
-    document.getElementById(parentId).text = "";
+    document.getElementById(parentId).innerText = "";
     document.getElementById(parentId).appendChild(linkElement);
 }
 
