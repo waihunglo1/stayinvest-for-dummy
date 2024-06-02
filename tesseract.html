@@ -33,9 +33,8 @@
         </div>
     </div>
 
-    <script>
-        const recognize = async ({ target: { files } }) => {
-            document.getElementById("imgInput").src = URL.createObjectURL(files[0]);
+    <script type="text/javascript">
+        const recognizeFunction = async ({ target: { files } }) => {
             const worker = await Tesseract.createWorker("eng", 1, {
                 // corePath: '/tesseract-core-simd.wasm.js',
                 workerPath: "https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.0/worker.min.js",
@@ -43,6 +42,8 @@
                 user_defined_dpi: "300"
             });
             const ret = await worker.recognize(files[0], { rotateAuto: true }, { imageColor: true, imageGrey: true, imageBinary: true });
+
+            document.getElementById("imgInput").src = URL.createObjectURL(files[0]);
             document.getElementById("imgOriginal").src = ret.data.imageColor;
             document.getElementById("imgGrey").src = ret.data.imageGrey;
             document.getElementById("imgBinary").src = ret.data.imageBinary;
@@ -51,10 +52,18 @@
             console.log("recognizeText          : ", ret.data.text);
             console.log("cleanTextWithComma     : ", cleanTextWithComma);
         }
-        
+
         const elm = document.getElementById('uploader');
-        elm.addEventListener('change', recognize);
+        elm.addEventListener('change', recognizeFunction);
+
+        // paste image to trigger recognize
+        document.onpaste = function (event) {
+            var items = (event.clipboardData || event.originalEvent.clipboardData).items;
+            var uploadedFile = items[items.length - 1].getAsFile();
+            uploadedFile.addEventListener('change', recognizeFunction);
+        }
     </script>
+
 </body>
 
 </html>
