@@ -1,0 +1,74 @@
+/* table style */
+table,
+td,
+th {
+    border: 0px solid rgba(0, 0, 0, 0.8);
+}
+
+table {
+    border-collapse: collapse;
+    width: 400px;
+}
+
+td {
+    vertical-align: top;
+}
+
+/* 2 columns ccs */
+* {
+    box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px;
+    /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+h1 {
+    font-family: "Audiowide", sans-serif;
+    font-size: 40px;
+    text-shadow: 3px 3px 3px #ababab;
+}
+
+h2 {
+    font-family: "Audiowide", sans-serif;
+    font-size: 20px;
+    text-shadow: 2px 2px 2px #ababab;
+}
+
+body {
+    font-family: "Platypi", sans-serif;
+    font-size: 17px;
+    text-shadow: 0px 0px 0px #ababab;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 1px;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 0px solid rgba(0, 0, 0, 0.8);
+    padding: 2px;
+    text-align: left;
+}

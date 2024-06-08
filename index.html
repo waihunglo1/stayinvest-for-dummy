@@ -5,85 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong|Platypi|Noto Sans Traditional Chinese">
+	<link rel="stylesheet" href="styles.css">
+
 	<script type="text/javascript" src="js/themes.js"></script>
 	<title>Stay Invest for Dummy</title>
-
-	<style>
-		/* table style */
-		table,
-		td,
-		th {
-			border: 0px solid rgba(0, 0, 0, 0.8);
-		}
-
-		table {
-			border-collapse: collapse;
-			width: 400px;
-		}
-
-		td {
-			vertical-align: top;
-		}
-
-		/* 2 columns ccs */
-		* {
-			box-sizing: border-box;
-		}
-
-		/* Create two equal columns that floats next to each other */
-		.column {
-			float: left;
-			width: 50%;
-			padding: 10px;
-			height: 300px;
-			/* Should be removed. Only for demonstration */
-		}
-
-		/* Clear floats after the columns */
-		.row:after {
-			content: "";
-			display: table;
-			clear: both;
-		}
-
-		/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-		@media screen and (max-width: 600px) {
-			.column {
-				width: 100%;
-			}
-		}
-
-		h1 {
-			font-family: "Audiowide", sans-serif;
-			font-size: 40px;
-			text-shadow: 3px 3px 3px #ababab;
-		}
-
-		h2 {
-			font-family: "Audiowide", sans-serif;
-			font-size: 20px;
-			text-shadow: 2px 2px 2px #ababab;
-		}
-
-		body {
-			font-family: "Platypi", sans-serif;
-			font-size: 17px;
-			text-shadow: 0px 0px 0px #ababab;
-		}
-
-		.grid-container {
-			display: grid;
-			grid-template-columns: auto auto auto;
-			padding: 1px;
-		}
-
-		.grid-item {
-			background-color: rgba(255, 255, 255, 0.8);
-			border: 0px solid rgba(0, 0, 0, 0.8);
-			padding: 2px;
-			text-align: left;
-		}
-	</style>
 
 </head>
 
@@ -92,14 +17,14 @@
 <body>
 	<script type="text/javascript">
 		const stockChartLink = "snapshots-aa.html?t=SC&o={stockCodes}";
-		fetchJSONData("DOW30", "DOW30", stockChartLink, "DOW30_DIV");
-		fetchJSONData("NQ100", "NQ100", stockChartLink, "NQ100_DIV");
-		fetchJSONData("SP500", "SP500", stockChartLink, "SP500_DIV");
-		fetchJSONData("ROUTINE01", "Routine-01", stockChartLink, "ROUTINE01_DIV");
-		fetchJSONData("STANLEY01", "Stanley-01", stockChartLink, "STANLEY01_DIV");
+		fetchThemeDataAndAppendLink("DOW30", "DOW30", stockChartLink, "DOW30_DIV");
+		fetchThemeDataAndAppendLink("NQ100", "NQ100", stockChartLink, "NQ100_DIV");
+		fetchThemeDataAndAppendLink("SP500", "SP500", stockChartLink, "SP500_DIV");
+		fetchThemeDataAndAppendLink("ROUTINE01", "Routine-01", stockChartLink, "ROUTINE01_DIV");
+		fetchThemeDataAndAppendLink("STANLEY01", "Stanley-01", stockChartLink, "STANLEY01_DIV");
 
 		const hkStockChartLink = "snapshots-aa.html?o={stockCodes}";
-		fetchJSONData("HSI001", "港股活躍股票", hkStockChartLink, "HSI001_DIV");
+		fetchThemeDataAndAppendLink("HSI001", "港股活躍股票", hkStockChartLink, "HSI001_DIV");
 		
 	</script>
 

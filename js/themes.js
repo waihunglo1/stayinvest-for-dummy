@@ -17,7 +17,7 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc) {
     document.getElementById(parentId).appendChild(linkElement);
 }
 
-function fetchJSONData(key, linkDesc, hrefAddr, parentId) {
+function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
     const jsonDataFile = "data/equity-holdings.json"
     fetch(jsonDataFile)
         .then((res) => {
