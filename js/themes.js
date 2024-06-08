@@ -46,7 +46,7 @@ function fetchJSONData(key, linkDesc, hrefAddr, parentId) {
 
 function fetchStockCodesSortBy(stockCodes, taIndicator) {
     const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
-    const tempSortByLink = encodeURIComponent(sortBylink.replace(/{stockCodes}/i,stockCodes).replace(/{taIndicator}/i,taIndicator));
+    const tempSortByLink = encodeURIComponent(sortBylink.replace(/{stockCodes}/i, stockCodes).replace(/{taIndicator}/i, taIndicator));
     const hrefAddr = "https://api.allorigins.win/get?url=" + tempSortByLink;
     console.log(hrefAddr);
 
@@ -60,7 +60,9 @@ function fetchStockCodesSortBy(stockCodes, taIndicator) {
             return res.json();
         })
         .then((data) => {
-            console.log(data);
+            console.log(data.content);
+            var res = data.content.stocks.flat().map(({ symbol }) => symbol);
+            console.log(res);
         })
         .catch((error) => {
             console.error("Unable to fetch data:", error);
