@@ -4,10 +4,7 @@ var getObjectByValue = function (array, key, value) {
     });
 };
 
-function appendThemesLink(data, key, linkDesc, hrefAddr, parentId) {
-    // retrieve data from json
-    var themes = getObjectByValue(data.themes, "name", key)[0];
-    const tempChartLink = hrefAddr.replace(/{stockCodes}/i, themes.holdings.join());
+function appendThemesLinkToParent(parentId, hrefAddr, linkDesc) {
 
     // create link element
     var linkElement = document.createElement('a');
@@ -32,19 +29,26 @@ function fetchJSONData(key, linkDesc, hrefAddr, parentId) {
         })
         .then((data) => {
             console.log(data);
-            appendThemesLink(data, key, linkDesc, hrefAddr, parentId);
+
+            // retrieve data from json data
+            var themes = getObjectByValue(data.themes, "name", key)[0];
+            const stockCodes = themes.holdings.join();
+            const tempChartLink = hrefAddr.replace(/{stockCodes}/i, stockCodes);
+            
+            fetchStockCodesSortBy(stockCodes, "M5");
+            appendThemesLinkToParent(parentId, tempChartLink, linkDesc);
         })
         .catch((error) => {
             console.error("Unable to fetch data:", error);
         });
 }
 
-function fetchStockCodesSortBy() {
-    const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo=AAPL,AXP,AMGN,AMZN,BA,CAT,CRM,CSCO,CVX,DOW,DIS,GS,HD,HON,IBM,INTC,JNJ,JPM,KO,MCD,MMM,MRK,MSFT,NKE,PG,TRV,UNH,V,VZ,WMT|M120&p=1&format=json&order=d";
-    const corsAnywhere = "https://cors-anywhere.herokuapp.com/" + sortBylink
+function fetchStockCodesSortBy(stockCodes, taIndicator) {
+    const sortBylink = "https://cors-anywhere.herokuapp.com/https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+    const tempSortByLink = sortBylink.replace(/{stockCodes}/i,stockCodes).replace(/{taIndicator}/i,taIndicator);
 
 
-    fetch(corsAnywhere)
+    fetch(tempSortByLink)
         .then((res) => {
             if (!res.ok) {
                 throw new Error
