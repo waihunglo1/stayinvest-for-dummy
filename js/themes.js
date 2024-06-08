@@ -47,7 +47,7 @@ function fetchStockCodesSortBy() {
             method: "GET",
             referrer: "https://stockcharts.com/freecharts/candleglance.html?AAPL,AXP,AMGN,AMZN,BA,CAT,CRM,CSCO,CVX,DOW,DIS,GS,HD,HON,IBM,INTC,JNJ,JPM,KO,MCD,MMM,MRK,MSFT,NKE,PG,TRV,UNH,V,VZ,WMT|B|M120|1",
             referrerPolicy: "no-referrer",
-            mode: "no-cors", 
+            // mode: "no-cors", 
             cache: "no-cache",
             redirect: "follow",
             integrity: "",
