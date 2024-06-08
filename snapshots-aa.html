@@ -48,11 +48,10 @@
             } else {
                 // sorting by TA
                 console.log("parseLocationAndShowCharts input = " + inputStockCodes);
-                // sorting by TA
-                fetchStockCodesSortBy(inputStockCodes, "M5")
+                partitionStockCodes(stockCodes, "M5")
                     .then(function (sortedStockCodes) {
-                        console.log("fetchStockCodesSortBy return = " + sortedStockCodes);
-                        appendImageToParent("img_home", sortedStockCodes.split(','));
+                        console.log(sortedStockCodes);
+                        appendImageToParent("img_home", sortedStockCodes);
                     });
 
             }
