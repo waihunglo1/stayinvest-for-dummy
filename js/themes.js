@@ -56,11 +56,12 @@ const partitionStockCodes = (stockCodeStr, taIndicator) => {
 
         fetchStockCodesSortBy(chunk.join(","), "M5")
             .then(function (sortedStocks) {
-                stocks.concat(sortedStocks);
+                stocks.push(sortedStocks);
+                console.log("stock length : " + stocks.length + " items : " + sortedStocks);
             });
     }
 
-    console.log("stock lenght : " + stocks.length);
+    console.log("stock length : " + stocks.length);
 }
 
 /**
