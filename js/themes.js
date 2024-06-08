@@ -45,11 +45,11 @@ function fetchJSONData(key, linkDesc, hrefAddr, parentId) {
 }
 
 function fetchStockCodesSortBy(stockCodes, taIndicator) {
-    const sortBylink = "https://cors-anywhere.herokuapp.com/https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
-    const tempSortByLink = sortBylink.replace(/{stockCodes}/i,stockCodes).replace(/{taIndicator}/i,taIndicator);
+    const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+    const tempSortByLink = encodeURIComponent(sortBylink.replace(/{stockCodes}/i,stockCodes).replace(/{taIndicator}/i,taIndicator));
 
-
-    fetch(tempSortByLink)
+    // CORs issue
+    fetch("https://api.allorigins.win/get?url=" + tempSortByLink)
         .then((res) => {
             if (!res.ok) {
                 throw new Error
