@@ -30,7 +30,7 @@
         function parseLocationAndShowCharts() {
 
             const params = new URLSearchParams(document.location.search);
-            const o = params.get("o");
+            const inputStockCodes = params.get("o");
             const t = params.get("t");
 
             // chart type
@@ -42,16 +42,17 @@
             }
 
             // stock codes
-            if (o == null) {
+            if (inputStockCodes == null) {
                 console.info("parameter o is null!!"); //show 1
                 return;
             } else {
                 // sorting by TA
-                var sortedStockCodes = fetchStockCodesSortBy(o, "M5");
-                console.log("return = " + sortedStockCodes);             
+                console.log("input = " + inputStockCodes);
+                var sortedStockCodes = fetchStockCodesSortBy(inputStockCodes, "M5");
+                console.log("return = " + sortedStockCodes);
+                appendImageToParent("img_home", sortedStockCodes.split(','));
             }
 
-            appendImageToParent("img_home", o.split(','));
         }
 
         window.onload = parseLocationAndShowCharts;    
