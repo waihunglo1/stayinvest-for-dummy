@@ -8,7 +8,7 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc) {
 
     // create link element
     var linkElement = document.createElement('a');
-    linkElement.href = tempChartLink;
+    linkElement.href = hrefAddr;
     linkElement.setAttribute("target", "_blank");
     linkElement.text = linkDesc;
 
