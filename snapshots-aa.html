@@ -1,89 +1,50 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AA Snapshots</title>
+    <script type="text/javascript" src="js/themes.js"></script>
+</head>
+
+<body>
     <script type="text/javascript">
         function parseLocationAndShowCharts() {
-        
+
             const params = new URLSearchParams(document.location.search);
             const o = params.get("o");
             const t = params.get("t");
-        
-            if(o == null) {
+
+            if (o == null) {
                 console.info("parameter o is null!!"); //show 1
                 return;
             }
 
-            if(t == null) {
+            if (t == null) {
                 console.info("parameter t is null!!"); //show t
                 chartType = 'HK';
             } else {
                 chartType = t;
             }
-        
+
             const codes = o.split(',');
-        
+
             for (i = 0; i < codes.length; i++) {
                 if (chartType == 'HK') {
-                    addImage(codes[i], 7);
+                    appendAA("img_home", codes[i], 7);
                 }
 
                 if (chartType == 'US') {
-                    addImage(codes[i] + ".US", 7);
+                    appendAA("img_home", codes[i] + ".US", 7);
                 }
 
                 if (chartType == 'SC') {
-                    addImageStockCharts(codes[i], 7);
-                }                
+                    appendSC("img_home", codes[i], 7);
+                }
             }
         }
-        
-        function addImage(stockCode, period) {
-            const chartWidth = 400;
-            const chartHeight = 350;
-            const stockChartLink = "https://charts.aastocks.com/servlet/Charts?fontsize=12&15MinDelay=T&lang=1&titlestyle=1&vol=1&Indicator=1&indpara1=10&indpara2=20&indpara3=50&indpara4=100&indpara5=150&subChart1=5&ref1para1=12&ref1para2=0&ref1para3=0&scheme=1&com=100&chartwidth={chartWidth}&chartheight={chartHeight}&stockid={stockCode}&period={period}&type=1&logoStyle=1&";
-            const tempChartLink = stockChartLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode).replace(/{period}/i,period);
 
-            const refLink = "https://www.stockfisher.com.hk/ticker/{stockCode}";
-            const tempRefLink = refLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode).replace(/{period}/i,period);
-
-            appendImageAndHrefAddr(tempChartLink, tempRefLink, chartWidth, chartHeight);
-        }
-
-        function addImageStockCharts(stockCode, period) {
-            const chartWidth = 303;
-            const chartHeight = 223;
-            const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg][ilM12]";
-            const tempChartLink = stockChartLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode).replace(/{period}/i,period);
-
-            const refLink = "https://www.stockfisher.com.hk/us-stock/ticker/{stockCode}";
-            const tempRefLink = refLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode).replace(/{period}/i,period);
-            
-            appendImageAndHrefAddr(tempChartLink, tempRefLink, chartWidth, chartHeight);
-        }        
-
-        function appendImageAndHrefAddr(imageLinkAddr, hrefAddr, chartWidth, chartHeight) {
-            // image element
-            var imageElement = new Image();
-            imageElement.setAttribute("referrerpolicy","no-referrer");
-            imageElement.src = imageLinkAddr;
-            imageElement.width = chartWidth;
-            imageElement.height = chartHeight;
-
-            // href element
-            var linkElement = document.createElement('a');
-            linkElement.href = hrefAddr;
-            linkElement.setAttribute("target","_blank");
-
-            // img_home.appendChild(img);
-            linkElement.appendChild(imageElement);            
-            img_home.appendChild(linkElement);
-        }
-
-        window.onload = parseLocationAndShowCharts;
-        </script>
-</head>
-
-<body>
+        window.onload = parseLocationAndShowCharts;    
+    </script>
     <div id="img_home"></div>
 </body>

@@ -65,3 +65,45 @@ function fetchStockCodesSortBy(stockCodes, taIndicator) {
             console.error("Unable to fetch data:", error);
         });
 }
+
+function appendAA(parentId, stockCode, period) {
+    const chartWidth = 400;
+    const chartHeight = 350;
+    const stockChartLink = "https://charts.aastocks.com/servlet/Charts?fontsize=12&15MinDelay=T&lang=1&titlestyle=1&vol=1&Indicator=1&indpara1=10&indpara2=20&indpara3=50&indpara4=100&indpara5=150&subChart1=5&ref1para1=12&ref1para2=0&ref1para3=0&scheme=1&com=100&chartwidth={chartWidth}&chartheight={chartHeight}&stockid={stockCode}&period={period}&type=1&logoStyle=1&";
+    const tempChartLink = stockChartLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode).replace(/{period}/i,period);
+
+    const refLink = "https://www.stockfisher.com.hk/ticker/{stockCode}";
+    const tempRefLink = refLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode).replace(/{period}/i,period);
+
+    appendImageAndHrefAddr(parentId, tempChartLink, tempRefLink, chartWidth, chartHeight);
+}
+
+function appendSC(parentId, stockCode, period) {
+    const chartWidth = 303;
+    const chartHeight = 223;
+    const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg][ilM12]";
+    const tempChartLink = stockChartLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode).replace(/{period}/i,period);
+
+    const refLink = "https://www.stockfisher.com.hk/us-stock/ticker/{stockCode}";
+    const tempRefLink = refLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode).replace(/{period}/i,period);
+    
+    appendImageAndHrefAddr(parentId, tempChartLink, tempRefLink, chartWidth, chartHeight);
+}        
+
+function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, chartHeight) {
+    // image element
+    var imageElement = new Image();
+    imageElement.setAttribute("referrerpolicy","no-referrer");
+    imageElement.src = imageLinkAddr;
+    imageElement.width = chartWidth;
+    imageElement.height = chartHeight;
+
+    // href element
+    var linkElement = document.createElement('a');
+    linkElement.href = hrefAddr;
+    linkElement.setAttribute("target","_blank");
+
+    // img_home.appendChild(img);
+    linkElement.appendChild(imageElement);            
+    document.getElementById(parentId).appendChild(linkElement);
+}
