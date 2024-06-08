@@ -38,4 +38,34 @@ function fetchJSONData(key, linkDesc, hrefAddr, parentId) {
             console.error("Unable to fetch data:", error);
         });
 }
+
+function fetchStockCodesSortBy() {
+    const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo=AAPL,AXP,AMGN,AMZN,BA,CAT,CRM,CSCO,CVX,DOW,DIS,GS,HD,HON,IBM,INTC,JNJ,JPM,KO,MCD,MMM,MRK,MSFT,NKE,PG,TRV,UNH,V,VZ,WMT|M120&p=1&format=json&order=d";
+
+    fetch(sortBylink,
+        {
+            method: "GET",
+            referrer: "about:client",
+            referrerPolicy: "no-referrer",
+            cache: "default",
+            redirect: "follow",
+            integrity: "",
+            keepalive: false
+        }
+    )
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error
+                    (`HTTP error! Status: ${res.status}`);
+            }
+            return res.json();
+        })
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((error) => {
+            console.error("Unable to fetch data:", error);
+        });
+
+}
 // fetchJSONData();
