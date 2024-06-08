@@ -34,13 +34,14 @@ function fetchJSONData(key, linkDesc, hrefAddr, parentId) {
             var themes = getObjectByValue(data.themes, "name", key)[0];
             const stockCodes = themes.holdings.join();
             const tempChartLink = hrefAddr.replace(/{stockCodes}/i, stockCodes);
-            
-            fetchStockCodesSortBy(stockCodes, "M5");
             appendThemesLinkToParent(parentId, tempChartLink, linkDesc);
         })
         .catch((error) => {
             console.error("Unable to fetch data:", error);
         });
+
+    fetchStockCodesSortBy("AAPL,MSFT", "M5");
+
 }
 
 function fetchStockCodesSortBy(stockCodes, taIndicator) {
