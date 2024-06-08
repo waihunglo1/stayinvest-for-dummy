@@ -45,15 +45,16 @@ function fetchStockCodesSortBy() {
     fetch(sortBylink,
         {
             method: "GET",
-            referrer: "https://stockcharts.com/freecharts/candleglance.html?AAPL,AXP,AMGN,AMZN,BA,CAT,CRM,CSCO,CVX,DOW,DIS,GS,HD,HON,IBM,INTC,JNJ,JPM,KO,MCD,MMM,MRK,MSFT,NKE,PG,TRV,UNH,V,VZ,WMT|B|M120|1",
+            // referrer: "https://stockcharts.com/freecharts/candleglance.html?AAPL,AXP,AMGN,AMZN,BA,CAT,CRM,CSCO,CVX,DOW,DIS,GS,HD,HON,IBM,INTC,JNJ,JPM,KO,MCD,MMM,MRK,MSFT,NKE,PG,TRV,UNH,V,VZ,WMT|B|M120|1",
             // referrerPolicy: "no-referrer",
             cache: "no-cache",
             redirect: "follow",
             integrity: "",
             keepalive: false,
-            mode: 'cors',
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
+                'Referer':'https://stockcharts.com/freecharts/candleglance.html',
                 'Access-Control-Allow-Origin': '*'
             }
         }
