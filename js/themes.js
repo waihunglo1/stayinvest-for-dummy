@@ -81,15 +81,15 @@ function appendAA(parentId, stockCode, period) {
     appendImageAndHrefAddr(parentId, tempChartLink, tempRefLink, chartWidth, chartHeight);
 }
 
-function appendSC(parentId, stockCode, period) {
+function appendSC(parentId, stockCode, period, taIndicator) {
     const chartWidth = 303;
     const chartHeight = 223;
-    const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg][ilM12]";
-    const tempChartLink = stockChartLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode).replace(/{period}/i,period);
+    const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg][il{taIndicator}]";
+    const tempChartLink = stockChartLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode).replace(/{period}/i, period).replace(/{taIndicator}/i, taIndicator);
 
     const refLink = "https://www.stockfisher.com.hk/us-stock/ticker/{stockCode}";
-    const tempRefLink = refLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode).replace(/{period}/i,period);
-    
+    const tempRefLink = refLink.replace(/{chartWidth}/i, chartWidth).replace(/{chartHeight}/i, chartHeight).replace(/{stockCode}/i, stockCode).replace(/{period}/i, period);
+
     appendImageAndHrefAddr(parentId, tempChartLink, tempRefLink, chartWidth, chartHeight);
 }        
 
