@@ -60,6 +60,7 @@ function fetchStockCodesSortBy(stockCodes, taIndicator) {
             return res.json();
         })
         .then((data) => {
+            console.log(data);
             console.log(data.content);
             // var res = data.content.stocks.flat().map(({ symbol }) => symbol);
             // console.log(res);
