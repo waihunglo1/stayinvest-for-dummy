@@ -54,8 +54,7 @@ function fetchStockCodesSortBy() {
             mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
-                'Referer':'https://stockcharts.com/freecharts/candleglance.html',
-                'Access-Control-Allow-Origin': '*'
+                'Referer':'https://stockcharts.com/freecharts/candleglance.html'
             }
         }
     )
