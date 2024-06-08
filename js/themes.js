@@ -42,7 +42,6 @@ function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
 }
 
 
-// function fetchStockCodesSortBy(stockCodes, taIndicator) {
 const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
     const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     const tempSortByLink = encodeURIComponent(sortBylink.replace(/{stockCodes}/i, stockCodes).replace(/{taIndicator}/i, taIndicator));
@@ -60,7 +59,7 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
         // parse data.contents and return sorted symbol
         var sortedSymbols = JSON.parse(data.contents).stocks.flat().map(({ symbol }) => symbol);
         console.log("sorted symbols : " + sortedSymbols);
-        return sortedSymbols;
+        return sortedSymbols.join(",");
     }
 
     return stockCodes;

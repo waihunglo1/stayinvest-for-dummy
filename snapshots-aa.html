@@ -27,37 +27,37 @@
             }
         }
 
-            function parseLocationAndShowCharts() {
+        function parseLocationAndShowCharts() {
 
-                const params = new URLSearchParams(document.location.search);
-                const inputStockCodes = params.get("o");
-                const t = params.get("t");
+            const params = new URLSearchParams(document.location.search);
+            const inputStockCodes = params.get("o");
+            const t = params.get("t");
 
-                // chart type
-                if (t == null) {
-                    console.info("parameter t is null!!"); //show t
-                    chartType = 'HK';
-                } else {
-                    chartType = t;
-                }
+            // chart type
+            if (t == null) {
+                console.info("parameter t is null!!"); //show t
+                chartType = 'HK';
+            } else {
+                chartType = t;
+            }
 
-                // stock codes
-                if (inputStockCodes == null) {
-                    console.info("parameter o is null!!"); //show 1
-                    return;
-                } else {
-                    // sorting by TA
-                    console.log("parseLocationAndShowCharts input = " + inputStockCodes);
-                    // sorting by TA
-                    fetchStockCodesSortBy(inputStockCodes, "M5")
-                        .then(function (sortedStockCodes) {
-                            console.log("fetchStockCodesSortBy return = " + sortedStockCodes);
-                            appendImageToParent("img_home", sortedStockCodes.split(','));
-                        });
-
-                }
+            // stock codes
+            if (inputStockCodes == null) {
+                console.info("parameter o is null!!"); //show 1
+                return;
+            } else {
+                // sorting by TA
+                console.log("parseLocationAndShowCharts input = " + inputStockCodes);
+                // sorting by TA
+                fetchStockCodesSortBy(inputStockCodes, "M5")
+                    .then(function (sortedStockCodes) {
+                        console.log("fetchStockCodesSortBy return = " + sortedStockCodes);
+                        appendImageToParent("img_home", sortedStockCodes.split(','));
+                    });
 
             }
+
+        }
 
         window.onload = parseLocationAndShowCharts;    
     </script>
