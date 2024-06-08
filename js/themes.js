@@ -64,6 +64,9 @@ const partitionStockCodes = async (stockCodeStr, taIndicator) => {
     }
 
     console.log("stock length : " + stocks.length);
+    let stocksSortBySctr = stocks.sort((a,b) => b.sctr - a.sctr);
+    var sortedSymbols = stocksSortBySctr.flat().map(({ symbol }) => symbol);
+    return sortedSymbols.join(",");
 }
 
 /**
@@ -83,10 +86,6 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
         throw new Error(`HTTP error! Status: ${res.status}`);
     } else {
         const data = await res.json();
-
-        // parse data.contents and return sorted symbol
-        // var sortedSymbols = JSON.parse(data.contents).stocks.flat().map(({ symbol }) => symbol);
-        // return sortedSymbols.join(",");
         return JSON.parse(data.contents).stocks;
     }
 }
