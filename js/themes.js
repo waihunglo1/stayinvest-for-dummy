@@ -60,12 +60,9 @@ function fetchStockCodesSortBy(stockCodes, taIndicator) {
             return res.json();
         })
         .then((data) => {
-            console.log(data);
-            console.log(data.contents);
             var res = JSON.parse(data.contents);
-            console.log(res);
-            // var res = data.content.stocks.flat().map(({ symbol }) => symbol);
-            // console.log(res);
+            var sortedSymbols = res.stocks.flat().map(({ symbol }) => symbol);
+            console.log(sortedSymbols);
         })
         .catch((error) => {
             console.error("Unable to fetch data:", error);
