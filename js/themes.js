@@ -41,7 +41,29 @@ function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
         });
 }
 
+/**
+ * Parition chunks
+ */
+const partitionStockCodes = (stockCodeStr, taIndicator) => {
+    let chunkSize = 20;
+    let chunks = [];
+    var stockCodes = stockCodeStr.split(",");
+    
+    while (stockCodes.length > 0) {
+        var chunk = stockCodes.splice(0, chunkSize);
+        console.log("chunk : " + chunk);
 
+        fetchStockCodesSortBy(chunk.join(","), "M5")
+            .then(function (sortedStockCodes) {
+                console.log("return = " + sortedStockCodes);
+            });
+    }
+}
+
+/**
+ * async request
+ * @returns 
+ */
 const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
     const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     const tempSortByLink = encodeURIComponent(sortBylink.replace(/{stockCodes}/i, stockCodes).replace(/{taIndicator}/i, taIndicator));
@@ -58,7 +80,6 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
 
         // parse data.contents and return sorted symbol
         var sortedSymbols = JSON.parse(data.contents).stocks.flat().map(({ symbol }) => symbol);
-        console.log("sorted symbols : " + sortedSymbols);
         return sortedSymbols.join(",");
     }
 
