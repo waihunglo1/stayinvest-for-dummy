@@ -62,7 +62,8 @@ function fetchStockCodesSortBy(stockCodes, taIndicator) {
         .then((data) => {
             console.log(data);
             console.log(data.contents);
-            console.log(data.contents.stocks);
+            var res = JSON.parse(data.contents);
+            console.log(res);
             // var res = data.content.stocks.flat().map(({ symbol }) => symbol);
             // console.log(res);
         })
