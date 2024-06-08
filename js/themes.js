@@ -43,30 +43,25 @@ function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
 
 
 // function fetchStockCodesSortBy(stockCodes, taIndicator) {
-const fetchStockCodesSortBy = (stockCodes, taIndicator) => {   
+const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
     const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     const tempSortByLink = encodeURIComponent(sortBylink.replace(/{stockCodes}/i, stockCodes).replace(/{taIndicator}/i, taIndicator));
     const hrefAddr = "https://api.allorigins.win/get?url=" + tempSortByLink;
     console.log(hrefAddr);
 
     // CORs issue
-    fetch(hrefAddr)
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error
-                    (`HTTP error! Status: ${res.status}`);
-            }
-            return res.json();
-        })
-        .then((data) => {
-            var res = JSON.parse(data.contents);
-            var sortedSymbols = res.stocks.flat().map(({ symbol }) => symbol);
-            console.log("sorted symbols : " + sortedSymbols);
-            return sortedSymbols;
-        })
-        .catch((error) => {
-            console.error("Unable to fetch data:", error);
-        });
+    const res = await fetch(hrefAddr);
+
+    if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+    } else {
+        const data = await response.json();
+
+        // parse data.contents and return sorted symbol
+        var sortedSymbols = JSON.parse(data.contents).stocks.flat().map(({ symbol }) => symbol);
+        console.log("sorted symbols : " + sortedSymbols);
+        return sortedSymbols;
+    }
 
     return stockCodes;
 }
