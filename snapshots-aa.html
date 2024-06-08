@@ -47,10 +47,8 @@
                 return;
             } else {
                 // sorting by TA
-                fetchStockCodesSortBy(o, "M5")
-                    .then(function (sortedStockCodes) {
-                        console.log("return = " + sortedStockCodes);
-                    });                
+                var sortedStockCodes = fetchStockCodesSortBy(o, "M5");
+                console.log("return = " + sortedStockCodes);             
             }
 
             appendImageToParent("img_home", o.split(','));
