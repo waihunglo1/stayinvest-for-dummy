@@ -44,7 +44,7 @@ function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
 /**
  * Parition chunks
  */
-const partitionStockCodes = (stockCodeStr, taIndicator) => {
+const partitionStockCodes = async (stockCodeStr, taIndicator) => {
     let chunkSize = 20;
     let chunks = [];
     var stocks = [];
@@ -54,7 +54,7 @@ const partitionStockCodes = (stockCodeStr, taIndicator) => {
         var chunk = stockCodes.splice(0, chunkSize);
         console.log("chunk : " + chunk);
 
-        fetchStockCodesSortBy(chunk.join(","), "M5")
+        await fetchStockCodesSortBy(chunk.join(","), "M5")
             .then(function (sortedStocks) {
                 sortedStocks.forEach(element => {
                     stocks.push(element);
