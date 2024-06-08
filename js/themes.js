@@ -47,6 +47,7 @@ function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
 const partitionStockCodes = (stockCodeStr, taIndicator) => {
     let chunkSize = 20;
     let chunks = [];
+    let stocks = [];
     var stockCodes = stockCodeStr.split(",");
     
     while (stockCodes.length > 0) {
@@ -54,8 +55,9 @@ const partitionStockCodes = (stockCodeStr, taIndicator) => {
         console.log("chunk : " + chunk);
 
         fetchStockCodesSortBy(chunk.join(","), "M5")
-            .then(function (sortedStockCodes) {
-                console.log("return = " + sortedStockCodes);
+            .then(function (sortedStocks) {
+                console.log("return = " + sortedStocks);
+                stocks.push(sortedStocks);
             });
     }
 }
@@ -79,11 +81,10 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
         const data = await res.json();
 
         // parse data.contents and return sorted symbol
-        var sortedSymbols = JSON.parse(data.contents).stocks.flat().map(({ symbol }) => symbol);
-        return sortedSymbols.join(",");
+        // var sortedSymbols = JSON.parse(data.contents).stocks.flat().map(({ symbol }) => symbol);
+        // return sortedSymbols.join(",");
+        return JSON.parse(data.contents).stocks;
     }
-
-    return stockCodes;
 }
 
 /**
