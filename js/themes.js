@@ -41,7 +41,9 @@ function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
         });
 }
 
-function fetchStockCodesSortBy(stockCodes, taIndicator) {
+
+// function fetchStockCodesSortBy(stockCodes, taIndicator) {
+const fetchStockCodesSortBy = (stockCodes, taIndicator) => {   
     const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     const tempSortByLink = encodeURIComponent(sortBylink.replace(/{stockCodes}/i, stockCodes).replace(/{taIndicator}/i, taIndicator));
     const hrefAddr = "https://api.allorigins.win/get?url=" + tempSortByLink;
@@ -69,6 +71,10 @@ function fetchStockCodesSortBy(stockCodes, taIndicator) {
     return stockCodes;
 }
 
+/**
+ *  Append AA / SC
+ * 
+ */
 function appendAA(parentId, stockCode, period) {
     const chartWidth = 400;
     const chartHeight = 350;
