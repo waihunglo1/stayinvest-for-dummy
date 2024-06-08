@@ -17,10 +17,8 @@
         fetchThemeDataAndAppendLink("DOW30", "DOW30", stockChartLink, "img_home");
 
         // sorting by TA
-        fetchStockCodesSortBy("MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR,GE,WWD,STX,ANET,FLEX,ZI,NWSA,DFS,VRT,KMI,FCX,KBR,MRVL,WAB,LLY,PANW", "M5")
-            .then(function (sortedStockCodes) {
-                console.log("return = " + sortedStockCodes);
-            });
+        var sortedSymbols = fetchStockCodesSortBy("MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR,GE,WWD,STX,ANET,FLEX,ZI,NWSA,DFS,VRT,KMI,FCX,KBR,MRVL,WAB,LLY,PANW", "M5");
+        console.log("return = " + sortedStockCodes);
     </script>
 
     <div id="img_home"></div>
