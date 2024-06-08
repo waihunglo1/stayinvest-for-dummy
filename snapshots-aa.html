@@ -48,12 +48,7 @@
             } else {
                 // sorting by TA
                 console.log("parseLocationAndShowCharts input = " + inputStockCodes);
-                partitionStockCodes(inputStockCodes, "M5")
-                    .then(function (sortedStockCodes) {
-                        console.log(sortedStockCodes);
-                        appendImageToParent("img_home", sortedStockCodes);
-                    });
-
+                appendImageToParent("img_home", inputStockCodes);
             }
 
         }
