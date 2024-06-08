@@ -11,17 +11,29 @@
 
 <body>
     <script type="text/javascript">
+        function appendImageToParent(parentId, codes) {
+            for (i = 0; i < codes.length; i++) {
+                if (chartType == 'HK') {
+                    appendAA(parentId, codes[i], 7);
+                }
+
+                if (chartType == 'US') {
+                    appendAA(parentId, codes[i] + ".US", 7);
+                }
+
+                if (chartType == 'SC') {
+                    appendSC(parentId, codes[i], 7);
+                }
+            }
+        }
+
         function parseLocationAndShowCharts() {
 
             const params = new URLSearchParams(document.location.search);
             const o = params.get("o");
             const t = params.get("t");
 
-            if (o == null) {
-                console.info("parameter o is null!!"); //show 1
-                return;
-            }
-
+            // chart type
             if (t == null) {
                 console.info("parameter t is null!!"); //show t
                 chartType = 'HK';
@@ -29,21 +41,19 @@
                 chartType = t;
             }
 
-            const codes = o.split(',');
-
-            for (i = 0; i < codes.length; i++) {
-                if (chartType == 'HK') {
-                    appendAA("img_home", codes[i], 7);
-                }
-
-                if (chartType == 'US') {
-                    appendAA("img_home", codes[i] + ".US", 7);
-                }
-
-                if (chartType == 'SC') {
-                    appendSC("img_home", codes[i], 7);
-                }
+            // stock codes
+            if (o == null) {
+                console.info("parameter o is null!!"); //show 1
+                return;
+            } else {
+                // sorting by TA
+                fetchStockCodesSortBy(o, "M5")
+                    .then(function (sortedStockCodes) {
+                        console.log("return = " + sortedStockCodes);
+                    });                
             }
+
+            appendImageToParent("img_home", o.split(','));
         }
 
         window.onload = parseLocationAndShowCharts;    

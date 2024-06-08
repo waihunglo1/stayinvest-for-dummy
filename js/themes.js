@@ -60,10 +60,13 @@ function fetchStockCodesSortBy(stockCodes, taIndicator) {
             var res = JSON.parse(data.contents);
             var sortedSymbols = res.stocks.flat().map(({ symbol }) => symbol);
             console.log(sortedSymbols);
+            return sortedSymbols;
         })
         .catch((error) => {
             console.error("Unable to fetch data:", error);
         });
+
+    return stockCodes;
 }
 
 function appendAA(parentId, stockCode, period) {

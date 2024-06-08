@@ -15,10 +15,13 @@
     <script type="text/javascript">
         const stockChartLink = "snapshots-aa.html?t=SC&o={stockCodes}";
         fetchThemeDataAndAppendLink("DOW30", "DOW30", stockChartLink, "img_home");
-        fetchStockCodesSortBy("MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR,GE,WWD,STX,ANET,FLEX,ZI,NWSA,DFS,VRT,KMI,FCX,KBR,MRVL,WAB,LLY,PANW","M5");
+
+        // sorting by TA
+        fetchStockCodesSortBy("MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR,GE,WWD,STX,ANET,FLEX,ZI,NWSA,DFS,VRT,KMI,FCX,KBR,MRVL,WAB,LLY,PANW", "M5")
+            .then(function (sortedStockCodes) {
+                console.log("return = " + sortedStockCodes);
+            });
     </script>
-
-
 
     <div id="img_home"></div>
 </body>
