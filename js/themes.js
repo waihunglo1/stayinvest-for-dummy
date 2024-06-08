@@ -55,7 +55,7 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
     if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
     } else {
-        const data = await response.json();
+        const data = await res.json();
 
         // parse data.contents and return sorted symbol
         var sortedSymbols = JSON.parse(data.contents).stocks.flat().map(({ symbol }) => symbol);
