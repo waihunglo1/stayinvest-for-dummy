@@ -39,9 +39,6 @@ function fetchJSONData(key, linkDesc, hrefAddr, parentId) {
         .catch((error) => {
             console.error("Unable to fetch data:", error);
         });
-
-    fetchStockCodesSortBy("AAPL,MSFT", "M5");
-
 }
 
 function fetchStockCodesSortBy(stockCodes, taIndicator) {
@@ -67,6 +64,4 @@ function fetchStockCodesSortBy(stockCodes, taIndicator) {
         .catch((error) => {
             console.error("Unable to fetch data:", error);
         });
-
 }
-// fetchJSONData();
