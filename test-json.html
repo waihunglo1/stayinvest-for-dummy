@@ -31,7 +31,7 @@
 
         // sorting by Stockchart SRTS not taindicator
         const stockCodes = "MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR,GE,WWD,STX,ANET,FLEX,ZI,NWSA,DFS,VRT,KMI,FCX,KBR,MRVL,WAB,LLY,PANW,CCJ,META,NWS,KEY,C,DAKT,MSGE,OPCH,AAPL,CNK,PLTR,STLA,SPHR,COF,KRE,IQV,CRNX,BAH,OZK,ARGT,BMA,BCS,SANA,RDDT,FUSN,SLN,TTWO";
-        partitionStockCodesAndSort(stockCodes, "M5", "ldBar")
+        partitionStockCodesAndSort(stockCodes, "M5", "progress_home")
             .then(function (sortedStockCodes) {
                 console.log(sortedStockCodes);
             });
@@ -39,5 +39,5 @@
     </script>
 
     <div id="img_home"></div>
-    <div class="ldBar" data-value="50"></div>    
+    <div id="progress_home" class="ldBar" data-value="50"></div>    
 </body>

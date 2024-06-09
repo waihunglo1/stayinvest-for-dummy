@@ -50,7 +50,7 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
     var stockCodes = stockCodeStr.split(",");
 
     // progressBar
-    var progressBar = document.getElementById(ldBarName);
+    var progressBar = document.getElementById(ldBarName).ldBar;
     var totalSize = stockCodes.length / chunkSize;
     var progress = 1;
 
