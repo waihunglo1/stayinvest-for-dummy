@@ -87,7 +87,7 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
         throw new Error(`HTTP error! Status: ${res.status}`);
     } else {
         const data = await res.json();
-        return JSON.parse(data.contents).stocks;
+        return data.stocks;
     }
 }
 
