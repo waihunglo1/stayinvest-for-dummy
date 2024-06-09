@@ -52,7 +52,7 @@
             } else {
                 console.log("parseLocationAndShowCharts input = " + inputStockCodes);
 
-                partitionStockCodesAndSort(stockCodes)
+                partitionStockCodesAndSort(inputStockCodes)
                     .then(function (sortedStockCodes) {
                         sortedStockCodes.forEach(stockCode => {
                             console.log("snapshot: " + stockCode);
