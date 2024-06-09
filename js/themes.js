@@ -64,10 +64,14 @@ const partitionStockCodesAndSort = async (stockCodeStr) => {
 
     console.log("total stock size : " + stocks.length);
 
-    // sort by StockChart SCTR
-    let stocksSortBySctr = stocks.sort((a,b) => b.sctr - a.sctr);
-    var sortedSymbols = stocksSortBySctr.flat().map(({ symbol }) => symbol);
-    return sortedSymbols;
+    if(stocks.length > 0) {
+        // sort by StockChart SCTR
+        let stocksSortBySctr = stocks.sort((a,b) => b.sctr - a.sctr);
+        var sortedSymbols = stocksSortBySctr.flat().map(({ symbol }) => symbol);
+        return sortedSymbols;
+    } else {
+        return stockCodes; // return original lists
+    }
 }
 
 /**
