@@ -55,7 +55,10 @@
                         sortedStockCodes.forEach(stockCode => {
                             console.log("snapshot: " + stockCode);
                             appendImageToParent("img_home", stockCode);
-                        });                       
+                        });
+                    })
+                    .catch(function (error) {
+                        console.error(error)
                     });
             }
 
