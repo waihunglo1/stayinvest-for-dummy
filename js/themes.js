@@ -42,24 +42,23 @@ function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
 }
 
 /**
- * Parition chunks
+ * Partition chunks
  */
-const partitionStockCodes = async (stockCodeStr, taIndicator) => {
-    let chunkSize = 20;
-    let chunks = [];
+const partitionStockCodesAndSort = async (stockCodeStr) => {
+    let chunkSize = 25;
     var stocks = [];
     var stockCodes = stockCodeStr.split(",");
     
     while (stockCodes.length > 0) {
         var chunk = stockCodes.splice(0, chunkSize);
-        console.log("chunk : " + chunk);
+        // console.log("chunk : " + chunk);
 
-        await fetchStockCodesSortBy(chunk.join(","), "M5")
+        await fetchStockCodesSortBy(chunk.join(","), taIndicator)
             .then(function (sortedStocks) {
                 sortedStocks.forEach(element => {
                     stocks.push(element);
                 });
-                console.log("stock length : " + stocks.length + " items : " + sortedStocks.length);
+                // console.log("stock length : " + stocks.length + " items : " + sortedStocks.length);
             });
     }
 
@@ -73,11 +72,10 @@ const partitionStockCodes = async (stockCodeStr, taIndicator) => {
  * async request
  * @returns 
  */
-const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
-    const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+const fetchStockCodesSortBy = async (stockCodes) => {
+    const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|M5&p=1&format=json&order=d";
     const tempSortByLink = sortBylink
-      .replace(/{stockCodes}/i, stockCodes)
-      .replace(/{taIndicator}/i, taIndicator);
+      .replace(/{stockCodes}/i, stockCodes);
     console.log(tempSortByLink);
 
     // CORs issue

@@ -13,12 +13,13 @@
 <body>
     <h1>GeeksforGeeks</h1>
     <script type="text/javascript">
+        // for index page link formatter
         const stockChartLink = "snapshots-aa.html?t=SC&o={stockCodes}";
         fetchThemeDataAndAppendLink("DOW30", "DOW30", stockChartLink, "img_home");
 
-        // sorting by TA
+        // sorting by Stockchart SRTS not taindicator
         const stockCodes = "MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR,GE,WWD,STX,ANET,FLEX,ZI,NWSA,DFS,VRT,KMI,FCX,KBR,MRVL,WAB,LLY,PANW,CCJ,META,NWS,KEY,C,DAKT,MSGE,OPCH,AAPL,CNK,PLTR,STLA,SPHR,COF,KRE,IQV,CRNX,BAH,OZK,ARGT,BMA,BCS,SANA,RDDT,FUSN,SLN,TTWO";
-        partitionStockCodes(stockCodes, "M5")
+        partitionStockCodesAndSort(stockCodes)
             .then(function (sortedStockCodes) {
                 console.log(sortedStockCodes);
             });
