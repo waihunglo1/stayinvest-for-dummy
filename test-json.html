@@ -31,11 +31,8 @@
 
         // progress bar
         /* construct manually */
-        var bar1 = new ldBar("#progress_home");
-        /* ldBar stored in the element */
         var bar2 = document.getElementById("progress_home").ldBar;
         bar1.set(60);
-
 
         // sorting by Stockchart SRTS not taindicator
         const stockCodes = "MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR,GE,WWD,STX,ANET,FLEX,ZI,NWSA,DFS,VRT,KMI,FCX,KBR,MRVL,WAB,LLY,PANW,CCJ,META,NWS,KEY,C,DAKT,MSGE,OPCH,AAPL,CNK,PLTR,STLA,SPHR,COF,KRE,IQV,CRNX,BAH,OZK,ARGT,BMA,BCS,SANA,RDDT,FUSN,SLN,TTWO";
@@ -47,7 +44,8 @@
     </script>
 
     <div id="img_home"></div>
-    <div id="progress_home"></div>
+
+    <div  id="progress_home" class="ldBar" data-value="50"></div>
 
 
 </body>
