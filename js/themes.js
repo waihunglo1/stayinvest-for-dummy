@@ -75,12 +75,13 @@ const partitionStockCodes = async (stockCodeStr, taIndicator) => {
  */
 const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
     const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
-    const tempSortByLink = encodeURIComponent(sortBylink.replace(/{stockCodes}/i, stockCodes).replace(/{taIndicator}/i, taIndicator));
-    const hrefAddr = "https://api.allorigins.win/get?url=" + tempSortByLink;
-    console.log(hrefAddr);
+    const tempSortByLink = sortBylink
+      .replace(/{stockCodes}/i, stockCodes)
+      .replace(/{taIndicator}/i, taIndicator);
+    console.log(tempSortByLink);
 
     // CORs issue
-    const res = await fetch(hrefAddr);
+    const res = await fetch(tempSortByLink);
 
     if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
