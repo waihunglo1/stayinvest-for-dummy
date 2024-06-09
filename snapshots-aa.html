@@ -50,9 +50,15 @@
                 console.info("parameter o is null!!"); //show 1
                 return;
             } else {
-                // sorting by TA
                 console.log("parseLocationAndShowCharts input = " + inputStockCodes);
-                appendImageToParent("img_home", inputStockCodes.split(","));
+
+                partitionStockCodesAndSort(stockCodes)
+                    .then(function (sortedStockCodes) {
+                        sortedStockCodes.forEach(stockCode => {
+                            console.log("snapshot: " + stockCode);
+                            appendImageToParent("img_home", stockCode);
+                        });                       
+                    });
             }
 
         }
