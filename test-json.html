@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong|Platypi|Noto Sans Traditional Chinese">
 	<link rel="stylesheet" href="css/styles.css">
     <script type="text/javascript" src="js/themes.js"></script>
+    <script type="text/javascript" src="js/pricehist.js"></script>
 </head>
 
 <body>
@@ -22,6 +23,9 @@
             .then(function (sortedStockCodes) {
                 console.log(sortedStockCodes);
             });
+
+
+        fetchHisticalPriceByStockCode("CRM","ROC");
     </script>
 
     <div id="img_home"></div>
