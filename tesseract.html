@@ -30,15 +30,27 @@
             return cleanTextWithComma;
         }
 
-        function gotoStockCharts() {
+        function gotoStockCharts2M() {
             var stockCodes = document.getElementById("convertedText").value;
             console.log("goto", stockCodes);
 
             const stockChartLink = "snapshots-aa.html?t=SC&o={stockCodes}";
-            const tempChartLink = stockChartLink.replace(/{stockCodes}/i, stockCodes);
+            const tempChartLink = stockChartLink
+              .replace(/{stockCodes}/i, stockCodes);
 
             window.location = tempChartLink;
         }
+
+        function gotoStockCharts6M() {
+            var stockCodes = document.getElementById("convertedText").value;
+            console.log("goto", stockCodes);
+
+            const stockChartLink = "snapshots-aa.html?t=SC6M&o={stockCodes}";
+            const tempChartLink = stockChartLink
+              .replace(/{stockCodes}/i, stockCodes);
+
+            window.location = tempChartLink;
+        }        
 
         function removeLinesCommaJoin() {
             var tempStr = document.getElementById("convertedText").value;
@@ -76,7 +88,7 @@
         .topRow {
             width: 100%;
             clear: both;
-        }
+        }        
     </style>
 
 </head>
@@ -105,9 +117,11 @@
     <div class="topRow">
         <textarea cols="20" name="original" rows="10" style="width: 50%;" id="convertedText"></textarea>
         <br/>
-        <button onclick="removeLinesCommaJoin()">🚿 Clean Data</button>
-        <button onclick="gotoStockCharts()">📈 See Charts</button>
+        <button class="button-6" role="button" onclick="removeLinesCommaJoin()" >🚿 Clean Data</button>
+        <button class="button-6" role="button" onclick="gotoStockCharts2M()" >📈 See Charts 2M</button>
+        <button class="button-6" role="button" onclick="gotoStockCharts6M()" >📈 See Charts 6M</button>
         🌽<a href="https://www.imagetotext.info/" target="_blank">Image-to-text</a>
+
     </div>
 
 
