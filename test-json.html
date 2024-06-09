@@ -16,6 +16,10 @@
 	<link rel="mask-icon" href="icon/safari-pinned-tab.svg" color="#5bbad5">
 
     <script type="text/javascript" src="js/themes.js"></script>
+
+    <!-- progress bar -->
+    <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
+    <script type="text/javascript" src="js/loading-bar.js"></script>
 </head>
 
 <body>
@@ -27,7 +31,7 @@
 
         // sorting by Stockchart SRTS not taindicator
         const stockCodes = "MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR,GE,WWD,STX,ANET,FLEX,ZI,NWSA,DFS,VRT,KMI,FCX,KBR,MRVL,WAB,LLY,PANW,CCJ,META,NWS,KEY,C,DAKT,MSGE,OPCH,AAPL,CNK,PLTR,STLA,SPHR,COF,KRE,IQV,CRNX,BAH,OZK,ARGT,BMA,BCS,SANA,RDDT,FUSN,SLN,TTWO";
-        partitionStockCodesAndSort(stockCodes, "M5")
+        partitionStockCodesAndSort(stockCodes, "M5", "ldBar")
             .then(function (sortedStockCodes) {
                 console.log(sortedStockCodes);
             });
@@ -35,4 +39,5 @@
     </script>
 
     <div id="img_home"></div>
+    <div class="ldBar" data-value="50"></div>    
 </body>

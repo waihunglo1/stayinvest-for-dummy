@@ -44,11 +44,16 @@ function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
 /**
  * Partition chunks
  */
-const partitionStockCodesAndSort = async (stockCodeStr, taIndicator) => {
+const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) => {
     let chunkSize = 25;
     var stocks = [];
     var stockCodes = stockCodeStr.split(",");
-    
+
+    // progressBar
+    var progressBar = document.getElementById(ldBarName).ldBar;
+    var totalSize = stockCodes.length / chunkSize;
+    var progress = 1;
+
     while (stockCodes.length > 0) {
         var chunk = stockCodes.splice(0, chunkSize);
         // console.log("chunk : " + chunk);
@@ -57,6 +62,8 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator) => {
             .then(function (sortedStocks) {
                 sortedStocks.forEach(element => {
                     stocks.push(element);
+                    progressBar.set(progress / totalSize);
+                    progress++;
                 });
                 // console.log("stock length : " + stocks.length + " items : " + sortedStocks.length);
             });
