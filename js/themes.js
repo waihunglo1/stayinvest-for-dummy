@@ -44,7 +44,7 @@ function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
 /**
  * Partition chunks
  */
-const partitionStockCodesAndSort = async (stockCodeStr) => {
+const partitionStockCodesAndSort = async (stockCodeStr, taIndicator) => {
     let chunkSize = 25;
     var stocks = [];
     var stockCodes = stockCodeStr.split(",");
@@ -53,7 +53,7 @@ const partitionStockCodesAndSort = async (stockCodeStr) => {
         var chunk = stockCodes.splice(0, chunkSize);
         // console.log("chunk : " + chunk);
 
-        await fetchStockCodesSortBy(chunk)
+        await fetchStockCodesSortBy(chunk, taIndicator)
             .then(function (sortedStocks) {
                 sortedStocks.forEach(element => {
                     stocks.push(element);
@@ -66,7 +66,7 @@ const partitionStockCodesAndSort = async (stockCodeStr) => {
 
     if(stocks.length > 0) {
         // sort by StockChart SCTR
-        let stocksSortBySctr = stocks.sort((a,b) => b.sctr - a.sctr);
+        let stocksSortBySctr = stocks.sort((a,b) => b.extra - a.extra);
         var sortedSymbols = stocksSortBySctr.flat().map(({ symbol }) => symbol);
         return sortedSymbols;
     } else {
@@ -78,10 +78,12 @@ const partitionStockCodesAndSort = async (stockCodeStr) => {
  * async request
  * @returns 
  */
-const fetchStockCodesSortBy = async (stockCodes) => {
-    const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|M5&p=1&format=json&order=d";
+const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
+    const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     const tempSortByLink = sortBylink
-      .replace(/{stockCodes}/i, stockCodes.join(","));
+      .replace(/{stockCodes}/i, stockCodes.join(","))
+      .replace(/{taIndicator}/i, taIndicator);
+
     console.log(tempSortByLink);
 
     // CORs issue
