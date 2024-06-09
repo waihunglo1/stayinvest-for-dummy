@@ -129,7 +129,7 @@ function appendAA(parentId, stockCode, period) {
 }
 
 function appendSC(parentId, stockCode, scConf, taIndicator) {
-    const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[{chartHeight},a]dacayaci[pb20!b50][{period}][il{taIndicator}]";
+    const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[{chartWidth},a]dacayaci[pb20!b50][{period}][il{taIndicator}]";
 
     const tempChartLink = stockChartLink
       .replace(/{chartWidth}/i, scConf.chartWidth)
