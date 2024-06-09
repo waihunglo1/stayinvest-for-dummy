@@ -70,8 +70,7 @@ const partitionStockCodesAndSort = async (stockCodeStr) => {
         var sortedSymbols = stocksSortBySctr.flat().map(({ symbol }) => symbol);
         return sortedSymbols;
     } else {
-        console.log("return original list : " + stockCodes.length);
-        return stockCodes; // return original lists
+        return stockCodeStr.split(","); // return original lists
     }
 }
 
