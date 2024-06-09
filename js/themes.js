@@ -142,16 +142,16 @@ function appendSC(parentId, stockCode, scConf, taIndicator) {
     const tempRefLink = refLink
       .replace(/{stockCode}/i, stockCode);
 
-    appendImageAndHrefAddr(parentId, tempChartLink, tempRefLink, chartWidth, chartHeight);
+    appendImageAndHrefAddr(parentId, tempChartLink, tempRefLink);
 }        
 
-function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, chartHeight) {
+function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr) {
     // image element
     var imageElement = new Image();
     imageElement.setAttribute("referrerpolicy","no-referrer");
     imageElement.src = imageLinkAddr;
-    imageElement.width = chartWidth;
-    imageElement.height = chartHeight;
+    // imageElement.width = chartWidth;
+    // imageElement.height = chartHeight;
 
     // href element
     var linkElement = document.createElement('a');
