@@ -53,7 +53,7 @@ const partitionStockCodesAndSort = async (stockCodeStr) => {
         var chunk = stockCodes.splice(0, chunkSize);
         // console.log("chunk : " + chunk);
 
-        await fetchStockCodesSortBy(chunk.join(","), taIndicator)
+        await fetchStockCodesSortBy(chunk)
             .then(function (sortedStocks) {
                 sortedStocks.forEach(element => {
                     stocks.push(element);
@@ -77,7 +77,7 @@ const partitionStockCodesAndSort = async (stockCodeStr) => {
 const fetchStockCodesSortBy = async (stockCodes) => {
     const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|M5&p=1&format=json&order=d";
     const tempSortByLink = sortBylink
-      .replace(/{stockCodes}/i, stockCodes);
+      .replace(/{stockCodes}/i, stockCodes.join(","));
     console.log(tempSortByLink);
 
     // CORs issue
