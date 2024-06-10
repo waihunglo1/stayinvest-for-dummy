@@ -61,12 +61,13 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
         await fetchStockCodesSortBy(chunk, taIndicator)
             .then(function (sortedStocks) {
                 sortedStocks.forEach(element => {
-                    var progress = (count++ / totalSize) * 100;
-                    console.log("progress : " + progress + " stock length : " + stocks.length + " items : " + sortedStocks.length);
                     stocks.push(element);                   
-                    progressBar.set(progress);
                 });
             });
+
+        var progress = (++count / totalSize) * 100;
+        progressBar.set(progress);
+        console.log("progress : " + progress);
     }
 
     progressBar.set(100);
