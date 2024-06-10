@@ -53,7 +53,7 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
     var progress = 0;
     var totalSize = stockCodes.length / chunkSize;
     const progressBar = document.querySelector(ldBarName);
-    progress.ldBar.set(progress);
+    progressBar.ldBar.set(progress);
 
     while (stockCodes.length > 0) {
         var chunk = stockCodes.splice(0, chunkSize);
@@ -63,7 +63,7 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
             .then(function (sortedStocks) {
                 sortedStocks.forEach(element => {
                     stocks.push(element);
-                    progress.ldBar.set((progress++ / totalSize) * 100);
+                    progressBar.ldBar.set((progress++ / totalSize * 100);
                 });
                 // console.log("stock length : " + stocks.length + " items : " + sortedStocks.length);
             });
