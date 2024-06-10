@@ -45,7 +45,7 @@ function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
  * Partition chunks
  */
 const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) => {
-    let chunkSize = 5;
+    const chunkSize = 25;
     var stocks = [];
     var stockCodes = stockCodeStr.split(",");
 
