@@ -96,12 +96,12 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
     // convert unicode
     stockCodes.forEach((item, i) => stockCodes[i] = unicodeToChar(item));
 
-    var str = JSON.stringify(stockCodes);
+    var str = JSON.parse(JSON.stringify(stockCodes));
 
     // call stock charts
     const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     const tempSortByLink = sortBylink
-      .replace(/{stockCodes}/i, stockCodes.join(","))
+      .replace(/{stockCodes}/i, str.join(","))
       .replace(/{taIndicator}/i, taIndicator);
 
     console.log(tempSortByLink);
