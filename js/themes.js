@@ -51,9 +51,6 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
         .split(",")
         .filter(function (el) {
             return el != null && el !== '';
-        })
-        .forEach(el => {
-            el = unicodeToChar(el);
         });
 
     // progressBar
@@ -96,12 +93,13 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
  * @returns 
  */
 const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
-    const stockCodesStr = stockCodes.join(",");
-    console.log(stockCodesStr);
+    // convert unicode
+    stockCodes.forEach((item, i) => stockCodes[i] = unicodeToChar(item));
 
+    // call stock charts
     const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     const tempSortByLink = sortBylink
-      .replace(/{stockCodes}/i, stockCodesStr)
+      .replace(/{stockCodes}/i, stockCodes.join(","))
       .replace(/{taIndicator}/i, taIndicator);
 
     console.log(tempSortByLink);
