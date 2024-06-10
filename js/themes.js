@@ -119,7 +119,7 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
 
 function unicodeToChar(input) {
     text01 = encodeURIComponent(input);
-    text02 = encodeURIComponent(input.normalize());
+    text02 = encodeURIComponent(input.normalize().encode("ascii"));
     return text01.replace(/\\u[\dA-F]{4}/gi,
         function (match) {
             return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
