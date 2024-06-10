@@ -26,20 +26,16 @@
     <h1>GeeksforGeeks</h1>
     <div id="img_home"></div>
     <div id="progress_home" class="ldBar" data-value="50"></div>
-    <div id="myItem1"></div>
 
     <script type="text/javascript">
-        var ldBar = document.getElementById("ldBar");
+        // progress bar
+        var img1 = document.getElementById("img_home");
+        var bar2 = document.getElementById("progress_home");
+        bar2.set(60);
 
         // for index page link formatter
         const stockChartLink = "snapshots-aa.html?t=SC&o={stockCodes}";
         fetchThemeDataAndAppendLink("DOW30", "DOW30", stockChartLink, "img_home");
-
-        // progress bar
-        /* construct manually */
-        var img1 = document.getElementById("img_home");
-        var bar2 = document.getElementById("progress_home");
-        bar2.set(60);
 
         // sorting by Stockchart SRTS not taindicator
         const stockCodes = "MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR,GE,WWD,STX,ANET,FLEX,ZI,NWSA,DFS,VRT,KMI,FCX,KBR,MRVL,WAB,LLY,PANW,CCJ,META,NWS,KEY,C,DAKT,MSGE,OPCH,AAPL,CNK,PLTR,STLA,SPHR,COF,KRE,IQV,CRNX,BAH,OZK,ARGT,BMA,BCS,SANA,RDDT,FUSN,SLN,TTWO";
