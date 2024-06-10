@@ -93,9 +93,12 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
  * @returns 
  */
 const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
+    const stockCodesStr = stockCodes.join(",");
+    console.log(stockCodesStr);
+
     const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     const tempSortByLink = sortBylink
-      .replace(/{stockCodes}/i, stockCodes.join(","))
+      .replace(/{stockCodes}/i, stockCodesStr)
       .replace(/{taIndicator}/i, taIndicator);
 
     console.log(tempSortByLink);
