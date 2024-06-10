@@ -15,9 +15,17 @@
 	<link rel="mask-icon" href="icon/safari-pinned-tab.svg" color="#5bbad5">
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">	    
+
+    <!-- progress bar -->
+    <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
+    <script type="text/javascript" src="js/loading-bar.js"></script>
+
 </head>
 
 <body>
+    <div id="img_home"></div>
+    <div id="progress_home"></div>
+
     <script type="text/javascript">
         function appendImageToParent(parentId, stockCode) {
             if (chartType == 'HK') {
@@ -58,7 +66,7 @@
             } else {
                 console.log("parseLocationAndShowCharts input = " + inputStockCodes);
 
-                partitionStockCodesAndSort(inputStockCodes, "M12")
+                partitionStockCodesAndSort(inputStockCodes, "M12", "#progress_home")
                     .then(function (sortedStockCodes) {
                         sortedStockCodes.forEach(stockCode => {
                             console.log("snapshot: " + stockCode);
@@ -74,5 +82,4 @@
 
         window.onload = parseLocationAndShowCharts;    
     </script>
-    <div id="img_home"></div>
 </body>
