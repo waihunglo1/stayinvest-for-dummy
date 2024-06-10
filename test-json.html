@@ -25,9 +25,12 @@
 <body>
     <h1>GeeksforGeeks</h1>
     <div id="img_home"></div>
-    <div  id="progress_home" class="ldBar" data-value="50"></div>
+    <div id="progress_home" class="ldBar" data-value="50"></div>
+    <div id="myItem1"></div>
 
     <script type="text/javascript">
+        var myItem1 = document.getElementById('myItem1').ldBar;
+
         // for index page link formatter
         const stockChartLink = "snapshots-aa.html?t=SC&o={stockCodes}";
         fetchThemeDataAndAppendLink("DOW30", "DOW30", stockChartLink, "img_home");
