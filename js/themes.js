@@ -63,7 +63,7 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
             .then(function (sortedStocks) {
                 sortedStocks.forEach(element => {
                     stocks.push(element);
-                    progressBar.ldBar.set((progress++ / totalSize * 100);
+                    progressBar.ldBar.set((progress++ / totalSize) * 100);
                 });
                 // console.log("stock length : " + stocks.length + " items : " + sortedStocks.length);
             });
