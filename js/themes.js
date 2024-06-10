@@ -47,7 +47,11 @@ function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
 const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) => {
     const chunkSize = 25;
     var stocks = [];
-    var stockCodes = stockCodeStr.split(",");
+    var stockCodes = stockCodeStr
+        .split(",")
+        .filter(function (el) {
+            return el != null;
+        });
 
     // progressBar
     var count = 0;
@@ -55,6 +59,7 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
     var progressBar = new ldBar(ldBarName);
     progressBar.set(count);
 
+    // splice and request data from stockcharts
     while (stockCodes.length > 0) {
         var chunk = stockCodes.splice(0, chunkSize);
 
@@ -74,7 +79,7 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
     console.log("total stock size : " + stocks.length);
 
     if(stocks.length > 0) {
-        // sort by StockChart SCTR
+        // sort by StockChart TA
         let stocksSortBySctr = stocks.sort((a,b) => b.extra - a.extra);
         var sortedSymbols = stocksSortBySctr.flat().map(({ symbol }) => symbol);
         return sortedSymbols;
