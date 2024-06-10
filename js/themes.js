@@ -50,7 +50,12 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
     var stockCodes = stockCodeStr
         .split(",")
         .filter(function (el) {
-            return el != null && el !== '' && el.charCodeAt(0) < 128;
+            if(el != null && el !== '' && el.charCodeAt(0) < 128) {
+                return true;
+            } else {
+                console.log("unicode detected : " + el + " " + encodeURI(el));
+                return false;
+            }
         });
 
     // progressBar
