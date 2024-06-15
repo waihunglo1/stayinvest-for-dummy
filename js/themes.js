@@ -12,13 +12,17 @@ function isEmpty(value) {
     );
 }
 
-function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDesc) {
+function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDesc, borderStyle) {
 
     // create link element
     var linkElement = document.createElement('a');
     linkElement.href = hrefAddr;
     linkElement.setAttribute("target", "_blank");
     linkElement.text = linkDesc;
+
+    if (borderStyle != null) {
+        linkElement.style.border = borderStyle;
+    }
 
     // parent
     var parent = document.getElementById(parentId);

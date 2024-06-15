@@ -77,7 +77,11 @@
                         sortedStockCodes.forEach(stockCode => {
                             console.log("snapshot: " + stockCode.symbol);
                             var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
-                            appendImageToParent("img_home", stockCode.symbol, desc);
+                            var borderStyle = null;
+                            if (stockCode.symbol == 'SPY') {
+                                borderStyle = "5px solid orange";
+                            }
+                            appendImageToParent("img_home", stockCode.symbol, desc, borderStyle);
                         });
                     })
                     .catch(function (error) {
