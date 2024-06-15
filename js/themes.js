@@ -33,10 +33,13 @@ function fetchCsvThemesAndAppendLink(hrefAddr, parentId) {
 
             results.data.forEach(dataRow => {
                 const rowId = dataRow.shift();
+                const rowType = dataRow.shift();
                 const rowDesc = dataRow.shift();
 
                 // format link and append to parentId
-                const tempChartLink = hrefAddr.replace(/{stockCodes}/i, dataRow.join(","));
+                const tempChartLink = hrefAddr
+                    .replace(/{type}/i, rowType)
+                    .replace(/{stockCodes}/i, dataRow.join(","));
                 appendThemesLinkToParent(parentId, tempChartLink, rowDesc);
             });
         }
