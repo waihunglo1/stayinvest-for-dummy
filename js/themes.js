@@ -28,7 +28,10 @@ function fetchCsvThemesAndAppendLink(hrefAddr, parentId) {
     Papa.parse(csvDataFile, {
         download: true,
         complete: results => {
-            results.forEach(dataRow => {
+            console.log("Read from CSV file");
+            console.log(results);
+
+            results.data.forEach(dataRow => {
                 const rowId = dataRow.shift();
                 const rowDesc = dataRow.shift();
 
