@@ -16,11 +16,7 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDes
 
     if(shouldReplaceDesc) {
         document.getElementById(parentId).innerText = "";
-    } else {
-        var br = document.createElement("span");
-        document.getElementById(parentId).append(br);
     }
-
 }
 
 function isEmpty(value) {
