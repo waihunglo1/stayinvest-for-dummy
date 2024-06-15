@@ -70,7 +70,7 @@
                     .then(function (sortedStockCodes) {
                         sortedStockCodes.forEach(stockCode => {
                             console.log("snapshot: " + stockCode.symbol);
-                            var desc = stockCode.industry + "|" + stockcode.sector + "|" + stockCode.name;
+                            var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
                             appendImageToParent("img_home", stockCode.symbol, desc);
                         });
                     })
