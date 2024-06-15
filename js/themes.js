@@ -12,14 +12,16 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDes
     linkElement.setAttribute("target", "_blank");
     linkElement.text = linkDesc;
 
+    // parent
     var parent = document.getElementById(parentId);
-    parent.appendChild(linkElement);
 
     if(shouldReplaceDesc) {
         parent.innerText = "";
+        parent.appendChild(linkElement);
     } else {
+        // append new Line
         const para1 = document.createElement("p");
-        para1.appendChild(document.createTextNode("TEST 01"));
+        para1.appendChild(linkElement);
         para1.appendChild(document.createElement("br"));
         parent.appendChild(para1); 
     }
