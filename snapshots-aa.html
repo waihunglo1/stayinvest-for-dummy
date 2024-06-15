@@ -60,12 +60,18 @@
             }
 
             // stock codes
+            console.log("parseLocationAndShowCharts input = " + inputStockCodes);
+
             if (inputStockCodes == null) {
                 console.info("parameter o is null!!"); //show 1
                 return;
-            } else {
-                console.log("parseLocationAndShowCharts input = " + inputStockCodes);
-
+            } else if (t == "HK") {
+                inputStockCodes
+                    .split(",")
+                    .forEach(stockCodeStr => {
+                        appendImageToParent("img_home", stockCode.symbol, desc);                        
+                    });
+            } else if (t == "SC") {
                 partitionStockCodesAndSort(inputStockCodes, "M12", "#progress_home")
                     .then(function (sortedStockCodes) {
                         sortedStockCodes.forEach(stockCode => {
