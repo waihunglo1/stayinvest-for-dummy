@@ -27,13 +27,11 @@
 
 <body>
     <h1>GeeksforGeeks</h1>
-    <p>
-        <div id="progress_home"></div>
-    </p>
+
+    <div id="progress_home"></div><br/>
 
     <div id="img_home01"></div>
     <div id="img_home02"></div>
-    <div id="div1"></div>
 
 
     <script type="text/javascript">
@@ -41,7 +39,8 @@
         const stockCodes = "MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR,GE,WWD,STX,ANET,FLEX,ZI,NWSA,DFS,VRT,KMI,FCX,KBR,MRVL,WAB,LLY,PANW,CCJ,META,NWS,KEY,C,DAKT,MSGE,OPCH,AAPL,CNK,PLTR,STLA,SPHR,COF,KRE,IQV,CRNX,BAH,OZK,ARGT,BMA,BCS,SANA,RDDT,FUSN,SLN,TTWO";
         partitionStockCodesAndSort(stockCodes, "M5", "#progress_home")
             .then(function (sortedStockCodes) {
-                console.log(sortedStockCodes);
+                var sortedSymbols = sortedStockCodes.flat().map(({ symbol }) => symbol);
+                console.log(sortedSymbols);
             });
 
         // for index page link formatter

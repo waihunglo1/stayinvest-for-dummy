@@ -139,9 +139,9 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
 
     if(stocks.length > 0) {
         // sort by StockChart TA
-        let stocksSortBySctr = stocks.sort((a,b) => b.extra - a.extra);
-        var sortedSymbols = stocksSortBySctr.flat().map(({ symbol }) => symbol);
-        return sortedSymbols;
+        // let stocksSortByTA = stocks.sort((a,b) => b.extra - a.extra);
+        // var sortedSymbols = stocksSortByTA.flat().map(({ symbol }) => symbol);
+        return stocks.sort((a,b) => b.extra - a.extra);
     } else {
         return stockCodeStr.split(","); // return original lists
     }
