@@ -66,6 +66,17 @@
             document.getElementById("convertedText").value = commaString;
         }  
 
+        function addDoubleQuote() {
+            var tempStr = document.getElementById("convertedText").value;
+            var commaString = tempStr.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
+            var formatString = commaString
+                .split(",")
+                .map(entry => JSON.stringify(entry))
+                .join(",");
+
+            document.getElementById("convertedText").value = formatString;
+        }          
+
         // paste image to trigger recognize
         document.onpaste = function (event) {
             var items = (event.clipboardData || event.originalEvent.clipboardData).items;
@@ -107,6 +118,7 @@
         <textarea cols="20" name="original" rows="10" style="width: 80%;" id="convertedText"></textarea>
         <br/>
         <button class="button-6" role="button" onclick="removeLinesCommaJoin()" >🚿 Clean Data</button>
+        <button class="button-6" role="button" onclick="addDoubleQuote()" >🎵 Add Quotes</button>
         <button class="button-6" role="button" onclick="gotoStockCharts2M()" >📈 See Charts 2M</button>
         <button class="button-6" role="button" onclick="gotoStockCharts6M()" >📈 See Charts 6M</button>
         🌽<a href="https://www.imagetotext.info/" target="_blank">Image-to-text</a>
