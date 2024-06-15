@@ -48,17 +48,17 @@
 
 
         const para1 = document.createElement("p");
-para.appendChild(document.createTextNode("TEST 01"));
-para.appendChild(document.createElement("br"));
-para.appendChild(document.createTextNode("TEST 02 "));
-para.appendChild(document.createElement("br"));
-para.appendChild(document.createTextNode("TEST 03 "));
+        para1.appendChild(document.createTextNode("TEST 01"));
+        para1.appendChild(document.createElement("br"));
+        para1.appendChild(document.createTextNode("TEST 02 "));
+        para1.appendChild(document.createElement("br"));
+        para1.appendChild(document.createTextNode("TEST 03 "));
 
 const para2 = document.createElement("p");
 para2.appendChild(document.createTextNode("${email.body}"));
 
 const element = document.getElementById("div1");
-element.appendChild(para);
+element.appendChild(para1);
 element.appendChild(para2);
 
 
