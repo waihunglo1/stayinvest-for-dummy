@@ -44,19 +44,19 @@ function fetchCsvThemesAndAppendLink(hrefAddr, parentId, extraDesc, filterType) 
             results.data.forEach(dataRow => {
                 const rowId = dataRow.shift();
                 const rowType = dataRow.shift();
+                const rowCategory = dataRow.shift();
                 const rowDesc = dataRow.shift();
 
                 const tempChartLink = hrefAddr
                     .replace(/{type}/i, rowType)
                     .replace(/{stockCodes}/i, dataRow.join(","));                
 
-                if(!isEmpty(filterType) && rowType == filterType) {
+                if(!isEmpty(filterType) && rowCategory == filterType) {
                     appendThemesLinkToParent(parentId, tempChartLink, rowDesc, false);
                 } 
                 else if(!isEmpty(extraDesc) && rowDesc == extraDesc) {
                     appendThemesLinkToParent(parentId, tempChartLink, extraDesc, true);
                 }
-
             });
         }
     });
