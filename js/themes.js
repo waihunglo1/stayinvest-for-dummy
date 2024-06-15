@@ -27,14 +27,6 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDes
     }
 }
 
-function isEmpty(value) {
-    return (
-        value === null || value === undefined || value === '' ||
-        (Array.isArray(value) && value.length === 0) ||
-        (!(value instanceof Date) && typeof value === 'object' && Object.keys(value).length === 0)
-    );
-}
-
 /**
  * format line and append to parent by CSV file
  * @param {a} hrefAddr 
@@ -231,7 +223,7 @@ function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, c
     imageElement.src = imageLinkAddr;
     imageElement.width = chartWidth;
     imageElement.height = chartHeight;
-    image.setAttribute("alt", desc);
+    imageElement.setAttribute("alt", desc);
 
     // href element
     var linkElement = document.createElement('a');
