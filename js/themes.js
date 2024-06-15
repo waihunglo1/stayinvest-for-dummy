@@ -12,17 +12,13 @@ function isEmpty(value) {
     );
 }
 
-function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDesc, borderStyle) {
+function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDesc) {
 
     // create link element
     var linkElement = document.createElement('a');
     linkElement.href = hrefAddr;
     linkElement.setAttribute("target", "_blank");
     linkElement.text = linkDesc;
-
-    if (borderStyle != null) {
-        linkElement.style.border = borderStyle;
-    }
 
     // parent
     var parent = document.getElementById(parentId);
@@ -212,7 +208,7 @@ function appendAA(parentId, stockCode, period) {
     appendImageAndHrefAddr(parentId, tempChartLink, tempRefLink, chartWidth, chartHeight);
 }
 
-function appendSC(parentId, stockCode, scConf, taIndicator, desc) {
+function appendSC(parentId, stockCode, scConf, taIndicator, desc, borderStyle) {
     const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[{chartWidth},a]dacayaci[pb20!b50][{period}][il{taIndicator}]";
 
     const tempChartLink = stockChartLink
@@ -226,10 +222,10 @@ function appendSC(parentId, stockCode, scConf, taIndicator, desc) {
     const tempRefLink = refLink
       .replace(/{stockCode}/i, stockCode);
 
-    appendImageAndHrefAddr(parentId, tempChartLink, tempRefLink, scConf.chartWidth, scConf.chartHeight, desc);
+    appendImageAndHrefAddr(parentId, tempChartLink, tempRefLink, scConf.chartWidth, scConf.chartHeight, desc, borderStyle);
 }        
 
-function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, chartHeight, desc) {
+function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, chartHeight, desc, borderStyle) {
     // image element
     var imageElement = new Image();
     imageElement.setAttribute("referrerpolicy","no-referrer");
@@ -238,6 +234,10 @@ function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, c
     imageElement.height = chartHeight;
     imageElement.setAttribute("alt", desc);
     imageElement.title = desc;
+
+    if (borderStyle != null) {
+        imageElement.style.border = borderStyle;
+    }    
 
     // href element
     var linkElement = document.createElement('a');

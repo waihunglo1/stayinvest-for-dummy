@@ -27,7 +27,7 @@
     <div id="progress_home"></div>
 
     <script type="text/javascript">
-        function appendImageToParent(parentId, stockCode, desc) {
+        function appendImageToParent(parentId, stockCode, desc, borderStyle) {
             if (chartType == 'HK') {
                 appendAA(parentId, stockCode, 7);
             }
@@ -37,11 +37,11 @@
             }
 
             if (chartType == 'SC') {
-                appendSC(parentId, stockCode, scConf2m, "M12", desc);
+                appendSC(parentId, stockCode, scConf2m, "M12", desc, borderStyle);
             }
 
             if (chartType == 'SC6M') {
-                appendSC(parentId, stockCode, scConf6m, "M12", desc);
+                appendSC(parentId, stockCode, scConf6m, "M12", desc, borderStyle);
             }                
         }
 
@@ -69,7 +69,7 @@
                 inputStockCodes
                     .split(",")
                     .forEach(stockCodeStr => {
-                        appendImageToParent("img_home", stockCodeStr, null);                        
+                        appendImageToParent("img_home", stockCodeStr, null, null);                        
                     });
             } else if (t == "SC") {
                 partitionStockCodesAndSort("SPY," + inputStockCodes, "M12", "#progress_home")
