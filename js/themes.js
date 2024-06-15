@@ -17,8 +17,6 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDes
 
     if(shouldReplaceDesc) {
         parent.innerText = "";
-    } else {
-        parent.append(document.createElement('br'));
     }
 }
 
