@@ -23,15 +23,14 @@
 
 <body>
 	<script type="text/javascript">
-		const stockChartLink = "snapshots-aa.html?t=SC&o={stockCodes}";
-		fetchThemeDataAndAppendLink("DOW30", "DOW30", stockChartLink, "DOW30_DIV");
-		fetchThemeDataAndAppendLink("NQ100", "NQ100", stockChartLink, "NQ100_DIV");
-		fetchThemeDataAndAppendLink("SP500", "SP500", stockChartLink, "SP500_DIV");
-		fetchThemeDataAndAppendLink("ROUTINE01", "Routine-01", stockChartLink, "ROUTINE01_DIV");
-		fetchThemeDataAndAppendLink("STANLEY01", "Stanley-01", stockChartLink, "STANLEY01_DIV");
+		const stockChartLink = "snapshots-aa.html?t={type}&o={stockCodes}";
 
-		const hkStockChartLink = "snapshots-aa.html?o={stockCodes}";
-		fetchThemeDataAndAppendLink("HSI001", "港股活躍股票", hkStockChartLink, "HSI001_DIV");
+		// us theme
+		fetchCsvThemesAndAppendLink(stockChartLink, "US_THEME_DIV", null, "US-THEME");
+
+		// hk theme
+		fetchCsvThemesAndAppendLink(stockChartLink, "HSI001_DIV", "港股活躍股票", null);
+		fetchCsvThemesAndAppendLink(stockChartLink, "HAI001_DIV", "港股人工智能股票", null);
 		
 	</script>
 
@@ -78,6 +77,7 @@
 						🐮 <a href="https://warrants-hk.credit-suisse.com/tc/cbbc/outstanding-chart">牛証總街貨量</a></br>
 						📈 <a href="https://360miq.com/market?data=HKEX">港股市場寬度</a></br>
 						🦍 <span id="HSI001_DIV">港股活躍股票</span></br>
+						🦍 <span id="HAI001_DIV">港股人工智能股票</span></br>
 						🍇 <a href="https://www.stheadline.com/columnists/author/1359/%E9%AE%AE%E8%82%A1%E8%90%BD%E9%91%8A">鮮股落鑊</a></br>
 						📰 <a href="https://www1.hkej.com/dailynews/headline">今日信報</a></br>
 
@@ -139,9 +139,7 @@
 						📻 <a href="https://stockcharts.com/freecharts/sctr.html">SCTR Report</a></br>
 						7️⃣ <a href="https://stockcharts.com/freecharts/candleglance.html?AMZN,AAPL,META,GOOGL,MSFT,NFLX,TSLA|B|M12|1">MI-7</a></br>
 						💽 <a href="https://stockcharts.com/freecharts/candleglance.html?NVDA,ADBE,AMD,CRM,NOW,SHOP|B|M12|1">Software-01</a></br>
-						🌅 <span id="ROUTINE01_DIV">ROUTINE01</span > | <span id="STANLEY01_DIV">STANLEY01</span></br>
-						💎 <a href="https://stockcharts.com/freecharts/candleglance.html?[DOW]&|B|M12|1">DOW</a> |
-						<span id="DOW30_DIV">DOW30</span > | <span id="NQ100_DIV">NQ100</span > | <span id="SP500_DIV">SP500</span > </br>
+						🌅 <span id="US_THEME_DIV">US_THEME_DIV</span></br>						
 
 						<h2>Sector ETF Perf</h2>
 						🧲 <a href="https://stockcharts.com/freecharts/candleglance.html?CTA,SLV,CEF,$CRB,DJP,GDX,LAND,XME,URA,$WTIC,XLE,MOO|B|M12|1">Commodity ETF</a></br>
