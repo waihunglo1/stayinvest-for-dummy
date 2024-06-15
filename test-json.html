@@ -21,7 +21,7 @@
 
     <!-- CSV -->    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/papaparse.min.js"></script>
+    <script type="text/javascript" src="js/papaparse.min.js"></script>
 
 </head>
 
@@ -31,10 +31,6 @@
     <div id="progress_home"></div>
 
     <script type="text/javascript">
-        // for index page link formatter
-        const stockChartLink = "snapshots-aa.html?t=SC&o={stockCodes}";
-        fetchThemeDataAndAppendLink("DOW30", "DOW30", stockChartLink, "img_home");
-
         // sorting by Stockchart taindicator
         const stockCodes = "MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR,GE,WWD,STX,ANET,FLEX,ZI,NWSA,DFS,VRT,KMI,FCX,KBR,MRVL,WAB,LLY,PANW,CCJ,META,NWS,KEY,C,DAKT,MSGE,OPCH,AAPL,CNK,PLTR,STLA,SPHR,COF,KRE,IQV,CRNX,BAH,OZK,ARGT,BMA,BCS,SANA,RDDT,FUSN,SLN,TTWO";
         partitionStockCodesAndSort(stockCodes, "M5", "#progress_home")
@@ -42,14 +38,11 @@
                 console.log(sortedStockCodes);
             });
 
+        // for index page link formatter
+        const stockChartLink = "snapshots-aa.html?t=SC&o={stockCodes}";
+        // fetchThemeDataAndAppendLink("DOW30", "DOW30", stockChartLink, "img_home");
+        fetchThemeDataAndAppendLink(stockChartLink, "img_home");
 
-        Papa.parse('data/equity-holdings.csv', {
-            download: true,
-            complete: results => {
-                console.log(results);
-            }
-        });
-    
     </script>
 
 

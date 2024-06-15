@@ -17,6 +17,30 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc) {
     document.getElementById(parentId).appendChild(linkElement);
 }
 
+/**
+ * format line and append to parent by CSV file
+ * @param {a} hrefAddr 
+ * @param {*} parentId 
+ */
+function fetchThemesAndAppendLink(hrefAddr, parentId) {
+    const csvDataFile = "data/equity-holdings.csv"
+
+    Papa.parse(csvDataFile, {
+        download: true,
+        complete: results => {
+            results.forEach(dataRow => {
+                const rowId = dataRow.shift();
+                const rowDesc = dataRow.shift();
+
+                // format link and append to parentId
+                const tempChartLink = hrefAddr.replace(/{stockCodes}/i, dataRow.join(","));
+                appendThemesLinkToParent(parentId, tempChartLink, rowDesc);
+            });
+        }
+    });
+
+}
+
 function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
     const jsonDataFile = "data/equity-holdings.json"
     fetch(jsonDataFile)
