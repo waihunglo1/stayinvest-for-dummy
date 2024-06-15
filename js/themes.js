@@ -29,7 +29,7 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDes
     } else {
         // append new Line
         const para1 = document.createElement("p");
-        para1.appendChild(document.createTextNode("-"));
+        para1.appendChild(document.createTextNode("→"));
         para1.appendChild(linkElement);
         para1.appendChild(document.createElement("br"));
         parent.appendChild(para1); 
