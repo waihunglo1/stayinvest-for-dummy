@@ -18,7 +18,6 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDes
         document.getElementById(parentId).innerText = "";
     } else {
         var br = document.createElement("span");
-        br.innerHTML = "<br>";
         document.getElementById(parentId).append(br);
     }
 
