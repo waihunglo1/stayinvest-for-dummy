@@ -69,7 +69,7 @@
                 inputStockCodes
                     .split(",")
                     .forEach(stockCodeStr => {
-                        appendImageToParent("img_home", stockCode.symbol, desc);                        
+                        appendImageToParent("img_home", stockCodeStr, null);                        
                     });
             } else if (t == "SC") {
                 partitionStockCodesAndSort(inputStockCodes, "M12", "#progress_home")
