@@ -72,7 +72,7 @@
                         appendImageToParent("img_home", stockCodeStr, null);                        
                     });
             } else if (t == "SC") {
-                partitionStockCodesAndSort(inputStockCodes, "M12", "#progress_home")
+                partitionStockCodesAndSort("SPY," + inputStockCodes, "M12", "#progress_home")
                     .then(function (sortedStockCodes) {
                         sortedStockCodes.forEach(stockCode => {
                             console.log("snapshot: " + stockCode.symbol);
