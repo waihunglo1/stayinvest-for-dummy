@@ -4,7 +4,7 @@ var getObjectByValue = function (array, key, value) {
     });
 };
 
-function appendThemesLinkToParent(parentId, hrefAddr, linkDesc) {
+function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDesc) {
 
     // create link element
     var linkElement = document.createElement('a');
@@ -12,9 +12,19 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc) {
     linkElement.setAttribute("target", "_blank");
     linkElement.text = linkDesc;
 
-    // append
-    // document.getElementById(parentId).innerText = "";
+    if(shouldReplaceDesc) {
+        document.getElementById(parentId).innerText = "";
+    }
+
     document.getElementById(parentId).appendChild(linkElement);
+}
+
+function isEmpty(value) {
+    return (
+        value === null || value === undefined || value === '' ||
+        (Array.isArray(value) && value.length === 0) ||
+        (!(value instanceof Date) && typeof value === 'object' && Object.keys(value).length === 0)
+    );
 }
 
 /**
@@ -22,7 +32,7 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc) {
  * @param {a} hrefAddr 
  * @param {*} parentId 
  */
-function fetchCsvThemesAndAppendLink(hrefAddr, parentId) {
+function fetchCsvThemesAndAppendLink(hrefAddr, parentId, extraDesc, filterType) {
     const csvDataFile = "data/equity-holdings.csv"
 
     Papa.parse(csvDataFile, {
@@ -36,11 +46,17 @@ function fetchCsvThemesAndAppendLink(hrefAddr, parentId) {
                 const rowType = dataRow.shift();
                 const rowDesc = dataRow.shift();
 
-                // format link and append to parentId
                 const tempChartLink = hrefAddr
                     .replace(/{type}/i, rowType)
-                    .replace(/{stockCodes}/i, dataRow.join(","));
-                appendThemesLinkToParent(parentId, tempChartLink, rowDesc);
+                    .replace(/{stockCodes}/i, dataRow.join(","));                
+
+                if(!isEmpty(filterType) && rowType == filterType) {
+                    appendThemesLinkToParent(parentId, tempChartLink, rowDesc, false);
+                } 
+                else if(!isEmpty(extraDesc) && rowDesc == extraDesc) {
+                    appendThemesLinkToParent(parentId, tempChartLink, extraDesc, true);
+                }
+
             });
         }
     });

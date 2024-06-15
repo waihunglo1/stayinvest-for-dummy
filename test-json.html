@@ -27,7 +27,8 @@
 
 <body>
     <h1>GeeksforGeeks</h1>
-    <div id="img_home"></div>
+    <div id="img_home01"></div>
+    <div id="img_home02"></div>
     <div id="progress_home"></div>
 
     <script type="text/javascript">
@@ -41,7 +42,9 @@
         // for index page link formatter
         const stockChartLink = "snapshots-aa.html?t={type}&o={stockCodes}";
         // fetchThemeDataAndAppendLink("DOW30", "DOW30", stockChartLink, "img_home");
-        fetchCsvThemesAndAppendLink(stockChartLink, "img_home");
+        fetchCsvThemesAndAppendLink(stockChartLink, "img_home01", null, "SC");
+
+        fetchCsvThemesAndAppendLink(stockChartLink, "img_home01", "港股活躍股票", null);
 
     </script>
 
