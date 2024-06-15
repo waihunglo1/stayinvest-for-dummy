@@ -207,7 +207,7 @@ function appendAA(parentId, stockCode, period) {
     appendImageAndHrefAddr(parentId, tempChartLink, tempRefLink, chartWidth, chartHeight);
 }
 
-function appendSC(parentId, stockCode, scConf, taIndicator) {
+function appendSC(parentId, stockCode, scConf, taIndicator, desc) {
     const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[{chartWidth},a]dacayaci[pb20!b50][{period}][il{taIndicator}]";
 
     const tempChartLink = stockChartLink
@@ -221,16 +221,17 @@ function appendSC(parentId, stockCode, scConf, taIndicator) {
     const tempRefLink = refLink
       .replace(/{stockCode}/i, stockCode);
 
-    appendImageAndHrefAddr(parentId, tempChartLink, tempRefLink, scConf.chartWidth, scConf.chartHeight);
+    appendImageAndHrefAddr(parentId, tempChartLink, tempRefLink, scConf.chartWidth, scConf.chartHeight, desc);
 }        
 
-function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, chartHeight) {
+function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, chartHeight, desc) {
     // image element
     var imageElement = new Image();
     imageElement.setAttribute("referrerpolicy","no-referrer");
     imageElement.src = imageLinkAddr;
     imageElement.width = chartWidth;
     imageElement.height = chartHeight;
+    imageElement.innerHTML = desc;
 
     // href element
     var linkElement = document.createElement('a');

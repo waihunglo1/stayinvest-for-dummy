@@ -27,7 +27,7 @@
     <div id="progress_home"></div>
 
     <script type="text/javascript">
-        function appendImageToParent(parentId, stockCode) {
+        function appendImageToParent(parentId, stockCode, desc) {
             if (chartType == 'HK') {
                 appendAA(parentId, stockCode, 7);
             }
@@ -37,11 +37,11 @@
             }
 
             if (chartType == 'SC') {
-                appendSC(parentId, stockCode, scConf2m, "M12");
+                appendSC(parentId, stockCode, scConf2m, "M12", desc);
             }
 
             if (chartType == 'SC6M') {
-                appendSC(parentId, stockCode, scConf6m, "M12");
+                appendSC(parentId, stockCode, scConf6m, "M12", desc);
             }                
         }
 
@@ -70,7 +70,8 @@
                     .then(function (sortedStockCodes) {
                         sortedStockCodes.forEach(stockCode => {
                             console.log("snapshot: " + stockCode.symbol);
-                            appendImageToParent("img_home", stockCode.symbol);
+                            var desc = stockCode.industry + "|" + stockcode.sector + "|" + stockCode.name;
+                            appendImageToParent("img_home", stockCode.symbol, desc);
                         });
                     })
                     .catch(function (error) {
