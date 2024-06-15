@@ -12,14 +12,15 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDes
     linkElement.setAttribute("target", "_blank");
     linkElement.text = linkDesc;
 
+    document.getElementById(parentId).appendChild(linkElement);
+
     if(shouldReplaceDesc) {
         document.getElementById(parentId).innerText = "";
     } else {
         var br = document.createElement("br");
-        linkElement.append(br);
+        document.getElementById(parentId).append(br);
     }
 
-    document.getElementById(parentId).appendChild(linkElement);
 }
 
 function isEmpty(value) {
