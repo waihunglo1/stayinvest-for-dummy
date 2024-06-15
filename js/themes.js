@@ -22,7 +22,7 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc) {
  * @param {a} hrefAddr 
  * @param {*} parentId 
  */
-function fetchThemesAndAppendLink(hrefAddr, parentId) {
+function fetchCsvThemesAndAppendLink(hrefAddr, parentId) {
     const csvDataFile = "data/equity-holdings.csv"
 
     Papa.parse(csvDataFile, {
