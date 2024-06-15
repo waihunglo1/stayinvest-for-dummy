@@ -231,7 +231,7 @@ function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, c
     imageElement.src = imageLinkAddr;
     imageElement.width = chartWidth;
     imageElement.height = chartHeight;
-    imageElement.innerHTML = desc;
+    image.setAttribute("alt", desc);
 
     // href element
     var linkElement = document.createElement('a');
