@@ -23,10 +23,29 @@
 </head>
 
 <body>
-    <div id="img_home"></div>
     <div id="progress_home"></div>
+    <div class="topRow">
+        <button class="button-6" role="button" onclick="gotoPage('B14','SC')">  🚿 RSI14 - 2M</button>
+        <button class="button-6" role="button" onclick="gotoPage('B14','SC6M')">📈 RSI14 - 6M</button>
+        <button class="button-6" role="button" onclick="gotoPage('M12','SC')">  📈 ROC12 - 2M</button>
+        <button class="button-6" role="button" onclick="gotoPage('M12','SC6M')">📈 ROC12 - 6M</button>
+    </div>
+
+    <div id="img_home"></div>
 
     <script type="text/javascript">
+        function gotoPage(taIndicator, period) {
+            const stockChartLink = "snapshots-aa.html?t={type}&a={taIndicator}&o={stockCodes}";
+
+            const tempChartLink = hrefAddr
+                    .replace(/{type}/i, period)
+                    .replace(/{taIndicator}/i, taIndicator)
+                    .replace(/{stockCodes}/i, inputStockCodes);
+
+            console.log(tempChartLink);
+            window.location = tempChartLink;
+        }
+
         function appendImageToParent(parentId, stockCode, desc, taIndicator, borderStyle) {
             if (chartType == 'HK') {
                 appendAA(parentId, stockCode, 7);
