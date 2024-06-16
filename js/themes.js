@@ -154,7 +154,8 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
  */
 const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
     // call stock charts
-    const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+    // const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+    const sortBylink = "https://render-ealy.onrender.com/stockcharts/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     const tempSortByLink = sortBylink
       .replace(/{stockCodes}/i, stockCodes.join(","))
       .replace(/{taIndicator}/i, taIndicator);
