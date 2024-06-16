@@ -23,8 +23,8 @@
 </head>
 
 <body>
-    <div id="progress_home"></div>
     <div class="topRow">
+        <div id="progress_home"></div>
         <button class="button-6" role="button" onclick="gotoPage('B14','SC')">  🚿 RSI14 - 2M</button>
         <button class="button-6" role="button" onclick="gotoPage('B14','SC6M')">📈 RSI14 - 6M</button>
         <button class="button-6" role="button" onclick="gotoPage('M12','SC')">  📈 ROC12 - 2M</button>
@@ -37,7 +37,7 @@
         function gotoPage(taIndicator, period) {
             const stockChartLink = "snapshots-aa.html?t={type}&a={taIndicator}&o={stockCodes}";
 
-            const tempChartLink = hrefAddr
+            const tempChartLink = stockChartLink
                     .replace(/{type}/i, period)
                     .replace(/{taIndicator}/i, taIndicator)
                     .replace(/{stockCodes}/i, inputStockCodes);
