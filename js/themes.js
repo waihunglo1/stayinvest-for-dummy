@@ -14,6 +14,19 @@ const emojiTheme =
     "♑️", "2️⃣", "🚲", "🚐", "🌑", "📍", "🕵", "🚳", "👝", "⏭", "🔍", "🎺", "▫️", "↪️", "🛍", "🌡", "🎌", 
     "🈁", "🕚", "🍯", "👴", "🏔", "😿", "🐃", "🏷"];
 
+// stock chart config
+const scConf2m = {
+    chartWidth: 305,
+    chartHeight: 225,
+    period: "dg"
+    };
+
+const scConf6m = {
+    chartWidth: 605,
+    chartHeight: 447,
+    period: "dc"
+    };
+        
 function emoji() {
     if(emojiIdx >= emojiTheme.length) {
         emojiIdx = 0;
@@ -199,17 +212,6 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
  * 
  */
 
-const scConf2m = {
-    chartWidth: 305,
-    chartHeight: 225,
-    period: "dg"
-  };
-
-const scConf6m = {
-    chartWidth: 605,
-    chartHeight: 447,
-    period: "dc"
-  };
 
 function appendAA(parentId, stockCode, period) {
     const chartWidth = 400;
