@@ -24,21 +24,21 @@
 
 <body>
     <div class="topRow">
-        <div id="progress_home"></div>
         <button class="button-6" role="button" onclick="gotoPage('B14','SC')">  🚿 RSI14 - 2M</button>
         <button class="button-6" role="button" onclick="gotoPage('B14','SC6M')">📈 RSI14 - 6M</button>
         <button class="button-6" role="button" onclick="gotoPage('M12','SC')">  📈 ROC12 - 2M</button>
         <button class="button-6" role="button" onclick="gotoPage('M12','SC6M')">📈 ROC12 - 6M</button>
     </div>
-
+    
     <div id="img_home"></div>
+    <div id="progress_home"></div>
 
     <script type="text/javascript">
         function gotoPage(taIndicator, period) {
             const stockChartLink = "snapshots-aa.html?t={type}&a={taIndicator}&o={stockCodes}";
             const params = new URLSearchParams(document.location.search);
             const inputStockCodes = params.get("o");
-            
+
             const tempChartLink = stockChartLink
                     .replace(/{type}/i, period)
                     .replace(/{taIndicator}/i, taIndicator)
@@ -98,7 +98,7 @@
         
         function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator) {
             if (inputStockCodes == null) {
-                console.info("parameter o is null!!"); //show 1
+                console.error("parameter o is null!!"); //show 1
                 return;
             } else if (chartType == "HK") {
                 inputStockCodes
@@ -106,7 +106,7 @@
                     .forEach(stockCodeStr => {
                         appendImageToParent("img_home", stockCodeStr, null, null);                        
                     });
-            } else if (chartType == "SC") {
+            } else if (chartType == "SC" || chartType == "SC6M") {
                 partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, "#progress_home")
                     .then(function (sortedStockCodes) {
                         sortedStockCodes.forEach(stockCode => {
@@ -122,6 +122,9 @@
                     .catch(function (error) {
                         console.error(error)
                     });
+            } else {
+                console.error("chart type not define");
+                return;
             }
         }
 
