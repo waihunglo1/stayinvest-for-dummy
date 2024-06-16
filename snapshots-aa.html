@@ -36,7 +36,9 @@
     <script type="text/javascript">
         function gotoPage(taIndicator, period) {
             const stockChartLink = "snapshots-aa.html?t={type}&a={taIndicator}&o={stockCodes}";
-
+            const params = new URLSearchParams(document.location.search);
+            const inputStockCodes = params.get("o");
+            
             const tempChartLink = stockChartLink
                     .replace(/{type}/i, period)
                     .replace(/{taIndicator}/i, taIndicator)
