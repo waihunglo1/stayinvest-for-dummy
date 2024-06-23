@@ -73,9 +73,13 @@
             const inputStockCodes = params.get("o");
             const t = params.get("t");
             const a = params.get("a");
+            const d = params.get("d");
 
             // stock codes
-            console.log("parseLocationAndShowCharts input = " + inputStockCodes);
+            console.log("parseLocationAndShowCharts o = " + inputStockCodes);
+            console.log("parseLocationAndShowCharts t = " + t);
+            console.log("parseLocationAndShowCharts a = " + a);
+            console.log("parseLocationAndShowCharts d = " + d);
 
             // chart type
             if (t == null) {
@@ -91,6 +95,14 @@
                 taIndicator = "M12";
             } else {
                 taIndicator = a; // M12 or B14
+            }
+
+            // description
+            if (d != null) {
+                let title_el = document.querySelector("title");
+                if(title_el) {
+                    title_el.innerHTML = d;              
+                }
             }
 
             sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator);
