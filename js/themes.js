@@ -154,6 +154,7 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
     var totalSize = stockCodes.length / chunkSize;
     var progressBar = new ldBar(ldBarName);
     progressBar.set(count);
+    progressBar.set(1); // start calling SC api to sort data
 
     // splice and request data from stockcharts
     while (stockCodes.length > 0) {
