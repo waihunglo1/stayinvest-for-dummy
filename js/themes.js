@@ -53,7 +53,7 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDes
     // create link element
     var linkElement = document.createElement('a');
     linkElement.href = hrefAddr;
-    linkElement.setAttribute("target", "_blank");
+    linkElement.setAttribute("target", "_" + linkDesc.replace(" ","_"));
     linkElement.text = linkDesc;
 
     // parent
