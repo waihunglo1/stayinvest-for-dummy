@@ -50,9 +50,11 @@ function isEmpty(value) {
 
 function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDesc) {
 
+    const hrefAddrStr = hrefAddr.replace(/{linkDesc}/i, linkDesc);
+
     // create link element
     var linkElement = document.createElement('a');
-    linkElement.href = hrefAddr;
+    linkElement.href = hrefAddrStr;
     linkElement.setAttribute("target", "_" + linkDesc.replace(" ","_"));
     linkElement.text = linkDesc;
 
@@ -96,10 +98,10 @@ function fetchCsvThemesAndAppendLink(hrefAddr, parentId, extraDesc) {
                     .replace(/{stockCodes}/i, dataRow.join(","));
 
                 if (rowCategory == extraDesc) {
-                    appendThemesLinkToParent(parentId, tempChartLink.replace(/{linkDesc}/i, rowDesc), rowDesc, false);
+                    appendThemesLinkToParent(parentId, tempChartLink, rowDesc, false);
                 }
                 else if (rowDesc == extraDesc) {
-                    appendThemesLinkToParent(parentId, tempChartLink.replace(/{linkDesc}/i, extraDesc), extraDesc, true);
+                    appendThemesLinkToParent(parentId, tempChartLink, extraDesc, true);
                 }
             });
         }
@@ -107,6 +109,7 @@ function fetchCsvThemesAndAppendLink(hrefAddr, parentId, extraDesc) {
 
 }
 
+// deprecate
 function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
     const jsonDataFile = "data/equity-holdings.json"
     fetch(jsonDataFile)
