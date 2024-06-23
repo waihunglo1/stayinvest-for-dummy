@@ -91,17 +91,15 @@ function fetchCsvThemesAndAppendLink(hrefAddr, parentId, extraDesc) {
                 const rowType = dataRow.shift();
                 const rowCategory = dataRow.shift();
                 const rowDesc = dataRow.shift();
-
                 const tempChartLink = hrefAddr
                     .replace(/{type}/i, rowType)
-                    .replace(/{linkDesc}/i, extraDesc)
-                    .replace(/{stockCodes}/i, dataRow.join(","))
+                    .replace(/{stockCodes}/i, dataRow.join(","));
 
-                if(rowCategory == extraDesc) {
-                    appendThemesLinkToParent(parentId, tempChartLink, rowDesc, false);
-                } 
-                else if(rowDesc == extraDesc) {
-                    appendThemesLinkToParent(parentId, tempChartLink, extraDesc, true);
+                if (rowCategory == extraDesc) {
+                    appendThemesLinkToParent(parentId, tempChartLink.replace(/{linkDesc}/i, rowDesc), rowDesc, false);
+                }
+                else if (rowDesc == extraDesc) {
+                    appendThemesLinkToParent(parentId, tempChartLink.replace(/{linkDesc}/i, extraDesc), extraDesc, true);
                 }
             });
         }
