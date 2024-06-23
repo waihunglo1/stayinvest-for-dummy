@@ -77,7 +77,7 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDes
  * @param {a} hrefAddr 
  * @param {*} parentId 
  */
-function fetchCsvThemesAndAppendLink(hrefAddr, parentId, extraDesc, filterType) {
+function fetchCsvThemesAndAppendLink(hrefAddr, parentId, extraDesc) {
     const csvDataFile = "data/equity-holdings.csv"
 
     Papa.parse(csvDataFile, {
@@ -94,12 +94,13 @@ function fetchCsvThemesAndAppendLink(hrefAddr, parentId, extraDesc, filterType) 
 
                 const tempChartLink = hrefAddr
                     .replace(/{type}/i, rowType)
-                    .replace(/{stockCodes}/i, dataRow.join(","));                
+                    .replace(/{linkDesc}/i, extraDesc)
+                    .replace(/{stockCodes}/i, dataRow.join(","))
 
-                if(!isEmpty(filterType) && rowCategory == filterType) {
+                if(rowCategory == extraDesc) {
                     appendThemesLinkToParent(parentId, tempChartLink, rowDesc, false);
                 } 
-                else if(!isEmpty(extraDesc) && rowDesc == extraDesc) {
+                else if(rowDesc == extraDesc) {
                     appendThemesLinkToParent(parentId, tempChartLink, extraDesc, true);
                 }
             });
