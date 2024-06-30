@@ -50,7 +50,7 @@
 
         function appendImageToParent(parentId, stockCode, desc, taIndicator, borderStyle) {
             if (chartType == 'HK') {
-                appendAA(parentId, stockCode, 7);
+                appendAA(parentId, stockCode, 7, desc, borderStyle);
             }
 
             if (chartType == 'US') {
@@ -113,11 +113,31 @@
                 console.error("parameter o is null!!"); //show 1
                 return;
             } else if (chartType == "HK") {
+                partitionStockCodesAndSort("2800.HK," + inputStockCodes, taIndicator, "#progress_home")
+                    .then(function (sortedStockCodes) {
+                        sortedStockCodes.forEach(stockCode => {
+                            console.log("snapshot: " + stockCode.symbol);
+                            // var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
+                            var borderStyle = null;
+                            if (stockCode.symbol == '2800.HK') {
+                                borderStyle = "5px solid orange";
+                            }
+                            appendImageToParent("img_home", stockCode.symbol, null, taIndicator, borderStyle);
+                        });
+                    })
+                    .catch(function (error) {
+                        console.error(error)
+                    });
+
+
                 inputStockCodes
                     .split(",")
                     .forEach(stockCodeStr => {
                         appendImageToParent("img_home", stockCodeStr, null, null);                        
                     });
+
+
+
             } else if (chartType == "SC" || chartType == "SC6M") {
                 partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, "#progress_home")
                     .then(function (sortedStockCodes) {

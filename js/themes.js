@@ -189,15 +189,20 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
 
 /**
  * async request
+ * const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
  * @returns 
  */
 const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
-    // call stock charts
-    // const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
-    const sortBylink = "https://render-ealy.onrender.com/stockcharts/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+    const stockCodesStr = stockCodes.join(",");
+    if(stockCodesStr.include(".HK")) {
+        const sortBylink = "https://render-ealy.onrender.com/yahoo?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+    } else {
+        const sortBylink = "https://render-ealy.onrender.com/stockcharts/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+    }
+
     const tempSortByLink = sortBylink
-      .replace(/{stockCodes}/i, stockCodes.join(","))
-      .replace(/{taIndicator}/i, taIndicator);
+        .replace(/{stockCodes}/i, stockCodesStr)
+        .replace(/{taIndicator}/i, taIndicator);
 
     console.log(tempSortByLink);
     const res = await fetch(tempSortByLink);
@@ -216,7 +221,7 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
  */
 
 
-function appendAA(parentId, stockCode, period) {
+function appendAA(parentId, stockCode, period, desc, borderStyle) {
     const chartWidth = 400;
     const chartHeight = 350;
     const stockChartLink = "https://charts.aastocks.com/servlet/Charts?fontsize=12&15MinDelay=T&lang=1&titlestyle=1&vol=1&Indicator=1&indpara1=10&indpara2=20&indpara3=50&indpara4=100&indpara5=150&subChart1=5&ref1para1=12&ref1para2=0&ref1para3=0&scheme=1&com=100&chartwidth={chartWidth}&chartheight={chartHeight}&stockid={stockCode}&period={period}&type=1&logoStyle=1&";
@@ -233,7 +238,7 @@ function appendAA(parentId, stockCode, period) {
       .replace(/{stockCode}/i, stockCode)
       .replace(/{period}/i,period);
 
-    appendImageAndHrefAddr(parentId, tempChartLink, tempRefLink, chartWidth, chartHeight);
+    appendImageAndHrefAddr(parentId, tempChartLink, tempRefLink, chartWidth, chartHeight, desc, borderStyle);
 }
 
 function appendSC(parentId, stockCode, scConf, taIndicator, desc, borderStyle) {
