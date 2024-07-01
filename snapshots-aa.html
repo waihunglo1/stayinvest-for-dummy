@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <div class="topRow">
+    <div id="top_row_home" class="topRow">
         <button class="button-6" role="button" onclick="gotoPage('B14','HK')">  🚿 RSI14 - 2M HK</button>
         <button class="button-6" role="button" onclick="gotoPage('B14','SC')">  🚿 RSI14 - 2M</button>
         <button class="button-6" role="button" onclick="gotoPage('B14','SC6M')">📈 RSI14 - 6M</button>
@@ -35,6 +35,15 @@
     <div id="progress_home"></div>
 
     <script type="text/javascript">
+        function addButton(parentId, buttonLabel) {
+            const buttonElement = document.createElement("button");
+            buttonElement.setAttribute("class","button-6");
+            buttonElement.innerText = buttonLabel;
+            buttonElement.onclick = gotoPage('M12','SC6M');
+
+            document.getElementById(parentId).appendChild(buttonElement);
+        }
+
         function gotoPage(taIndicator, period) {
             const stockChartLink = "snapshots-aa.html?t={type}&a={taIndicator}&o={stockCodes}";
             const params = new URLSearchParams(document.location.search);
@@ -106,6 +115,7 @@
                 }
             }
 
+            addButton("top_row_home","TEST")
             sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator);
         }
         
