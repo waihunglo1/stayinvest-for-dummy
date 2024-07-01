@@ -194,7 +194,7 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
  */
 const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
     const stockCodesStr = stockCodes.join(",");
-    if(stockCodesStr.indexOf(substring) !== -1) {
+    if(stockCodesStr.indexOf("HK") !== -1) {
         const sortBylink = "https://render-ealy.onrender.com/yahoo?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     } else {
         const sortBylink = "https://render-ealy.onrender.com/stockcharts/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
