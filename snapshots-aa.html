@@ -24,10 +24,11 @@
 
 <body>
     <div class="topRow">
+        <button class="button-6" role="button" onclick="gotoPage('B14','HK')">  🚿 RSI14 - 2M HK</button>
         <button class="button-6" role="button" onclick="gotoPage('B14','SC')">  🚿 RSI14 - 2M</button>
         <button class="button-6" role="button" onclick="gotoPage('B14','SC6M')">📈 RSI14 - 6M</button>
-        <button class="button-6" role="button" onclick="gotoPage('M12','SC')">  📈 ROC12 - 2M</button>
-        <button class="button-6" role="button" onclick="gotoPage('M12','SC6M')">📈 ROC12 - 6M</button>
+        <button class="button-6" role="button" onclick="gotoPage('M12','SC')">  📟 ROC12 - 2M</button>
+        <button class="button-6" role="button" onclick="gotoPage('M12','SC6M')">🕛 ROC12 - 6M</button>
     </div>
     
     <div id="img_home"></div>
@@ -126,7 +127,7 @@
                         });
                     })
                     .catch(function (error) {
-                        console.error(error)
+                        console.error(error);
                     });
             } else if (chartType == "SC" || chartType == "SC6M") {
                 partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, "#progress_home")
@@ -142,7 +143,7 @@
                         });
                     })
                     .catch(function (error) {
-                        console.error(error)
+                        console.error(error);
                     });
             } else {
                 console.error("chart type not define");
