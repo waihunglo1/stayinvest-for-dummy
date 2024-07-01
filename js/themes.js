@@ -197,7 +197,7 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
 
     var sortBylink = "https://render-ealy.onrender.com/stockcharts/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     if(stockCodesStr.indexOf(".HK") >= 0) {
-        sortBylink = "https://render-ealy.onrender.com/yahoo?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";        
+        sortBylink = "https://render-ealy.onrender.com/yahoo?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     }
 
     const tempSortByLink = sortBylink
