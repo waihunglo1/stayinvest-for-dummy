@@ -35,11 +35,23 @@
     <div id="progress_home"></div>
 
     <script type="text/javascript">
-        function addButton(parentId, buttonLabel) {
+        function addButtons(parentId, chartType) {
+            if(chartType == "HK") {
+                addButton(parentId,"🚿 ROC - 2M","M12","HK");
+                addButton(parentId,"📈 RSI - 2M","B14","HK");
+            } else {
+                addButton(parentId,"🚿 RSI14 - 2M","B14","SC");
+                addButton(parentId,"📈 RSI14 - 6M","B14","SC6M");
+                addButton(parentId,"📟 ROC12 - 2M","M12","SC");
+                addButton(parentId,"🕛 ROC12 - 6M","M12","SC6M");
+            }
+        }
+
+        function addButton(parentId, buttonLabel, taIndicator, chartType) {
             const buttonElement = document.createElement("button");
             buttonElement.setAttribute("class","button-6");
             buttonElement.innerText = buttonLabel;
-            buttonElement.onclick = function() { gotoPage('B14','HK'); };
+            buttonElement.onclick = function() { gotoPage(taIndicator,chartType); };
             document.getElementById(parentId).appendChild(buttonElement);
         }
 
@@ -114,7 +126,7 @@
                 }
             }
 
-            addButton("top_row_home","TEST")
+            addButtons("top_row_home",chartType);
             sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator);
         }
         
