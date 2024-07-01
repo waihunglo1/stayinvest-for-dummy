@@ -128,16 +128,6 @@
                     .catch(function (error) {
                         console.error(error)
                     });
-
-
-                inputStockCodes
-                    .split(",")
-                    .forEach(stockCodeStr => {
-                        appendImageToParent("img_home", stockCodeStr, null, null);                        
-                    });
-
-
-
             } else if (chartType == "SC" || chartType == "SC6M") {
                 partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, "#progress_home")
                     .then(function (sortedStockCodes) {
