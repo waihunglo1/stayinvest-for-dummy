@@ -251,7 +251,7 @@ function appendSC(parentId, stockCode, universe, scConf, taIndicator, desc, bord
       .replace(/{period}/i, scConf.period)
       .replace(/{taIndicator}/i, taIndicator);
 
-    const refLink = "https://www.stockfisher.com.hk/us-stock/ticker/{stockCode}";
+    var refLink = "https://www.stockfisher.com.hk/us-stock/ticker/{stockCode}";
 
     if ("etf" == universe) {
         refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
