@@ -241,7 +241,7 @@ function appendAA(parentId, stockCode, period, desc, borderStyle) {
     appendImageAndHrefAddr(parentId, tempChartLink, tempRefLink, chartWidth, chartHeight, desc, borderStyle);
 }
 
-function appendSC(parentId, stockCode, scConf, taIndicator, desc, borderStyle) {
+function appendSC(parentId, stockCode, universe, scConf, taIndicator, desc, borderStyle) {
     const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[{chartWidth},a]dacayaci[pb20!b50][{period}][il{taIndicator}]";
 
     const tempChartLink = stockChartLink
@@ -252,6 +252,13 @@ function appendSC(parentId, stockCode, scConf, taIndicator, desc, borderStyle) {
       .replace(/{taIndicator}/i, taIndicator);
 
     const refLink = "https://www.stockfisher.com.hk/us-stock/ticker/{stockCode}";
+
+    if ("etf" == universe) {
+        refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
+    } else if (stockCode.startsWith("$") >= 0) {
+        refLink = "https://stockcharts.com/sc3/ui/?s={stockCode}";
+    }
+
     const tempRefLink = refLink
       .replace(/{stockCode}/i, stockCode);
 
