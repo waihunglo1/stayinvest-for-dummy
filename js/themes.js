@@ -242,8 +242,9 @@ function appendAA(parentId, stockCode, period, desc, borderStyle) {
 }
 
 function appendSC(parentId, stockCode, universe, scConf, taIndicator, desc, borderStyle) {
-    const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[{chartWidth},a]dacayaci[pb20!b50][{period}][il{taIndicator}]";
+    console.log("snapshot: " + stockCode + " universe:" + universe + " startWith:" + stockCode.startWith("$"));
 
+    const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[{chartWidth},a]dacayaci[pb20!b50][{period}][il{taIndicator}]";
     const tempChartLink = stockChartLink
       .replace(/{chartWidth}/i, scConf.chartWidth)
       .replace(/{chartHeight}/i, scConf.chartHeight)
@@ -255,7 +256,7 @@ function appendSC(parentId, stockCode, universe, scConf, taIndicator, desc, bord
 
     if ("etf" == universe) {
         refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
-    } else if (stockCode.startsWith("$") >= 0) {
+    } else if (stockCode.startsWith("$")) {
         refLink = "https://stockcharts.com/sc3/ui/?s={stockCode}";
     }
 
