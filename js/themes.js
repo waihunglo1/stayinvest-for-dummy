@@ -242,7 +242,7 @@ function appendAA(parentId, stockCode, period, desc, borderStyle) {
 }
 
 function appendSC(parentId, stockCode, universe, scConf, taIndicator, desc, borderStyle) {
-    console.log("snapshot: " + stockCode + " universe:" + universe + " startWith:" + stockCode.startWith("$"));
+    console.log("snapshot: " + stockCode + " universe:" + universe + " startWith:" + stockCode.startsWith("$"));
 
     const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[{chartWidth},a]dacayaci[pb20!b50][{period}][il{taIndicator}]";
     const tempChartLink = stockChartLink
