@@ -49,7 +49,6 @@ function isEmpty(value) {
 }
 
 function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDesc) {
-
     const hrefAddrStr = hrefAddr.replace(/{linkDesc}/i, linkDesc);
 
     // create link element
@@ -213,6 +212,28 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
         const data = await res.json();
         return data.stocks;
     }
+}
+
+/**
+ * async fetch index close
+ * https://render-ealy.onrender.com/yahoo?cgo=^IXIC,^GSPC,^DJI|S50&p=1&format=json&order=d
+ */
+function fetchIndexClose() {
+    const jsonLink = "https://render-ealy.onrender.com/yahoo?cgo=^IXIC,^GSPC,^DJI|S50&p=1&format=json&order=d"
+    fetch(jsonLink)
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error
+                    (`HTTP error! Status: ${res.status}`);
+            }
+            return res.json();
+        })
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((error) => {
+            console.error("Unable to fetch data:", error);
+        });
 }
 
 /**
