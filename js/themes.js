@@ -218,7 +218,7 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
  * async fetch index close
  * https://render-ealy.onrender.com/yahoo?cgo=^IXIC,^GSPC,^DJI|S50&p=1&format=json&order=d
  */
-function fetchIndexClose() {
+function fetchIndexClose(gridApi) {
     const jsonLink = "https://render-ealy.onrender.com/yahoo?cgo=^IXIC,^GSPC,^DJI|S50&p=1&format=json&order=d"
     fetch(jsonLink)
         .then((res) => {
@@ -230,6 +230,7 @@ function fetchIndexClose() {
         })
         .then((data) => {
             console.log(data);
+            gridApi.setGridOption("rowData", data.stocks);
         })
         .catch((error) => {
             console.error("Unable to fetch data:", error);
