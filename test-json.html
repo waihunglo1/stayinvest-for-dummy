@@ -68,10 +68,6 @@ const gridOptions = {
     { field: "mission" },
     { field: "company" },
     { field: "location" },
-    { field: "date" },
-    { field: "price" },
-    { field: "successful" },
-    { field: "rocket" },
   ],
 };
 
@@ -79,11 +75,11 @@ const gridOptions = {
 gridApi = agGrid.createGrid(document.querySelector("#myGrid"), gridOptions);
 
 // Fetch Remote Data
-fetch("https://www.ag-grid.com/example-assets/space-mission-data.json")
+fetch("https://render-ealy.onrender.com/yahoo?cgo=^IXIC,^GSPC,^DJI|S50&p=1&format=json&order=d")
   .then((response) => response.json())
-  .then((data) => gridApi.setGridOption("rowData", data));
+  .then((data) => gridApi.setGridOption("rowData", data.stocks));
 
-  
+
     </script>
 
 </body>
