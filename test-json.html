@@ -81,7 +81,7 @@ gridApi = agGrid.createGrid(document.querySelector("#myGrid"), gridOptions);
     // Fetch Remote Data
     fetch("https://render-ealy.onrender.com/yahoo?cgo=^IXIC,^GSPC,^DJI|S50&p=1&format=json&order=d")
         .then((response) => response.json())
-        .then(function (data) { gridOptions.gridApi.setRowData(data.stocks); });
+        .then(function (data) { agGrid.setRowData(data.stocks); });
 
   
     </script>
