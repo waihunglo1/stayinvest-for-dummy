@@ -218,23 +218,20 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
  * async fetch index close
  * https://render-ealy.onrender.com/yahoo?cgo=^IXIC,^GSPC,^DJI|S50&p=1&format=json&order=d
  */
-function fetchIndexClose(gridApi) {
-    const jsonLink = "https://render-ealy.onrender.com/yahoo?cgo=^IXIC,^GSPC,^DJI|S50&p=1&format=json&order=d"
-    fetch(jsonLink)
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error
-                    (`HTTP error! Status: ${res.status}`);
-            }
-            return res.json();
-        })
-        .then((data) => {
-            console.log(data);
-            gridApi.setGridOption("rowData", data.stocks);
-        })
-        .catch((error) => {
-            console.error("Unable to fetch data:", error);
-        });
+function fetchInGrid(parentId, stockCodes, taIndicator) {
+    var dataLink = "https://render-ealy.onrender.com/yahoo?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+    const tempSortByLink = dataLink
+        .replace(/{stockCodes}/i, stockCodes)
+        .replace(/{taIndicator}/i, taIndicator);
+
+    new gridjs.Grid({
+        columns: ['Symbol', 'sma50', 'close', 'diff'],
+        server: {
+            url: tempSortByLink,
+            then: data => data.stocks.map(stock => [stock.symbol, stock.extra, stock.close, stock.diff])
+        } 
+        }).render(document.getElementById(parentId));    
+
 }
 
 /**
