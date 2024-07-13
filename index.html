@@ -205,12 +205,14 @@
 	<script type="text/javascript">
 		const stockChartLink = "snapshots-aa.html?d={linkDesc}&t={type}&o={stockCodes}";
 
+		// Market List
+		fetchCsvThemesAndAppendLink(stockChartLink, "MARKET_LIST_DIV", "MARKET-LIST");
+
 		// us theme
 		fetchCsvThemesAndAppendLink(stockChartLink, "US_INDEX_DIV", "US-INDEX");
 		fetchCsvThemesAndAppendLink(stockChartLink, "US_ROUTINE_DIV", "US-ROUTINE");
 		fetchCsvThemesAndAppendLink(stockChartLink, "US_AI_ROUTINE_DIV", "US-AI-ROUTINE");
 		fetchCsvThemesAndAppendLink(stockChartLink, "US_OTH_ROUTINE_DIV", "US-OTH-ROUTINE");
-		fetchCsvThemesAndAppendLink(stockChartLink, "US_FOCUS_LIST_DIV", "US-FOCUS-LIST");
 		fetchCsvThemesAndAppendLink(stockChartLink, "US_SECTOR_DIV", "US-SECTOR");
 
 		// hk theme
