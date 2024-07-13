@@ -216,9 +216,14 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
 
 /**
  * async fetch index close
+ * yahoo data support only
  * https://render-ealy.onrender.com/yahoo?cgo=^IXIC,^GSPC,^DJI|S50&p=1&format=json&order=d
  */
 function fetchInGrid(parentId, stockCodes, taIndicator) {
+    if(stockCodes.includes("$")) {
+        return;
+    }
+
     var dataLink = "https://render-ealy.onrender.com/yahoo?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     const tempSortByLink = dataLink
         .replace(/{stockCodes}/i, stockCodes)
@@ -232,7 +237,6 @@ function fetchInGrid(parentId, stockCodes, taIndicator) {
             then: data => data.stocks.map(stock => [stock.symbol, stock.extra, stock.close, stock.diff])
         } 
         }).render(document.getElementById(parentId));    
-
 }
 
 /**
