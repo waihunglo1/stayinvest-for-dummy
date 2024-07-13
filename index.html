@@ -33,7 +33,7 @@
 	<H1>Stay Invest for Dummy</H1>
 	<div class="grid-container">
 		<div class="grid-item a" style="color: #666666;">
-			<img src="https://placehold.it/1024x100" alt="" />
+			<div id="GRID_WRAPPER_DIV"></div>
 		</div>
 		
 		<div class="grid-item" style="color: #666666;">
@@ -208,7 +208,8 @@
 		fetchCsvThemesAndAppendLink(stockChartLink, "HSI004_DIV", "港股科技指數");
 		fetchCsvThemesAndAppendLink(stockChartLink, "HAI001_DIV", "港股人工智能股票");
 
-		// fetchInGrid("GRID_WRAPPER_DIV","^IXIC,^GSPC,^DJI","S50");
+		// index diff
+		fetchInGrid("GRID_WRAPPER_DIV","^IXIC,^GSPC,^DJI","S50");
 	</script>	
 </body>
 
