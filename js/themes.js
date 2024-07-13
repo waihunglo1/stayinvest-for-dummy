@@ -226,6 +226,7 @@ function fetchInGrid(parentId, stockCodes, taIndicator) {
 
     new gridjs.Grid({
         columns: ['Symbol', 'sma50', 'close', 'diff'],
+        sort: true,
         server: {
             url: tempSortByLink,
             then: data => data.stocks.map(stock => [stock.symbol, stock.extra, stock.close, stock.diff])
