@@ -39,6 +39,7 @@
 
    <!-- Your Data Grid container -->
    <div id="wrapper03"></div>  
+   <div id="wrapper04"></div>   
 
     <script type="text/javascript">
         // sorting by Stockchart taindicator
@@ -56,6 +57,9 @@
         fetchCsvThemesAndAppendLink(stockChartLink, "img_home02", "港股活躍股票");
 
         fetchInGrid("wrapper03","^IXIC,^GSPC,^DJI","S50");
+
+        fetchInGrid("wrapper04",stockCodes,"S50");
+
 
   
     </script>
