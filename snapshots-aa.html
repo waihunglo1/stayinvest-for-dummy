@@ -132,7 +132,8 @@
                     .replace(/{stockCodes}/i, inputStockCodes);
 
             console.log(tempChartLink);
-            window.location = tempChartLink;
+            // window.location = tempChartLink;
+            window.open(tempChartLink, '_blank').focus();
         }
 
         function appendImageToParent(parentId, stockCode, universe, desc, taIndicator, borderStyle) {
