@@ -62,8 +62,8 @@ body {
 
 .grid-container {
     display: grid;
-    grid-template-columns: auto auto;
-    grid-template-areas: "a a" "a a";    
+    grid-template-columns: auto auto auto;
+    grid-template-areas: "a a" "a a" "a a";    
     padding: 1px;
 }
 
