@@ -62,7 +62,8 @@ body {
 
 .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
+    grid-template-areas: "a a" "a a";    
     padding: 1px;
 }
 
@@ -71,6 +72,10 @@ body {
     border: 0px solid rgba(0, 0, 0, 0.8);
     padding: 2px;
     text-align: left;
+}
+
+.a {
+    grid-area: a;
 }
 
 p { display: inline }
