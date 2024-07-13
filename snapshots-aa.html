@@ -107,6 +107,13 @@
         }
 
         function addButtonTableLink(parentId, buttonLabel, taIndicator, chartType) {
+            const params = new URLSearchParams(document.location.search);
+            const inputStockCodes = params.get("o");
+
+            if(inputStockCodes.includes("$")) {
+                return;
+            }
+
             const buttonElement = document.createElement("button");
             buttonElement.setAttribute("class","button-6");
             buttonElement.innerText = buttonLabel;
