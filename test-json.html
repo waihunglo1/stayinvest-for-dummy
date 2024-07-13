@@ -38,7 +38,8 @@
     <div id="img_home02">TEST02</div>
 
    <!-- Your Data Grid container -->
-   <div id="wrapper"></div>
+   <div id="wrapper01"></div>
+   <div id="wrapper02"></div>   
 
     <script type="text/javascript">
         // sorting by Stockchart taindicator
@@ -64,17 +65,17 @@
     ["Sarah", "sarahcdd@gmail.com", "+322 876 1233"],
     ["Afshin", "afshin@mail.com", "(353) 22 87 8356"]
   ]
-}).render(document.getElementById("wrapper"));
+}).render(document.getElementById("wrapper01"));
 
 
 
-const grid = new Grid({
+new gridjs.Grid({
   columns: ['Name', 'Language', 'Released At', 'Artist'],
   server: {
     url: 'https://api.scryfall.com/cards/search?q=Inspiring',
     then: data => data.data.map(card => [card.name, card.lang, card.released_at, card.artist])
   } 
-});
+}).render(document.getElementById("wrapper02"));
 
   
     </script>
