@@ -19,17 +19,12 @@
     <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
     <script type="text/javascript" src="js/loading-bar.js"></script>
     <script type="text/javascript" src="js/themes.js"></script>
-
-    <!-- data table -->
-    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
-    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>    
 </head>
 
 <body>
     <div id="top_row_home" class="topRow"></div>
     <div id="img_home"></div>
     <div id="progress_home"></div>
-    <div id="grid_home" style="margin: 0 auto; width:855px;float:left"></div>
 
     <script type="text/javascript">
         function parseLocationAndShowCharts() {
@@ -73,31 +68,54 @@
 
             addButtons("top_row_home", chartType);
             sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator);
-            fetchInGrid("grid_home", inputStockCodes, "S50");
         }
 
         function addButtons(parentId, chartType) {
             if(chartType == "HK") {
-                addButton(parentId,"🚿 ROC - 2M","M12","HK");
-                addButton(parentId,"📈 RSI - 2M","B14","HK");
+                addButton(parentId,"🚿 ROC - 2M", "M12", "HK");
+                addButton(parentId,"📈 RSI - 2M", "B14", "HK");
             } else {
-                addButton(parentId,"🚿 RSI14 - 2M","B14","SC");
-                addButton(parentId,"📈 RSI14 - 6M","B14","SC6M");
-                addButton(parentId,"📟 ROC12 - 2M","M12","SC");
-                addButton(parentId,"🕛 ROC12 - 6M","M12","SC6M");
+                addButton(parentId,"🚿 RSI14 - 2M", "B14", "SC");
+                addButton(parentId,"📈 RSI14 - 6M", "B14", "SC6M");
+                addButton(parentId,"📟 ROC12 - 2M", "M12", "SC");
+                addButton(parentId,"🕛 ROC12 - 6M", "M12", "SC6M");
             }
+
+            addButtonTableLink(parentId,"🔟SMA50","S50","SC");
         }
 
         function addButton(parentId, buttonLabel, taIndicator, chartType) {
             const buttonElement = document.createElement("button");
             buttonElement.setAttribute("class","button-6");
             buttonElement.innerText = buttonLabel;
-            buttonElement.onclick = function() { gotoPage(taIndicator,chartType); };
+            buttonElement.onclick = function() { gotoPage(taIndicator, chartType); };
             document.getElementById(parentId).appendChild(buttonElement);
         }
 
         function gotoPage(taIndicator, period) {
             const stockChartLink = "snapshots-aa.html?t={type}&a={taIndicator}&o={stockCodes}";
+            const params = new URLSearchParams(document.location.search);
+            const inputStockCodes = params.get("o");
+
+            const tempChartLink = stockChartLink
+                    .replace(/{type}/i, period)
+                    .replace(/{taIndicator}/i, taIndicator)
+                    .replace(/{stockCodes}/i, inputStockCodes);
+
+            console.log(tempChartLink);
+            window.location = tempChartLink;
+        }
+
+        function addButtonTableLink(parentId, buttonLabel, taIndicator, chartType) {
+            const buttonElement = document.createElement("button");
+            buttonElement.setAttribute("class","button-6");
+            buttonElement.innerText = buttonLabel;
+            buttonElement.onclick = function() { gotoTablePage(taIndicator, chartType); };
+            document.getElementById(parentId).appendChild(buttonElement);
+        }        
+
+        function gotoTablePage(taIndicator, period) {
+            const stockChartLink = "sma50.html?t={type}&a={taIndicator}&o={stockCodes}";
             const params = new URLSearchParams(document.location.search);
             const inputStockCodes = params.get("o");
 
