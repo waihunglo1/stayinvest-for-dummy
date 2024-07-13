@@ -40,6 +40,7 @@
    <!-- Your Data Grid container -->
    <div id="wrapper01"></div>
    <div id="wrapper02"></div>   
+   <div id="wrapper03"></div>  
 
     <script type="text/javascript">
         // sorting by Stockchart taindicator
@@ -76,6 +77,15 @@ new gridjs.Grid({
     then: data => data.data.map(card => [card.name, card.lang, card.released_at, card.artist])
   } 
 }).render(document.getElementById("wrapper02"));
+
+
+new gridjs.Grid({
+  columns: ['Symbol', 'sma50', 'close', 'diff'],
+  server: {
+    url: 'https://render-ealy.onrender.com/yahoo?cgo=^IXIC,^GSPC,^DJI|S50&p=1&format=json&order=d',
+    then: data => data.stocks.map(card => [stock.symbol, stock.extra, stock.close, stock.diff])
+  } 
+}).render(document.getElementById("wrapper03"));
 
   
     </script>
