@@ -83,7 +83,7 @@ new gridjs.Grid({
   columns: ['Symbol', 'sma50', 'close', 'diff'],
   server: {
     url: 'https://render-ealy.onrender.com/yahoo?cgo=^IXIC,^GSPC,^DJI|S50&p=1&format=json&order=d',
-    then: data => data.stocks.map(card => [stock.symbol, stock.extra, stock.close, stock.diff])
+    then: data => data.stocks.map(stock => [stock.symbol, stock.extra, stock.close, stock.diff])
   } 
 }).render(document.getElementById("wrapper03"));
 
