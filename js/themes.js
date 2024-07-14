@@ -180,7 +180,12 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
         // sort by StockChart TA
         // let stocksSortByTA = stocks.sort((a,b) => b.extra - a.extra);
         // var sortedSymbols = stocksSortByTA.flat().map(({ symbol }) => symbol);
-        return stocks.sort((a,b) => b.extra - a.extra);
+
+        if ("VOL" == taIndicator) {
+            return stocks.sort((a,b) => (b.close * b.vol) - (a.close * a.vol));
+        } else {
+            return stocks.sort((a,b) => b.extra - a.extra);
+        }
     } else {
         return stockCodeStr.split(","); // return original lists
     }
