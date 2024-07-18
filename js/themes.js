@@ -249,7 +249,6 @@ function fetchInGrid(parentId, stockCodes, taIndicator) {
  * 
  */
 
-
 function appendAA(parentId, stockCode, period, desc, borderStyle) {
     const chartWidth = 400;
     const chartHeight = 350;
