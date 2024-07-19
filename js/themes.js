@@ -235,11 +235,19 @@ function fetchInGrid(parentId, stockCodes, taIndicator) {
         .replace(/{taIndicator}/i, taIndicator);
 
     new gridjs.Grid({
-        columns: ['Symbol', 'sma50', 'close', 'diff'],
+        columns: ['symbol', 'sma50', 'close', 'diff'],
         sort: true,
         server: {
             url: tempSortByLink,
             then: data => data.stocks.map(stock => [stock.symbol, stock.extra, stock.close, stock.diff])
+        },
+        style: {
+          td: {
+            border: '1px solid #ccc'
+          },
+          table: {
+            'font-size': '12px'
+          }
         } 
         }).render(document.getElementById(parentId));    
 }
