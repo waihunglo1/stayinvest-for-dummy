@@ -26,10 +26,18 @@
     <div id="tradingViewGrid" class="wrapper">
     </div>
 
+    <!-- add tradingView widget-->
     <script type="text/javascript">
         window.onload = parseLocationAndShowCharts;  
 
         function parseLocationAndShowCharts() {
+
+            var parent = document.getElementById("tradingViewGrid");
+            for (let i = 0; i < 10; i++) {
+                var containerId = "tradingview_" + ind.toString().padStart(4, '0');
+                var div01 = document.createElement(containerId);
+                parent.appendChild(div01);            
+            }
 
             const stockCodes = [
                 "NASDAQ:AAPL",
@@ -42,9 +50,9 @@
             ];
 
             let ind = 1;
-            stockCodes.forEach(stockCode => {
+            stockCodes.forEach(stockCode => {                
                 var containerId = "tradingview_" + ind.toString().padStart(4, '0');
-                addTradingViewWidget(stockCode, containerId, "tradingViewGrid");
+                addTradingViewWidget(stockCode, containerId);
                 ind++;
             });
         }
@@ -57,12 +65,7 @@
             document.getElementById(parentId).appendChild(buttonElement);
         }        
 
-        function addTradingViewWidget(stockCode, containerId, parentId) {
-            // parent
-            var parent = document.getElementById(parentId);
-            var div01 = document.createElement(containerId);
-            parent.appendChild(div01);            
-
+        function addTradingViewWidget(stockCode, containerId) {
             new TradingView.widget({
                 "width": "400",
                 "height": "350",
