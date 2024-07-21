@@ -19,110 +19,62 @@
     <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
     <script type="text/javascript" src="js/loading-bar.js"></script>
     <script type="text/javascript" src="js/themes.js"></script>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 </head>
 
 <body>
-	<div class="grid-container">
+    <script type="text/javascript">
+        new TradingView.widget(
+            {
+                "autosize": true,
+                "symbol": "BINANCE:BTCUSDT",
+                "interval": "D",
+                "timezone": "Asia/Kolkata",
+                "theme": "dark",
+                "style": "1",
+                "locale": "en",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "withdateranges": true,
+                "hide_side_toolbar": false,
+                "allow_symbol_change": true,
+                "studies": [
+                    {
+                        id: "MASimple@tv-basicstudies",
+                        inputs: {
+                            length: 20
+                        }
+                    },
+                    {
+                        id: "MASimple@tv-basicstudies",
+                        inputs: {
+                            length: 100
+                        }
+                    },
+                    {
+                        id: "MASimple@tv-basicstudies",
+                        inputs: {
+                            length: 44
+                        }
+                    },
+                    {
+                        id: "MASimple@tv-basicstudies",
+                        inputs: {
+                            length: 200
+                        }
+                    }
+                ],
+                "container_id": "tradingview_e2cd6"
+            }
+        );
+    </script>
 
+    <div class="grid-container">
         <!-- TradingView Widget BEGIN -->
-		<div class="grid-item" style="color: #666666;">
-            <div class="tradingview-widget-container__widget-01"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-                {
-                "width": "350",
-                "height": "300",
-                "symbol": "NYSE:VRT",
-                "interval": "D",
-                "timezone": "Etc/UTC",
-                "theme": "light",
-                "style": "1",
-                "locale": "en",
-                "hide_top_toolbar": true,
-                "allow_symbol_change": false,
-                "save_image": false,
-                "calendar": false,
-                "studies": [
-                "STD;ROC"
-                ],
-                "support_host": "https://www.tradingview.com"
-                }
-            </script>
+        <div class="grid-item" style="color: #666666;">
+            <div id="tradingview_e2cd6"></div>
         </div>
-
-		<div class="grid-item" style="color: #666666;">
-            <div class="tradingview-widget-container__widget-02"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-                {
-                "width": "350",
-                "height": "300",
-                "symbol": "NASDAQ:AAPL",
-                "interval": "D",
-                "timezone": "Etc/UTC",
-                "theme": "light",
-                "style": "1",
-                "locale": "en",
-                "hide_top_toolbar": true,
-                "allow_symbol_change": false,
-                "save_image": false,
-                "calendar": false,
-                "studies": [
-                "STD;ROC"
-                ],
-                "support_host": "https://www.tradingview.com"
-                }
-            </script>
-        </div>
-
-		<div class="grid-item" style="color: #666666;">
-            <div class="tradingview-widget-container__widget-02"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-                {
-                "width": "350",
-                "height": "300",
-                "symbol": "NASDAQ:NVDA",
-                "interval": "D",
-                "timezone": "Etc/UTC",
-                "theme": "light",
-                "style": "1",
-                "locale": "en",
-                "hide_top_toolbar": true,
-                "allow_symbol_change": false,
-                "save_image": false,
-                "calendar": false,
-                "studies": [
-                "STD;ROC"
-                ],
-                "support_host": "https://www.tradingview.com"
-                }
-            </script>
-        </div>
-        
-		<div class="grid-item" style="color: #666666;">
-            <div class="tradingview-widget-container__widget-02"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-                {
-                "width": "350",
-                "height": "300",
-                "symbol": "NASDAQ:CRM",
-                "interval": "D",
-                "timezone": "Etc/UTC",
-                "theme": "light",
-                "style": "1",
-                "locale": "en",
-                "hide_top_toolbar": true,
-                "allow_symbol_change": false,
-                "save_image": false,
-                "calendar": false,
-                "studies": [
-                "STD;ROC"
-                ],
-                "support_host": "https://www.tradingview.com"
-                }
-            </script>
-        </div>        
     </div>
-
-  <!-- TradingView Widget END -->
 
   </body>
 
