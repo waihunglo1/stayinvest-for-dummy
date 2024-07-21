@@ -122,3 +122,10 @@ p { display: inline }
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
 }
+
+.wrapper {
+    width: 1200px;
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: repeat(3, 400px);
+}
