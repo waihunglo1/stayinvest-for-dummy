@@ -46,14 +46,13 @@
 
         function addTradingViewWidget(stockCode, parentId) {
             new TradingView.widget({
-                "width": "400",
-                "height": "350",
+                "autosize": true,
                 "symbol": stockCode,
                 "interval": "D",
-                "range": "3M",
+                "range": "1M",
                 "timezone": "exchange",
                 "theme": "light",
-                "style": "0",
+                "style": "1",
                 "locale": "en",
                 "hide_top_toolbar": true,
                 "enable_publishing": false,
