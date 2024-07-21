@@ -156,7 +156,7 @@
                 console.error("parameter o is null!!"); //show 1
                 return;
             } else if (chartType == "HK") {
-                partitionStockCodesAndSort("2800.HK," + inputStockCodes, taIndicator, "#progress_home")
+                partitionStockCodesAndSort("2800.HK," + inputStockCodes, taIndicator, "#progress_home", "DEFAULT")
                     .then(function (sortedStockCodes) {
                         sortedStockCodes.forEach(stockCode => {
                             var borderStyle = null;
@@ -170,7 +170,7 @@
                         console.error(error);
                     });
             } else if (chartType == "SC" || chartType == "SC6M") {
-                partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, "#progress_home")
+                partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, "#progress_home", "DEFAULT")
                     .then(function (sortedStockCodes) {
                         sortedStockCodes.forEach(stockCode => {
                             var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;

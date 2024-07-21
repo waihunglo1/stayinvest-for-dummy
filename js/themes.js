@@ -136,7 +136,7 @@ function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
 /**
  * Partition chunks
  */
-const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) => {
+const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, dataScanType) => {
     const chunkSize = 25;
     var stocks = [];
     var stockCodes = stockCodeStr
@@ -161,7 +161,7 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
     while (stockCodes.length > 0) {
         var chunk = stockCodes.splice(0, chunkSize);
 
-        await fetchStockCodesSortBy(chunk, taIndicator)
+        await fetchStockCodesSortBy(chunk, taIndicator, dataScanType)
             .then(function (sortedStocks) {
                 sortedStocks.forEach(element => {
                     stocks.push(element);                   
@@ -196,13 +196,13 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName) 
  * const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
  * @returns 
  */
-const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
+const fetchStockCodesSortBy = async (stockCodes, taIndicator, dataScanType) => {
     const stockCodesStr = stockCodes.join(",");
 
     var sortBylink = "https://render-ealy.onrender.com/stockcharts/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
-    if(stockCodesStr.indexOf(".HK") >= 0) {
+    if(stockCodesStr.indexOf(".HK") >= 0 || "YH" === dataScanType) {
         sortBylink = "https://render-ealy.onrender.com/yahoo?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
-    }
+    } 
 
     const tempSortByLink = sortBylink
         .replace(/{stockCodes}/i, stockCodesStr)

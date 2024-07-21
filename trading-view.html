@@ -28,6 +28,23 @@
         window.onload = parseLocationAndShowCharts;  
 
         function parseLocationAndShowCharts() {
+            const {inputStockCodes, chartType, taIndicator} = parseParameters();
+
+            partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, "#progress_home", "YH")
+                .then(function (sortedStockCodes) {
+                    sortedStockCodes.forEach(stockCode => {
+                        var desc = stockCode.name;
+                        var borderStyle = null;
+                        if (stockCode.symbol == 'SPY') {
+                            borderStyle = "5px solid orange";
+                        }
+                        // appendImageToParent("img_home", stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
+                    });
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });            
+
             const stockCodes = [
                 "NASDAQ:AAPL",
                 "NASDAQ:MSFT",
@@ -44,6 +61,47 @@
                 addTradingViewWidget(stockCode, containerId);
                 ind++;
             });
+        }
+
+        function parseParameters() {
+            // handler input parameter
+            const params = new URLSearchParams(document.location.search);
+            const inputStockCodes = params.get("o");
+            const t = params.get("t");
+            const a = params.get("a");
+            const d = params.get("d");
+
+            // stock codes
+            console.log("parseLocationAndShowCharts o = " + inputStockCodes);
+            console.log("parseLocationAndShowCharts t = " + t);
+            console.log("parseLocationAndShowCharts a = " + a);
+            console.log("parseLocationAndShowCharts d = " + d);
+
+            // chart type
+            if (t == null) {
+                console.info("parameter t is null!!"); //show t
+                chartType = 'HK';
+            } else {
+                chartType = t; // SC or SC6M
+            }
+
+            // taIndicator
+            if (a == null) {
+                console.info("taIndicator is null");
+                taIndicator = "M12";
+            } else {
+                taIndicator = a; // M12 or B14
+            }
+
+            // description
+            if (d != null) {
+                let title_el = document.querySelector("title");
+                if (title_el) {
+                    title_el.innerHTML = d;
+                }
+            }
+
+            return {inputStockCodes, chartType, taIndicator};
         }
 
         function addButton(parentId, buttonLabel) {
@@ -107,6 +165,39 @@
         <div id="tv0005"></div>
         <div id="tv0006"></div>
         <div id="tv0007"></div>
+        <div id="tv0008"></div>
+        <div id="tv0009"></div>
+        <div id="tv0010"></div>
+        <div id="tv0011"></div>
+        <div id="tv0012"></div>
+        <div id="tv0013"></div>
+        <div id="tv0014"></div>
+        <div id="tv0015"></div>
+        <div id="tv0016"></div>
+        <div id="tv0017"></div>
+        <div id="tv0018"></div>
+        <div id="tv0019"></div>
+        <div id="tv0020"></div>
+        <div id="tv0021"></div>
+        <div id="tv0022"></div>
+        <div id="tv0023"></div>
+        <div id="tv0024"></div>
+        <div id="tv0025"></div>
+        <div id="tv0026"></div>
+        <div id="tv0027"></div>
+        <div id="tv0028"></div>
+        <div id="tv0029"></div>
+        <div id="tv0030"></div>
+        <div id="tv0031"></div>
+        <div id="tv0032"></div>
+        <div id="tv0033"></div>
+        <div id="tv0034"></div>
+        <div id="tv0035"></div>
+        <div id="tv0036"></div>
+        <div id="tv0037"></div>
+        <div id="tv0038"></div>
+        <div id="tv0039"></div>
+        <div id="tv0040"></div>
     </div>
 
   </body>
