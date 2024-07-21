@@ -34,7 +34,7 @@
 
             var parent = document.getElementById("tradingViewGrid");
             for (let i = 0; i < 10; i++) {
-                var containerId = "tradingview_" + ind.toString().padStart(4, '0');
+                var containerId = "tradingview_" + i.toString().padStart(4, '0');
                 var div01 = document.createElement(containerId);
                 parent.appendChild(div01);            
             }
