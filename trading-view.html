@@ -26,17 +26,17 @@
     <script type="text/javascript">
         new TradingView.widget(
             {
-                "autosize": true,
+                "width": "350",
+                "height": "300",
                 "symbol": "BINANCE:BTCUSDT",
                 "interval": "D",
-                "timezone": "Asia/Kolkata",
-                "theme": "dark",
-                "style": "1",
+                "timezone": "Etc/UTC",
+                "theme": "light",
+                "style": "0",
                 "locale": "en",
-                "toolbar_bg": "#f1f3f6",
+                "hide_top_toolbar": true,
                 "enable_publishing": false,
                 "withdateranges": true,
-                "hide_side_toolbar": false,
                 "allow_symbol_change": true,
                 "studies": [
                     {
@@ -61,6 +61,12 @@
                         id: "MASimple@tv-basicstudies",
                         inputs: {
                             length: 200
+                        }
+                    },
+                    {
+                        id: "STD;ROC",
+                        inputs: {
+                            length:12
                         }
                     }
                 ],
