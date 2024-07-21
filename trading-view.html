@@ -27,13 +27,23 @@
         window.onload = parseLocationAndShowCharts;  
 
         function parseLocationAndShowCharts() {
-            addTradingViewWidget("NASDAQ:AAPL","tradingview_0001");
-            addTradingViewWidget("NASDAQ:MSFT","tradingview_0002");
-            addTradingViewWidget("NASDAQ:NVDA","tradingview_0003");
-            addTradingViewWidget("NASDAQ:TSLA","tradingview_0004");
-            addTradingViewWidget("NASDAQ:META","tradingview_0005");
-            addTradingViewWidget("NASDAQ:AMZN","tradingview_0006");
-            addTradingViewWidget("NASDAQ:GOOG","tradingview_0007");
+
+            const stockCodes = [
+                "NASDAQ:AAPL",
+                "NASDAQ:MSFT",
+                "NASDAQ:NVDA",
+                "NASDAQ:TSLA",
+                "NASDAQ:META",
+                "NASDAQ:AMZN",
+                "NASDAQ:GOOG"
+            ];
+
+            let ind = 1;
+            stockCodes.forEach(stockCode => {
+                var containerId = "tv_" + ind.toString().padStart(4, '0');
+                addTradingViewWidget(stockCode, containerId);
+                ind++;
+            });
         }
 
         function addButton(parentId, buttonLabel) {
@@ -89,7 +99,7 @@
         }
     </script>
 
-    <div class="wrapper">
+    <div id="tradingViewGrid" class="wrapper">
         <div id="tradingview_0001"></div>
         <div id="tradingview_0002"></div>
         <div id="tradingview_0003"></div>
