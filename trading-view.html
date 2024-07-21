@@ -74,6 +74,7 @@
         function parseLocationAndShowCharts() {
             const {inputStockCodes, chartType, taIndicator} = parseParameters();
 
+            let ind = 1;
             partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, "#progress_home", "YH")
                 .then(function (sortedStockCodes) {
                     sortedStockCodes.forEach(stockCode => {
@@ -82,29 +83,16 @@
                         if (stockCode.symbol == 'SPY') {
                             borderStyle = "5px solid orange";
                         }
-                        // appendImageToParent("img_home", stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
+
+                        // add trading view mini
+                        var containerId = "tv" + ind.toString().padStart(4, '0');
+                        addTradingViewWidget(stockCode, containerId);
+                        ind++;
                     });
                 })
                 .catch(function (error) {
                     console.error(error);
-                });            
-
-            const stockCodes = [
-                "NASDAQ:AAPL",
-                "NASDAQ:MSFT",
-                "NASDAQ:NVDA",
-                "NASDAQ:TSLA",
-                "NASDAQ:META",
-                "NASDAQ:AMZN",
-                "NASDAQ:GOOG"
-            ];
-
-            let ind = 1;
-            stockCodes.forEach(stockCode => {                
-                var containerId = "tv" + ind.toString().padStart(4, '0');
-                addTradingViewWidget(stockCode, containerId);
-                ind++;
-            });
+                });
         }
 
         function parseParameters() {
