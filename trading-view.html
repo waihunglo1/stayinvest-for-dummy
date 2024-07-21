@@ -54,7 +54,12 @@
             document.getElementById(parentId).appendChild(buttonElement);
         }        
 
-        function addTradingViewWidget(stockCode, parentId) {
+        function addTradingViewWidget(parentId, stockCode, containerId) {
+            // parent
+            var parent = document.getElementById(parentId);
+            var div01 = document.createElement(containerId);
+            parent.appendChild(div01);            
+
             new TradingView.widget({
                 "width": "400",
                 "height": "350",
@@ -91,22 +96,15 @@
                         }
                     }
                 ],
-                "container_id": parentId
+                "container_id": containerId
             });
 
-            addButton(parentId,"TradingView");
-            addButton(parentId,"Signal");
+            addButton(containerId,"TradingView");
+            addButton(containerId,"Signal");
         }
     </script>
 
     <div id="tradingViewGrid" class="wrapper">
-        <div id="tradingview_0001"></div>
-        <div id="tradingview_0002"></div>
-        <div id="tradingview_0003"></div>
-        <div id="tradingview_0004"></div>
-        <div id="tradingview_0005"></div>
-        <div id="tradingview_0006"></div>
-        <div id="tradingview_0007"></div>
     </div>
 
   </body>
