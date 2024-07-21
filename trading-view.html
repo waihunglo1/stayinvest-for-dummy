@@ -40,7 +40,7 @@
 
             let ind = 1;
             stockCodes.forEach(stockCode => {
-                var containerId = "tv_" + ind.toString().padStart(4, '0');
+                var containerId = "tradingview_" + ind.toString().padStart(4, '0');
                 addTradingViewWidget(stockCode, containerId);
                 ind++;
             });
