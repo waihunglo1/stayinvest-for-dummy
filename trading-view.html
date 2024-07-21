@@ -23,14 +23,16 @@
 </head>
 
 <body>
+
+
     <script type="text/javascript">
         new TradingView.widget(
             {
-                "width": "350",
-                "height": "300",
-                "symbol": "BINANCE:BTCUSDT",
+                "width": "450",
+                "height": "400",
+                "symbol": "NASDAQ:AAPL",
                 "interval": "D",
-                "timezone": "Etc/UTC",
+                "timezone": "exchange",
                 "theme": "light",
                 "style": "0",
                 "locale": "en",
@@ -48,13 +50,13 @@
                     {
                         id: "MASimple@tv-basicstudies",
                         inputs: {
-                            length: 100
+                            length: 50
                         }
                     },
                     {
                         id: "MASimple@tv-basicstudies",
                         inputs: {
-                            length: 44
+                            length: 150
                         }
                     },
                     {
@@ -70,7 +72,7 @@
                         }
                     }
                 ],
-                "container_id": "tradingview_e2cd6"
+                "container_id": "tradingview_0001"
             }
         );
     </script>
@@ -78,7 +80,13 @@
     <div class="grid-container">
         <!-- TradingView Widget BEGIN -->
         <div class="grid-item" style="color: #666666;">
-            <div id="tradingview_e2cd6"></div>
+            <div id="tradingview_0001"></div>
+            <div id="tradingview_0002"></div>
+            <div id="tradingview_0003"></div>
+            <div id="tradingview_0004"></div>
+            <div id="tradingview_0005"></div>
+            <div id="tradingview_0006"></div>
+
         </div>
     </div>
 
