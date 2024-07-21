@@ -78,16 +78,20 @@
             partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, "#progress_home", "YH")
                 .then(function (sortedStockCodes) {
                     sortedStockCodes.forEach(stockCode => {
-                        var desc = stockCode.name;
-                        var borderStyle = null;
-                        if (stockCode.symbol == 'SPY') {
-                            borderStyle = "5px solid orange";
-                        }
+                        if (stockCode.errmsg == "") {
+                            var desc = stockCode.name;
+                            var borderStyle = null;
+                            if (stockCode.symbol == 'SPY') {
+                                borderStyle = "5px solid orange";
+                            }
 
-                        // add trading view mini
-                        var containerId = "tv" + ind.toString().padStart(4, '0');
-                        addTradingViewWidget(stockCode, containerId);
-                        ind++;
+                            // add trading view mini
+                            var containerId = "tv" + ind.toString().padStart(4, '0');
+                            addTradingViewWidget(stockCode, containerId);
+                            ind++;
+                        } else {
+                            console.log(stockCode.errmsg);
+                        }
                     });
                 })
                 .catch(function (error) {
@@ -148,7 +152,7 @@
             var widget = new TradingView.widget({
                 "width": "400",
                 "height": "350",
-                "symbol": stockCode,
+                "symbol": stockCode.tradingViewSymbol,
                 "interval": "D",
                 "timezone": "exchange",
                 "theme": "light",
