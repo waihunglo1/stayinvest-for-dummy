@@ -36,6 +36,14 @@
             addTradingViewWidget("NASDAQ:GOOG","tradingview_0007");
         }
 
+        function addButton(parentId, buttonLabel) {
+            const buttonElement = document.createElement("button");
+            buttonElement.setAttribute("class","button-6");
+            buttonElement.innerText = buttonLabel;
+            // buttonElement.onclick = function() { gotoPage(taIndicator, chartType); };
+            document.getElementById(parentId).appendChild(buttonElement);
+        }        
+
         function addTradingViewWidget(stockCode, parentId) {
             new TradingView.widget({
                 "width": "400",
@@ -88,6 +96,9 @@
                 ],
                 "container_id": parentId
             });
+
+            addButton(parentId,"TradingView");
+            addButton(parentId,"Signal");
         }
     </script>
 

@@ -126,6 +126,6 @@ p { display: inline }
 .wrapper {
     width: 1200px;
     display: grid;
-    grid-gap: 1px;
+    grid-gap: 10px;
     grid-template-columns: repeat(3, 400px);
 }
