@@ -24,11 +24,23 @@
 
 <body>
     <script type="text/javascript">
-        new TradingView.widget(
-            {
+        window.onload = parseLocationAndShowCharts;  
+
+        function parseLocationAndShowCharts() {
+            addTradingViewWidget("NASDAQ:AAPL","tradingview_0001");
+            addTradingViewWidget("NASDAQ:MSFT","tradingview_0002");
+            addTradingViewWidget("NASDAQ:NVDA","tradingview_0003");
+            addTradingViewWidget("NASDAQ:TSLA","tradingview_0004");
+            addTradingViewWidget("NASDAQ:META","tradingview_0005");
+            addTradingViewWidget("NASDAQ:AMZN","tradingview_0006");
+            addTradingViewWidget("NASDAQ:GOOG","tradingview_0007");
+        }
+
+        function addTradingViewWidget(stockCode, parentId) {
+            new TradingView.widget({
                 "width": "400",
                 "height": "350",
-                "symbol": "NASDAQ:AAPL",
+                "symbol": stockCode,
                 "interval": "D",
                 "timezone": "exchange",
                 "theme": "light",
@@ -73,9 +85,9 @@
                         }
                     }
                 ],
-                "container_id": "tradingview_0001"
-            }
-        );
+                "container_id": parentId
+            });
+        }
     </script>
 
     <div class="grid-container">
@@ -87,6 +99,7 @@
             <div id="tradingview_0004"></div>
             <div id="tradingview_0005"></div>
             <div id="tradingview_0006"></div>
+            <div id="tradingview_0007"></div>
 
         </div>
     </div>
