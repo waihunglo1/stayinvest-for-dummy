@@ -41,7 +41,7 @@
             let ind = 1;
             stockCodes.forEach(stockCode => {
                 var containerId = "tradingview_" + ind.toString().padStart(4, '0');
-                addTradingViewWidget(stockCode, containerId);
+                addTradingViewWidget(stockCode, containerId, "tradingViewGrid");
                 ind++;
             });
         }
@@ -54,7 +54,7 @@
             document.getElementById(parentId).appendChild(buttonElement);
         }        
 
-        function addTradingViewWidget(parentId, stockCode, containerId) {
+        function addTradingViewWidget(stockCode, containerId, parentId) {
             // parent
             var parent = document.getElementById(parentId);
             var div01 = document.createElement(containerId);
