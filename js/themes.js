@@ -177,12 +177,16 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, 
     console.log("total stock size : " + stocks.length);
 
     if(stocks.length > 0) {
-        // sort by StockChart TA
-        // let stocksSortByTA = stocks.sort((a,b) => b.extra - a.extra);
-        // var sortedSymbols = stocksSortByTA.flat().map(({ symbol }) => symbol);
-
         if(! shouldSort) {
-            return stocks;
+            var unsortStocks = [];
+            stockCodes.forEach((stockCode) => {
+                for(let i = 0; i < stocks.length; i++) {
+                    if(stockCode == stocks.symbol) {
+                        unsortStocks.push(stocks);
+                    }
+                }
+            });
+            return stockCodes;
         }
 
         if ("VOL" == taIndicator) {
