@@ -36,10 +36,29 @@
 				</td>
 			</tr>
 		</table>			
-	</div>	    
+	</div>
+
+	<div id="progress_home"></div>
 
     <script type="text/javascript">
 		// index diff
 		fetchInGrid("GRID_WRAPPER_DIV","^IXIC,^GSPC,^DJI","S50");
+
+		// market breadth
+		const inputStockCodes = "$COMPQ,$NAA20R,$NAA50R,$NAA200R,$SPX,$SPXA20R,$SPXA50R,$SPXA200R,$INDU,$DOWA20R,$DOWA50R,$DOWA200R";
+		partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, "#progress_home", "DEFAULT")
+			.then(function (sortedStockCodes) {
+				sortedStockCodes.forEach(stockCode => {
+					var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
+					var borderStyle = null;
+					if (stockCode.symbol == 'SPY') {
+						borderStyle = "5px solid orange";
+					}
+					appendImageToParent("img_home", stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
+				});
+			})
+			.catch(function (error) {
+				console.error(error);
+			});				
     </script>
 </body>
