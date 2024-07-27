@@ -338,3 +338,18 @@ function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, c
     linkElement.appendChild(imageElement);            
     document.getElementById(parentId).appendChild(linkElement);
 }
+
+
+function appendImageToParent(parentId, stockCode, universe, desc, taIndicator, borderStyle) {
+    if (chartType == 'HK') {
+        appendAA(parentId, stockCode, 7, desc, borderStyle);
+    }
+
+    if (chartType == 'SC') {
+        appendSC(parentId, stockCode, universe, scConf2m, taIndicator, desc, borderStyle);
+    }
+
+    if (chartType == 'SC6M') {
+        appendSC(parentId, stockCode, universe, scConf6m, taIndicator, desc, borderStyle);
+    }                
+}

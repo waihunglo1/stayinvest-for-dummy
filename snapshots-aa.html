@@ -137,20 +137,6 @@
             window.open(tempChartLink, '_blank').focus();
         }
 
-        function appendImageToParent(parentId, stockCode, universe, desc, taIndicator, borderStyle) {
-            if (chartType == 'HK') {
-                appendAA(parentId, stockCode, 7, desc, borderStyle);
-            }
-
-            if (chartType == 'SC') {
-                appendSC(parentId, stockCode, universe, scConf2m, taIndicator, desc, borderStyle);
-            }
-
-            if (chartType == 'SC6M') {
-                appendSC(parentId, stockCode, universe, scConf6m, taIndicator, desc, borderStyle);
-            }                
-        }
-
         function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator) {
             if (inputStockCodes == null) {
                 console.error("parameter o is null!!"); //show 1
