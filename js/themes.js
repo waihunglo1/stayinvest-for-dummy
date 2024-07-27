@@ -249,7 +249,7 @@ function fetchInGrid(parentId, stockCodes, taIndicator) {
             'font-size': '12px'
           },
           th: {
-            'background-color': 'rgba(0, 0, 0, 0.1)',
+            'background-color': 'rgba(0, 0, 0)',
             color: '#000',
             'border-bottom': '0px solid #ccc',
             'text-align': 'center'
