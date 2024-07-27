@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>SMA50</title>
+    <title>Daily Alert / Market Breadth</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="msapplication-TileColor" content="#da532c">
@@ -49,7 +49,7 @@
 		const inputStockCodes = "$COMPQ,$NAA20R,$NAA50R,$NAA200R,$SPX,$SPXA20R,$SPXA50R,$SPXA200R,$INDU,$DOWA20R,$DOWA50R,$DOWA200R";
 		const taIndicator = "USORT";
 		const chartType = "SC";
-		partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, "#progress_home", "DEFAULT")
+		partitionStockCodesAndSort(inputStockCodes, taIndicator, "#progress_home", "DEFAULT")
 			.then(function (sortedStockCodes) {
 				sortedStockCodes.forEach(stockCode => {
 					var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
