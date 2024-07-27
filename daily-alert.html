@@ -57,7 +57,7 @@
 					if (stockCode.symbol == 'SPY') {
 						borderStyle = "5px solid orange";
 					}
-					appendImageToParent("img_home", stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
+					appendImageToParent("img_home", chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
 				});
 			})
 			.catch(function (error) {
