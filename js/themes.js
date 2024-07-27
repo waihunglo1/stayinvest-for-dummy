@@ -186,7 +186,7 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, 
                     }
                 }
             });
-            return stockCodes;
+            return unsortStocks;
         }
 
         if ("VOL" == taIndicator) {
