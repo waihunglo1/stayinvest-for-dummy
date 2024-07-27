@@ -184,7 +184,7 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, 
                 stocks.forEach((stock) => {
                     console.log("unsort : " + stockCode + ", " + stock.symbol);
                     if(stockCode == stock.symbol) {
-                        unsortStocks.push(stocks);                        
+                        unsortStocks.push(stock);         
                     }
                 });
             });
