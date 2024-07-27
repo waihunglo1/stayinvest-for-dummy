@@ -136,7 +136,7 @@ function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
 /**
  * Partition chunks
  */
-const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, dataScanType) => {
+const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, dataScanType, shouldSort) => {
     const chunkSize = 25;
     var stocks = [];
     var stockCodes = stockCodeStr
@@ -180,6 +180,10 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, 
         // sort by StockChart TA
         // let stocksSortByTA = stocks.sort((a,b) => b.extra - a.extra);
         // var sortedSymbols = stocksSortByTA.flat().map(({ symbol }) => symbol);
+
+        if(! shouldSort) {
+            return stocks;
+        }
 
         if ("VOL" == taIndicator) {
             return stocks.sort((a,b) => (b.close * b.vol) - (a.close * a.vol));

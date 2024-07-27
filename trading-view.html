@@ -75,7 +75,7 @@
             const {inputStockCodes, chartType, taIndicator} = parseParameters();
 
             let ind = 1;
-            partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, "#progress_home", "YH")
+            partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, "#progress_home", "YH", true)
                 .then(function (sortedStockCodes) {
                     sortedStockCodes.forEach(stockCode => {
                         if (stockCode.errmsg == "") {

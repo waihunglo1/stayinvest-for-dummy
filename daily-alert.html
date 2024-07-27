@@ -54,9 +54,9 @@
 		const inputStockCodes = "$COMPQ,$NAA20R,$NAA50R,$NAA200R,$SPX,$SPXA20R,$SPXA50R,$SPXA200R,$INDU,$DOWA20R,$DOWA50R,$DOWA200R";
 		const taIndicator = "M12";
 		const chartType = "SC";
-		partitionStockCodesAndSort(inputStockCodes, taIndicator, "#progress_home", "DEFAULT")
+		partitionStockCodesAndSort(inputStockCodes, taIndicator, "#progress_home", "DEFAULT", false)
 			.then(function (sortedStockCodes) {
-				originalStockCodes.forEach(stockCode => {
+				sortedStockCodes.forEach(stockCode => {
 					var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
 					var borderStyle = null;
 					appendImageToParent("img_home", chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
