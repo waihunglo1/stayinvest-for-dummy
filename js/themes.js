@@ -181,7 +181,7 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, 
         if(! shouldSort) {
             var unsortStocks = [];
             copiedStockCodes.forEach((stockCode) => {
-                stocks.foreach((stock) => {
+                stocks.forEach((stock) => {
                     console.log("unsort : " + stockCode + ", " + stock.symbol);
                     if(stockCode == stock.symbol) {
                         unsortStocks.push(stocks);                        
