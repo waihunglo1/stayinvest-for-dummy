@@ -340,7 +340,7 @@ function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, c
 }
 
 
-function appendImageToParent(parentId, stockCode, universe, desc, taIndicator, borderStyle) {
+function appendImageToParent(parentId, chartType, stockCode, universe, desc, taIndicator, borderStyle) {
     if (chartType == 'HK') {
         appendAA(parentId, stockCode, 7, desc, borderStyle);
     }
