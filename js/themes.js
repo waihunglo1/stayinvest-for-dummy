@@ -183,8 +183,6 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, 
 
         if ("VOL" == taIndicator) {
             return stocks.sort((a,b) => (b.close * b.vol) - (a.close * a.vol));
-        } else if ("USORT" == taIndicator) {
-            return stocks;
         } else {
             return stocks.sort((a,b) => b.extra - a.extra);
         }
