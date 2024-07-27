@@ -149,6 +149,7 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, 
                 return false;
             }
         });
+    const copiedStockCodes = stockCodes.slice();
 
     // progressBar
     var count = 0;
@@ -179,7 +180,7 @@ const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, 
     if(stocks.length > 0) {
         if(! shouldSort) {
             var unsortStocks = [];
-            stockCodes.forEach((stockCode) => {
+            copiedStockCodes.forEach((stockCode) => {
                 console.log("unsort : " + stockCode + ", " + stocks[i].symbol);
                 for(let i = 0; i < stocks.length; i++) {
                     if(stockCode == stocks[i].symbol) {
