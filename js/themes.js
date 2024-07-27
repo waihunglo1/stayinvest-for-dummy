@@ -243,10 +243,16 @@ function fetchInGrid(parentId, stockCodes, taIndicator) {
         },
         style: {
           td: {
-            border: '1px solid #ccc'
+            border: '0px solid #ccc'
           },
           table: {
             'font-size': '12px'
+          },
+          th: {
+            'background-color': 'rgba(0, 0, 0, 0.1)',
+            color: '#000',
+            'border-bottom': '0px solid #ccc',
+            'text-align': 'center'
           }
         } 
         }).render(document.getElementById(parentId));    
