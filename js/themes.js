@@ -22,7 +22,7 @@ const scConf2m = {
     };
 
 const scConf6m = {
-    chartWidth: 305,
+    chartWidth: 405,
     chartHeight: 225,
     period: "dc"
     };
