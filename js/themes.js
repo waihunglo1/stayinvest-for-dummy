@@ -22,8 +22,8 @@ const scConf2m = {
     };
 
 const scConf6m = {
-    chartWidth: 605,
-    chartHeight: 447,
+    chartWidth: 305,
+    chartHeight: 225,
     period: "dc"
     };
         
