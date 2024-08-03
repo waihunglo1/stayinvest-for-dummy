@@ -270,19 +270,20 @@ function fetchInGrid(parentId, stockCodes, taIndicator) {
             'sma50', 
             'close', 
             { 
-                name: 'diff', 
+                name: 'difference', 
                 formatter: (cell) => {
-                  return h('b', { style: {
+                  return gridjs.h('b', { style: {
                     'color': cell > 0 ? 'green' : 'red'
                   }}, cell);
                 }
-            }, 
+            },
             'A20R', 
             'A50R',
             'A150R', 
             'A200R'
         ],
         sort: true,
+        resizable: true,
         server: {
             url: tempSortByLink,
             then: data => data.stocks.map(stock => [stock.symbol, stock.name, stock.extra, stock.close, stock.diff, stock.A20R, stock.A50R, stock.A150R, stock.A200R])
