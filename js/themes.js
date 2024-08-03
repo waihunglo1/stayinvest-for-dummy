@@ -288,7 +288,8 @@ function fetchInGrid(parentId, stockCodes, taIndicator) {
             'A20R', 
             'A50R',
             'A150R', 
-            'A200R'
+            'A200R',
+            'universe'
         ],
         sort: true,
         resizable: true,
