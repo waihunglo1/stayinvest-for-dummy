@@ -269,8 +269,8 @@ function fetchInGrid(parentId, stockCodes, taIndicator) {
                 name: 'symbol',
                 formatter: (cell, row) => {
                     return gridjs.h('button', {
-                        className: 'py-2 mb-4 px-4 border rounded-md text-white bg-blue-600',
-                        onClick: () => alert(`Editing "${row.cells[0].data}" "${row.cells[1].data}"`)
+                        class: 'button-6',
+                        onClick: () => gotoPage(`${row.cells[0].data}`,`${row.cells[9].data}`)
                     }, `${row.cells[0].data}`);
                 }
             },
@@ -294,7 +294,7 @@ function fetchInGrid(parentId, stockCodes, taIndicator) {
         resizable: true,
         server: {
             url: tempSortByLink,
-            then: data => data.stocks.map(stock => [stock.symbol, stock.name, stock.extra, stock.close, stock.diff, stock.A20R, stock.A50R, stock.A150R, stock.A200R])
+            then: data => data.stocks.map(stock => [stock.symbol, stock.name, stock.extra, stock.close, stock.diff, stock.A20R, stock.A50R, stock.A150R, stock.A200R, stock.universe])
         },
         style: {
           td: {
