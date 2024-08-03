@@ -265,12 +265,14 @@ function fetchInGrid(parentId, stockCodes, taIndicator) {
 
     new gridjs.Grid({
         columns: [
-            {
-                name: 'symbol',
+            { 
+                name: 'symbol', 
                 formatter: (cell) => {
-                  const ref = gridjs.gCreateRef();
-                  const chart = gridjs.h('div', { ref: ref })
-                  return chart;
+                  return gridjs.html(
+                        "<div style='padding: 2px; border: 1px solid #ccc;border-radius: 4px;'>" +
+                          "<center>" + cell + "</center>" +
+                        "</div>"
+                  )
                 }
             },
             'name', 
