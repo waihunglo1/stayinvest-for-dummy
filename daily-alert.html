@@ -58,10 +58,15 @@
 		// index diff
 		fetchInGrid("GRID_WRAPPER_DIV","^IXIC,^GSPC,^DJI","S50");
 
-		// market breadth
-		const inputStockCodes = "$COMPQ,$NAA20R,$NAA50R,$NAA200R,$SPX,$SPXA20R,$SPXA50R,$SPXA200R,$INDU,$DOWA20R,$DOWA50R,$DOWA200R";
 		const taIndicator = "M12";
 		const chartType = "SC";
-		loadStockCodesImageWithProgressBar(inputStockCodes, taIndicator, "img_home01", "#progress_home01", "DEFAULT", false);			
+
+		// market breadth
+		const inputStockCodes = "$COMPQ,$NAA20R,$NAA50R,$NAA200R,$SPX,$SPXA20R,$SPXA50R,$SPXA200R,$INDU,$DOWA20R,$DOWA50R,$DOWA200R";
+		loadStockCodesImageWithProgressBar(inputStockCodes, taIndicator, "img_home01", "#progress_home01", "DEFAULT", false);
+		
+		// market sentiment
+		const inputStockCodes02 = "$SPX,$BTCUSD,$VIX,GLD,$MOVE,$CPCE,$USD,$UST10Y";
+		loadStockCodesImageWithProgressBar(inputStockCodes, taIndicator, "img_home02", "#progress_home02", "DEFAULT", false);			
     </script>
 </body>
