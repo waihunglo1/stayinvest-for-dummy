@@ -42,7 +42,7 @@
                 .replace(/{stockCode}/i, stockCode);
 
             console.log(tempRefLink);
-            window.location = tempRefLink;
+            window.open(tempRefLink, '_blank').focus();
         }
 
         function parseLocationAndShowTable() {
