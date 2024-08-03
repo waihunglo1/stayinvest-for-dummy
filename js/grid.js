@@ -68,6 +68,7 @@ function gotoPage(stockCode, universe) {
     var refLink = "https://www.stockfisher.com.hk/us-stock/ticker/{stockCode}";
     if ("ETF" == universe || "etf" == universe || stockCode.startsWith("^")) {
         refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
+        stockCode = stockCode.replace("^","");
     } else if (stockCode.startsWith("$")) {
         refLink = "https://stockcharts.com/sc3/ui/?s={stockCode}";
     }
