@@ -265,7 +265,14 @@ function fetchInGrid(parentId, stockCodes, taIndicator) {
 
     new gridjs.Grid({
         columns: [
-            'symbol', 
+            {
+                name: 'symbol',
+                formatter: (cell) => {
+                  const ref = gridjs.gCreateRef();
+                  const chart = gridjs.h('div', { ref: ref })
+                  return chart;
+                }
+            },
             'name', 
             'sma50', 
             'close', 
