@@ -55,7 +55,7 @@ body {
   content: '';
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
-  box-shadow: 0 0 15px #939393;
+  box-shadow: 0 0 15px #fff;
 }
 #content1, #content2, #content3, #content4 {
   display: none;
@@ -66,6 +66,6 @@ body {
 #tab2:checked ~ #content2,
 #tab3:checked ~ #content3,
 #tab4:checked ~ #content4 {
-  display: block;
-  box-shadow: 0 0 15px #939393;
+  display: flex;
+  box-shadow: 0 0 0px #fff;
 }
