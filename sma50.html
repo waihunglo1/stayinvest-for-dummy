@@ -32,7 +32,7 @@
     <script type="text/javascript">
         function gotoPage(stockCode, universe) {
             var refLink = "https://www.stockfisher.com.hk/us-stock/ticker/{stockCode}";
-            if ("etf" == universe) {
+            if ("ETF" == universe || "etf" == universe || stockCode.startsWith("^")) {
                 refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
             } else if (stockCode.startsWith("$")) {
                 refLink = "https://stockcharts.com/sc3/ui/?s={stockCode}";
@@ -41,8 +41,8 @@
             const tempRefLink = refLink
                 .replace(/{stockCode}/i, stockCode);
 
-            console.log(tempChartLink);
-            window.location = tempChartLink;
+            console.log(refLink);
+            window.location = refLink;
         }
 
         function parseLocationAndShowTable() {
