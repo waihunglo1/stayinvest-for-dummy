@@ -9,12 +9,12 @@ body {
 }
 .tabinator {
   background: #fff;
-  padding: 40px;
+  padding: 0px;
   font-family: Open Sans;
 }
 .tabinator h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 .tabinator input {
   display: none;
