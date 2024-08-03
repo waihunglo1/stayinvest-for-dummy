@@ -264,7 +264,24 @@ function fetchInGrid(parentId, stockCodes, taIndicator) {
         .replace(/{taIndicator}/i, taIndicator);
 
     new gridjs.Grid({
-        columns: ['symbol', 'name', 'sma50', 'close', 'diff', 'A20R', 'A50R','A150R', 'A200R'],
+        columns: [
+            'symbol', 
+            'name', 
+            'sma50', 
+            'close', 
+            { 
+                name: 'diff', 
+                formatter: (cell) => {
+                  return h('b', { style: {
+                    'color': cell > 0 ? 'green' : 'red'
+                  }}, cell);
+                }
+            }, 
+            'A20R', 
+            'A50R',
+            'A150R', 
+            'A200R'
+        ],
         sort: true,
         server: {
             url: tempSortByLink,
