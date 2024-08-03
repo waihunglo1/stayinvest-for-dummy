@@ -22,8 +22,8 @@ const scConf2m = {
     };
 
 const scConf6m = {
-    chartWidth: 405,
-    chartHeight: 299,
+    chartWidth: 350,
+    chartHeight: 259,
     period: "dc"
     };
         
@@ -132,6 +132,23 @@ function fetchThemeDataAndAppendLink(key, linkDesc, hrefAddr, parentId) {
             console.error("Unable to fetch data:", error);
         });
 }
+
+/**
+ * load stock codes image as input codes list
+ */
+const loadStockCodesImageWithProgressBar = (inputStockCodes, taIndicator, imageHome, ldBarName, dataScanType, shouldSort) => {
+    partitionStockCodesAndSort(inputStockCodes, taIndicator, ldBarName, dataScanType, shouldSort)
+    .then(function (sortedStockCodes) {
+        sortedStockCodes.forEach(stockCode => {
+            var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
+            var borderStyle = null;
+            appendImageToParent(imageHome, chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
+        });
+    })
+    .catch(function (error) {
+        console.error(error);
+    });		    
+} 
 
 /**
  * Partition chunks

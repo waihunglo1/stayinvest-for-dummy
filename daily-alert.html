@@ -39,10 +39,18 @@
 				<td><img src="images/tool.png" width="50" height="50" style="width: 100px; height: 90px;" /></td>
 				<td>
 					<h2>Market Breadth</h2>
-					<div id="img_home" style="margin: 0 auto; width:1500px;float:left"></div>
-					<div id="progress_home"></div>
+					<div id="img_home01" style="margin: 0 auto; width:1500px;float:left"></div>
+					<div id="progress_home01"></div>
 				</td>
-			</tr>			
+			</tr>
+			<tr>
+				<td><img src="images/checklist.png" width="50" height="50" style="width: 100px; height: 90px;" /></td>
+				<td>
+					<h2>Market Sentiment</h2>
+					<div id="img_home02" style="margin: 0 auto; width:1500px;float:left"></div>
+					<div id="progress_home02"></div>
+				</td>
+			</tr>				
 		</table>
 	</div>
 
@@ -54,16 +62,6 @@
 		const inputStockCodes = "$COMPQ,$NAA20R,$NAA50R,$NAA200R,$SPX,$SPXA20R,$SPXA50R,$SPXA200R,$INDU,$DOWA20R,$DOWA50R,$DOWA200R";
 		const taIndicator = "M12";
 		const chartType = "SC";
-		partitionStockCodesAndSort(inputStockCodes, taIndicator, "#progress_home", "DEFAULT", false)
-			.then(function (sortedStockCodes) {
-				sortedStockCodes.forEach(stockCode => {
-					var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
-					var borderStyle = null;
-					appendImageToParent("img_home", chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
-				});
-			})
-			.catch(function (error) {
-				console.error(error);
-			});				
+		loadStockCodesImageWithProgressBar(inputStockCodes, taIndicator, "img_home01", "#progress_home01", "DEFAULT", false);			
     </script>
 </body>
