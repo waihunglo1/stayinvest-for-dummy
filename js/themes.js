@@ -265,17 +265,16 @@ function fetchInGrid(parentId, stockCodes, taIndicator) {
 
     new gridjs.Grid({
         columns: [
-            { 
-                name: 'symbol', 
-                formatter: (cell) => {
-                  return gridjs.html(
-                        "<div style='padding: 2px; border: 1px solid #ccc;border-radius: 4px;'>" +
-                          "<center>" + cell + "</center>" +
-                        "</div>"
-                  )
+            {
+                name: 'symbol',
+                formatter: (cell, row) => {
+                    return h('button', {
+                        className: 'py-2 mb-4 px-4 border rounded-md text-white bg-blue-600',
+                        onClick: () => alert(`Editing "${row.cells[0].data}" "${row.cells[1].data}"`)
+                    }, `${row.cells[0].data}`);
                 }
             },
-            'name', 
+            'name',
             'sma50', 
             'close', 
             { 
