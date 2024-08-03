@@ -50,6 +50,12 @@ h1 {
 
 h2 {
     font-family: "Audiowide", sans-serif;
+    font-size: 15px;
+    text-shadow: 2px 2px 2px #ababab;
+}
+
+h3 {
+    font-family: "Audiowide", sans-serif;
     font-size: 20px;
     text-shadow: 2px 2px 2px #ababab;
 }
