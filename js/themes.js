@@ -268,7 +268,7 @@ function fetchInGrid(parentId, stockCodes, taIndicator) {
             {
                 name: 'symbol',
                 formatter: (cell, row) => {
-                    return h('button', {
+                    return gridjs.h('button', {
                         className: 'py-2 mb-4 px-4 border rounded-md text-white bg-blue-600',
                         onClick: () => alert(`Editing "${row.cells[0].data}" "${row.cells[1].data}"`)
                     }, `${row.cells[0].data}`);
