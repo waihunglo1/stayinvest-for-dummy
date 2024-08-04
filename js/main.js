@@ -104,3 +104,7 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator, dataScanType) => {
         return data.stocks;
     }
 }
+
+
+// export to html
+window.partitionStockCodesAndSort = partitionStockCodesAndSort;
