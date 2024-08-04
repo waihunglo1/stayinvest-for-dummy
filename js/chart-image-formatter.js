@@ -35,7 +35,7 @@ function appendSC(parentId, stockCode, universe, scConf, taIndicator, desc, bord
     console.log("snapshot: " + stockCode + " universe:" + universe + " startWith:" + stockCode.startsWith("$"));
 
     // SC not support other than B14 / M12
-    if("M12" != taIndicator || "B14" != taIndicator) {
+    if("M12" != taIndicator && "B14" != taIndicator) {
         taIndicator = "M12";
     }
 

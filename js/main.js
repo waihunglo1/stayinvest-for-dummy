@@ -73,7 +73,7 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
                 " [v:" + stockCode.extra + "]";
 
                 var borderStyle = null;
-                if (stockCode.symbol == '2800.HK') {
+                if (stockCode.symbol == '2800.HK' || stockCode.symbol == 'SPY') {
                     borderStyle = "5px solid green";
                 }
                 appendImageToParent(imageHome, chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
