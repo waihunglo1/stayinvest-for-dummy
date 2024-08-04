@@ -61,6 +61,7 @@ body {
   display: none;
   border-top: 1px solid #bbb;
   padding: 15px;
+  float: left; /* or right */
 }
 #tab1:checked ~ #content1,
 #tab2:checked ~ #content2,
