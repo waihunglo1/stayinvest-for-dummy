@@ -33,7 +33,6 @@
 </head>
 
 <body>
-    <script src="/stayinvest-for-dummy/js/main.js" type="module"></script>
     <h1>GeeksforGeeks</h1>
 
     <div id="progress_home"></div><br/><br/>
@@ -45,7 +44,9 @@
    <div id="wrapper03"></div>  
    <div id="wrapper04"></div>   
 
-    <script type="text/javascript">
+    <script type="module">
+        import { partitionStockCodesAndSort } from "/stayinvest-for-dummy/js/main.js";
+
         // sorting by Stockchart taindicator
         const stockCodes = "MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR,GE,WWD,STX,ANET,FLEX,ZI,NWSA,DFS,VRT,KMI,FCX,KBR,MRVL,WAB,LLY,PANW,CCJ,META,NWS,KEY,C,DAKT,MSGE,OPCH,AAPL,CNK,PLTR,STLA,SPHR,COF,KRE,IQV,CRNX,BAH,OZK,ARGT,BMA,BCS,SANA,RDDT,FUSN,SLN,TTWO";
         partitionStockCodesAndSort(stockCodes, "M5", "#progress_home", "DEFAULT", true)

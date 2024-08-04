@@ -10,7 +10,7 @@ console.log(link);
 /**
  * Partition chunks
  */
-const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, dataScanType, shouldSort) => {
+export const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, dataScanType, shouldSort) => {
     const chunkSize = 25;
     var stocks = [];
     var stockCodes = stockCodeStr
@@ -104,7 +104,3 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator, dataScanType) => {
         return data.stocks;
     }
 }
-
-
-// export to html
-window.partitionStockCodesAndSort = partitionStockCodesAndSort;
