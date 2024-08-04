@@ -27,7 +27,7 @@
     <div id="progress_home"></div>
 
     <script type="module">
-        import { partitionStockCodesAndSort, fetchCsvThemesAndAppendLink, fetchInGrid } from "/stayinvest-for-dummy/js/main.js";
+        import { partitionStockCodesAndSort, fetchCsvThemesAndAppendLink, fetchInGrid, sortStockCodesAndShowChart } from "/stayinvest-for-dummy/js/main.js";
         function parseLocationAndShowCharts() {
 
             // handler input parameter
@@ -64,7 +64,7 @@
             }
 
             addButtons("top_row_home", chartType);
-            sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator);
+            sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home");
         }
 
         function addButtons(parentId, chartType) {
@@ -132,45 +132,6 @@
             console.log(tempChartLink);
             // window.location = tempChartLink;
             window.open(tempChartLink, '_blank').focus();
-        }
-
-        function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator) {
-            if (inputStockCodes == null) {
-                console.error("parameter o is null!!"); //show 1
-                return;
-            } else if (chartType == "HK") {
-                partitionStockCodesAndSort("2800.HK," + inputStockCodes, taIndicator, "#progress_home", "DEFAULT", true)
-                    .then(function (sortedStockCodes) {
-                        sortedStockCodes.forEach(stockCode => {
-                            var borderStyle = null;
-                            if (stockCode.symbol == '2800.HK') {
-                                borderStyle = "5px solid orange";
-                            }
-                            appendImageToParent("img_home", chartType, stockCode.symbol, null, null, taIndicator, borderStyle);
-                        });
-                    })
-                    .catch(function (error) {
-                        console.error(error);
-                    });
-            } else if (chartType == "SC" || chartType == "SC6M") {
-                partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, "#progress_home", "DEFAULT", true)
-                    .then(function (sortedStockCodes) {
-                        sortedStockCodes.forEach(stockCode => {
-                            var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
-                            var borderStyle = null;
-                            if (stockCode.symbol == 'SPY') {
-                                borderStyle = "5px solid orange";
-                            }
-                            appendImageToParent("img_home", chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
-                        });
-                    })
-                    .catch(function (error) {
-                        console.error(error);
-                    });
-            } else {
-                console.error("chart type not define");
-                return;
-            }
         }
 
         window.onload = parseLocationAndShowCharts;    

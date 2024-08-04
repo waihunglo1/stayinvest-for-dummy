@@ -8,6 +8,48 @@ const link = resolveChartLink("0941.HK","EQUITY");
 console.log(link);
 
 /**
+ * sort by taIndicator and add show chart to parent element
+ */
+export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, imageHome, progressHome) {
+    if (inputStockCodes == null) {
+        console.error("parameter o is null!!"); //show 1
+        return;
+    } else if (chartType == "HK") {
+        partitionStockCodesAndSort("2800.HK," + inputStockCodes, taIndicator, progressHome, "DEFAULT", true)
+            .then(function (sortedStockCodes) {
+                sortedStockCodes.forEach(stockCode => {
+                    var borderStyle = null;
+                    if (stockCode.symbol == '2800.HK') {
+                        borderStyle = "5px solid orange";
+                    }
+                    appendImageToParent(imageHome, chartType, stockCode.symbol, null, null, taIndicator, borderStyle);
+                });
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+    } else if (chartType == "SC" || chartType == "SC6M") {
+        partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, progressHome, "DEFAULT", true)
+            .then(function (sortedStockCodes) {
+                sortedStockCodes.forEach(stockCode => {
+                    var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
+                    var borderStyle = null;
+                    if (stockCode.symbol == 'SPY') {
+                        borderStyle = "5px solid orange";
+                    }
+                    appendImageToParent(imageHome, chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
+                });
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+    } else {
+        console.error("chart type not define");
+        return;
+    }
+}
+
+/**
  * Partition chunks
  */
 export const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, dataScanType, shouldSort) => {
