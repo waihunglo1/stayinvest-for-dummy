@@ -53,7 +53,7 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
         console.error("parameter o is null!!"); //show 1
         return;
     } else if (chartType == "HK") {
-        partitionStockCodesAndSort("2800.HK," + inputStockCodes, taIndicator, progressHome, "DEFAULT", true)
+        partitionStockCodesAndSort("2800.HK," + inputStockCodes, taIndicator, progressHome, true)
             .then(function (sortedStockCodes) {
                 sortedStockCodes.forEach(stockCode => {
                     var borderStyle = null;
@@ -67,7 +67,7 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
                 console.error(error);
             });
     } else if (chartType == "SC" || chartType == "SC6M") {
-        partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, progressHome, "DEFAULT", true)
+        partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, progressHome, true)
             .then(function (sortedStockCodes) {
                 sortedStockCodes.forEach(stockCode => {
                     var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
@@ -90,7 +90,7 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
 /**
  * Partition chunks
  */
-export const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, dataScanType, shouldSort) => {
+export const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBarName, shouldSort) => {
     const chunkSize = 25;
     var stocks = [];
     var stockCodes = stockCodeStr
@@ -116,7 +116,7 @@ export const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBa
     while (stockCodes.length > 0) {
         var chunk = stockCodes.splice(0, chunkSize);
 
-        await fetchStockCodesSortBy(chunk, taIndicator, dataScanType)
+        await fetchStockCodesSortBy(chunk, taIndicator)
             .then(function (sortedStocks) {
                 sortedStocks.forEach(element => {
                     stocks.push(element);                   
@@ -162,13 +162,15 @@ export const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBa
  * const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
  * @returns 
  */
-const fetchStockCodesSortBy = async (stockCodes, taIndicator, dataScanType) => {
+const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
     const stockCodesStr = stockCodes.join(",");
+    var sortBylink = "";
+    if(stockCodes.includes("$")) {
+        sortBylink = "https://render-ealy.onrender.com/stockcharts/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+    } else {
+        sortBylink = "https://render-ealy.onrender.com/yahoo?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+    }
 
-    // var sortBylink = "https://render-ealy.onrender.com/stockcharts/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
-    // if(stockCodesStr.indexOf(".HK") >= 0 || "YH" === dataScanType) {
-    var sortBylink = "https://render-ealy.onrender.com/yahoo?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
-    // } 
 
     const tempSortByLink = sortBylink
         .replace(/{stockCodes}/i, stockCodesStr)
@@ -357,8 +359,8 @@ function gotoPage(stockCode, universe) {
 /**
  * load stock codes image as input codes list
  */
-export const loadStockCodesImageWithProgressBar = (inputStockCodes, chartType, taIndicator, imageHome, ldBarName, dataScanType, shouldSort) => {
-    partitionStockCodesAndSort(inputStockCodes, taIndicator, ldBarName, dataScanType, shouldSort)
+export const loadStockCodesImageWithProgressBar = (inputStockCodes, chartType, taIndicator, imageHome, ldBarName, shouldSort) => {
+    partitionStockCodesAndSort(inputStockCodes, taIndicator, ldBarName, shouldSort)
     .then(function (sortedStockCodes) {
         sortedStockCodes.forEach(stockCode => {
             var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
