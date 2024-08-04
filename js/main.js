@@ -56,7 +56,7 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
     } else if (chartType == "HK") {
         stockCodesStr = "2800.HK," + inputStockCodes;
     } else if (chartType == "SC" || chartType == "SC6M") {
-        stockCodesStr = "SPY," + inputStockCodes;
+        stockCodesStr = "$SPX," + inputStockCodes;
     } else {
         console.error("chart type not define");
         return;
@@ -73,7 +73,7 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
                 " [v:" + stockCode.extra + "]";
 
                 var borderStyle = null;
-                if (stockCode.symbol == '2800.HK' || stockCode.symbol == 'SPY') {
+                if (stockCode.symbol == '2800.HK' || stockCode.symbol == 'SPY' || stockCode.symbol == '$SPX') {
                     borderStyle = "5px solid green";
                 }
                 appendImageToParent(imageHome, chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
