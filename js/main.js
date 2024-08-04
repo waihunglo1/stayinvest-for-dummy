@@ -295,8 +295,18 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                         return "";
                     }
 
-                    const val = cell.split("/");
-                    return cell;
+                    // red if either one is less than 30
+                    var colorStr = "green";
+                    cell.split("/").map(function(el) {
+                        var f = parseFloat(el);
+                        if(f <= 30) {
+                            colorStr = red;
+                        }
+                    });
+
+                    return gridjs.h('b', { style: {
+                        'color': colorStr
+                      }}, cell);
                 }                
             },
             'universe'
