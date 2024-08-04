@@ -47,3 +47,9 @@ export function resolveChartLink(stockCode, universe) {
     console.log(tempRefLink);
     return tempRefLink;
 }
+
+export function resolveImageLink(stockCode, universe) {
+    const scImageLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&amp;chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg][ilM12]";
+    return scImageLink
+        .replace(/{stockCode}/i, stockCode);    
+}

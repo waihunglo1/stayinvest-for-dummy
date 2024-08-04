@@ -1,4 +1,4 @@
-import { resolveChartLink, emoji } from "./utils.js";
+import { resolveChartLink, emoji, resolveImageLink } from "./utils.js";
 import { appendImageToParent } from "./chart-image-formatter.js";
 
 /**
@@ -274,23 +274,30 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                     const symbol = row.cells[0].data;
                     const universe = row.cells[6].data;
 
-                    return gridjs.h('img', {
-                        referrerpolicy: "no-referrer",
-                        src: "https://stockcharts.com/c-sc/sc?r=1717221704662&amp;chart=$USB,uu[305,a]dacayaci[pb20!b50][dg][ilM12]",
-                        width: "305",
-                        height: "225",
-                        alt: "CME CBOT 30-Year US Treasury Bond Price (EOD)",
-                        title: "CME CBOT 30-Year US Treasury Bond Price (EOD)"
-                    }, `${symbol}`);
-                    /*
                     return gridjs.h('button', {
                         class: 'button-6',
                         onClick: () => gotoPage(`${symbol}`,`${universe}`)
                     }, `${symbol}`);
-                    */
                 }
             },
-            'name',
+            {
+                name: 'name',
+                formatter: (cell, row) => {
+                    const symbol = row.cells[0].data;
+                    const name = row.cells[1].data;
+                    const universe = row.cells[6].data;
+                    const imageLink = resolveImageLink(symbol, universe);
+
+                    return gridjs.h('img', {
+                        referrerpolicy: "no-referrer",
+                        src: imageLink,
+                        width: "305",
+                        height: "225",
+                        alt: "CME CBOT 30-Year US Treasury Bond Price (EOD)",
+                        title: "CME CBOT 30-Year US Treasury Bond Price (EOD)"
+                    }, `${name}`);
+                }                
+            },
             'sma50', 
             'close', 
             { 
