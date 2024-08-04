@@ -237,7 +237,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
 }
 
 function gotoPage(stockCode, universe) {
-    const link = resolveChartLink(stockCode, universe);
-    console.log(tempRefLink);
-    window.open(tempRefLink, '_blank').focus();
+    const hrefLink = resolveChartLink(stockCode, universe);
+    console.log(hrefLink);
+    window.open(hrefLink, '_blank').focus();
 }
