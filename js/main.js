@@ -291,9 +291,18 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
             {
                 name: 'breadth',
                 formatter: (cell, row) => {
+                    var strLabel = "";
+                    if (row.cells[5].data !== null) {
+                        strLabel = 
+                        row.cells[5].data + " / " + 
+                        row.cells[6].data + " / " +  
+                        row.cells[7].data + " / " +  
+                        row.cells[8].data;
+                    }
+
                     return gridjs.h('b', { style: {
                         'color': row.cells[5].data > 20 ? 'green' : 'red'
-                      }}, row.cells[5].data);
+                      }}, strLabel);
                 }                
             },
             'universe'
