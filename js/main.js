@@ -1,55 +1,5 @@
-import { resolveChartLink, emoji } from "./utils.js";
+import { resolveChartLink, emoji, handleInputParameters } from "./utils.js";
 import { appendImageToParent } from "./chart-image-formatter.js";
-
-/**
- * Test run
- */
-const link = resolveChartLink("0941.HK","EQUITY");
-console.log(link);
-
-/**
- * general input parameter for pages
- */
-export function handleInputParameters() {
-    // handler input parameter
-    const params = new URLSearchParams(document.location.search);
-    const inputStockCodes = params.get("o");
-    const title = params.get("d");
-    var taIndicator = params.get("a");
-    var chartType = params.get("t");
-
-    // stock codes
-    console.log("parseLocationAndShowCharts o = " + inputStockCodes);
-    console.log("parseLocationAndShowCharts t = " + taIndicator);
-    console.log("parseLocationAndShowCharts a = " + chartType);
-    console.log("parseLocationAndShowCharts d = " + title);
-
-    // chart type
-    if (chartType == null) {
-        console.info("parameter t is null!!"); //show t
-        chartType = "HK";
-    }
-
-    // taIndicator
-    if (taIndicator == null) {
-        console.info("taIndicator is null");
-        taIndicator = "M12";
-    }
-
-    // title description
-    if (title != null) {
-        let title_el = document.querySelector("title");
-        if (title_el) {
-            title_el.innerHTML = title;
-        }
-    }
-
-    return {
-        inputStockCodes,
-        taIndicator,
-        chartType
-    }
-}
 
 /**
  * sort by taIndicator and add show chart to parent element
