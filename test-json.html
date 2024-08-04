@@ -17,8 +17,10 @@
     <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
     <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
 
+    <!--
     <script type="text/javascript" src="js/themes.js"></script>
     <script type="text/javascript" src="js/grid.js"></script>    
+    -->
 
     <!-- progress bar -->
     <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
@@ -54,7 +56,6 @@
 
         // for index page link formatter
         const stockChartLink = "snapshots-aa.html?t={type}&o={stockCodes}";
-        // fetchThemeDataAndAppendLink("DOW30", "DOW30", stockChartLink, "img_home");
         fetchCsvThemesAndAppendLink(stockChartLink, "img_home01", "US-AI-ROUTINE");
         fetchCsvThemesAndAppendLink(stockChartLink, "img_home02", "港股活躍股票");
 
