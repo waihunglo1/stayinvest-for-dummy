@@ -48,65 +48,9 @@ function isEmpty(value) {
     );
 }
 
-function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDesc) {
-    const hrefAddrStr = hrefAddr.replace(/{linkDesc}/i, linkDesc);
 
-    // create link element
-    var linkElement = document.createElement('a');
-    linkElement.href = hrefAddrStr;
-    linkElement.setAttribute("target", "_" + linkDesc.replace(" ","_"));
-    linkElement.text = linkDesc;
 
-    // parent
-    var parent = document.getElementById(parentId);
 
-    if(shouldReplaceDesc) {
-        parent.innerText = "";
-        parent.appendChild(linkElement);
-    } else {
-        // append new Line
-        const para1 = document.createElement("p");
-        para1.appendChild(document.createTextNode(emoji() + " "));
-        para1.appendChild(linkElement);
-        para1.appendChild(document.createElement("br"));
-        parent.appendChild(para1); 
-    }
-}
-
-/**
- * format line and append to parent by CSV file
- * @param {a} hrefAddr 
- * @param {*} parentId 
- */
-function fetchCsvThemesAndAppendLink(hrefAddr, parentId, extraDesc) {
-    const csvDataFile = "data/equity-holdings.csv"
-
-    Papa.parse(csvDataFile, {
-        download: true,
-        complete: results => {
-            console.log("Read from CSV file");
-            console.log(results);
-
-            results.data.forEach(dataRow => {
-                const rowId = dataRow.shift();
-                const rowType = dataRow.shift();
-                const rowCategory = dataRow.shift();
-                const rowDesc = dataRow.shift();
-                const tempChartLink = hrefAddr
-                    .replace(/{type}/i, rowType)
-                    .replace(/{stockCodes}/i, dataRow.join(","));
-
-                if (rowCategory == extraDesc) {
-                    appendThemesLinkToParent(parentId, tempChartLink, rowDesc, false);
-                }
-                else if (rowDesc == extraDesc) {
-                    appendThemesLinkToParent(parentId, tempChartLink, extraDesc, true);
-                }
-            });
-        }
-    });
-
-}
 
 /**
  * load stock codes image as input codes list
