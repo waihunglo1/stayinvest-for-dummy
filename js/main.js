@@ -271,10 +271,13 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
             {
                 name: 'symbol',
                 formatter: (cell, row) => {
+                    const symbol = row.cells[0].data;
+                    const universe = row.cells[6].data;
+
                     return gridjs.h('button', {
                         class: 'button-6',
-                        onClick: () => gotoPage(`${row.cells[0].data}`,`${row.cells[9].data}`)
-                    }, `${row.cells[0].data}`);
+                        onClick: () => gotoPage(`${symbol}`,`${universe}`)
+                    }, `${symbol}`);
                 }
             },
             'name',
