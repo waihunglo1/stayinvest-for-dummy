@@ -337,7 +337,7 @@ function gotoPage(stockCode, universe) {
 /**
  * load stock codes image as input codes list
  */
-export const loadStockCodesImageWithProgressBar = (inputStockCodes, taIndicator, imageHome, ldBarName, dataScanType, shouldSort) => {
+export const loadStockCodesImageWithProgressBar = (inputStockCodes, chartType, taIndicator, imageHome, ldBarName, dataScanType, shouldSort) => {
     partitionStockCodesAndSort(inputStockCodes, taIndicator, ldBarName, dataScanType, shouldSort)
     .then(function (sortedStockCodes) {
         sortedStockCodes.forEach(stockCode => {
