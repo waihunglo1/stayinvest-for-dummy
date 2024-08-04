@@ -34,8 +34,8 @@ function appendAA(parentId, stockCode, universe, period, desc, borderStyle) {
 function appendSC(parentId, stockCode, universe, scConf, taIndicator, desc, borderStyle) {
     console.log("snapshot: " + stockCode + " universe:" + universe + " startWith:" + stockCode.startsWith("$"));
 
-    // SC not support VOL
-    if("VOL" == taIndicator) {
+    // SC not support other than B14 / M12
+    if("M12" != taIndicator || "B14" != taIndicator) {
         taIndicator = "M12";
     }
 
