@@ -292,17 +292,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                 name: 'breadth',
                 formatter: (cell, row) => {
                     var strLabel = "";
-                    if (row.cells[5].data !== null) {
-                        strLabel = 
-                        row.cells[5].data + " / " + 
-                        row.cells[6].data + " / " +  
-                        row.cells[7].data + " / " +  
-                        row.cells[8].data;
-                    }
-
-                    return gridjs.h('b', { style: {
-                        'color': row.cells[5].data > 20 ? 'green' : 'red'
-                      }}, strLabel);
+                    return cell;
                 }                
             },
             'universe'
@@ -311,7 +301,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
         resizable: true,
         server: {
             url: tempSortByLink,
-            then: data => data.stocks.map(stock => [stock.symbol, stock.name, stock.extra, stock.close, stock.diff, stock.A20R, stock.A50R, stock.A150R, stock.A200R, stock.universe])
+            then: data => data.stocks.map(stock => [stock.symbol, stock.name, stock.extra, stock.close, stock.diff, stock.A20R + "/" + stock.A50R + "/" + stock.A150R + "/" + stock.A200R, stock.universe])
         },
         style: {
           td: {
