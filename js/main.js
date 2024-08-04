@@ -49,42 +49,39 @@ export function handleInputParameters() {
  * sort by taIndicator and add show chart to parent element
  */
 export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, imageHome, progressHome) {
+    var stockCodesStr = "";
     if (inputStockCodes == null) {
         console.error("parameter o is null!!"); //show 1
         return;
     } else if (chartType == "HK") {
-        partitionStockCodesAndSort("2800.HK," + inputStockCodes, taIndicator, progressHome, true)
-            .then(function (sortedStockCodes) {
-                sortedStockCodes.forEach(stockCode => {
-                    var borderStyle = null;
-                    if (stockCode.symbol == '2800.HK') {
-                        borderStyle = "5px solid green";
-                    }
-                    appendImageToParent(imageHome, chartType, stockCode.symbol, null, null, taIndicator, borderStyle);
-                });
-            })
-            .catch(function (error) {
-                console.error(error);
-            });
+        stockCodesStr = "2800.HK," + inputStockCodes;
     } else if (chartType == "SC" || chartType == "SC6M") {
-        partitionStockCodesAndSort("SPY," + inputStockCodes, taIndicator, progressHome, true)
-            .then(function (sortedStockCodes) {
-                sortedStockCodes.forEach(stockCode => {
-                    var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
-                    var borderStyle = null;
-                    if (stockCode.symbol == 'SPY') {
-                        borderStyle = "5px solid green";
-                    }
-                    appendImageToParent(imageHome, chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
-                });
-            })
-            .catch(function (error) {
-                console.error(error);
-            });
+        stockCodesStr = "SPY," + inputStockCodes;
     } else {
         console.error("chart type not define");
         return;
     }
+
+    // partition stock codes and sort by extra
+    partitionStockCodesAndSort(stockCodesStr, taIndicator, progressHome, true)
+        .then(function (sortedStockCodes) {
+            sortedStockCodes.forEach(stockCode => {
+                var desc = 
+                (stockCode.industry == "undefined" ? "" : stockCode.industry + "|") + 
+                (stockCode.sector   == "undefined" ? "" : stockCode.sector   + "|") +                       
+                (stockCode.name     == "undefined" ? "" : stockCode.name     + "|") +                       
+                " [v:" + stockCode.extra + "]";
+
+                var borderStyle = null;
+                if (stockCode.symbol == '2800.HK') {
+                    borderStyle = "5px solid green";
+                }
+                appendImageToParent(imageHome, chartType, stockCode.symbol, null, null, taIndicator, borderStyle);
+            });
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
 }
 
 /**
