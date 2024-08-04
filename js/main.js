@@ -339,7 +339,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
         resizable: true,
         server: {
             url: tempSortByLink,
-            then: data => data.stocks.map(stock => [stock.symbol, stock.name, stock.extra, stock.close, stock.diff, stock.A20R + " / " + stock.A50R + " / " + stock.A150R + " / " + stock.A200R, stock.universe])
+            then: data => data.stocks.map(stock => [stock.symbol, stock.name, stock.sma50, stock.close, stock.extra, stock.A20R + " / " + stock.A50R + " / " + stock.A150R + " / " + stock.A200R, stock.universe])
         }   
     }).render(document.getElementById(parentId));    
 }
