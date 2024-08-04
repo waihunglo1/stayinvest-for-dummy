@@ -1,5 +1,4 @@
-import { appendImageToParent } from "./chart-image-formatter.js";
-import { resolveChartLink } from "./utils.js";
+import { resolveChartLink, emoji } from "./utils.js";
 
 /**
  * Test run
