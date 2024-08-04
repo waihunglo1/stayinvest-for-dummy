@@ -274,10 +274,14 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                     const symbol = row.cells[0].data;
                     const universe = row.cells[6].data;
 
+                    return gridjs.h('image', {
+                    }, `${symbol}`);
+                    /*
                     return gridjs.h('button', {
                         class: 'button-6',
                         onClick: () => gotoPage(`${symbol}`,`${universe}`)
                     }, `${symbol}`);
+                    */
                 }
             },
             'name',
@@ -319,22 +323,8 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
         server: {
             url: tempSortByLink,
             then: data => data.stocks.map(stock => [stock.symbol, stock.name, stock.extra, stock.close, stock.diff, stock.A20R + " / " + stock.A50R + " / " + stock.A150R + " / " + stock.A200R, stock.universe])
-        },
-        style: {
-          td: {
-            border: '1px solid #ccc'
-          },
-          table: {
-            'font-size': '12px'
-          },
-          th: {
-            'background-color': 'rgba(0, 0, 0, 0.1)',
-            color: '#000',
-            'border-bottom': '1px solid #ccc',
-            'text-align': 'center'
-          }
-        } 
-        }).render(document.getElementById(parentId));    
+        }   
+    }).render(document.getElementById(parentId));    
 }
 
 /**
