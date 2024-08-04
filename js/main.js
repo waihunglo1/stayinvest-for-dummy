@@ -1,4 +1,5 @@
 import { resolveChartLink, emoji } from "./utils.js";
+import { appendImageToParent } from "./chart-image-formatter.js";
 
 /**
  * Test run
@@ -236,8 +237,30 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
         }).render(document.getElementById(parentId));    
 }
 
+/**
+ * goto and opening new tab from Grid
+ * @param {*} stockCode 
+ * @param {*} universe 
+ */
 function gotoPage(stockCode, universe) {
     const hrefLink = resolveChartLink(stockCode, universe);
     console.log(hrefLink);
     window.open(hrefLink, '_blank').focus();
 }
+
+/**
+ * load stock codes image as input codes list
+ */
+export const loadStockCodesImageWithProgressBar = (inputStockCodes, taIndicator, imageHome, ldBarName, dataScanType, shouldSort) => {
+    partitionStockCodesAndSort(inputStockCodes, taIndicator, ldBarName, dataScanType, shouldSort)
+    .then(function (sortedStockCodes) {
+        sortedStockCodes.forEach(stockCode => {
+            var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
+            var borderStyle = null;
+            appendImageToParent(imageHome, chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
+        });
+    })
+    .catch(function (error) {
+        console.error(error);
+    });		    
+} 

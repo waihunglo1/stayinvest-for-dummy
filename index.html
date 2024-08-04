@@ -23,9 +23,6 @@
     <!-- CSV -->    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="js-3rd-party/papaparse.min.js"></script>
-
-	<!-- theme js -->
-	<script type="text/javascript" src="js/themes.js"></script>
 </head>
 
 <!-- body -->
@@ -193,7 +190,8 @@
 		</div>
 	</div>
 
-	<script type="text/javascript">
+    <script type="module">
+        import { partitionStockCodesAndSort, fetchCsvThemesAndAppendLink, fetchInGrid } from "/stayinvest-for-dummy/js/main.js";
 		const stockChartLink = "snapshots-aa.html?d={linkDesc}&t={type}&o={stockCodes}";
 
 		// Market List
