@@ -289,9 +289,13 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                 }
             },
             {
-                name: 'breadth',
+                name: '20R/50R/150R/200R',
                 formatter: (cell, row) => {
-                    var strLabel = "";
+                    if (cell.includes("undefined")) {
+                        return "";
+                    }
+
+                    const val = cell.split("/");
                     return cell;
                 }                
             },
