@@ -34,6 +34,7 @@
 
     <div id="img_home01">TEST01</br></div>
     <div id="img_home02">TEST02</div>
+    <div id="img_home03">TEST03</div>    
 
    <!-- Your Data Grid container -->
    <div id="wrapper03"></div>  
@@ -43,12 +44,10 @@
         import { partitionStockCodesAndSort, fetchCsvThemesAndAppendLink, fetchInGrid } from "/stayinvest-for-dummy/js/main.js";
 
         // sorting by Stockchart taindicator
+        const taIndicator = "M12";
+		const chartType = "SC";
         const stockCodes = "MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR,GE,WWD,STX,ANET,FLEX,ZI,NWSA,DFS,VRT,KMI,FCX,KBR,MRVL,WAB,LLY,PANW,CCJ,META,NWS,KEY,C,DAKT,MSGE,OPCH,AAPL,CNK,PLTR,STLA,SPHR,COF,KRE,IQV,CRNX,BAH,OZK,ARGT,BMA,BCS,SANA,RDDT,FUSN,SLN,TTWO";
-        partitionStockCodesAndSort(stockCodes, "M5", "#progress_home", "DEFAULT", true)
-            .then(function (sortedStockCodes) {
-                var sortedSymbols = sortedStockCodes.flat().map(({ symbol }) => symbol);
-                console.log(sortedSymbols);
-            });
+		loadStockCodesImageWithProgressBar(stockCodes, chartType, taIndicator, "img_home03", "#progress_home01", "DEFAULT", false);            
 
         // for index page link formatter
         const stockChartLink = "snapshots-aa.html?t={type}&o={stockCodes}";

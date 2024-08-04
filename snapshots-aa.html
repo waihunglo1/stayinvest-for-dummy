@@ -18,7 +18,6 @@
     <!-- progress bar -->
     <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
     <script type="text/javascript" src="js-3rd-party/loading-bar.js"></script>
-    <script type="text/javascript" src="js/themes.js"></script>
 </head>
 
 <body>
@@ -27,7 +26,7 @@
     <div id="progress_home"></div>
 
     <script type="module">
-        import { partitionStockCodesAndSort, fetchCsvThemesAndAppendLink, fetchInGrid, sortStockCodesAndShowChart, handleInputParameters } from "/stayinvest-for-dummy/js/main.js";
+        import { fetchCsvThemesAndAppendLink, fetchInGrid, sortStockCodesAndShowChart, handleInputParameters } from "/stayinvest-for-dummy/js/main.js";
         function parseLocationAndShowCharts() {
             let { 
                 inputStockCodes,
