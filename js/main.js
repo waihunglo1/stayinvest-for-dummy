@@ -149,6 +149,8 @@ export const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBa
 
         if ("VOL" == taIndicator) {
             return stocks.sort((a,b) => (b.close * b.vol) - (a.close * a.vol));
+        } else if ("DIFF" == taIndicator) {
+            return stocks.sort((a,b) => b.diff - a.diff);
         } else {
             return stocks.sort((a,b) => b.extra - a.extra);
         }

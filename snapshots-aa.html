@@ -38,18 +38,29 @@
         }
 
         function addButtons(parentId, chartType) {
+            const params = new URLSearchParams(document.location.search);
+            const inputStockCodes = params.get("o");
+            var isYahooSupport = true;
+
+            if(inputStockCodes.includes("$")) {
+                isYahooSupport = false;
+            }
+
             if(chartType == "HK") {
                 addButton(parentId,"🚿 ROC - 2M", "M12", "HK");
                 addButton(parentId,"📈 RSI - 2M", "B14", "HK");
             } else {
-                addButton(parentId,"🚿 RSI14 - 2M", "B14", "SC");
-                addButton(parentId,"📈 RSI14 - 6M", "B14", "SC6M");
-                addButton(parentId,"📟 ROC12 - 2M", "M12", "SC");
-                addButton(parentId,"🕛 ROC12 - 6M", "M12", "SC6M");
-                addButton(parentId,"🔂 VOLUME",     "VOL", "SC");
-            }
+                addButton(parentId,"🚿 RSI14 - 2M", "B14",  "SC");
+                addButton(parentId,"📈 RSI14 - 6M", "B14",  "SC6M");
+                addButton(parentId,"📟 ROC12 - 2M", "M12",  "SC");
+                addButton(parentId,"🕛 ROC12 - 6M", "M12",  "SC6M");
+                addButton(parentId,"🔂 VOLUME",     "VOL",  "SC");
 
-            addButtonTableLink(parentId,"🔟SMA50","S50","SC");
+                if(isYahooSupport) {
+                    addButton(parentId,"🚋 S50DF",      "DIFF", "SC");
+                    addButtonTableLink(parentId,"🔟SMA50","S50","SC");
+                }
+            }
         }
 
         function addButton(parentId, buttonLabel, taIndicator, chartType) {
@@ -75,13 +86,6 @@
         }
 
         function addButtonTableLink(parentId, buttonLabel, taIndicator, chartType) {
-            const params = new URLSearchParams(document.location.search);
-            const inputStockCodes = params.get("o");
-
-            if(inputStockCodes.includes("$")) {
-                return;
-            }
-
             const buttonElement = document.createElement("button");
             buttonElement.setAttribute("class","button-6");
             buttonElement.innerText = buttonLabel;
