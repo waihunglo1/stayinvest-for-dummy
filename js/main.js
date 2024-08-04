@@ -64,7 +64,7 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
                 sortedStockCodes.forEach(stockCode => {
                     var borderStyle = null;
                     if (stockCode.symbol == '2800.HK') {
-                        borderStyle = "5px solid orange";
+                        borderStyle = "5px solid red";
                     }
                     appendImageToParent(imageHome, chartType, stockCode.symbol, null, null, taIndicator, borderStyle);
                 });
@@ -79,7 +79,7 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
                     var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
                     var borderStyle = null;
                     if (stockCode.symbol == 'SPY') {
-                        borderStyle = "5px solid orange";
+                        borderStyle = "5px solid red";
                     }
                     appendImageToParent(imageHome, chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
                 });
