@@ -67,16 +67,16 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
         .then(function (sortedStockCodes) {
             sortedStockCodes.forEach(stockCode => {
                 var desc = 
-                (stockCode.industry == "undefined" ? "" : stockCode.industry + "|") + 
-                (stockCode.sector   == "undefined" ? "" : stockCode.sector   + "|") +                       
-                (stockCode.name     == "undefined" ? "" : stockCode.name     + "|") +                       
+                (stockCode.industry.includes("undefined") ? "" : stockCode.industry + "|") + 
+                (stockCode.sector.includes("undefined")   ? "" : stockCode.sector   + "|") +                       
+                (stockCode.name.includes("undefined")     ? "" : stockCode.name     + "|") +                       
                 " [v:" + stockCode.extra + "]";
 
                 var borderStyle = null;
                 if (stockCode.symbol == '2800.HK') {
                     borderStyle = "5px solid green";
                 }
-                appendImageToParent(imageHome, chartType, stockCode.symbol, null, null, taIndicator, borderStyle);
+                appendImageToParent(imageHome, chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
             });
         })
         .catch(function (error) {
