@@ -27,41 +27,12 @@
     <div id="progress_home"></div>
 
     <script type="module">
-        import { partitionStockCodesAndSort, fetchCsvThemesAndAppendLink, fetchInGrid, sortStockCodesAndShowChart } from "/stayinvest-for-dummy/js/main.js";
+        import { partitionStockCodesAndSort, fetchCsvThemesAndAppendLink, fetchInGrid, sortStockCodesAndShowChart, handleInputParameters } from "/stayinvest-for-dummy/js/main.js";
         function parseLocationAndShowCharts() {
-
-            // handler input parameter
-            const params = new URLSearchParams(document.location.search);
-            const inputStockCodes = params.get("o");
-            const d = params.get("d");
-            var taIndicator = params.get("a");
-            var chartType = params.get("t");
-
-            // stock codes
-            console.log("parseLocationAndShowCharts o = " + inputStockCodes);
-            console.log("parseLocationAndShowCharts t = " + taIndicator);
-            console.log("parseLocationAndShowCharts a = " + chartType);
-            console.log("parseLocationAndShowCharts d = " + d);
-
-            // chart type
-            if (chartType == null) {
-                console.info("parameter t is null!!"); //show t
-                chartType = "HK";
-            }
-
-            // taIndicator
-            if (taIndicator == null) {
-                console.info("taIndicator is null");
-                taIndicator = "M12";
-            }
-
-            // description
-            if (d != null) {
-                let title_el = document.querySelector("title");
-                if (title_el) {
-                    title_el.innerHTML = d;
-                }
-            }
+            let { 
+                inputStockCodes,
+                taIndicator,
+                chartType } = handleInputParameters();
 
             addButtons("top_row_home", chartType);
             sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home");
