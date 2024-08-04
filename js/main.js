@@ -282,19 +282,21 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
             },
             {
                 name: 'name',
+                width: "350px",
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const name = row.cells[1].data;
                     const universe = row.cells[6].data;
                     const imageLink = resolveImageLink(symbol, universe);
+                    const hrefLink = resolveChartLink(symbol, universe);
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
                         src: imageLink,
+                        href: hrefLink,
                         width: "305",
                         height: "225",
-                        alt: "CME CBOT 30-Year US Treasury Bond Price (EOD)",
-                        title: "CME CBOT 30-Year US Treasury Bond Price (EOD)"
+                        alt: name
                     }, `${name}`);
                 }                
             },
