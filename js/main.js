@@ -270,12 +270,15 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
         columns: [
             {
                 name: 'symbol',
+                width: "350px",
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const universe = row.cells[6].data;
+                    const imageLink = resolveImageLink(symbol, universe);
 
                     return gridjs.h('button', {
                         class: 'button-6',
+                        style: "background-image:url(" + imageLink + ")",
                         onClick: () => gotoPage(`${symbol}`,`${universe}`)
                     }, `${symbol}`);
                 }
