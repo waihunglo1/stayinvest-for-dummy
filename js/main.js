@@ -1,4 +1,4 @@
-import { resolveChartLink, emoji, resolveImageLink } from "./utils.js";
+import { resolveChartLink, emoji, resolveImageLink, isEmpty } from "./utils.js";
 import { appendImageToParent } from "./chart-image-formatter.js";
 
 /**
@@ -67,9 +67,9 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
         .then(function (sortedStockCodes) {
             sortedStockCodes.forEach(stockCode => {
                 var desc = 
-                (stockCode.industry.includes("undefined") ? "" : stockCode.industry + "|") + 
-                (stockCode.sector.includes("undefined")   ? "" : stockCode.sector   + "|") +                       
-                (stockCode.name.includes("undefined")     ? "" : stockCode.name     + "|") +                       
+                (isEmpty(stockCode.industry) ? "" : stockCode.industry + "|") + 
+                (isEmpty(stockCode.sector)   ? "" : stockCode.sector   + "|") +                       
+                (isEmpty(stockCode.name)     ? "" : stockCode.name     + "|") +                       
                 " [v:" + stockCode.extra + "]";
 
                 var borderStyle = null;
