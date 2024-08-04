@@ -300,7 +300,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                     cell.split("/").map(function(el) {
                         var f = parseFloat(el);
                         if(f <= 30) {
-                            colorStr = red;
+                            colorStr = "red";
                         }
                     });
 
