@@ -288,10 +288,14 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                   }}, cell);
                 }
             },
-            'A20R', 
-            'A50R',
-            'A150R', 
-            'A200R',
+            {
+                name: 'breadth',
+                formatter: (cell, row) => {
+                    return gridjs.h('b', { style: {
+                        'color': row.cells[5].data > 20 ? 'green' : 'red'
+                      }}, row.cells[5].data);
+                }                
+            },
             'universe'
         ],
         sort: true,
