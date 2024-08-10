@@ -273,8 +273,10 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                     const symbol = row.cells[0].data;
                     const name = row.cells[1].data;
                     const universe = row.cells[5].data;
+                    const tradingViewSymbol = row.cells[6].data;
+
                     const imageLink = resolveImageLink(symbol, universe);
-                    const hrefLink = resolveChartLink(symbol, universe);
+                    const hrefLink = resolveChartLink(symbol, universe, tradingViewSymbol);
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
@@ -291,16 +293,17 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const universe = row.cells[5].data;
-
+                    const tradingViewSymbol = row.cells[6].data;
+                    
                     return gridjs.h('button', {
                         class: 'button-6',
-                        onClick: () => gotoPage(`${symbol}`,`${universe}`)
+                        onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${symbol}`);
                 }
             },            
             {
                 name: 'sma50/sma20/sma10df',
-                width: "350px",                
+                width: "250px",                
                 formatter: (cell, row) => {
                     if (cell.includes("undefined")) {
                         return "";
@@ -318,18 +321,10 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                         'color': colorStr
                       }}, cell);
                 }                
-            }, 
-            { 
-                name: 'difference', 
-                formatter: (cell) => {
-                  return gridjs.h('b', { style: {
-                    'color': cell > 0 ? 'green' : 'red'
-                  }}, cell);
-                }
             },
             {
                 name: '20R/50R/150R/200R',
-                width: "350px",                
+                width: "250px",                
                 formatter: (cell, row) => {
                     if (cell.includes("undefined")) {
                         return "";
@@ -338,7 +333,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                     var colorStr = "green";
                     cell.split("/").map(function(el) {
                         var f = parseFloat(el);
-                        if(f <= 30) {
+                        if(f <= 0) {
                             colorStr = "red"; // red if either one is less than 30
                         }
                     });
@@ -348,7 +343,14 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                       }}, cell);
                 }                
             },
-            'universe'
+            { 
+                name: 'universe',
+                hidden: true
+            },
+            { 
+                name: 'tradingViewSymbol',
+                hidden: true
+            }            
         ],
         sort: true,
         search: true,
@@ -360,9 +362,9 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                     stock.symbol,                     
                     stock.name,
                     stock.sma50df + " / " + stock.sma20df + " / " + stock.sma10df, 
-                    stock.extra, 
                     stock.A20R + " / " + stock.A50R + " / " + stock.A150R + " / " + stock.A200R,
-                    stock.universe
+                    stock.universe,
+                    stock.tradingViewSymbol
                 ]
             )
         }   
