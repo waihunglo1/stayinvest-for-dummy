@@ -17,14 +17,25 @@ const scConf6m = {
  *  Append chart images from AA / SC
  * 
  */
-function appendAA(parentId, stockCode, universe, period, desc, borderStyle) {
+function appendAA(parentId, stockCode, universe, period, taIndicator, desc, borderStyle) {
     const chartWidth = 400;
     const chartHeight = 350;
-    const stockChartLink = "https://charts.aastocks.com/servlet/Charts?fontsize=12&15MinDelay=T&lang=1&titlestyle=1&vol=1&Indicator=1&indpara1=10&indpara2=20&indpara3=50&indpara4=100&indpara5=150&subChart1=5&ref1para1=12&ref1para2=0&ref1para3=0&scheme=1&com=100&chartwidth={chartWidth}&chartheight={chartHeight}&stockid={stockCode}&period={period}&type=1&logoStyle=1&";
+    const techIndicatorROC = 5;
+    const techIndicatorRSI = 2;
+    var aaTaIndicator = techIndicatorROC;
+
+    if ("B14" == taIndicator) {
+        aaTaIndicator = techIndicatorRSI;
+    } else {
+        aaTaIndicator = techIndicatorROC;
+    }
+
+    const stockChartLink = "https://charts.aastocks.com/servlet/Charts?fontsize=12&15MinDelay=T&lang=1&titlestyle=1&vol=1&Indicator=1&indpara1=10&indpara2=20&indpara3=50&indpara4=100&indpara5=150&subChart1={taIndicator}&ref1para1=12&ref1para2=0&ref1para3=0&scheme=1&com=100&chartwidth={chartWidth}&chartheight={chartHeight}&stockid={stockCode}&period={period}&type=1&logoStyle=1&";
     const tempChartLink = stockChartLink
       .replace(/{chartWidth}/i, chartWidth)
       .replace(/{chartHeight}/i, chartHeight)
       .replace(/{stockCode}/i, stockCode)
+      .replace(/{taIndicator}/i, aaTaIndicator)
       .replace(/{period}/i,period);
 
     const hrefLink = resolveTargetPageLink(stockCode, universe);
@@ -78,7 +89,7 @@ function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, c
 
 export function appendImageToParent(parentId, chartType, stockCode, universe, desc, taIndicator, borderStyle) {
     if (chartType == 'HK') {
-        appendAA(parentId, stockCode, universe, 7, desc, borderStyle);
+        appendAA(parentId, stockCode, universe, 7, taIndicator, desc, borderStyle);
     }
 
     if (chartType == 'SC') {
