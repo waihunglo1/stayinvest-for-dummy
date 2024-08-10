@@ -348,6 +348,10 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
             { 
                 name: 'tradingViewSymbol',
                 hidden: true
+            },
+            {
+                name: 'sma50df',
+                hidden: false
             }            
         ],
         sort: true,
@@ -362,7 +366,8 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                     stock.sma50df + " / " + stock.sma20df + " / " + stock.sma10df, 
                     stock.A20R + " / " + stock.A50R + " / " + stock.A150R + " / " + stock.A200R,
                     stock.universe,
-                    stock.tradingViewSymbol
+                    stock.tradingViewSymbol,
+                    stock.extra
                 ]
             )
         }   
