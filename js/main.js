@@ -1,4 +1,4 @@
-import { resolveChartLink, emoji, resolveImageLink, isEmpty } from "./utils.js";
+import { resolveTargetPageLink, emoji, resolveStockChartImageLink, isEmpty } from "./utils.js";
 import { appendImageToParent } from "./chart-image-formatter.js";
 
 /**
@@ -274,13 +274,13 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                     const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    const imageLink = resolveImageLink(symbol, universe);
+                    const imageLink = resolveStockChartImageLink(symbol, universe);
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
                         src: imageLink,
                         width: "305",
-                        height: "225",
+                        height: "176",
                         alt: name,
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`, true)
                     }, `${name}`);
@@ -385,7 +385,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
  * @param {*} universe 
  */
 function gotoPage(stockCode, universe, tradingViewSymbol, useTradingView) {
-    const hrefLink = resolveChartLink(stockCode, universe, tradingViewSymbol, useTradingView);
+    const hrefLink = resolveTargetPageLink(stockCode, universe, tradingViewSymbol, useTradingView);
     // console.log(hrefLink);
     window.open(hrefLink, '_blank').focus();
 }

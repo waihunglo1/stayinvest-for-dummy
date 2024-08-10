@@ -29,7 +29,7 @@ export function isEmpty(value) {
     );
 }
 
-export function resolveChartLink(stockCode, universe, tradingViewCode, useTradingView) {
+export function resolveTargetPageLink(stockCode, universe, tradingViewCode, useTradingView) {
     var refLink = "https://www.stockfisher.com.hk/us-stock/ticker/{stockCode}";
     var shouldTradingView = false;
 
@@ -56,8 +56,9 @@ export function resolveChartLink(stockCode, universe, tradingViewCode, useTradin
     return tempRefLink;
 }
 
-export function resolveImageLink(stockCode, universe) {
-    const scImageLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&amp;chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg][ilM12]";
+export function resolveStockChartImageLink(stockCode, universe) {
+    // const scImageLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&amp;chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg][ilM12]";
+    const scImageLink = "https://stockcharts.com/c-sc/sc?r=1723291776117&chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg]";
     return scImageLink
         .replace(/{stockCode}/i, stockCode);    
 }

@@ -1,4 +1,4 @@
-import { resolveChartLink } from "./utils.js";
+import { resolveTargetPageLink } from "./utils.js";
 
 // stock chart config
 const scConf2m = {
@@ -27,7 +27,7 @@ function appendAA(parentId, stockCode, universe, period, desc, borderStyle) {
       .replace(/{stockCode}/i, stockCode)
       .replace(/{period}/i,period);
 
-    const hrefLink = resolveChartLink(stockCode, universe);
+    const hrefLink = resolveTargetPageLink(stockCode, universe);
     appendImageAndHrefAddr(parentId, tempChartLink, hrefLink, chartWidth, chartHeight, desc, borderStyle);
 }
 
@@ -47,7 +47,7 @@ function appendSC(parentId, stockCode, universe, scConf, taIndicator, desc, bord
       .replace(/{period}/i, scConf.period)
       .replace(/{taIndicator}/i, taIndicator);
 
-    const hrefLink = resolveChartLink(stockCode, universe);
+    const hrefLink = resolveTargetPageLink(stockCode, universe);
     appendImageAndHrefAddr(parentId, tempChartLink, hrefLink, scConf.chartWidth, scConf.chartHeight, desc, borderStyle);
 }        
 
