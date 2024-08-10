@@ -1,11 +1,12 @@
-import { resolveTargetPageLink, resolveStockChartImageLink } from "./utils.js";
+import { resolveTargetPageLink } from "./utils.js";
+import { resolveStockChartImageLink } from "./chart-image-formatter.js";
 
 /**
  * async fetch index close
  * yahoo data support only
  * https://render-ealy.onrender.com/yahoo?cgo=^IXIC,^GSPC,^DJI|S50&p=1&format=json&order=d
  */
-export function fetchInGrid(parentId, stockCodes, taIndicator) {
+export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth) {
     if(stockCodes.includes("$")) {
         return;
     }
@@ -18,14 +19,14 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
     new gridjs.Grid({
         columns: [
             {
-                name: 'daily',
+                name: '2month',
                 hidden: false,
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    const imageLink = resolveStockChartImageLink(symbol, universe, "daily");
+                    const imageLink = resolveStockChartImageLink(symbol, universe, "2m");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
@@ -38,20 +39,20 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                 }                
             },
             {
-                name: 'weekly',
+                name: '6month',
                 hidden: false,
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    const imageLink = resolveStockChartImageLink(symbol, universe, "weekly");
+                    const imageLink = resolveStockChartImageLink(symbol, universe, "6m");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
                         src: imageLink,
-                        width: "305",
-                        height: "225",
+                        width: "360",
+                        height: "305",
                         alt: name,
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);

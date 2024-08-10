@@ -100,3 +100,19 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
         appendSC(parentId, stockCode, universe, scConf6m, taIndicator, desc, borderStyle);
     }                
 }
+
+export function resolveStockChartImageLink(stockCode, universe, period) {
+    var scPeriod = "g";
+
+    if ("6m" == period) {
+        scPeriod = "c";
+    } 
+    var scImageLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&amp;chart={stockCode},uu[305,a]dacayaci[pb20!b50][d{period}][ilB14]";
+
+    // no indicator
+    // const scImageLink = "https://stockcharts.com/c-sc/sc?r=1723291776117&chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg]";
+    
+    return scImageLink
+        .replace(/{stockCode}/i, stockCode)
+        .replace(/{period}/i, scPeriod);    
+}
