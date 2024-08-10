@@ -66,8 +66,11 @@ export function resolveStockChartImageLink(stockCode, universe, type) {
     var scImageLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&amp;chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg][ilB14]";
 
     if ("weekly" == type) {
-        scImageLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[305,a]dacayaci[pb20!b50][dc][ilB14]";
+        // https://stockcharts.com/c-sc/sc?s=%24INDU&p=W&yr=1&mn=0&dy=0&i=t0102186494c&r=1723302789570
+        scImageLink = "https://stockcharts.com/c-sc/sc?s={stockCode}&p=W&yr=1&mn=0&dy=0&i=t0102186494c&r=1723302789570";
     }
+
+    // no indicator
     // const scImageLink = "https://stockcharts.com/c-sc/sc?r=1723291776117&chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg]";
     
     return scImageLink
