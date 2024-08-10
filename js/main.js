@@ -272,8 +272,8 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const name = row.cells[1].data;
-                    const universe = row.cells[5].data;
-                    const tradingViewSymbol = row.cells[6].data;
+                    const universe = row.cells[4].data;
+                    const tradingViewSymbol = row.cells[5].data;
 
                     const imageLink = resolveImageLink(symbol, universe);
                     const hrefLink = resolveChartLink(symbol, universe, tradingViewSymbol);
@@ -292,8 +292,8 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                 name: 'symbol',
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
-                    const universe = row.cells[5].data;
-                    const tradingViewSymbol = row.cells[6].data;
+                    const universe = row.cells[4].data;
+                    const tradingViewSymbol = row.cells[5].data;
                     
                     return gridjs.h('button', {
                         class: 'button-6',
@@ -345,11 +345,11 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
             },
             { 
                 name: 'universe',
-                hidden: false
+                hidden: true
             },
             { 
                 name: 'tradingViewSymbol',
-                hidden: false
+                hidden: true
             }            
         ],
         sort: true,
