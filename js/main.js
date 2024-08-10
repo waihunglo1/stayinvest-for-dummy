@@ -347,7 +347,8 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                         'color': colorStr
                       }}, cell);
                 }                
-            }
+            },
+            'universe'
         ],
         sort: true,
         search: true,
