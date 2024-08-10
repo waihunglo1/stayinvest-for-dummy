@@ -284,7 +284,8 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                         href: hrefLink,
                         width: "305",
                         height: "225",
-                        alt: name
+                        alt: name,
+                        onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);
                 }                
             },
