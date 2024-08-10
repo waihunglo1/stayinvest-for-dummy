@@ -18,38 +18,44 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
     new gridjs.Grid({
         columns: [
             {
-                name: 'name',
-                width: "350px",
+                name: 'daily',
+                hidden: false,
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    const imageLink = resolveStockChartImageLink(symbol, universe);
+                    const imageLink = resolveStockChartImageLink(symbol, universe, "daily");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
                         src: imageLink,
                         width: "305",
-                        height: "176",
+                        height: "225",
                         alt: name,
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);
                 }                
             },
             {
-                name: 'symbol',
-                hidden: true,
+                name: 'weekly',
+                hidden: false,
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
+                    const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    
-                    return gridjs.h('button', {
-                        class: 'button-6',
+                    const imageLink = resolveStockChartImageLink(symbol, universe, "weekly");
+
+                    return gridjs.h('img', {
+                        referrerpolicy: "no-referrer",
+                        src: imageLink,
+                        width: "305",
+                        height: "225",
+                        alt: name,
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
-                    }, `${symbol}`);
-                }
+                    }, `${name}`);
+                }   
             },            
             {
                 name: 'sma50/sma20/sma10df',

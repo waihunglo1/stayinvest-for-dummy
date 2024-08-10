@@ -62,9 +62,14 @@ function tradingViewSupport(universe) {
     return false;
 }
 
-export function resolveStockChartImageLink(stockCode, universe) {
-    // const scImageLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&amp;chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg][ilM12]";
-    const scImageLink = "https://stockcharts.com/c-sc/sc?r=1723291776117&chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg]";
+export function resolveStockChartImageLink(stockCode, universe, type) {
+    var scImageLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&amp;chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg][ilB14]";
+
+    if ("weekly" == type) {
+        scImageLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[305,a]dacayaci[pb20!b50][dc][ilB14]";
+    }
+    // const scImageLink = "https://stockcharts.com/c-sc/sc?r=1723291776117&chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg]";
+    
     return scImageLink
         .replace(/{stockCode}/i, stockCode);    
 }
