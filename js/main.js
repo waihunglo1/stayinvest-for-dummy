@@ -276,12 +276,11 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                     const tradingViewSymbol = row.cells[5].data;
 
                     const imageLink = resolveImageLink(symbol, universe);
-                    const hrefLink = resolveChartLink(symbol, universe, tradingViewSymbol);
+                    const hrefLink = resolveChartLink(symbol, universe, tradingViewSymbol, true);
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
                         src: imageLink,
-                        href: hrefLink,
                         width: "305",
                         height: "225",
                         alt: name,
@@ -298,7 +297,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                     
                     return gridjs.h('button', {
                         class: 'button-6',
-                        onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
+                        onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`, false)
                     }, `${symbol}`);
                 }
             },            
@@ -377,9 +376,9 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
  * @param {*} stockCode 
  * @param {*} universe 
  */
-function gotoPage(stockCode, universe) {
-    const hrefLink = resolveChartLink(stockCode, universe);
-    console.log(hrefLink);
+function gotoPage(stockCode, universe, tradingViewSymbol, useTradingView) {
+    const hrefLink = resolveChartLink(stockCode, universe, tradingViewSymbol, useTradingView);
+    // console.log(hrefLink);
     window.open(hrefLink, '_blank').focus();
 }
 

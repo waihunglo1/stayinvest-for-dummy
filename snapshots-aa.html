@@ -67,11 +67,11 @@
             const buttonElement = document.createElement("button");
             buttonElement.setAttribute("class","button-6");
             buttonElement.innerText = buttonLabel;
-            buttonElement.onclick = function() { gotoPage(taIndicator, chartType); };
+            buttonElement.onclick = function() { snapshotsForStockCodes(taIndicator, chartType); };
             document.getElementById(parentId).appendChild(buttonElement);
         }
 
-        function gotoPage(taIndicator, period) {
+        function snapshotsForStockCodes(taIndicator, period) {
             const stockChartLink = "snapshots-aa.html?t={type}&a={taIndicator}&o={stockCodes}";
             const params = new URLSearchParams(document.location.search);
             const inputStockCodes = params.get("o");
