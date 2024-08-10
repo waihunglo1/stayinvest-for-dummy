@@ -112,7 +112,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
             }            
         ],
         sort: true,
-        search: true,
+        search: false,
         resizable: true,
         server: {
             url: tempSortByLink,
