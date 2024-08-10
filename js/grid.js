@@ -33,7 +33,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                         width: "305",
                         height: "176",
                         alt: name,
-                        onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`, true)
+                        onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);
                 }                
             },
@@ -47,7 +47,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                     
                     return gridjs.h('button', {
                         class: 'button-6',
-                        onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`, false)
+                        onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${symbol}`);
                 }
             },            
@@ -136,8 +136,8 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
  * @param {*} stockCode 
  * @param {*} universe 
  */
-function gotoPage(stockCode, universe, tradingViewSymbol, useTradingView) {
-    const hrefLink = resolveTargetPageLink(stockCode, universe, tradingViewSymbol, useTradingView);
+function gotoPage(stockCode, universe, tradingViewSymbol) {
+    const hrefLink = resolveTargetPageLink(stockCode, universe, tradingViewSymbol);
     // console.log(hrefLink);
     window.open(hrefLink, '_blank').focus();
 }

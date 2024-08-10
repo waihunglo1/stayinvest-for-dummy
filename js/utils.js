@@ -29,21 +29,17 @@ export function isEmpty(value) {
     );
 }
 
-export function resolveTargetPageLink(stockCode, universe, tradingViewCode, useTradingView) {
+export function resolveTargetPageLink(stockCode, universe, tradingViewCode) {
     var refLink = "https://www.stockfisher.com.hk/us-stock/ticker/{stockCode}";
     var shouldTradingView = false;
 
-    if(! isEmpty(useTradingView) && useTradingView == true && !isEmpty(tradingViewCode)) {
-        shouldTradingView = true;
-    }
-
-    if (shouldTradingView) {
-        refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
-        stockCode = tradingViewCode;   
-    } else if (stockCode.includes(".HK")) {
+    if (stockCode.includes(".HK")) {
         refLink = "https://www.stockfisher.com.hk/ticker/{stockCode}";
-    } else if ("ETF" == universe || "etf" == universe || stockCode.startsWith("^")) {
+    } else if ("etf" == universe.toLowerCase() || "index" == universe.toLowerCase() || stockCode.startsWith("^")) {
         refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
+        if(!isEmpty(tradingViewCode)) {
+            stockCode = tradingViewCode;
+        }
         stockCode = stockCode.replace("^","");
     } else if (stockCode.startsWith("$")) {
         refLink = "https://stockcharts.com/sc3/ui/?s={stockCode}";
