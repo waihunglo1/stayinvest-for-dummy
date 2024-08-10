@@ -29,8 +29,9 @@
     <div id="grid_home" style="margin: 0 auto; width:1400px;float:left"></div>
 
     <script type="module">
-        import { fetchCsvThemesAndAppendLink, fetchInGrid, handleInputParameters } from "/stayinvest-for-dummy/js/main.js";
-        
+        import { handleInputParameters } from "/stayinvest-for-dummy/js/main.js";
+        import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";	
+
         function parseLocationAndShowTable() {
             let { 
                 inputStockCodes,
