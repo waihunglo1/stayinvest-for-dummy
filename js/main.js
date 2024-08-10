@@ -356,7 +356,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
             then: data => data.stocks.map(
                 stock => [
                     stock.symbol,                     
-                    stock.name,                     
+                    stock.name,
                     stock.sma50df + " / " + stock.sma20df + " / " + stock.sma10df, 
                     stock.extra, 
                     stock.A20R + " / " + stock.A50R + " / " + stock.A150R + " / " + stock.A200R,
