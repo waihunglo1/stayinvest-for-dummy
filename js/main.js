@@ -351,7 +351,12 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
             },
             {
                 name: 'sma50df',
-                hidden: false
+                hidden: false,
+                formatter: (cell) => {
+                    return gridjs.h('b', { style: {
+                    'color': -8 < cell && cell < 8 ? 'green' : 'red'
+                    }}, cell);
+                }
             }            
         ],
         sort: true,
