@@ -345,11 +345,11 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
             },
             { 
                 name: 'universe',
-                hidden: true
+                hidden: false
             },
             { 
                 name: 'tradingViewSymbol',
-                hidden: true
+                hidden: false
             }            
         ],
         sort: true,
