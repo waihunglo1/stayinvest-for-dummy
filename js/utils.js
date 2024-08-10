@@ -35,7 +35,7 @@ export function resolveTargetPageLink(stockCode, universe, tradingViewCode) {
 
     if (stockCode.includes(".HK")) {
         refLink = "https://www.stockfisher.com.hk/ticker/{stockCode}";
-    } else if ("etf" == universe.toLowerCase() || "index" == universe.toLowerCase() || stockCode.startsWith("^")) {
+    } else if (tradingViewSupport(universe)) {
         refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
         if(!isEmpty(tradingViewCode)) {
             stockCode = tradingViewCode;
@@ -50,6 +50,16 @@ export function resolveTargetPageLink(stockCode, universe, tradingViewCode) {
 
     console.log(tempRefLink);
     return tempRefLink;
+}
+
+function tradingViewSupport(universe) {
+    if(!isEmpty(universe)) {
+        if ("etf" == universe.toLowerCase() || "index" == universe.toLowerCase() || stockCode.startsWith("^")) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 export function resolveStockChartImageLink(stockCode, universe) {
