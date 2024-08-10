@@ -267,24 +267,12 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
     new gridjs.Grid({
         columns: [
             {
-                name: 'symbol',
-                formatter: (cell, row) => {
-                    const symbol = row.cells[0].data;
-                    const universe = row.cells[6].data;
-
-                    return gridjs.h('button', {
-                        class: 'button-6',
-                        onClick: () => gotoPage(`${symbol}`,`${universe}`)
-                    }, `${symbol}`);
-                }
-            },
-            {
                 name: 'name',
                 width: "350px",
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const name = row.cells[1].data;
-                    const universe = row.cells[6].data;
+                    const universe = row.cells[5].data;
                     const imageLink = resolveImageLink(symbol, universe);
                     const hrefLink = resolveChartLink(symbol, universe);
 
@@ -298,8 +286,39 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                     }, `${name}`);
                 }                
             },
-            'sma50', 
-            'close', 
+            {
+                name: 'symbol',
+                formatter: (cell, row) => {
+                    const symbol = row.cells[0].data;
+                    const universe = row.cells[5].data;
+
+                    return gridjs.h('button', {
+                        class: 'button-6',
+                        onClick: () => gotoPage(`${symbol}`,`${universe}`)
+                    }, `${symbol}`);
+                }
+            },            
+            {
+                name: 'sma50/sma20/sma10df',
+                width: "350px",                
+                formatter: (cell, row) => {
+                    if (cell.includes("undefined")) {
+                        return "";
+                    }
+
+                    var colorStr = "green";
+                    cell.split("/").map(function(el) {
+                        var f = parseFloat(el);
+                        if(f >= 8) {
+                            colorStr = "red"; // red if > 8
+                        }
+                    });
+
+                    return gridjs.h('b', { style: {
+                        'color': colorStr
+                      }}, cell);
+                }                
+            }, 
             { 
                 name: 'difference', 
                 formatter: (cell) => {
@@ -316,12 +335,11 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                         return "";
                     }
 
-                    // red if either one is less than 30
                     var colorStr = "green";
                     cell.split("/").map(function(el) {
                         var f = parseFloat(el);
                         if(f <= 30) {
-                            colorStr = "red";
+                            colorStr = "red"; // red if either one is less than 30
                         }
                     });
 
@@ -329,14 +347,22 @@ export function fetchInGrid(parentId, stockCodes, taIndicator) {
                         'color': colorStr
                       }}, cell);
                 }                
-            },
-            'universe'
+            }
         ],
         sort: true,
         resizable: true,
         server: {
             url: tempSortByLink,
-            then: data => data.stocks.map(stock => [stock.symbol, stock.name, stock.sma50, stock.close, stock.extra, stock.A20R + " / " + stock.A50R + " / " + stock.A150R + " / " + stock.A200R, stock.universe])
+            then: data => data.stocks.map(
+                stock => [
+                    stock.symbol,                     
+                    stock.name,                     
+                    stock.sma50df + " / " + stock.sma20df + " / " + stock.sma10df, 
+                    stock.extra, 
+                    stock.A20R + " / " + stock.A50R + " / " + stock.A150R + " / " + stock.A200R,
+                    stock.universe
+                ]
+            )
         }   
     }).render(document.getElementById(parentId));    
 }
