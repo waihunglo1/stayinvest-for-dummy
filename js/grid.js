@@ -20,6 +20,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
             {
                 name: '2month',
                 hidden: false,
+                width: "310px",
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const name = row.cells[1].data;
@@ -40,6 +41,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
             {
                 name: '6month',
                 hidden: false,
+                width: "310px",                
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const name = row.cells[1].data;
