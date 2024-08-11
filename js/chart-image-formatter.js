@@ -66,10 +66,11 @@ function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, c
     // image element
     var imageElement = new Image();
     imageElement.setAttribute("referrerpolicy","no-referrer");
+    imageElement.setAttribute("alt", desc);
+    imageElement.setAttribute('onclick', 'gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)');
     imageElement.src = imageLinkAddr;
     imageElement.width = chartWidth;
     imageElement.height = chartHeight;
-    imageElement.setAttribute("alt", desc);
     imageElement.title = desc;
 
     if (borderStyle != null) {
@@ -77,27 +78,14 @@ function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, c
     }    
 
     // href element
+    /*
     var linkElement = document.createElement('a');
     linkElement.href = hrefAddr;
     linkElement.setAttribute("target","_blank");
-
-    // img_home.appendChild(img);
     linkElement.appendChild(imageElement);
-    
-    const imageLink = resolveStockChartImageLink(symbol, universe, "2m");
+    */
 
-    const gImgElement = gridjs.h('img', {
-        referrerpolicy: "no-referrer",
-        src: imageLink,
-        width: "305",
-        height: "225",
-        alt: desc,
-        onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
-    }, `${desc}`);
-
-    document.getElementById(parentId).appendChild(gImgElement);
-    
-    // document.getElementById(parentId).appendChild(linkElement);
+    document.getElementById(parentId).appendChild(imageElement);
 }
 
 
