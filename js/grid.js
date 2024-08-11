@@ -81,6 +81,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
             },
             {
                 name: '20R/50R/150R/200R',
+                hidden: hideMarketBreadth,
                 width: "250px",                
                 formatter: (cell, row) => {
                     if (cell.includes("undefined")) {
