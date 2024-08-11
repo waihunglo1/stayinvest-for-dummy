@@ -81,9 +81,9 @@ export function resolveStockChartImageLink(stockCode, period, taIndicator) {
       .replace(/{taIndicator}/i, taIndicator);
 
     var chartImg = new Object();
-    ret.imageLinkAddr = tempChartLink;
-    ret.imageWidth = chartConf.chartWidth;
-    ret.imageHeight = chartConf.chartHeight;
+    chartImg.imageLinkAddr = tempChartLink;
+    chartImg.imageWidth = chartConf.chartWidth;
+    chartImg.imageHeight = chartConf.chartHeight;
 
     return chartImg;
 }
