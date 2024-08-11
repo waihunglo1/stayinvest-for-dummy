@@ -20,19 +20,18 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
             {
                 name: '2month',
                 hidden: false,
-                width: "310px",
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    const imageLink = resolveStockChartImageLink(symbol, "2m", "M12");
+                    let { imageLinkAddr, chartConf } =  resolveStockChartImageLink(symbol, "2m", "M12");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
-                        src: imageLink,
-                        // width: "305",
-                        // height: "225",
+                        src: imageLinkAddr,
+                        width: chartConf.chartWidth,
+                        height: chartConf.chartHeight,
                         alt: name,
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);
@@ -40,20 +39,19 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
             },
             {
                 name: '6month',
-                hidden: false,
-                width: "310px",                
+                hidden: false,              
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    const imageLink = resolveStockChartImageLink(symbol, "6m", "M12");
+                    let { imageLinkAddr, chartConf } =  resolveStockChartImageLink(symbol, "6m", "M12");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
-                        src: imageLink,
-                        // width: "305",
-                        // height: "225",
+                        src: imageLinkAddr,
+                        width: chartConf.chartWidth,
+                        height: chartConf.chartHeight,
                         alt: name,
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);

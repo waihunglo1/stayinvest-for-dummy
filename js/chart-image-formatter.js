@@ -28,7 +28,7 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
         period = "6m";
     }
 
-    const imageLinkAddr = resolveStockChartImageLink(stockCode, period, taIndicator);
+    let { imageLinkAddr, chartConf } = resolveStockChartImageLink(stockCode, period, taIndicator);
 
     // create image element
     var imageElement = new Image();
@@ -80,7 +80,11 @@ export function resolveStockChartImageLink(stockCode, period, taIndicator) {
       .replace(/{period}/i, chartConf.period)
       .replace(/{taIndicator}/i, taIndicator);
 
-    return tempChartLink;
+    // return tempChartLink;
+    return {
+        tempChartLink,
+        chartConf
+    }
 }
 
 /**
