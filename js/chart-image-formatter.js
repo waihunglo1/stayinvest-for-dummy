@@ -38,7 +38,7 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
     imageElement.title = desc;
 
     imageElement.addEventListener("click", function () {
-        alert(stockCode, universe, tradingViewSymbol);
+        gotoPage(stockCode, universe);
     });
 
     // border style
