@@ -73,9 +73,11 @@ export function resolveStockChartImageLink(stockCode, period, taIndicator) {
         }
     }
 
+    const chartWidth = chartConf.chartWidth;
+    const chartHeight = chartConf.chartHeight;
     const tempChartLink = stockChartLink
-      .replace(/{chartWidth}/i, chartConf.chartWidth)
-      .replace(/{chartHeight}/i, chartConf.chartHeight)
+      .replace(/{chartWidth}/i, chartWidth)
+      .replace(/{chartHeight}/i, chartHeight)
       .replace(/{stockCode}/i, stockCode)
       .replace(/{period}/i, chartConf.period)
       .replace(/{taIndicator}/i, taIndicator);
@@ -83,8 +85,8 @@ export function resolveStockChartImageLink(stockCode, period, taIndicator) {
     // return tempChartLink;
     return {
         tempChartLink,
-        chartConf.chartWidth,
-        chartConf.chartHeight
+        chartWidth,
+        chartHeight
     }
 }
 
