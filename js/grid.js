@@ -138,14 +138,3 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
         }   
     }).render(document.getElementById(parentId));    
 }
-
-/**
- * goto and opening new tab from Grid
- * @param {*} stockCode 
- * @param {*} universe 
- */
-function gotoPage(stockCode, universe, tradingViewSymbol) {
-    const hrefLink = resolveTargetPageLink(stockCode, universe, tradingViewSymbol);
-    // console.log(hrefLink);
-    window.open(hrefLink, '_blank').focus();
-}

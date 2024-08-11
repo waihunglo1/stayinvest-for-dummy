@@ -265,3 +265,14 @@ export const loadStockCodesImageWithProgressBar = (inputStockCodes, chartType, t
         console.error(error);
     });		    
 } 
+
+/**
+ * goto and opening new tab from Grid
+ * @param {*} stockCode 
+ * @param {*} universe 
+ */
+function gotoPage(stockCode, universe, tradingViewSymbol) {
+    const hrefLink = resolveTargetPageLink(stockCode, universe, tradingViewSymbol);
+    // console.log(hrefLink);
+    window.open(hrefLink, '_blank').focus();
+}
