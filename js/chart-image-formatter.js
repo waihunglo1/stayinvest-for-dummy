@@ -43,10 +43,17 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
     // border style
     if (borderStyle != null) {
         imageElement.style.border = borderStyle;
-    } 
+    }
+
+    var img = gridjs.h('img', {
+        referrerpolicy: "no-referrer",
+        src: imageLink,
+        alt: desc,
+        onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
+    }, `${desc}`);    
     
     // add the parent
-    document.getElementById(parentId).appendChild(imageElement);
+    document.getElementById(parentId).appendChild(img);
 }
 
 export function resolveStockChartImageLink(stockCode, period, taIndicator) {
