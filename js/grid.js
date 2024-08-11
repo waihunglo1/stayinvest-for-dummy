@@ -25,13 +25,13 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
                     const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    let { imageLinkAddr, chartConf } =  resolveStockChartImageLink(symbol, "2m", "M12");
+                    let { imageLinkAddr, width, height } = resolveStockChartImageLink(symbol, "2m", "M12");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
                         src: imageLinkAddr,
-                        width: chartConf.chartWidth,
-                        height: chartConf.chartHeight,
+                        width: width,
+                        height: height,
                         alt: name,
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);
@@ -45,13 +45,13 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
                     const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    let { imageLinkAddr, chartConf } =  resolveStockChartImageLink(symbol, "6m", "M12");
+                    let { imageLinkAddr, width, height } = resolveStockChartImageLink(symbol, "6m", "M12");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
                         src: imageLinkAddr,
-                        width: chartConf.chartWidth,
-                        height: chartConf.chartHeight,
+                        width: width,
+                        height: height,
                         alt: name,
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);
