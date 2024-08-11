@@ -45,7 +45,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
                     const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    const imageLink = resolveStockChartImageLink5tazaa(symbol, universe, "SC6M");
+                    const imageLink = resolveStockChartImageLink(symbol, universe, "SC6M");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
