@@ -51,8 +51,8 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
                         src: imageLink,
-                        width: "360",
-                        height: "305",
+                        width: "305",
+                        height: "225",
                         alt: name,
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);

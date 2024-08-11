@@ -35,7 +35,7 @@ export function resolveTargetPageLink(stockCode, universe, tradingViewCode) {
 
     if (stockCode.includes(".HK")) {
         refLink = "https://www.stockfisher.com.hk/ticker/{stockCode}";
-    } else if (tradingViewSupport(universe)) {
+    } else if (tradingViewSupport(universe, stockCode)) {
         refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
         if(!isEmpty(tradingViewCode, stockCode)) {
             refStockCode = tradingViewCode;
