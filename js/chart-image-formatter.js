@@ -87,7 +87,7 @@ export function resolveStockChartImageLink(stockCode, period, taIndicator) {
  * @param {*} stockCode 
  * @param {*} universe 
  */
-function gotoPage(stockCode, universe, tradingViewSymbol) {
+export function gotoPage(stockCode, universe, tradingViewSymbol) {
     const hrefLink = resolveTargetPageLink(stockCode, universe, tradingViewSymbol);
     window.open(hrefLink, '_blank').focus();
 }
