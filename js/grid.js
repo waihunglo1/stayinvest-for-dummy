@@ -25,7 +25,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
                     const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    const chartImg = resolveStockChartImageLink(symbol, "2m", "M12");
+                    const chartImg = resolveStockChartImageLink(symbol, "2m", "B14");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
@@ -45,7 +45,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
                     const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    const chartImg = resolveStockChartImageLink(symbol, "6m", "M12");
+                    const chartImg = resolveStockChartImageLink(symbol, "6m", "B14");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",

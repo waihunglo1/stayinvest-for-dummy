@@ -4,14 +4,18 @@ import { resolveTargetPageLink } from "./utils.js";
 const scConf2m = {
     chartWidth: 305,
     chartHeight: 225,
-    period: "dg"
-    };
+    period: "dg",
+    techIndicatorRSI: "B14",
+    techIndicatorROC: "M12"
+};
 
 const scConf6m = {
     chartWidth: 305,
     chartHeight: 225,
-    period: "dc"
-    };
+    period: "dc",
+    techIndicatorRSI: "B14",
+    techIndicatorROC: "M12"
+};
 
 const hkConf3m = {
     chartWidth: 400,
