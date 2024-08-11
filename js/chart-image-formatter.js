@@ -82,8 +82,22 @@ function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, c
     linkElement.setAttribute("target","_blank");
 
     // img_home.appendChild(img);
-    linkElement.appendChild(imageElement);            
-    document.getElementById(parentId).appendChild(linkElement);
+    linkElement.appendChild(imageElement);
+    
+    const imageLink = resolveStockChartImageLink(symbol, universe, "2m");
+
+    const gImgElement = gridjs.h('img', {
+        referrerpolicy: "no-referrer",
+        src: imageLink,
+        width: "305",
+        height: "225",
+        alt: desc,
+        onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
+    }, `${desc}`);
+
+    document.getElementById(parentId).appendChild(gImgElement);
+    
+    // document.getElementById(parentId).appendChild(linkElement);
 }
 
 

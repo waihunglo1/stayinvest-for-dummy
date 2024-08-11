@@ -18,6 +18,10 @@
     <!-- progress bar -->
     <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
     <script type="text/javascript" src="js-3rd-party/loading-bar.js"></script>
+
+    <!-- data table -->
+    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>       
 </head>
 
 <body>
@@ -40,11 +44,6 @@
         function addButtons(parentId, chartType) {
             const params = new URLSearchParams(document.location.search);
             const inputStockCodes = params.get("o");
-            var isYahooSupport = true;
-
-            if(inputStockCodes.includes("$")) {
-                isYahooSupport = false;
-            }
 
             if(chartType == "HK") {
                 addButton(parentId,"🚿 ROC - 2M", "M12", "HK");
@@ -54,13 +53,14 @@
                 addButton(parentId,"📈 RSI14 - 6M", "B14",  "SC6M");
                 addButton(parentId,"📟 ROC12 - 2M", "M12",  "SC");
                 addButton(parentId,"🕛 ROC12 - 6M", "M12",  "SC6M");
-                addButton(parentId,"🔂 VOLUME",     "VOL",  "SC");        
-
-                if(isYahooSupport) {
-                    addButton(parentId,"🚋 S50-DIFF","S50DF","SC");
-                    addButtonTableLink(parentId,"🔟SMA50","S50DF","SC");
-                }
+                addButton(parentId,"🔂 VOLUME",     "VOL",  "SC");
             }
+
+            if(inputStockCodes.includes("$")) {
+                // yahoo support?
+                addButton(parentId,"🚋 S50-DIFF","S50DF","SC");
+                addButtonTableLink(parentId,"🔟SMA50","S50DF","SC");
+            }            
         }
 
         function addButton(parentId, buttonLabel, taIndicator, chartType) {
