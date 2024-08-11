@@ -31,28 +31,28 @@ export function isEmpty(value) {
 
 export function resolveTargetPageLink(stockCode, universe, tradingViewCode) {
     var refLink = "https://www.stockfisher.com.hk/us-stock/ticker/{stockCode}";
-    var shouldTradingView = false;
+    var refStockCode = stockCode;
 
     if (stockCode.includes(".HK")) {
         refLink = "https://www.stockfisher.com.hk/ticker/{stockCode}";
     } else if (tradingViewSupport(universe)) {
         refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
-        if(!isEmpty(tradingViewCode)) {
-            stockCode = tradingViewCode;
+        if(!isEmpty(tradingViewCode, stockCode)) {
+            refStockCode = tradingViewCode;
         }
-        stockCode = stockCode.replace("^","");
+        refStockCode = stockCode.replace("^","");
     } else if (stockCode.startsWith("$")) {
         refLink = "https://stockcharts.com/sc3/ui/?s={stockCode}";
     }
 
     const tempRefLink = refLink
-        .replace(/{stockCode}/i, stockCode);
+        .replace(/{stockCode}/i, refStockCode);
 
     console.log(tempRefLink);
     return tempRefLink;
 }
 
-function tradingViewSupport(universe) {
+function tradingViewSupport(universe, stockCode) {
     if(!isEmpty(universe)) {
         if ("etf" == universe.toLowerCase() || "index" == universe.toLowerCase() || stockCode.startsWith("^")) {
             return true;
