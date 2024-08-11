@@ -25,13 +25,13 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
                     const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    const imageLink = resolveStockChartImageLink(symbol, universe, "2m");
+                    const imageLink = resolveStockChartImageLink(symbol, "2m", "M12");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
                         src: imageLink,
-                        width: "305",
-                        height: "225",
+                        // width: "305",
+                        // height: "225",
                         alt: name,
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);
@@ -45,13 +45,13 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
                     const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    const imageLink = resolveStockChartImageLink(symbol, universe, "6m");
+                    const imageLink = resolveStockChartImageLink(symbol, "6m", "M12");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
                         src: imageLink,
-                        width: "305",
-                        height: "225",
+                        // width: "305",
+                        // height: "225",
                         alt: name,
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);
