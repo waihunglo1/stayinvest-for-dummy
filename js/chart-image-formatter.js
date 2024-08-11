@@ -34,7 +34,7 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
     var imageElement = new Image();
     imageElement.setAttribute("referrerpolicy","no-referrer");
     imageElement.setAttribute("alt", desc);
-    imageElement.setAttribute('onclick', 'gotoPage(`${stockCode}`,`${universe}`,`${tradingViewSymbol}`)');
+    imageElement.setAttribute('onclick', 'alert(`${stockCode}`,`${universe}`,`${tradingViewSymbol}`)');
     imageElement.src = imageLinkAddr;
     // imageElement.width = chartWidth;
     // imageElement.height = chartHeight;
