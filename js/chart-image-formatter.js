@@ -28,13 +28,13 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
         period = "6m";
     }
 
-    const { imageLinkAddr, width, height } = resolveStockChartImageLink(stockCode, period, taIndicator);
+    const chartImg = resolveStockChartImageLink(stockCode, period, taIndicator);
 
     // create image element
     var imageElement = new Image();
     imageElement.setAttribute("referrerpolicy","no-referrer");
     imageElement.setAttribute("alt", desc);
-    imageElement.src = imageLinkAddr;
+    imageElement.src = chartImg.imageLinkAddr;
     imageElement.title = desc;
 
     imageElement.addEventListener("click", function () {
@@ -73,21 +73,19 @@ export function resolveStockChartImageLink(stockCode, period, taIndicator) {
         }
     }
 
-    const chartWidth = chartConf.chartWidth;
-    const chartHeight = chartConf.chartHeight;
     const tempChartLink = stockChartLink
-      .replace(/{chartWidth}/i, chartWidth)
-      .replace(/{chartHeight}/i, chartHeight)
+      .replace(/{chartWidth}/i, chartConf.chartWidth)
+      .replace(/{chartHeight}/i, chartConf.chartHeight)
       .replace(/{stockCode}/i, stockCode)
       .replace(/{period}/i, chartConf.period)
       .replace(/{taIndicator}/i, taIndicator);
 
-    // return tempChartLink;
-    return {
-        tempChartLink,
-        chartWidth,
-        chartHeight
-    }
+    var chartImg = new Object();
+    ret.imageLinkAddr = tempChartLink;
+    ret.imageWidth = chartConf.chartWidth;
+    ret.imageHeight = chartConf.chartHeight;
+
+    return chartImg;
 }
 
 /**

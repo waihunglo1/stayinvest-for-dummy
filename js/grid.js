@@ -25,13 +25,13 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
                     const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    const  { imageLinkAddr, width, height } = resolveStockChartImageLink(symbol, "2m", "M12");
+                    const chartImg = resolveStockChartImageLink(symbol, "2m", "M12");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
-                        src: imageLinkAddr,
-                        width: width,
-                        height: height,
+                        src: chartImg.imageLinkAddr,
+                        width: chartImg.imageWidth,
+                        height: chartImg.imageHeight,
                         alt: name,
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);
@@ -45,13 +45,13 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
                     const name = row.cells[1].data;
                     const universe = row.cells[4].data;
                     const tradingViewSymbol = row.cells[5].data;
-                    const  { imageLinkAddr, width, height } = resolveStockChartImageLink(symbol, "6m", "M12");
+                    const chartImg = resolveStockChartImageLink(symbol, "6m", "M12");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
-                        src: imageLinkAddr,
-                        width: width,
-                        height: height,
+                        src: chartImg.imageLinkAddr,
+                        width: chartImg.imageWidth,
+                        height: chartImg.imageHeight,
                         alt: name,
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);
