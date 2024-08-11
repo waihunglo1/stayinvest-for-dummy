@@ -8,113 +8,86 @@ const scConf2m = {
     };
 
 const scConf6m = {
-    chartWidth: 350,
-    chartHeight: 259,
+    chartWidth: 305,
+    chartHeight: 225,
     period: "dc"
     };
-    
-/**
- *  Append chart images from AA / SC
- * 
- */
-function appendAA(parentId, stockCode, universe, period, taIndicator, desc, borderStyle) {
-    const chartWidth = 400;
-    const chartHeight = 350;
-    const techIndicatorROC = 5;
-    const techIndicatorRSI = 2;
-    var aaTaIndicator = techIndicatorROC;
 
-    if ("B14" == taIndicator) {
-        aaTaIndicator = techIndicatorRSI;
-    } else {
-        aaTaIndicator = techIndicatorROC;
+const hkConf3m = {
+    chartWidth: 400,
+    chartHeight: 350,
+    period: "7",
+    techIndicatorROC: "5",
+    techIndicatorRSI: "2"
+};    
+
+export function appendImageToParent(parentId, chartType, stockCode, universe, desc, taIndicator, borderStyle) {
+    var period = "2m";
+
+    if("SC6M" == chartType) {
+        period = "6m";
     }
 
-    const stockChartLink = "https://charts.aastocks.com/servlet/Charts?fontsize=12&15MinDelay=T&lang=1&titlestyle=1&vol=1&Indicator=1&indpara1=10&indpara2=20&indpara3=50&indpara4=100&indpara5=150&subChart1={taIndicator}&ref1para1=12&ref1para2=0&ref1para3=0&scheme=1&com=100&chartwidth={chartWidth}&chartheight={chartHeight}&stockid={stockCode}&period={period}&type=1&logoStyle=1&";
-    const tempChartLink = stockChartLink
-      .replace(/{chartWidth}/i, chartWidth)
-      .replace(/{chartHeight}/i, chartHeight)
-      .replace(/{stockCode}/i, stockCode)
-      .replace(/{taIndicator}/i, aaTaIndicator)
-      .replace(/{period}/i,period);
+    const imageLinkAddr = resolveStockChartImageLink(stockCode, period, taIndicator);
 
-    const hrefLink = resolveTargetPageLink(stockCode, universe);
-    appendImageAndHrefAddr(parentId, tempChartLink, hrefLink, chartWidth, chartHeight, desc, borderStyle);
+    // create image element
+    var imageElement = new Image();
+    imageElement.setAttribute("referrerpolicy","no-referrer");
+    imageElement.setAttribute("alt", desc);
+    imageElement.setAttribute('onclick', 'gotoPage(`${stockCode}`,`${universe}`,`${tradingViewSymbol}`)');
+    imageElement.src = imageLinkAddr;
+    // imageElement.width = chartWidth;
+    // imageElement.height = chartHeight;
+    imageElement.title = desc;    
+
+    // border style
+    if (borderStyle != null) {
+        imageElement.style.border = borderStyle;
+    } 
+    
+    // add the parent
+    document.getElementById(parentId).appendChild(imageElement);
 }
 
-function appendSC(parentId, stockCode, universe, scConf, taIndicator, desc, borderStyle) {
-    console.log("snapshot: " + stockCode + " universe:" + universe + " startWith:" + stockCode.startsWith("$"));
+export function resolveStockChartImageLink(stockCode, period, taIndicator) {
+    var stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[{chartWidth},a]dacayaci[pb20!b50][{period}][il{taIndicator}]";
+    var chartConf = scConf2m;
+
+    if("6m" == period) {
+        chartConf = scConf6m;
+    }
 
     // SC not support other than B14 / M12
     if("M12" != taIndicator && "B14" != taIndicator) {
         taIndicator = "M12";
     }
 
-    const stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[{chartWidth},a]dacayaci[pb20!b50][{period}][il{taIndicator}]";
+    if (stockCode.includes(".HK")) {
+        stockChartLink = "https://charts.aastocks.com/servlet/Charts?fontsize=12&15MinDelay=T&lang=1&titlestyle=1&vol=1&Indicator=1&indpara1=10&indpara2=20&indpara3=50&indpara4=100&indpara5=150&subChart1={taIndicator}&ref1para1=12&ref1para2=0&ref1para3=0&scheme=1&com=100&chartwidth={chartWidth}&chartheight={chartHeight}&stockid={stockCode}&period={period}&type=1&logoStyle=1&";
+        chartConf = hkConf3m;
+        if ("B14" == taIndicator) {
+            taIndicator = hkConf3m.techIndicatorRSI;
+        } else {
+            taIndicator = hkConf3m.techIndicatorROC;
+        }
+    }
+
     const tempChartLink = stockChartLink
-      .replace(/{chartWidth}/i, scConf.chartWidth)
-      .replace(/{chartHeight}/i, scConf.chartHeight)
+      .replace(/{chartWidth}/i, chartConf.chartWidth)
+      .replace(/{chartHeight}/i, chartConf.chartHeight)
       .replace(/{stockCode}/i, stockCode)
-      .replace(/{period}/i, scConf.period)
+      .replace(/{period}/i, chartConf.period)
       .replace(/{taIndicator}/i, taIndicator);
 
-    const hrefLink = resolveTargetPageLink(stockCode, universe);
-    appendImageAndHrefAddr(parentId, tempChartLink, hrefLink, scConf.chartWidth, scConf.chartHeight, desc, borderStyle);
-}        
-
-function appendImageAndHrefAddr(parentId, imageLinkAddr, hrefAddr, chartWidth, chartHeight, desc, borderStyle) {
-    // image element
-    var imageElement = new Image();
-    imageElement.setAttribute("referrerpolicy","no-referrer");
-    imageElement.setAttribute("alt", desc);
-    imageElement.setAttribute('onclick', 'gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)');
-    imageElement.src = imageLinkAddr;
-    imageElement.width = chartWidth;
-    imageElement.height = chartHeight;
-    imageElement.title = desc;
-
-    if (borderStyle != null) {
-        imageElement.style.border = borderStyle;
-    }    
-
-    // href element
-    /*
-    var linkElement = document.createElement('a');
-    linkElement.href = hrefAddr;
-    linkElement.setAttribute("target","_blank");
-    linkElement.appendChild(imageElement);
-    */
-
-    document.getElementById(parentId).appendChild(imageElement);
+    return tempChartLink;
 }
 
-
-export function appendImageToParent(parentId, chartType, stockCode, universe, desc, taIndicator, borderStyle) {
-    if (chartType == 'HK') {
-        appendAA(parentId, stockCode, universe, 7, taIndicator, desc, borderStyle);
-    }
-
-    if (chartType == 'SC') {
-        appendSC(parentId, stockCode, universe, scConf2m, taIndicator, desc, borderStyle);
-    }
-
-    if (chartType == 'SC6M') {
-        appendSC(parentId, stockCode, universe, scConf6m, taIndicator, desc, borderStyle);
-    }                
-}
-
-export function resolveStockChartImageLink(stockCode, universe, period) {
-    var scPeriod = "g";
-
-    if ("6m" == period) {
-        scPeriod = "c";
-    } 
-    var scImageLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&amp;chart={stockCode},uu[305,a]dacayaci[pb20!b50][d{period}][ilB14]";
-
-    // no indicator
-    // const scImageLink = "https://stockcharts.com/c-sc/sc?r=1723291776117&chart={stockCode},uu[305,a]dacayaci[pb20!b50][dg]";
-    
-    return scImageLink
-        .replace(/{stockCode}/i, stockCode)
-        .replace(/{period}/i, scPeriod);    
+/**
+ * goto and opening new tab from Grid
+ * @param {*} stockCode 
+ * @param {*} universe 
+ */
+function gotoPage(stockCode, universe, tradingViewSymbol) {
+    const hrefLink = resolveTargetPageLink(stockCode, universe, tradingViewSymbol);
+    window.open(hrefLink, '_blank').focus();
 }

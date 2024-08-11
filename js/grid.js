@@ -1,4 +1,3 @@
-import { resolveTargetPageLink } from "./utils.js";
 import { resolveStockChartImageLink } from "./chart-image-formatter.js";
 
 /**
