@@ -34,7 +34,7 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
     var imageElement = new Image();
     imageElement.setAttribute("referrerpolicy","no-referrer");
     imageElement.setAttribute("alt", desc);
-    imageElement.setAttribute('onclick', 'alert(`${stockCode}`,`${universe}`,`${tradingViewSymbol}`)');
+    imageElement.setAttribute('onclick', `alert(stockCode,universe,tradingViewSymbol)`);
     imageElement.src = imageLinkAddr;
     // imageElement.width = chartWidth;
     // imageElement.height = chartHeight;
@@ -44,16 +44,9 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
     if (borderStyle != null) {
         imageElement.style.border = borderStyle;
     }
-
-    var img = gridjs.h('img', {
-        referrerpolicy: "no-referrer",
-        src: imageLinkAddr,
-        alt: desc,
-        onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
-    }, `${desc}`);    
     
     // add the parent
-    document.getElementById(parentId).appendChild(img);
+    document.getElementById(parentId).appendChild(imageElement);
 }
 
 export function resolveStockChartImageLink(stockCode, period, taIndicator) {
