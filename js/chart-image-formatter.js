@@ -47,7 +47,7 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
 
     var img = gridjs.h('img', {
         referrerpolicy: "no-referrer",
-        src: imageLink,
+        src: imageLinkAddr,
         alt: desc,
         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
     }, `${desc}`);    
