@@ -1,4 +1,4 @@
-import { resolveStockChartImageLink } from "./chart-image-formatter.js";
+import { resolveStockChartImageLink, gotoPage } from "./chart-image-formatter.js";
 
 /**
  * async fetch index close
