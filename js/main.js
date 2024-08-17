@@ -184,9 +184,7 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
 }
 
 /**
- * format line and append to parent by CSV file
- * @param {a} hrefAddr 
- * @param {*} parentId 
+ * fetch portfolio
  */
 export const fetchPortfolios = async () => {
     const pLink = "https://render-ealy.onrender.com/portfolios";
@@ -198,6 +196,13 @@ export const fetchPortfolios = async () => {
         const data = await res.json();
         return data.stocks;
     }    
+}
+
+/**
+ * append link and update title
+ */
+export const appendLinkAndUpdateTitle = (portfolio, hrefAddr, parentId, extraDesc) => {
+
 }
 
 /**
