@@ -193,8 +193,8 @@ export const fetchPortfolios = async () => {
     if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
     } else {
-        const data = await res.json();
-        return data.stocks;
+        const portfolio = await res.json();
+        return portfolio;
     }    
 }
 
