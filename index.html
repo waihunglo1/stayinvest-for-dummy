@@ -194,12 +194,14 @@
 	</div>
 
     <script type="module">
-        import { fetchCsvThemesAndAppendLink, fetchPortfolios } from "/stayinvest-for-dummy/js/main.js";
+        import { fetchCsvThemesAndAppendLink, fetchPortfolios, appendLinkAndUpdateTitle } from "/stayinvest-for-dummy/js/main.js";
 		const stockChartLink = "snapshots-aa.html?d={linkDesc}&t={type}&o={stockCodes}";
 		const portfolios = fetchPortfolios();
 
+		appendLinkAndUpdateTitle(portfolios, stockChartLink, "MARKET_LIST_DIV", "MARKET-LIST");
+
 		// Market List
-		fetchCsvThemesAndAppendLink(stockChartLink, "MARKET_LIST_DIV", "MARKET-LIST");
+		// fetchCsvThemesAndAppendLink(stockChartLink, "MARKET_LIST_DIV", "MARKET-LIST");
 
 		// us theme
 		fetchCsvThemesAndAppendLink(stockChartLink, "US_INDEX_DIV", "US-INDEX");

@@ -202,7 +202,21 @@ export const fetchPortfolios = async () => {
  * append link and update title
  */
 export const appendLinkAndUpdateTitle = (portfolio, hrefAddr, parentId, extraDesc) => {
+    portfolio.data.forEach(dataRow => {
+        const rowType = dataRow.chartDataSource;
+        const rowCategory = dataRow.category;
+        const rowDesc = dataRow.desc;
+        const tempChartLink = hrefAddr
+            .replace(/{type}/i, rowType)
+            .replace(/{stockCodes}/i, dataRow.data.join(","));
 
+        if (rowCategory == extraDesc) {
+            appendThemesLinkToParent(parentId, tempChartLink, rowDesc, false);
+        }
+        else if (rowDesc == extraDesc) {
+            appendThemesLinkToParent(parentId, tempChartLink, extraDesc, true);
+        }
+    });    
 }
 
 /**
