@@ -197,7 +197,7 @@
         import { fetchCsvThemesAndAppendLink, fetchPortfolios, appendLinkAndUpdateTitle } from "/stayinvest-for-dummy/js/main.js";
 		const stockChartLink = "snapshots-aa.html?d={linkDesc}&t={type}&o={stockCodes}";
 		const portfolios = await fetchPortfolios();
-		console.log(portfolios.data);
+		// console.log(portfolios.data);
 
 		// MARKET LIST
 		appendLinkAndUpdateTitle(portfolios, stockChartLink, "MARKET_LIST_DIV", "MARKET-LIST");
