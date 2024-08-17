@@ -194,8 +194,9 @@
 	</div>
 
     <script type="module">
-        import { fetchCsvThemesAndAppendLink } from "/stayinvest-for-dummy/js/main.js";
+        import { fetchCsvThemesAndAppendLink, fetchPortfolios } from "/stayinvest-for-dummy/js/main.js";
 		const stockChartLink = "snapshots-aa.html?d={linkDesc}&t={type}&o={stockCodes}";
+		const portfolios = fetchPortfolios();
 
 		// Market List
 		fetchCsvThemesAndAppendLink(stockChartLink, "MARKET_LIST_DIV", "MARKET-LIST");

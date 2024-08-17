@@ -188,6 +188,23 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
  * @param {a} hrefAddr 
  * @param {*} parentId 
  */
+export const fetchPortfolios = async () => {
+    const pLink = "https://render-ealy.onrender.com/portfolios";
+    const res = await fetch(pLink);
+
+    if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+    } else {
+        const data = await res.json();
+        return data.stocks;
+    }    
+}
+
+/**
+ * format line and append to parent by CSV file
+ * @param {a} hrefAddr 
+ * @param {*} parentId 
+ */
 export function fetchCsvThemesAndAppendLink(hrefAddr, parentId, extraDesc) {
     const csvDataFile = "data/equity-holdings.csv"
 
