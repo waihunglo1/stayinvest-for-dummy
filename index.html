@@ -199,12 +199,29 @@
 		const portfolios = await fetchPortfolios();
 		console.log(portfolios.data);
 
+		// MARKET LIST
 		appendLinkAndUpdateTitle(portfolios, stockChartLink, "MARKET_LIST_DIV", "MARKET-LIST");
+
+		// US THEME
+		appendLinkAndUpdateTitle(portfolios, stockChartLink, "US_INDEX_DIV", "US-INDEX");
+		appendLinkAndUpdateTitle(portfolios, stockChartLink, "US_ROUTINE_DIV", "US-ROUTINE");
+		appendLinkAndUpdateTitle(portfolios, stockChartLink, "US_AI_ROUTINE_DIV", "US-AI-ROUTINE");
+		appendLinkAndUpdateTitle(portfolios, stockChartLink, "US_OTH_ROUTINE_DIV", "US-OTH-ROUTINE");
+		appendLinkAndUpdateTitle(portfolios, stockChartLink, "US_SECTOR_DIV", "US-SECTOR");
+
+		// HK THEME
+		appendLinkAndUpdateTitle(portfolios, stockChartLink, "HSI001_DIV", "港股活躍股票");
+		appendLinkAndUpdateTitle(portfolios, stockChartLink, "HSI002_DIV", "港股指數成份");
+		appendLinkAndUpdateTitle(portfolios, stockChartLink, "HSI003_DIV", "港股生物科技");
+		appendLinkAndUpdateTitle(portfolios, stockChartLink, "HSI004_DIV", "港股科技指數");
+		appendLinkAndUpdateTitle(portfolios, stockChartLink, "HAI001_DIV", "港股人工智能股票");		
 
 		// Market List
 		// fetchCsvThemesAndAppendLink(stockChartLink, "MARKET_LIST_DIV", "MARKET-LIST");
 
 		// us theme
+
+		/*
 		fetchCsvThemesAndAppendLink(stockChartLink, "US_INDEX_DIV", "US-INDEX");
 		fetchCsvThemesAndAppendLink(stockChartLink, "US_ROUTINE_DIV", "US-ROUTINE");
 		fetchCsvThemesAndAppendLink(stockChartLink, "US_AI_ROUTINE_DIV", "US-AI-ROUTINE");
@@ -217,6 +234,7 @@
 		fetchCsvThemesAndAppendLink(stockChartLink, "HSI003_DIV", "港股生物科技");
 		fetchCsvThemesAndAppendLink(stockChartLink, "HSI004_DIV", "港股科技指數");
 		fetchCsvThemesAndAppendLink(stockChartLink, "HAI001_DIV", "港股人工智能股票");
+		*/
 	</script>	
 </body>
 
