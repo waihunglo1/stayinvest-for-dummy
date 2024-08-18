@@ -56,7 +56,9 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
     } else if (chartType == "HK") {
         stockCodesStr = "2800.HK," + inputStockCodes;
     } else if (chartType == "SC" || chartType == "SC6M") {
-        stockCodesStr = "SPY," + inputStockCodes;
+        if (! inputStockCodes.includes("SPY")) {
+            stockCodesStr = "SPY," + inputStockCodes;
+        }
     } else {
         console.error("chart type not define");
         return;
