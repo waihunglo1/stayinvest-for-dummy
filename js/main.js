@@ -49,15 +49,17 @@ export function handleInputParameters() {
  * sort by taIndicator and add show chart to parent element
  */
 export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, imageHome, progressHome) {
-    var stockCodesStr = "";
     if (inputStockCodes == null) {
         console.error("parameter o is null!!"); //show 1
         return;
-    } else if (chartType == "HK") {
-        stockCodesStr = "2800.HK," + inputStockCodes;
+    }
+
+    var stockCodesStr = inputStockCodes;    
+    if (chartType == "HK") {
+        stockCodesStr = inputStockCodes + ",2800.HK"
     } else if (chartType == "SC" || chartType == "SC6M") {
         if (! inputStockCodes.includes("SPY")) {
-            stockCodesStr = "SPY," + inputStockCodes;
+            stockCodesStr = inputStockCodes + ",SPY";
         }
     } else {
         console.error("chart type not define");
