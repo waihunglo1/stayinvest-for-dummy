@@ -27,7 +27,7 @@ export function handleInputParameters() {
     // taIndicator
     if (taIndicator == null) {
         console.info("taIndicator is null");
-        taIndicator = "M12";
+        taIndicator = "B14";
     }
 
     // title description
