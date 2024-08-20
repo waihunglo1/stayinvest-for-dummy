@@ -40,7 +40,7 @@ export function resolveTargetPageLink(stockCode, universe, tradingViewCode) {
         if(!isEmpty(tradingViewCode, stockCode)) {
             refStockCode = tradingViewCode;
         }
-        refStockCode = stockCode.replace("^","");
+        refStockCode = refStockCode.replace("^","");
     } else if (stockCode.startsWith("$")) {
         refLink = "https://stockcharts.com/sc3/ui/?s={stockCode}";
     }
