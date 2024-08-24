@@ -62,7 +62,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                 formatter: (cell, row) => {
                     const name = row.cells[1].data;
                     const symbols = row.cells[2].data;
-                    const chartImg = resolveStockChartImageLink(symbols[2], "2m", "B14");
+                    const chartImg = resolveStockChartImageLink(symbols[1], "2m", "B14");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
@@ -80,7 +80,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                 formatter: (cell, row) => {
                     const name = row.cells[1].data;
                     const symbols = row.cells[2].data;
-                    const chartImg = resolveStockChartImageLink(symbols[3], "2m", "B14");
+                    const chartImg = resolveStockChartImageLink(symbols[2], "2m", "B14");
 
                     return gridjs.h('img', {
                         referrerpolicy: "no-referrer",
@@ -113,7 +113,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                 }   
             },            
             {
-                name: 'sma50/sma20/sma10df',
+                name: 'DF',
                 // width: "250px",                
                 formatter: (cell, row) => {
                     if (cell.includes("undefined")) {
@@ -140,7 +140,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                 }                
             },
             {
-                name: '20R/50R/150R/200R',
+                name: 'R',
                 hidden: ! shouldShowMarketBreadth,
                 // width: "250px",                
                 formatter: (cell, row) => {
