@@ -37,7 +37,25 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);
                 }                
-            },         
+            },
+            {
+                name: 'A20R',
+                hidden: shouldShowMarketBreadth,
+                formatter: (cell, row) => {
+                    const name = row.cells[1].data;
+                    const symbols = row.cells[7].data;
+                    const chartImg = resolveStockChartImageLink(symbols[0], "2m", "B14");
+
+                    return gridjs.h('img', {
+                        referrerpolicy: "no-referrer",
+                        src: chartImg.imageLinkAddr,
+                        width: chartImg.imageWidth,
+                        height: chartImg.imageHeight,
+                        alt: name,
+                        onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
+                    }, `${name}`);
+                }  
+            },               
             {
                 name: '6month',
                 hidden: shouldShowMarketBreadth,              
