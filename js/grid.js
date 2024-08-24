@@ -1,4 +1,5 @@
 import { resolveStockChartImageLink, gotoPage } from "./chart-image-formatter.js";
+import { fixedDecimalPlaces } from "./utils.js";
 
 /**
  * async fetch index close
@@ -76,6 +77,12 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                     return gridjs.h('b', { style: {
                         'color': colorStr
                       }}, cell);
+                },
+                sort: {
+                    compare: (a, b) => {
+                        const splitAndParseFloat = (x) => parseFloat(x.split('/')[0]);
+                        return splitAndParseFloat(a) - splitAndParseFloat(b);
+                    }
                 }                
             },
             {
@@ -98,7 +105,13 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                     return gridjs.h('b', { style: {
                         'color': colorStr
                       }}, cell);
-                }                
+                },
+                sort: {
+                    compare: (a, b) => {
+                        const splitAndParseFloat = (x) => parseFloat(x.split('/')[0]);
+                        return splitAndParseFloat(a) - splitAndParseFloat(b);
+                    }
+                } 
             },
             { 
                 name: 'universe',
@@ -109,7 +122,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                 hidden: true
             },
             {
-                name: 'sma50df',
+                name: 'extra',
                 hidden: true
             },
             {
@@ -126,8 +139,13 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                 stock => [
                     stock.symbol,                     
                     stock.name,
-                    stock.sma50df + " / " + stock.sma20df + " / " + stock.sma10df, 
-                    stock.A20R + " / " + stock.A50R + " / " + stock.A150R + " / " + stock.A200R,
+                    stock.sma50df + " / " + 
+                    stock.sma20df + " / " + 
+                    stock.sma10df, 
+                    fixedDecimalPlaces(stock.A20R) + " / " +
+                    fixedDecimalPlaces(stock.A50R) + " / " + 
+                    fixedDecimalPlaces(stock.A150R) + " / " + 
+                    fixedDecimalPlaces(stock.A200R),
                     stock.universe,
                     stock.tradingViewSymbol,
                     stock.extra,

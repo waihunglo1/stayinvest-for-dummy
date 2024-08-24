@@ -61,3 +61,7 @@ function tradingViewSupport(universe, stockCode) {
 
     return false;
 }
+
+export function fixedDecimalPlaces(n, fixed) {
+    return parseFloat(n).toFixed(fixed);
+}
