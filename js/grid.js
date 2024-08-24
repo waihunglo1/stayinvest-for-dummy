@@ -5,7 +5,7 @@ import { resolveStockChartImageLink, gotoPage } from "./chart-image-formatter.js
  * yahoo data support only
  * https://render-ealy.onrender.com/yahoo?cgo=^IXIC,^GSPC,^DJI|S50&p=1&format=json&order=d
  */
-export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth) {
+export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketBreadth) {
     if(stockCodes.includes("$")) {
         return;
     }
@@ -39,7 +39,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
             },
             {
                 name: '6month',
-                hidden: false,              
+                hidden: ! shouldShowMarketBreadth,              
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const name = row.cells[1].data;
@@ -80,7 +80,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
             },
             {
                 name: '20R/50R/150R/200R',
-                hidden: hideMarketBreadth,
+                hidden: !shouldShowMarketBreadth,
                 // width: "250px",                
                 formatter: (cell, row) => {
                     if (cell.includes("undefined")) {
@@ -110,12 +110,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, hideMarketBreadth
             },
             {
                 name: 'sma50df',
-                hidden: false,
-                formatter: (cell) => {
-                    return gridjs.h('b', { style: {
-                    'color': -8 < cell && cell < 8 ? 'green' : 'red'
-                    }}, cell);
-                }
+                hidden: true
             }            
         ],
         sort: true,
