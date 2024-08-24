@@ -59,7 +59,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                 }   
             },            
             {
-                name: 'DF',
+                name: 'SMA50/20/10-DF',
                 // width: "250px",                
                 formatter: (cell, row) => {
                     if (cell.includes("undefined")) {
@@ -86,7 +86,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                 }                
             },
             {
-                name: 'R',
+                name: 'A20/50/150/200R',
                 hidden: ! shouldShowMarketBreadth,
                 // width: "250px",                
                 formatter: (cell, row) => {
