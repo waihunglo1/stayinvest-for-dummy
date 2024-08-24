@@ -24,8 +24,8 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const name = row.cells[1].data;
-                    const universe = row.cells[4].data;
-                    const tradingViewSymbol = row.cells[5].data;
+                    const universe = row.cells[7].data;
+                    const tradingViewSymbol = row.cells[8].data;
                     const chartImg = resolveStockChartImageLink(symbol, "2m", "B14");
 
                     return gridjs.h('img', {
@@ -43,7 +43,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                 hidden: shouldShowMarketBreadth,
                 formatter: (cell, row) => {
                     const name = row.cells[1].data;
-                    const symbols = row.cells[7].data;
+                    const symbols = row.cells[2].data;
                     const chartImg = resolveStockChartImageLink(symbols[0], "2m", "B14");
 
                     return gridjs.h('img', {
@@ -55,15 +55,51 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);
                 }  
-            },               
+            },  
+            {
+                name: 'A50R',
+                hidden: shouldShowMarketBreadth,
+                formatter: (cell, row) => {
+                    const name = row.cells[1].data;
+                    const symbols = row.cells[2].data;
+                    const chartImg = resolveStockChartImageLink(symbols[2], "2m", "B14");
+
+                    return gridjs.h('img', {
+                        referrerpolicy: "no-referrer",
+                        src: chartImg.imageLinkAddr,
+                        width: chartImg.imageWidth,
+                        height: chartImg.imageHeight,
+                        alt: name,
+                        onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
+                    }, `${name}`);
+                }  
+            }, 
+            {
+                name: 'A150R',
+                hidden: shouldShowMarketBreadth,
+                formatter: (cell, row) => {
+                    const name = row.cells[1].data;
+                    const symbols = row.cells[2].data;
+                    const chartImg = resolveStockChartImageLink(symbols[3], "2m", "B14");
+
+                    return gridjs.h('img', {
+                        referrerpolicy: "no-referrer",
+                        src: chartImg.imageLinkAddr,
+                        width: chartImg.imageWidth,
+                        height: chartImg.imageHeight,
+                        alt: name,
+                        onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
+                    }, `${name}`);
+                }  
+            },                                             
             {
                 name: '6month',
                 hidden: shouldShowMarketBreadth,              
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const name = row.cells[1].data;
-                    const universe = row.cells[4].data;
-                    const tradingViewSymbol = row.cells[5].data;
+                    const universe = row.cells[7].data;
+                    const tradingViewSymbol = row.cells[8].data;
                     const chartImg = resolveStockChartImageLink(symbol, "6m", "B14");
 
                     return gridjs.h('img', {
@@ -157,6 +193,9 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                 stock => [
                     stock.symbol,                     
                     stock.name,
+                    stock.breadthSymbols,
+                    stock.breadthSymbols,
+                    stock.breadthSymbols,
                     stock.sma50df + " / " + 
                     stock.sma20df + " / " + 
                     stock.sma10df, 
@@ -166,8 +205,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                     fixedDecimalPlaces(stock.A200R,2),
                     stock.universe,
                     stock.tradingViewSymbol,
-                    stock.extra,
-                    stock.breadthSymbols
+                    stock.extra
                 ]
             )
         }   
