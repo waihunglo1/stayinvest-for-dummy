@@ -142,10 +142,10 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                     stock.sma50df + " / " + 
                     stock.sma20df + " / " + 
                     stock.sma10df, 
-                    fixedDecimalPlaces(stock.A20R) + " / " +
-                    fixedDecimalPlaces(stock.A50R) + " / " + 
-                    fixedDecimalPlaces(stock.A150R) + " / " + 
-                    fixedDecimalPlaces(stock.A200R),
+                    fixedDecimalPlaces(stock.A20R, 2) + " / " +
+                    fixedDecimalPlaces(stock.A50R, 2) + " / " + 
+                    fixedDecimalPlaces(stock.A150R,2) + " / " + 
+                    fixedDecimalPlaces(stock.A200R,2),
                     stock.universe,
                     stock.tradingViewSymbol,
                     stock.extra,
