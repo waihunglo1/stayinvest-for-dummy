@@ -36,10 +36,10 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                         onClick: () => gotoPage(`${symbol}`,`${universe}`,`${tradingViewSymbol}`)
                     }, `${name}`);
                 }                
-            },
+            },         
             {
                 name: '6month',
-                hidden: ! shouldShowMarketBreadth,              
+                hidden: shouldShowMarketBreadth,              
                 formatter: (cell, row) => {
                     const symbol = row.cells[0].data;
                     const name = row.cells[1].data;
@@ -111,7 +111,11 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
             {
                 name: 'sma50df',
                 hidden: true
-            }            
+            },
+            {
+                name: 'marketBreadthSymbol',
+                hidden: true
+            }       
         ],
         sort: true,
         search: false,
@@ -126,7 +130,8 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
                     stock.A20R + " / " + stock.A50R + " / " + stock.A150R + " / " + stock.A200R,
                     stock.universe,
                     stock.tradingViewSymbol,
-                    stock.extra
+                    stock.extra,
+                    stock.breadthSymbols
                 ]
             )
         }   
