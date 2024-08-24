@@ -40,7 +40,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
             },
             {
                 name: 'A20R',
-                hidden: shouldShowMarketBreadth,
+                hidden: ! shouldShowMarketBreadth,
                 formatter: (cell, row) => {
                     const name = row.cells[1].data;
                     const symbols = row.cells[2].data;
@@ -58,7 +58,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
             },  
             {
                 name: 'A50R',
-                hidden: shouldShowMarketBreadth,
+                hidden: ! shouldShowMarketBreadth,
                 formatter: (cell, row) => {
                     const name = row.cells[1].data;
                     const symbols = row.cells[2].data;
@@ -76,7 +76,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
             }, 
             {
                 name: 'A150R',
-                hidden: shouldShowMarketBreadth,
+                hidden: ! shouldShowMarketBreadth,
                 formatter: (cell, row) => {
                     const name = row.cells[1].data;
                     const symbols = row.cells[2].data;
@@ -141,7 +141,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
             },
             {
                 name: '20R/50R/150R/200R',
-                hidden: !shouldShowMarketBreadth,
+                hidden: ! shouldShowMarketBreadth,
                 // width: "250px",                
                 formatter: (cell, row) => {
                     if (cell.includes("undefined")) {
