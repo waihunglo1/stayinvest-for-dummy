@@ -26,7 +26,7 @@
     <script type="text/javascript" src="js-3rd-party/papaparse.min.js"></script>
 
     <!-- yaml -->
-    <script type="text/javascript" src="js-3rd-party/yaml.js"></script>
+    <script type="text/javascript" src="js-3rd-party/js-yaml.min.js"></script>
 </head>
 
 <body>
@@ -46,7 +46,7 @@
     <span id="MARKET_LIST_DIV"><h2>OTHER MARKETS</h2></span>
 
     <script type="module">
-        import { loadStockCodesImageWithProgressBar, fetchPortfoliosYaml } from "/stayinvest-for-dummy/js/main.js";
+        import { loadStockCodesImageWithProgressBar, fetchPortfolios } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
 
         // sorting by Stockchart taindicator
@@ -61,7 +61,7 @@
 
         // read yaml
         const stockChartLink = "snapshots-aa.html?t={type}&o={stockCodes}";
-        fetchPortfoliosYaml("OUT_DIV", stockChartLink, "MARKET_LIST_DIV", "MARKET-LIST");
+        const portfolios = fetchPortfolios();
     </script>
 
 </body>

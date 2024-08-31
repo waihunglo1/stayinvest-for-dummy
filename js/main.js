@@ -191,23 +191,23 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
  * fetch portfolio
  */
 export const fetchPortfolios = async () => {
-    const pLink = "https://render-ealy.onrender.com/portfolios";
+    const pLink = "data/portfolios.yaml";
     const res = await fetch(pLink);
 
     if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
     } else {
-        const portfolio = await res.json();
-        return portfolio;
-    }    
+        let text = await response.text();
+        var doc = jsyaml.load(text);
+        return doc;
+    }
 }
 
 /**
  * fetch portfolio from yaml
  */
 export const fetchPortfoliosYaml = async (outElementId, hrefAddr, parentId, extraDsec) => {
-    var portfolios = [];
-    await YAML.fromURL("data/portfolios.yaml", function (data) {
+    YAML.fromURL("data/portfolios.yaml", function (data) {
         var errors = YAML.getErrors();
         if (errors.length == 0)
             document.getElementById(outElementId).innerHTML = "eslapse time:  " + YAML.getProcessingTime() + " ms. Item read : " + data.length;
@@ -215,11 +215,8 @@ export const fetchPortfoliosYaml = async (outElementId, hrefAddr, parentId, extr
             document.getElementById(outElementId).innerHTML = errors.join("<br>");
         }
 
-         portfolios = data;
         // appendLinkAndUpdateTitle(data, hrefAddr, parentId, extraDsec);
     });
-
-    console.log(portfolios);
 }
 
 /**
