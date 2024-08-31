@@ -215,7 +215,7 @@ export const fetchPortfoliosYaml = async (outElementId, hrefAddr, parentId, extr
         }
 
         console.log(data);
-        appendLinkAndUpdateTitle(data, hrefAddr, parentId, extraDsec);
+        // appendLinkAndUpdateTitle(data, hrefAddr, parentId, extraDsec);
     });
 }
 
