@@ -1,5 +1,6 @@
 import { emoji, isEmpty } from "./utils.js";
 import { appendImageToParent } from "./chart-image-formatter.js";
+import { jsyaml } from "../js-3rd-party/js-yaml.min.js";
 
 /**
  * general input parameter for pages
@@ -203,26 +204,11 @@ export const fetchPortfolios = async () => {
     }
 }
 
-/**
- * fetch portfolio from yaml
- */
-export const fetchPortfoliosYaml = async (outElementId, hrefAddr, parentId, extraDsec) => {
-    YAML.fromURL("data/portfolios.yaml", function (data) {
-        var errors = YAML.getErrors();
-        if (errors.length == 0)
-            document.getElementById(outElementId).innerHTML = "eslapse time:  " + YAML.getProcessingTime() + " ms. Item read : " + data.length;
-        else {
-            document.getElementById(outElementId).innerHTML = errors.join("<br>");
-        }
-
-        // appendLinkAndUpdateTitle(data, hrefAddr, parentId, extraDsec);
-    });
-}
 
 /**
  * append link and update title
  */
-const appendLinkAndUpdateTitle = (portfolios, hrefAddr, parentId, extraDesc) => {
+export const appendLinkAndUpdateTitle = (portfolios, hrefAddr, parentId, extraDesc) => {
     portfolios.forEach(dataRow => {
         const rowType = dataRow.chartDataSource;
         const rowCategory = dataRow.category;
