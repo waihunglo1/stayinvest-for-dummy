@@ -205,7 +205,7 @@ export const fetchPortfolios = async () => {
 /**
  * fetch portfolio from yaml
  */
-export const fetchPortfoliosYaml = async (outElementId, hrefAddr, parentId, extraDsec) => {
+export const fetchPortfoliosYaml = (outElementId, hrefAddr, parentId, extraDsec) => {
     YAML.fromURL("data/portfolios.yaml", function (data) {
         var errors = YAML.getErrors();
         if (errors.length == 0)
