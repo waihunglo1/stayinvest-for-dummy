@@ -62,7 +62,7 @@
         fetchInGrid("wrapper04", stockCodes, "S50DF", false);
 
         // read yaml
-        YAML.fromURL("https://waihunglo1.github.io/stayinvest-for-dummy/data/portfolios.yaml", function (data) {
+        YAML.fromURL("data/portfolios.yaml", function (data) {
             var errors = YAML.getErrors();
             if (errors.length == 0)
                 document.getElementById("out").innerHTML = "Done! Took " + YAML.getProcessingTime() + " miliseconds.";
