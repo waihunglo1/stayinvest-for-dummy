@@ -62,7 +62,7 @@
         fetchInGrid("wrapper04", stockCodes, "S50DF", false);
 
         // read yaml
-        const portfolios = fetchPortfoliosYaml("out");
+        const portfolios = await fetchPortfoliosYaml("out");
         console.log(portfolios);
 
     </script>
