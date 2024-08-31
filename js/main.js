@@ -1,6 +1,5 @@
 import { emoji, isEmpty } from "./utils.js";
 import { appendImageToParent } from "./chart-image-formatter.js";
-import { YAML } from '../js-3rd-party/yaml.js';
 
 /**
  * general input parameter for pages
