@@ -1,5 +1,6 @@
 import { emoji, isEmpty } from "./utils.js";
 import { appendImageToParent } from "./chart-image-formatter.js";
+import { YAML } from '../js-3rd-party/yaml.js';
 
 /**
  * general input parameter for pages
@@ -200,6 +201,22 @@ export const fetchPortfolios = async () => {
         const portfolio = await res.json();
         return portfolio;
     }    
+}
+
+/**
+ * fetch portfolio from yaml
+ */
+export const fetchPortfoliosYaml = async (elementId) => {
+    YAML.fromURL("data/portfolios.yaml", function (data) {
+        var errors = YAML.getErrors();
+        if (errors.length == 0)
+            document.getElementById(elementId).innerHTML = "eslapse time:  " + YAML.getProcessingTime() + " ms.";
+        else {
+            document.getElementById(elementId).innerHTML = errors.join("<br>");
+        }
+
+        console.log(data);
+    });
 }
 
 /**

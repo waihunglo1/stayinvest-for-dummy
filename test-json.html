@@ -45,7 +45,7 @@
     <pre id="out"></pre>
 
     <script type="module">
-        import { loadStockCodesImageWithProgressBar } from "/stayinvest-for-dummy/js/main.js";
+        import { loadStockCodesImageWithProgressBar, fetchPortfoliosYaml } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
 
         // sorting by Stockchart taindicator
@@ -62,16 +62,7 @@
         fetchInGrid("wrapper04", stockCodes, "S50DF", false);
 
         // read yaml
-        YAML.fromURL("data/portfolios.yaml", function (data) {
-            var errors = YAML.getErrors();
-            if (errors.length == 0)
-                document.getElementById("out").innerHTML = "Done! Took " + YAML.getProcessingTime() + " miliseconds.";
-            else {
-                document.getElementById("out").innerHTML = errors.join("<br>");
-            }
-
-            console.log(data);
-        });
+        fetchPortfoliosYaml("out");
 
     </script>
 
