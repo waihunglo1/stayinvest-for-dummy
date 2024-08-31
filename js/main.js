@@ -197,7 +197,7 @@ export const fetchPortfolios = async () => {
     if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
     } else {
-        let text = await response.text();
+        let text = await res.text();
         var doc = jsyaml.load(text);
         return doc;
     }
