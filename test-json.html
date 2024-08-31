@@ -61,7 +61,7 @@
 
         // read yaml
         const stockChartLink = "snapshots-aa.html?t={type}&o={stockCodes}";
-        const portfolios = fetchPortfolios();
+        const portfolios = await fetchPortfolios();
         console.log(portfolios);
     </script>
 
