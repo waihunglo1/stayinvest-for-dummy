@@ -43,6 +43,7 @@
     <div id="wrapper04"></div>
 
     <pre id="OUT_DIV"></pre>
+    <span id="MARKET_LIST_DIV"><h2>OTHER MARKETS</h2></span>
 
     <script type="module">
         import { loadStockCodesImageWithProgressBar, fetchPortfoliosYaml } from "/stayinvest-for-dummy/js/main.js";
@@ -61,8 +62,6 @@
         // read yaml
         const stockChartLink = "snapshots-aa.html?t={type}&o={stockCodes}";
         fetchPortfoliosYaml("OUT_DIV", stockChartLink, "MARKET_LIST_DIV", "MARKET-LIST");
-
-
     </script>
 
 </body>
