@@ -214,7 +214,7 @@ export const appendLinkAndUpdateTitle = (portfolios, hrefAddr, parentId, extraDe
         const rowDesc = dataRow.desc;
         const tempChartLink = hrefAddr
             .replace(/{type}/i, rowType)
-            .replace(/{stockCodes}/i, dataRow.data.join(","));
+            .replace(/{stockCodes}/i, dataRow.data);
 
         if (rowCategory == extraDesc) {
             appendThemesLinkToParent(parentId, tempChartLink, rowDesc, false);
