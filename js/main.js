@@ -209,12 +209,13 @@ export const fetchPortfoliosYaml = async (elementId) => {
     YAML.fromURL("data/portfolios.yaml", function (data) {
         var errors = YAML.getErrors();
         if (errors.length == 0)
-            document.getElementById(elementId).innerHTML = "eslapse time:  " + YAML.getProcessingTime() + " ms.";
+            document.getElementById(elementId).innerHTML = "eslapse time:  " + YAML.getProcessingTime() + " ms. Item read : " + data.length;
         else {
             document.getElementById(elementId).innerHTML = errors.join("<br>");
         }
 
-        console.log(data);
+        // console.log(data);
+        return data;
     });
 }
 
