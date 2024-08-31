@@ -208,7 +208,7 @@ export const fetchPortfolios = async () => {
  * append link and update title
  */
 export const appendLinkAndUpdateTitle = (portfolios, hrefAddr, parentId, extraDesc) => {
-    portfolios.forEach(dataRow => {
+    portfolios.data.forEach(dataRow => {
         const rowType = dataRow.chartDataSource;
         const rowCategory = dataRow.category;
         const rowDesc = dataRow.desc;
