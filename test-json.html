@@ -25,9 +25,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="js-3rd-party/papaparse.min.js"></script>
 
-    <!-- yaml 
+    <!-- yaml -->
     <script type="text/javascript" src="js-3rd-party/js-yaml.min.js"></script>
-    -->
+
 </head>
 
 <body>
@@ -47,7 +47,7 @@
     <span id="MARKET_LIST_DIV"><h2>OTHER MARKETS</h2></span>
 
     <script type="module">
-        import { loadStockCodesImageWithProgressBar, fetchPortfolios } from "/stayinvest-for-dummy/js/main.js";
+        import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
 
         // sorting by Stockchart taindicator
@@ -64,6 +64,8 @@
         const stockChartLink = "snapshots-aa.html?t={type}&o={stockCodes}";
         const portfolios = await fetchPortfolios();
         console.log(portfolios);
+
+        appendLinkAndUpdateTitle(portfolios, stockChartLink, "MARKET_LIST_DIV", "MARKET-LIST");
     </script>
 
 </body>
