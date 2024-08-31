@@ -205,25 +205,25 @@ export const fetchPortfolios = async () => {
 /**
  * fetch portfolio from yaml
  */
-export const fetchPortfoliosYaml = async (elementId) => {
+export const fetchPortfoliosYaml = async (outElementId, hrefAddr, parentId, extraDsec) => {
     YAML.fromURL("data/portfolios.yaml", function (data) {
         var errors = YAML.getErrors();
         if (errors.length == 0)
-            document.getElementById(elementId).innerHTML = "eslapse time:  " + YAML.getProcessingTime() + " ms. Item read : " + data.length;
+            document.getElementById(outElementId).innerHTML = "eslapse time:  " + YAML.getProcessingTime() + " ms. Item read : " + data.length;
         else {
-            document.getElementById(elementId).innerHTML = errors.join("<br>");
+            document.getElementById(outElementId).innerHTML = errors.join("<br>");
         }
 
-        // console.log(data);
-        return data;
+        console.log(data);
+        appendLinkAndUpdateTitle(data, hrefAddr, parentId, extraDsec);
     });
 }
 
 /**
  * append link and update title
  */
-export const appendLinkAndUpdateTitle = (portfolio, hrefAddr, parentId, extraDesc) => {
-    portfolio.data.forEach(dataRow => {
+const appendLinkAndUpdateTitle = (portfolios, hrefAddr, parentId, extraDesc) => {
+    portfolios.forEach(dataRow => {
         const rowType = dataRow.chartDataSource;
         const rowCategory = dataRow.category;
         const rowDesc = dataRow.desc;

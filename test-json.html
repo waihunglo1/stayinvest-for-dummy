@@ -42,7 +42,7 @@
     <div id="wrapper03"></div>
     <div id="wrapper04"></div>
 
-    <pre id="out"></pre>
+    <pre id="OUT_DIV"></pre>
 
     <script type="module">
         import { loadStockCodesImageWithProgressBar, fetchPortfoliosYaml } from "/stayinvest-for-dummy/js/main.js";
@@ -54,16 +54,14 @@
         const stockCodes = "MSFT,CPNG,TECK,VST,NTRA,NVDA,COHR";
         loadStockCodesImageWithProgressBar(stockCodes, chartType, taIndicator, "img_home03", "#progress_home", false);
 
-        // for index page link formatter
-        const stockChartLink = "snapshots-aa.html?t={type}&o={stockCodes}";
-
         // fetch data in grid
         fetchInGrid("wrapper03", "^IXIC,^GSPC,^DJI", "S50DF", false);
         fetchInGrid("wrapper04", stockCodes, "S50DF", false);
 
         // read yaml
-        const portfolios = await fetchPortfoliosYaml("out");
-        console.log(portfolios);
+        const stockChartLink = "snapshots-aa.html?t={type}&o={stockCodes}";
+        fetchPortfoliosYaml("OUT_DIV", stockChartLink, "MARKET_LIST_DIV", "MARKET-LIST");
+
 
     </script>
 
