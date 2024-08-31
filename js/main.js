@@ -205,8 +205,9 @@ export const fetchPortfolios = async () => {
 /**
  * fetch portfolio from yaml
  */
-export const fetchPortfoliosYaml = (outElementId, hrefAddr, parentId, extraDsec) => {
-    YAML.fromURL("data/portfolios.yaml", function (data) {
+export const fetchPortfoliosYaml = async (outElementId, hrefAddr, parentId, extraDsec) => {
+    var portfolios = [];
+    await YAML.fromURL("data/portfolios.yaml", function (data) {
         var errors = YAML.getErrors();
         if (errors.length == 0)
             document.getElementById(outElementId).innerHTML = "eslapse time:  " + YAML.getProcessingTime() + " ms. Item read : " + data.length;
@@ -214,9 +215,11 @@ export const fetchPortfoliosYaml = (outElementId, hrefAddr, parentId, extraDsec)
             document.getElementById(outElementId).innerHTML = errors.join("<br>");
         }
 
-        console.log(data);
+         portfolios = data;
         // appendLinkAndUpdateTitle(data, hrefAddr, parentId, extraDsec);
     });
+
+    console.log(portfolios);
 }
 
 /**
