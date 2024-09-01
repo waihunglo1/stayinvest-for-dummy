@@ -41,6 +41,9 @@ export function resolveTargetPageLink(stockCode, universe, tradingViewCode) {
             refStockCode = tradingViewCode;
         }
         refStockCode = refStockCode.replace("^","");
+    } else if (isCcyPair(stockCode)) {
+        refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
+        refStockCode = refStockCode.replace("$","");
     } else if (stockCode.startsWith("$")) {
         refLink = "https://stockcharts.com/sc3/ui/?s={stockCode}";
     }
@@ -64,4 +67,19 @@ function tradingViewSupport(universe, stockCode) {
 
 export function fixedDecimalPlaces(n, fixed) {
     return parseFloat(n).toFixed(fixed);
+}
+
+function isCcyPair(ccypair) {
+    var res = ccypair.replace("$", "");
+    if(res.length == 6) {
+        var ccy1 = res.substring(0,3);
+        var ccy2 = res.substring(3,3);
+
+        var currencies = Intl.supportedValuesOf("currency");
+        if(currencies.includes(ccy1) && currencies.includes(ccy2)) {
+            return true;
+        }
+    }
+    
+    return false;    
 }
