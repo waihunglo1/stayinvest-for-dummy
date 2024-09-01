@@ -58,7 +58,7 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
     if (chartType == "HK") {
         stockCodesStr = inputStockCodes + ",2800.HK"
     } else if (chartType == "SC" || chartType == "SC6M") {
-        if (! inputStockCodes.includes("SPY")) {
+        if (! inputStockCodes.split(",").includes("SPY")) {
             stockCodesStr = inputStockCodes + ",SPY";
         }
     } else {
