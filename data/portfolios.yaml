@@ -150,7 +150,10 @@ data:
     chartDataSource: SC
     category: MARKET-LIST
     data: $XDN,$XDA,$XDB,SZAR,$XDC,$XDE,$XDS,$USDSEK,$USD,UUP,$USDJPY
-
+  - desc: CRYPTO-CURRENCY
+    chartDataSource: SC
+    category: MARKET-LIST
+    data: $BTCUSD,$ETHUSD,$XRPUSD,$BCHUSD,$USDTUSD,$LTCUSD,$BNBUSD,$LINKUSD,$TRXUSD,$XLMUSD,$XMRUSD,$DOGEUSD
     #
     # US-SECTOR
     #
@@ -170,10 +173,6 @@ data:
     chartDataSource: SC
     category: US-SECTOR
     data: XLY,XLC,XLK,XLI,XLB,XLE,XLP,XLV,XLU,XLF,XLRE,RSP,RSPC,RSPD,RSPS,RSPG,RSPF,RSPH,RSPN,RSPM,RSPR,RSPT,RSPU
-  - desc: CRYPTO-CURRENCY
-    chartDataSource: SC
-    category: US-SECTOR
-    data: $BTCUSD,$ETHUSD,$XRPUSD,$BCHUSD,$USDTUSD,$LTCUSD,$BNBUSD,$LINKUSD,$TRXUSD,$XLMUSD,$XMRUSD,$DOGEUSD
     #
     # HK-THEME
     #
