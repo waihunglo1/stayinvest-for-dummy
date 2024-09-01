@@ -14,6 +14,17 @@ const emojiTheme =
     "♑️", "2️⃣", "🚲", "🚐", "🌑", "📍", "🕵", "🚳", "👝", "⏭", "🔍", "🎺", "▫️", "↪️", "🛍", "🌡", "🎌", 
     "🈁", "🕚", "🍯", "👴", "🏔", "😿", "🐃", "🏷"];
 
+const CRYPTOCCYS = await fetch("/data/crypto-list.json")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error ${response.status}`);
+        }
+        return response.json();
+    })
+    .catch(error => {
+        return [];
+    });
+        
 export function emoji() {
     if(emojiIdx >= emojiTheme.length) {
         emojiIdx = 0;
