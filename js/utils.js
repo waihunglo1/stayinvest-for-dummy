@@ -14,7 +14,7 @@ const emojiTheme =
     "♑️", "2️⃣", "🚲", "🚐", "🌑", "📍", "🕵", "🚳", "👝", "⏭", "🔍", "🎺", "▫️", "↪️", "🛍", "🌡", "🎌", 
     "🈁", "🕚", "🍯", "👴", "🏔", "😿", "🐃", "🏷"];
 
-const CRYPTOCCYS = await fetch("/data/crypto-list.json")
+const CRYPTOCCYS = await fetch("data/crypto-list.json")
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP error ${response.status}`);
