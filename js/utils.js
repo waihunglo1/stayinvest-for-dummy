@@ -73,7 +73,7 @@ function isCcyPair(ccypair) {
     var res = ccypair.replace("$", "");
     if(res.length == 6) {
         var ccy1 = res.substring(0,3);
-        var ccy2 = res.substring(3,3);
+        var ccy2 = res.substring(3,6);
 
         var currencies = Intl.supportedValuesOf("currency");
         if(currencies.includes(ccy1) && currencies.includes(ccy2)) {
