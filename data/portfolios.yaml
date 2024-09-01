@@ -3,22 +3,22 @@ data:
     #
     # CELEBRITY
     #
-  - desc: Warren-Buffett
+  - desc: WARREN-BUFFETT
     chartDataSource: SC
     category: US-CELEBRITY
     data: AAPL,BAC,AXP,KO,CVX,OXY,KHC,MCO,CB,DVA,C,KR,VRSN,V,AMZN,MA,LSXMK,NU,COF,AON,ALLY,CHTR,TMUS,LSXMA,LPX,LLYVK,FND,SIRI,ULTA,LLYVA,HEIA,NVR,DEO,LILA,JEF,VOO,SPY,LENB,LILAK,BATRK
     id: berkshire-hathaway-inc
-  - desc: Michael-Burry
+  - desc: MICHAEL-BURRY
     chartDataSource: SC  
     category: US-CELEBRITY
     data: BABA,FOUR,MOH,BIDU,JD,HPP,REAL,ACIC,OLPX,BCAB
     id: scion-asset-management-llc
-  - desc: Stanley-Druckenmiller
+  - desc: STANLEY-DRUCKENMILLER
     chartDataSource: SC  
     category: US-CELEBRITY
     data: COHR,CPNG,VST,NTRA,STX,MSFT,WWD,KMI,MAA,PM,ZI,TECK,CPT,FLUT,MELI,FCX,OPCH,GEV,FLEX,SWTX,DAKT,PANW,NVDA,WAB,MSGE,BCS,DFS,ADBE,PLTR,NWSA,ANET,NWS,ARGT,BMA,GGAL,CRNX,BAH,YPF,IQV,LYV,WULF,CNK,SLN,VCYT,AES,AAPL,TPX,LBTYA,SE,LBTYK,EQT,SPHR,ACLX,BLDR,BCYC,IHS,TLSI,GPCR,INSM,TEO,NRIX,IVVD,JOBY
     id: duquesne-family-office-llc
-  - desc: David Tepper
+  - desc: DAVID-TEPPER
     chartDataSource: SC  
     category: US-CELEBRITY  
     data: GM,GOOG,DAL,HCA,WHR,LUV,ALL,SXL,OC,KMI,BKNG,AAPL,AY,HUN,PFE,PPG,AMLP,GT,NXPI,WPZ,IR,HPE,URI,CBI,EMN,COOP,RRC,TGI,UAL,SWN,CYH,COG,FCX,KYN,EQT,EXP,AR,TOO,SPY,TGP,TYG,XCEMX,CWEN,BAC,LEN,RF,DHI,MAS,BABA,MHK
@@ -130,23 +130,23 @@ data:
     #
     # MARKET-LIST
     #
-  - desc: Commodity-ETF
+  - desc: COMMODITY-ETF
     chartDataSource: SC
     category: MARKET-LIST 
     data: CTA,SLV,CEF,$CRB,DJP,GDX,LAND,XME,URA,$WTIC,XLE,MOO,COPX
-  - desc: US-Market-ETF
+  - desc: US-MARKET-ETF
     chartDataSource: SC
     category: MARKET-LIST 
     data: XLK,XLP,ARKK,SPMO,VOO,MTUM,EQAL,VYM,IWM,XMMO,XLF,BRK/B,SPHB,SPYV
-  - desc: World-Market-ETF
+  - desc: WORLD-MARKET-ETF
     chartDataSource: SC
     category: MARKET-LIST 
     data: $TWII,$MERV,$NIKK,$HSI,$DAX,ASHR,$SPUK,$BVSP,$CAC,$NIFTY,$KOSPI
-  - desc: Asia-Market-ETF
+  - desc: ASIA-MARKET-ETF
     chartDataSource: SC
     category: MARKET-LIST 
     data: EWJV,EWT,INDA,VNM,AVDV,SMIN,IEMG,EWZ,KWEB,IDOG,EIDO,EWW
-  - desc: Currency
+  - desc: CURRENCY
     chartDataSource: SC
     category: MARKET-LIST
     data: $XDN,$XDA,$XDB,SZAR,$XDC,$XDE,$XDS,$USDSEK,$USD,UUP,$USDJPY
