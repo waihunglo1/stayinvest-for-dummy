@@ -146,21 +146,9 @@ data:
     chartDataSource: SC
     category: MARKET-LIST 
     data: EWJV,EWT,INDA,VNM,AVDV,SMIN,IEMG,EWZ,KWEB,IDOG,EIDO,EWW
-  - desc: CURRENCY
-    chartDataSource: SC
-    category: MARKET-LIST
-    data: $XDN,$XDA,$XDB,SZAR,$XDC,$XDE,$XDS,$USDSEK,$USD,UUP,$USDJPY
-  - desc: CRYPTO-CURRENCY
-    chartDataSource: SC
-    category: MARKET-LIST
-    data: $BTCUSD,$ETHUSD,$XRPUSD,$BCHUSD,$USDTUSD,$LTCUSD,$BNBUSD,$LINKUSD,$TRXUSD,$XLMUSD,$XMRUSD,$DOGEUSD
     #
     # US-SECTOR
     #
-  - desc: BOND-YIELD
-    chartDataSource: SC
-    category: US-SECTOR
-    data: $UST7Y,$UST6M,$UST5Y,$UST3Y,$UST3M,$UST30Y,$UST2Y,$UST20Y,$UST1Y,$UST1M,$UST10Y,$USB
   - desc: SECTOR
     chartDataSource: SC
     category: US-SECTOR
@@ -197,9 +185,25 @@ data:
     category: HK-THEME
     data: 0020.HK,0241.HK,0268.HK,0285.HK,0700.HK,0772.HK,0780.HK,0981.HK,0992.HK,1024.HK,1347.HK,1797.HK,1810.HK,1833.HK,2015.HK,2382.HK,3690.HK,3888.HK,6060.HK,6618.HK,6690.HK,9618.HK,9626.HK,9866.HK,9868.HK,9888.HK,9898.HK,9961.HK,9988.HK,9999.HK
     #
-    # MARKET-BREADTH
+    # MARKET-SENTIMENT
     #
+  - desc: MARKET-SENTIMENT
+    chartDataSource: SC
+    category: SENTIMENT
+    data: $SPX,$BTCUSD,$VIX,GLD,$MOVE,$CPCE,$USD,$UST10Y
   - desc: MARKET-BREATH
     chartDataSource: SC
-    category: MARKET
+    category: SENTIMENT
     data: $NAA20R,$NAA50R,$NAA200R,$SPXA20R,$SPXA50R,$SPXA200R,$DOWA20R,$DOWA50R,$DOWA200R
+  - desc: BOND-YIELD
+    chartDataSource: SC
+    category: SENTIMENT
+    data: $UST7Y,$UST6M,$UST5Y,$UST3Y,$UST3M,$UST30Y,$UST2Y,$UST20Y,$UST1Y,$UST1M,$UST10Y,$USB
+  - desc: CURRENCY
+    chartDataSource: SC
+    category: SENTIMENT
+    data: $XDN,$XDA,$XDB,SZAR,$XDC,$XDE,$XDS,$USDSEK,$USD,UUP,$USDJPY
+  - desc: CRYPTO-CURRENCY
+    chartDataSource: SC
+    category: SENTIMENT
+    data: $BTCUSD,$ETHUSD,$XRPUSD,$BCHUSD,$USDTUSD,$LTCUSD,$BNBUSD,$LINKUSD,$TRXUSD,$XLMUSD,$XMRUSD,$DOGEUSD    

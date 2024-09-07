@@ -41,7 +41,6 @@
 						😱 <a href="https://edition.cnn.com/markets/fear-and-greed" target="_BLANK">Fear And Greed</a></br>
 						⛅ <a href="https://www.barchart.com/stocks/momentum" target="_BLANK">Market Momentum</a></br>
 						🎊 <a href="https://www.barchart.com/etfs-funds/price-surprises/bullish?viewName=main&timeFrame=daily&leverage=-3x,3x&orderBy=dailyVolume&orderDir=desc&page=all" target="_BLANK">3XETF Daily Volume</a></br>
-						👀 <a href="daily-alert.html" target="_BLANK">Daily-Alert Check list</a></br>
 						👽 <a href="https://stockcharts.com/freecharts/marketsummary.html?v=E#&t=T" target="_BLANK">Market Performance</a></br>
 						📻 <a href="https://stockcharts.com/freecharts/sctr.html" target="_BLANK">SCTR Report</a></br>
 						🦁 <a href="https://www.marketinout.com/chart/market.php?breadth=mcclellan-oscillator" target="_BLANK">McClellan Oscillator</a></br>
@@ -152,7 +151,8 @@
 					<td><img src="images/rocket.gif" width="50" height="50" style="width: 100px; height: 90px;" />
 					</td>
 					<td>
-						<!-- MAKRET LIST -->						
+						<!-- MAKRET LIST -->	
+						<span id="SENTIMENT_DIV"><h2>SENTIMENT</h2></span> 					
 						<span id="MARKET_LIST_DIV"><h2>OTHER MARKETS</h2></span>
 
 						<!-- US FOCUS LIST START -->
@@ -201,6 +201,8 @@
 		// console.log(portfolios.data);
 
 		// MARKET LIST
+		
+		appendLinkAndUpdateTitle(portfolios, stockChartLink, "SENTIMENT_DIV", "SENTIMENT");		
 		appendLinkAndUpdateTitle(portfolios, stockChartLink, "MARKET_LIST_DIV", "MARKET-LIST");
 
 		// US THEME
