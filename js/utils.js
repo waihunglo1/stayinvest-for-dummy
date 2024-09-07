@@ -67,8 +67,6 @@ export function resolveTargetPageLink(stockCode, universe, tradingViewCode) {
         refStockCode = refStockCode.replace("$","");
     } else if (stockCode.startsWith("$")) {
         refLink = "https://stockcharts.com/sc3/ui/?s={stockCode}";
-    } else if (isCcyPairCrypto(stockCode)) {
-
     }
 
     const tempRefLink = refLink
