@@ -11,12 +11,14 @@ export function handleInputParameters() {
     const title = params.get("d");
     var taIndicator = params.get("a");
     var chartType = params.get("t");
+    var sort = params.get("s");
 
     // stock codes
     console.log("parseLocationAndShowCharts o = " + inputStockCodes);
     console.log("parseLocationAndShowCharts t = " + taIndicator);
     console.log("parseLocationAndShowCharts a = " + chartType);
     console.log("parseLocationAndShowCharts d = " + title);
+    console.log("parseLocationAndShowCharts s = " + sort)
 
     // chart type
     if (chartType == null) {
@@ -30,6 +32,11 @@ export function handleInputParameters() {
         taIndicator = "B14";
     }
 
+    if(sort == null) {
+        console.info("sort is null");
+        sort = true;
+    }
+
     // title description
     if (title != null) {
         let title_el = document.querySelector("title");
@@ -41,7 +48,8 @@ export function handleInputParameters() {
     return {
         inputStockCodes,
         taIndicator,
-        chartType
+        chartType, 
+        sort
     }
 }
 
@@ -212,9 +220,11 @@ export const appendLinkAndUpdateTitle = (portfolios, hrefAddr, parentId, extraDe
         const rowType = dataRow.chartDataSource;
         const rowCategory = dataRow.category;
         const rowDesc = dataRow.desc;
+        const shouldSort = dataRow.shouldSort;
         const tempChartLink = hrefAddr
             .replace(/{type}/i, rowType)
-            .replace(/{stockCodes}/i, dataRow.data);
+            .replace(/{stockCodes}/i, dataRow.data)
+            .replace(/{shouldSort}/i, shouldSort);
 
         if (rowCategory == extraDesc) {
             appendThemesLinkToParent(parentId, tempChartLink, rowDesc, false);

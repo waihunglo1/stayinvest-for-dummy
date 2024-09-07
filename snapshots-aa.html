@@ -37,10 +37,16 @@
             let { 
                 inputStockCodes,
                 taIndicator,
-                chartType } = handleInputParameters();
+                chartType,
+                sort } = handleInputParameters();
 
             addButtons("top_row_home", chartType);
-            sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home");
+
+            if(sort) {
+                sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home");
+            } else {
+                loadStockCodesImageWithProgressBar(inputStockCodes, chartType, taIndicator, "img_home01", "#progress_home", false);
+            }
         }
 
         function addButtons(parentId, chartType) {
