@@ -13,7 +13,23 @@ const emojiTheme =
     "🎻", "🛥", "➿", "➰", "6️⃣", "❕", "🍫", "✂️", "🎲", "↕️", "🐸", "🏐", "😵", "🍁", "☄", "👎", "🎷", 
     "♑️", "2️⃣", "🚲", "🚐", "🌑", "📍", "🕵", "🚳", "👝", "⏭", "🔍", "🎺", "▫️", "↪️", "🛍", "🌡", "🎌", 
     "🈁", "🕚", "🍯", "👴", "🏔", "😿", "🐃", "🏷"];
-        
+
+const crytoCcy = {
+    "BTC": "Bitcoin",
+    "ETH": "Ethereum",
+    "USDT": "Tether",
+    "BNB": "Binance Coin",
+    "SOL": "Solana",
+    "XMR": "Monero",
+    "TRX": "TRON",
+    "LTC": "Litecoin",
+    "DOGE": "Dogecoin",
+    "XRP": "XRP",
+    "LINK": "Chainlink",
+    "BCH": "Bitcoin Cash",
+    "XLM": "Stellar"
+};
+            
 export function emoji() {
     if(emojiIdx >= emojiTheme.length) {
         emojiIdx = 0;
@@ -46,6 +62,8 @@ export function resolveTargetPageLink(stockCode, universe, tradingViewCode) {
         refStockCode = refStockCode.replace("$","");
     } else if (stockCode.startsWith("$")) {
         refLink = "https://stockcharts.com/sc3/ui/?s={stockCode}";
+    } else if (isCcyPairCrypto(stockCode)) {
+
     }
 
     const tempRefLink = refLink
@@ -76,6 +94,7 @@ function isCcyPair(ccypair) {
         var ccy2 = res.substring(3,6);
 
         var currencies = Intl.supportedValuesOf("currency");
+        currencies.push(crytoCcy.keys);
         if(currencies.includes(ccy1) && currencies.includes(ccy2)) {
             return true;
         }
