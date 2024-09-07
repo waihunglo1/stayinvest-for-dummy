@@ -190,7 +190,7 @@ data:
   - desc: MARKET-SENTIMENT
     chartDataSource: SC
     category: SENTIMENT
-    data: $SPX,$BTCUSD,$VIX,GLD,$MOVE,$CPCE,$USD,$UST10Y
+    data: $BTCUSD,$VIX,GLD,$MOVE,$CPCE,$USD,$UST10Y
   - desc: MARKET-BREATH
     chartDataSource: SC
     category: SENTIMENT
