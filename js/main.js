@@ -166,10 +166,10 @@ export const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBa
 const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
     const stockCodesStr = stockCodes.join(",");
     var sortBylink = "";
-    if(stockCodesStr.includes("$")) {
-        sortBylink = "https://render-ealy.onrender.com/stockcharts/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
-    } else {
+    if(stockCodesStr.includes(".HK")) {
         sortBylink = "https://render-ealy.onrender.com/yahoo?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+    } else {
+        sortBylink = "https://render-ealy.onrender.com/stockcharts/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     }
 
     const tempSortByLink = sortBylink
