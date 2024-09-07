@@ -29,6 +29,11 @@ const crytoCcy = {
     "BCH": "Bitcoin Cash",
     "XLM": "Stellar"
 };
+
+var currencies = Intl.supportedValuesOf("currency");
+for (const key in crytoCcy) {
+    currencies.push(key);
+}
             
 export function emoji() {
     if(emojiIdx >= emojiTheme.length) {
@@ -89,16 +94,20 @@ export function fixedDecimalPlaces(n, fixed) {
 
 function isCcyPair(ccypair) {
     var res = ccypair.replace("$", "");
+    var last3Char = res[res.length - 3];
+
     if(res.length == 6) {
         var ccy1 = res.substring(0,3);
         var ccy2 = res.substring(3,6);
 
-        var currencies = Intl.supportedValuesOf("currency");
-        for (const key in crytoCcy) {
-            currencies.push(key);
-        }
-        
         if(currencies.includes(ccy1) && currencies.includes(ccy2)) {
+            return true;
+        }
+    } else if (last3Char == "USD") {
+        var prefixLength = res.length - 3;
+        var ccy1 = res.substring(0, prefixLength);
+
+        if(currencies.includes(ccy1)) {
             return true;
         }
     }
