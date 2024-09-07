@@ -94,7 +94,7 @@ export function fixedDecimalPlaces(n, fixed) {
 
 function isCcyPair(ccypair) {
     var res = ccypair.replace("$", "");
-    var last3Char = res[res.length - 3];
+    var last3Char = res.substring(res.length - 3, res.length);
 
     if(res.length == 6) {
         var ccy1 = res.substring(0,3);
