@@ -94,7 +94,10 @@ function isCcyPair(ccypair) {
         var ccy2 = res.substring(3,6);
 
         var currencies = Intl.supportedValuesOf("currency");
-        currencies.push(crytoCcy.keys);
+        for (const key in crytoCcy) {
+            currencies.push(key);
+        }
+        
         if(currencies.includes(ccy1) && currencies.includes(ccy2)) {
             return true;
         }
