@@ -42,10 +42,10 @@
 
             addButtons("top_row_home", chartType);
 
-            if(sort) {
-                sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home");
-            } else {
+            if(sort == "N") {
                 loadStockCodesImageWithProgressBar(inputStockCodes, chartType, taIndicator, "img_home01", "#progress_home", false);
+            } else {
+                sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home");
             }
         }
 

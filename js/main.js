@@ -34,7 +34,7 @@ export function handleInputParameters() {
 
     if(sort == null) {
         console.info("sort is null");
-        sort = true;
+        sort = "Y";
     }
 
     // title description
@@ -220,11 +220,11 @@ export const appendLinkAndUpdateTitle = (portfolios, hrefAddr, parentId, extraDe
         const rowType = dataRow.chartDataSource;
         const rowCategory = dataRow.category;
         const rowDesc = dataRow.desc;
-        const shouldSort = dataRow.shouldSort;
+        const sortIndicator = dataRow.shouldSort ? "Y" : "N";
         const tempChartLink = hrefAddr
             .replace(/{type}/i, rowType)
             .replace(/{stockCodes}/i, dataRow.data)
-            .replace(/{shouldSort}/i, shouldSort);
+            .replace(/{sort}/i, sortIndicator);
 
         if (rowCategory == extraDesc) {
             appendThemesLinkToParent(parentId, tempChartLink, rowDesc, false);
@@ -307,13 +307,13 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDes
  */
 export const loadStockCodesImageWithProgressBar = (inputStockCodes, chartType, taIndicator, imageHome, ldBarName, shouldSort) => {
     partitionStockCodesAndSort(inputStockCodes, taIndicator, ldBarName, shouldSort)
-    .then(function (sortedStockCodes) {
-        sortedStockCodes.forEach(stockCode => {
-            var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
-            var borderStyle = null;
-            appendImageToParent(imageHome, chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
-        });
-    })
+        .then(function (sortedStockCodes) {
+            sortedStockCodes.forEach(stockCode => {
+                var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
+                var borderStyle = null;
+                appendImageToParent(imageHome, chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
+            });
+        })
     .catch(function (error) {
         console.error(error);
     });		    
