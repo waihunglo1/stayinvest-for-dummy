@@ -11,7 +11,7 @@ export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketB
         return;
     }
 
-    var dataLink = "https://render-ealy.onrender.com/yahoo?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+    var dataLink = "https://render-ealy.onrender.com/yahoo/taIndicator?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     const tempSortByLink = dataLink
         .replace(/{stockCodes}/i, stockCodes)
         .replace(/{taIndicator}/i, taIndicator);
