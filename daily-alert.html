@@ -47,28 +47,7 @@
 		<div id="content1">			
 			<div id="GRID_WRAPPER_DIV" style="margin: 0 auto; width:1800px;float:left"></div>
 		</div>
-		<div id="content2">
-			<div id="img_home01" style="margin: 0 auto; width:1500px;float:left"></div>
-		</div>
-		<div id="content3">
-			<div id="img_home02" style="margin: 0 auto; width:1500px;float:left"></div>
-		</div>
 	</div>
-	
-	<div>
-		<table>
-			<tr>
-				<td><h3>Market Breadth</h3></div></td>
-				<td><div id="progress_home01"></div></td>
-			</tr>
-			<tr>
-				<td><h3>Market Sentiment</h3></div></td>
-				<td><div id="progress_home02"></div></td>
-			</tr>
-		</table>
-	</div>
-
-
 
     <script type="module">
         import { loadStockCodesImageWithProgressBar } from "/stayinvest-for-dummy/js/main.js";
@@ -77,16 +56,5 @@
 
 		// index diff
 		fetchInGrid("GRID_WRAPPER_DIV", "^IXIC,^GSPC,^DJI", "S50DF", true);
-
-		const taIndicator = "B14";
-		const chartType = "SC";
-
-		// market breadth
-		const inputStockCodes01 = "$COMPQ,$NAA20R,$NAA50R,$NAA200R,$SPX,$SPXA20R,$SPXA50R,$SPXA200R,$INDU,$DOWA20R,$DOWA50R,$DOWA200R";
-		loadStockCodesImageWithProgressBar(inputStockCodes01, chartType, taIndicator, "img_home01", "#progress_home01", false);
-		
-		// market sentiment
-		const inputStockCodes02 = "$SPX,$BTCUSD,$VIX,GLD,$MOVE,$CPCE,$USD,$UST10Y";
-		loadStockCodesImageWithProgressBar(inputStockCodes02, chartType, taIndicator, "img_home02", "#progress_home02", false);			
     </script>
 </body>
