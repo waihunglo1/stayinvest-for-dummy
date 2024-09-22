@@ -229,8 +229,8 @@ data:
   - desc: MARKET-SENTIMENT
     chartDataSource: SC
     category: SENTIMENT
-    data: $BTCUSD,$VIX,GLD,$MOVE,$CPCE,$USD,$UST10Y
-    shouldSort: false
+    data: $BTCUSD,$HSI,$BRENT,DBC,ARKK,IWM,$INDU,$compQ,$NDX,$SILVER,RSP,$GOLD,$SPX,EMXC,VEA,HYG,LPD,$USD,TLT,$UST10Y,$VIX,$MOVE
+    shouldSort: false    
   - desc: MARKET-BREATH
     chartDataSource: SC
     category: SENTIMENT
@@ -251,3 +251,5 @@ data:
     category: SENTIMENT
     data: $BTCUSD,$ETHUSD,$XRPUSD,$BCHUSD,$USDTUSD,$LTCUSD,$BNBUSD,$LINKUSD,$TRXUSD,$XLMUSD,$XMRUSD,$DOGEUSD
     shouldSort: true     
+
+
