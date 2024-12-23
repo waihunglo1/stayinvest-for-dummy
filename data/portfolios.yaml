@@ -69,7 +69,7 @@ data:
   - desc: SEMI
     chartDataSource: SC
     category: US-AI-ROUTINE
-    data: AMAT,AMD,ARM,ASML,AVGO,CDNS,ENTG,KLAC,LRCX,MCHP,MKSI,MPWR,MRVL,MU,NVDA,NXPI,QCOM,SNPS,TER,TSM,TXN
+    data: ADI,ALAB,AMAT,ARM,ASML,ASX,CRDO,CRUS,KLAC,LRCX,MCHP,MPWR,MRVL,Mu,Qcom,QRVO,SMTC,TER,TSM,TXN
     shouldSort: true 
   - desc: NETWORK
     chartDataSource: SC
@@ -127,7 +127,7 @@ data:
   - desc: CRYPTO
     chartDataSource: SC
     category: US-OTHER-ROUTINE 
-    data: CLSK,COIN,HOOD,MARA,MSTR,CIFR,WULF
+    data: APLD,BTBT,BTDR,CIFR,CLSK,COIN,CORZ,HIVE,HUT,IREN,MARA,MSTR,RIOT,SMLR,WT,WULF
     shouldSort: true 
   - desc: SHIPPING
     chartDataSource: SC
@@ -154,6 +154,11 @@ data:
     category: US-OTHER-ROUTINE 
     data: ONTO,MTDR,MOD,HQY,LNTH,RUSHA,FN,FIX,AZEK,ATKR
     shouldSort: true 
+  - desc: AERO
+    chartDataSource: SC
+    category: US-AI-ROUTINE
+    data: ACHR,ASTS,BLDE,DXYZ,FTAI,JOBY,LUNR,ONDS,OusT,RCAT,RDW,RKLB,UMAC
+    shouldSort: true
     #
     # MARKET-LIST
     #
