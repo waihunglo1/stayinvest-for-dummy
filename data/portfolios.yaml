@@ -156,7 +156,7 @@ data:
     shouldSort: true 
   - desc: AERO
     chartDataSource: SC
-    category: US-AI-ROUTINE
+    category: US-OTHER-ROUTINE
     data: ACHR,ASTS,BLDE,DXYZ,FTAI,JOBY,LUNR,ONDS,OusT,RCAT,RDW,RKLB,UMAC
     shouldSort: true
     #
