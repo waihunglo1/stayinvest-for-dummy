@@ -51,7 +51,12 @@ data:
   - desc: ETF
     chartDataSource: SC
     category: US-ROUTINE
-    data: AIQ,BLOK,BOTZ,BKCH,CIBR,COPX,FXI,GDX,IBB,IGV,IHI,ITA,IWM,KIE,KBWB,KWEB,NLR,PAVE,SMH,SOXX,TAN,TLT,URA,VNQ,XBI,XHB,XLY,XRT,HYG
+    data: AGQ,ARGT,ARKF,ARKW,BITX,BOIL,DPST,DUST,FAS,FNGU,GDX,IBIT,IGV,KIE,KWEB,NAIL,NLR,QTUM,SOXL,TARK,TECL,TMF,TNA,UNG,URA
+    shouldSort: true 
+  - desc: SHORT-ETF
+    chartDataSource: SC
+    category: US-ROUTINE
+    data: FAZ,FNGD,KOLD,SARK,SBIT,sDow,SOXs,SPXS,SQQQ,SRTY,TECS,TMV,ZSL
     shouldSort: true 
   - desc: NON-TECH
     chartDataSource: SC
@@ -61,7 +66,7 @@ data:
   - desc: TECH
     chartDataSource: SC
     category: US-ROUTINE
-    data: AAPL,ADBE,AMZN,AMD,AVGO,CRM,GOOGL,IBM,META,MSFT,NFLX,Now,NVDA,SHOP,TSLA
+    data: AAPL,ADBE,AMZN,AMD,AVGO,CRM,GOOGL,IBM,META,MSFT,NFLX,Now,NVDA,SHOP,TSLA,CRM
     shouldSort: true 
     #
     # AI THEME
@@ -114,7 +119,7 @@ data:
   - desc: SOFTWARE
     chartDataSource: SC
     category: US-AI-ROUTINE   
-    data: ADSK,APP,CDNS,CFLT,CRWD,CVLT,CYBR,ESTC,FICO,IOT,MNDY,MSFT,ORCL,PANW,PLTR,SAP,SNPS,TTD,WDAY,ZS
+    data: ADSK,APP,ASAN,BBAI,CRWD,CYBR,DDOG,DOCU,DUOL,ESTC,FSLY,FTNT,GTLB,INOD,IOT,KvYo,NET,PANW,PCOR,PLTR,RBLX,RBRK,SNOW,SOUN,TEAM,TOST,TTD
     shouldSort: true 
   - desc: APPLE-AI
     chartDataSource: SC
