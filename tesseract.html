@@ -24,7 +24,7 @@
                 tessedit_char_whitelist: "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ/' '",
                 user_defined_dpi: "300"
             });
-            const ret = await worker.recognize(pasteFile, { rotateAuto: true }, { imageColor: true, imageGrey: true, imageBinary: true });
+            const ret = await worker.recognize(pasteFile, { rotateAuto: true }, { imageColor: false, imageGrey: true, imageBinary: false });
 
             document.getElementById("imgInput").src = URL.createObjectURL(pasteFile);
             document.getElementById("imgOriginal").src = ret.data.imageColor;
