@@ -164,6 +164,11 @@ data:
     category: US-OTHER-ROUTINE
     data: ACHR,ASTS,BLDE,DXYZ,FTAI,JOBY,LUNR,ONDS,OusT,RCAT,RDW,RKLB,UMAC
     shouldSort: true
+  - desc: SPACE
+    chartDataSource: SC
+    category: US-OTHER-ROUTINE
+    data: ASTS,DXYZ,GILT,LUNR,PL,RDW,RKLB,SATL,SATS,SPIR
+    shouldSort: true
     #
     # MARKET-LIST
     #
