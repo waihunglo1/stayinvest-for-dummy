@@ -1,4 +1,4 @@
-import { emoji, isEmpty } from "./utils.js";
+import { emoji, isEmpty, fixedDecimalPlaces } from "./utils.js";
 import { appendImageToParent } from "./chart-image-formatter.js";
 
 /**
@@ -78,11 +78,12 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
     partitionStockCodesAndSort(stockCodesStr, taIndicator, progressHome, true)
         .then(function (sortedStockCodes) {
             sortedStockCodes.forEach(stockCode => {
+                var potentialTurnOver = fixedDecimalPlaces(stockCode.vol * stockCode.high / 1000000, 2);
                 var desc = 
                 (isEmpty(stockCode.industry) ? "" : stockCode.industry + "|") + 
                 (isEmpty(stockCode.sector)   ? "" : stockCode.sector   + "|") +                       
                 (isEmpty(stockCode.name)     ? "" : stockCode.name     + " ") +                       
-                "[SCTR:" + stockCode.sctr + "/" + stockCode.extra + "]";
+                "[SCTR:" + stockCode.sctr + " / " + potentialTurnOver + "m / " + stockCode.extra + "]";
 
                 var borderStyle = null;
                 if (stockCode.symbol == '2800.HK' || stockCode.symbol == 'SPY' || stockCode.symbol == '$SPX') {
