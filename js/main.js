@@ -81,8 +81,8 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
                 var desc = 
                 (isEmpty(stockCode.industry) ? "" : stockCode.industry + "|") + 
                 (isEmpty(stockCode.sector)   ? "" : stockCode.sector   + "|") +                       
-                (isEmpty(stockCode.name)     ? "" : stockCode.name     + "|") +                       
-                " [" + taIndicator + ":" + stockCode.extra + "]";
+                (isEmpty(stockCode.name)     ? "" : stockCode.name     + " ") +                       
+                "[SCTR:" + stockCode.sctr + "/" + stockCode.extra + "]";
 
                 var borderStyle = null;
                 if (stockCode.symbol == '2800.HK' || stockCode.symbol == 'SPY' || stockCode.symbol == '$SPX') {
