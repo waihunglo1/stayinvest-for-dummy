@@ -56,7 +56,7 @@ export function resolveTargetPageLink(stockCode, universe, tradingViewCode) {
 
     if (stockCode.includes(".HK")) {
         refLink = "https://www.stockfisher.com.hk/ticker/{stockCode}";
-    } else if (tradingViewSupport(universe, stockCode)) {
+    } else if (shouldTradingViewSupport(universe, stockCode)) {
         refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
         if(!isEmpty(tradingViewCode, stockCode)) {
             refStockCode = tradingViewCode;
@@ -76,14 +76,14 @@ export function resolveTargetPageLink(stockCode, universe, tradingViewCode) {
     return tempRefLink;
 }
 
-function tradingViewSupport(universe, stockCode) {
+function shouldTradingViewSupport(universe, stockCode) {
     if(!isEmpty(universe)) {
-        if ("etf" == universe.toLowerCase() || "index" == universe.toLowerCase() || stockCode.startsWith("^")) {
-            return true;
+        if ("lrg" == universe.toLowerCase() || "sml" == universe.toLowerCase() || "mid" == universe.toLowerCase()) {
+            return false;
         }
     }
 
-    return false;
+    return true;
 }
 
 export function fixedDecimalPlaces(n, fixed) {

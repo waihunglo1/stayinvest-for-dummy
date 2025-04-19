@@ -82,7 +82,7 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
                 (isEmpty(stockCode.industry) ? "" : stockCode.industry + "|") + 
                 (isEmpty(stockCode.sector)   ? "" : stockCode.sector   + "|") +                       
                 (isEmpty(stockCode.name)     ? "" : stockCode.name     + "|") +                       
-                " [v:" + stockCode.extra + "]";
+                " [" + taIndicator + ":" + stockCode.extra + "]";
 
                 var borderStyle = null;
                 if (stockCode.symbol == '2800.HK' || stockCode.symbol == 'SPY' || stockCode.symbol == '$SPX') {
@@ -158,6 +158,8 @@ export const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBa
 
         if ("VOL" == taIndicator) {
             return stocks.sort((a,b) => (b.close * b.vol) - (a.close * a.vol));
+        } else if ("SCTR" == taIndicator) {
+            return stocks.sort((a,b) => b.sctr - a.sctr);
         } else {
             return stocks.sort((a,b) => b.extra - a.extra);
         }
