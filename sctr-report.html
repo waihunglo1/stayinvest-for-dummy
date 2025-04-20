@@ -3,8 +3,11 @@
 
 <!--
 https://stockcharts.com/j-sum/sum?cmd=sctr&view=S&timeframe=E&r=1745130832563
-https://render-ealy.onrender.com/stockcharts/def/servlet/SC.uscan?
 https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe=E&r=1745130832563
+
+https://stockcharts.com/j-sum/sum?cmd=sctr&view=L&timeframe=E&r=1745133344956
+
+https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe=E&r=1745133344956
 -->
 
 <head>
@@ -81,9 +84,9 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
         });
 
         load.addEventListener('click', () => {
-            fetch('https://handsontable.com/docs/scripts/json/load.json').then((response) => {
+            fetch('https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe=E').then((response) => {
                 response.json().then((data) => {
-                    hot.loadData(data.data);
+                    hot.loadData(data);
                     // or, use `updateData()` to replace `data` without resetting states
                     exampleConsole.innerText = 'Data loaded';
                 });
