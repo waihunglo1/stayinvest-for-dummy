@@ -48,6 +48,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
     <div class="example-controls-container">
         <div class="controls">
             <select id="load">
+                <option value=""></option>
                 <option value="L">LARGE CAP</option>
                 <option value="M">MID CAP</option>
                 <option value="S">SMALL CAP</option>
@@ -63,6 +64,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
         import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
         import { gotoPage } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
+        import { emoji, isEmpty, fixedDecimalPlaces } from "/stayinvest-for-dummy/js/utils.js";
 
         const symbolRenderer = (_instance, td, _row, _col, _prop, value) => {
             let href = document.createElement('a');
@@ -99,7 +101,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
 
                 td.style.fontWeight = 'bold';
                 td.style.textAlign = 'right';
-                
+
                 if (parseInt(value, 10) < 100) {
                     td.style.background = 'rgb(0, 204, 0, 0.4)';
                 }
@@ -225,6 +227,9 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
 
         load.addEventListener('change', () => {
             console.log(load.value);
+            if (isEmpty(load.value)) {
+                return;
+            }
             let url = 'https://render-ealy.onrender.com/dscan/sctr?view=' + load.value;
 
             fetch(url).then((response) => {
