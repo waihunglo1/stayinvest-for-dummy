@@ -86,9 +86,10 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
         load.addEventListener('click', () => {
             fetch('https://render-ealy.onrender.com/dscan/sctr?view=L').then((response) => {
                 response.json().then((rows) => {
+                    const firstElement = rows.data.shift();
                     hot.loadData(rows.data)
                     // or, use `updateData()` to replace `data` without resetting states
-                    exampleConsole.innerText = 'Data loaded';
+                    exampleConsole.innerText = 'Data loaded :' + firstElement;
                 });
             });
         });
