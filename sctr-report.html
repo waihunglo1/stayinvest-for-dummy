@@ -89,7 +89,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
                     const firstElement = rows.data.shift();
                     hot.loadData(rows.data)
                     // or, use `updateData()` to replace `data` without resetting states
-                    exampleConsole.innerText = 'Data loaded :' + firstElement;
+                    exampleConsole.innerText = 'Date :' + firstElement.date;
                 });
             });
         });
