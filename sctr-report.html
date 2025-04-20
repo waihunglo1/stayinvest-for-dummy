@@ -57,28 +57,10 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
         <output class="console" id="output">Click "Load" to load data from server</output>
     </div>
     <div id="example1" class="ht-theme-main"></div>
-    <div id="example" class="ht-theme-main-dark-auto"></div>
 
     <script type="module">
         import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
-
-        const container = document.querySelector('#example');
-
-        const hot = new Handsontable(container, {
-            data: [
-                ['', 'Tesla', 'Volvo', 'Toyota', 'Ford'],
-                ['2019', 10, 11, 12, 13],
-                ['2020', 20, 11, 14, 13],
-                ['2021', 30, 15, 12, 13]
-            ],
-            rowHeaders: true,
-            colHeaders: true,
-            height: 'auto',
-            autoWrapRow: true,
-            autoWrapCol: true,
-            licenseKey: 'non-commercial-and-evaluation' // for non-commercial use only
-        });
 
         import Handsontable from 'handsontable';
         import 'handsontable/styles/handsontable.css';
