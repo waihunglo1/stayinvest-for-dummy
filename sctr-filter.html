@@ -45,7 +45,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
 </head>
 
 <body>
-    <div class="example-controls-container">
+    <div class="controls-container">
         <div class="controls">
             <select id="load">
                 <option value=""></option>
@@ -66,14 +66,27 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
         import { gotoPage } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
         import { emoji, isEmpty, fixedDecimalPlaces } from "/stayinvest-for-dummy/js/utils.js";
-        
+
+        let capMap = new Map([
+            ['L', 'lrg'],
+            ['M', 'mid'],
+            ['S', 'sml'],
+            ['E', 'undefine']
+        ]);
+
+        const container = document.querySelector('#example1');
+        const exampleConsole = document.querySelector('#output');
+        const load = document.querySelector('#load');
+
         const symbolRenderer = (_instance, td, _row, _col, _prop, value) => {
             let href = document.createElement('a');
             let text = document.createTextNode(value);
             href.appendChild(text);
+
+            var capValue = capMap.get(load.value);
             
             href.addEventListener('click', (event) => {
-                gotoPage(value, "undefine");
+                gotoPage(value, capValue);
             });
 
             td.innerText = '';
@@ -123,8 +136,6 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
                 }   
             };
 
-        const container = document.querySelector('#example1');
-        const exampleConsole = document.querySelector('#output');
         const hot = new Handsontable(container, {
             startRows: 0,
             startCols: 6,
