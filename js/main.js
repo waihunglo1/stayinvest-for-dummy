@@ -172,6 +172,7 @@ export const partitionStockCodesAndSort = async (stockCodeStr, taIndicator, ldBa
 /**
  * async request
  * const sortBylink = "https://stockcharts.com/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+ * sample https://stockcharts.com/def/servlet/SC.uscan?cgo=CTA,SLV,CEF,$CRB,DJP,GDX,LAND,XME,URA,$WTIC,XLE,MOO,COPX,SPY|B14&p=1&format=json&order=d
  * @returns 
  */
 const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
