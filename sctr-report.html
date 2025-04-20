@@ -45,13 +45,16 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
 </head>
 
 <body>
-    <h1>SCTR REPORTS</h1>
-
     <div class="example-controls-container">
         <div class="controls">
-            <button id="load" class="button button--primary button--blue">Load data</button>&nbsp;
+            <select id="load">
+                <option value="L">LARGE CAP</option>
+                <option value="M">MID CAP</option>
+                <option value="S">SMALL CAP</option>
+                <option value="E">ETF</option>
+            </select>
         </div>
-        <output class="console" id="output">Click "Load" to load data from server</output>
+        <output class="console" id="output"></output>
     </div>
 
     <div id="example1" class="ht-theme-main"></div>
@@ -77,7 +80,6 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
 
         const container = document.querySelector('#example1');
         const exampleConsole = document.querySelector('#output');
-        const load = document.querySelector('#load');
         const hot = new Handsontable(container, {
             startRows: 8,
             startCols: 6,
@@ -178,7 +180,9 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
             dropdownMenu: ['filter_by_condition', 'filter_by_value', 'filter_action_bar']
         });
 
-        load.addEventListener('click', () => {
+        load.addEventListener('change', () => {
+            console.log(load.value);
+
             fetch('https://render-ealy.onrender.com/dscan/sctr?view=L').then((response) => {
                 response.json().then((rows) => {
                     const firstElement = rows.data.shift();
