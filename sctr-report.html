@@ -85,8 +85,8 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
 
         load.addEventListener('click', () => {
             fetch('https://render-ealy.onrender.com/dscan/sctr?view=L').then((response) => {
-                response.json().then((data) => {
-                    hot.loadData(data)
+                response.json().then((rows) => {
+                    hot.loadData(rows.data)
                     // or, use `updateData()` to replace `data` without resetting states
                     exampleConsole.innerText = 'Data loaded';
                 });
