@@ -47,15 +47,10 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
     <div class="example-controls-container">
         <div class="controls">
             <button id="load" class="button button--primary button--blue">Load data</button>&nbsp;
-            <button id="save" class="button button--primary button--blue">Save data</button>
-            <label>
-                <input type="checkbox" name="autosave" id="autosave" />
-                Autosave
-            </label>
         </div>
-
         <output class="console" id="output">Click "Load" to load data from server</output>
     </div>
+
     <div id="example1" class="ht-theme-main"></div>
 
     <script type="module">
@@ -64,9 +59,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
 
         const container = document.querySelector('#example1');
         const exampleConsole = document.querySelector('#output');
-        const autosave = document.querySelector('#autosave');
         const load = document.querySelector('#load');
-        const save = document.querySelector('#save');
         const hot = new Handsontable(container, {
             startRows: 8,
             startCols: 6,
@@ -82,23 +75,6 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
                 if (!change) {
                     return;
                 }
-
-                if (!autosave.checked) {
-                    return;
-                }
-
-                fetch('https://handsontable.com/docs/scripts/json/save.json', {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ data: change }),
-                }).then(() => {
-                    exampleConsole.innerText = `Autosaved (${change.length} cell${change.length > 1 ? 's' : ''
-                        })`;
-                    console.log('The POST request is only used here for the demo purposes');
-                });
             },
             autoWrapRow: true,
             autoWrapCol: true,
@@ -113,27 +89,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
                 });
             });
         });
-        save.addEventListener('click', () => {
-            // save all cell's data
-            fetch('https://handsontable.com/docs/scripts/json/save.json', {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ data: hot.getData() }),
-            }).then(() => {
-                exampleConsole.innerText = 'Data saved';
-                console.log('The POST request is only used here for the demo purposes');
-            });
-        });
-        autosave.addEventListener('click', () => {
-            if (autosave.checked) {
-                exampleConsole.innerText = 'Changes will be autosaved';
-            } else {
-                exampleConsole.innerText = 'Changes will not be autosaved';
-            }
-        });
+        
     </script>
 
 </body>
