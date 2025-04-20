@@ -56,6 +56,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
             </select>
         </div>
         <output class="console" id="output"></output>
+        <div id="progress_home"></div>
     </div>
 
     <div id="example1" class="ht-theme-main"></div>
@@ -65,7 +66,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
         import { gotoPage } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
         import { emoji, isEmpty, fixedDecimalPlaces } from "/stayinvest-for-dummy/js/utils.js";
-
+        
         const symbolRenderer = (_instance, td, _row, _col, _prop, value) => {
             let href = document.createElement('a');
             let text = document.createTextNode(value);
