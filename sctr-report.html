@@ -97,8 +97,11 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
                     cellProperties
                 );
 
+                td.style.fontWeight = 'bold';
+                td.style.textAlign = 'right';
+                
                 if (parseInt(value, 10) < 100) {
-                    td.style.background = 'rgb(0, 102, 0, 0.4)';
+                    td.style.background = 'rgb(0, 204, 0, 0.4)';
                 }
                 if (parseInt(value, 10) < 90) {
                     td.style.background = 'rgb(51, 204, 51, 0.4)';
