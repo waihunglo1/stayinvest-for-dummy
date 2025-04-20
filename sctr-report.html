@@ -62,15 +62,16 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
         import { gotoPage } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
 
         const symbolRenderer = (_instance, td, _row, _col, _prop, value) => {
-            let child_elem = document.createElement('a');
-            child_elem.innerHTML = `${value}`;
-            td.appendChild(child_elem);
-            td.appendChild(document.createTextNode(' '));
-            child_elem.addEventListener('mousedown', (event) => {
+            let href = document.createElement('a');
+            let text = document.createTextNode(value);
+            href.appendChild(text);
+            
+            href.addEventListener('click', (event) => {
                 gotoPage(value, "undefine");
             });
 
             td.innerText = '';
+            td.appendChild(href);
             return td;
         };        
 
