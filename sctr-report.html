@@ -59,6 +59,17 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
     <script type="module">
         import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
+        import { gotoPage } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
+
+        const symbolRenderer = (_instance, td, _row, _col, _prop, value) => {
+            const textContent = document.createTextNode(value);
+            textContent.addEventListener('mousedown', (event) => {
+                gotoPage(value, "undefine");
+            });
+            td.innerText = '';
+            td.appendChild(textContent);
+            return td;
+        };        
 
         const container = document.querySelector('#example1');
         const exampleConsole = document.querySelector('#output');
@@ -74,7 +85,8 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
                 {
                     title: 'Symbol',
                     type: 'text',
-                    data: 'symbol'
+                    data: 'symbol', 
+                    renderer: symbolRenderer
                 },
                 {
                     title: 'Name',
@@ -154,7 +166,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
             },
             autoWrapRow: true,
             autoWrapCol: true,
-            columnSorting: true, 
+            multiColumnSorting: true, 
             readOnly: true,
             // enable filtering
             filters: true,
@@ -169,6 +181,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
 
                     // modify data
                     rows.data.forEach(dataRow => {
+                        dataRow.htmlSymbol = "";
                         dataRow.marketCapInBillion = dataRow.marketCap / 1.0e+9;
                         dataRow.turnOverInMillion = dataRow.vol * dataRow.close / 1.0e+6;
                     });
