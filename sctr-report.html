@@ -70,17 +70,69 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
             colHeaders: true,
             height: 'auto',
             widht: 'auto',
-            colHeaders: ['symbol', 'name', 'sector', 'industry', 'SCTR', 'vol', 'close', 'delta', 'marketCap'],
+            colHeaders: ['Symbol', 'Name', 'Sector', 'Industry', 'SCTR', 'Vol', 'Close', 'Delta', 'MarketCap'],
             columns: [
-                { data: 'symbol' },
-                { data: 'name' },
-                { data: 'sector' },
-                { data: 'industry' },
-                { data: 'SCTR' },
-                { data: 'vol' },
-                { data: 'close' },
-                { data: 'delta' },
-                { data: 'delta' }
+                {
+                    title: 'Symbol',
+                    type: 'text',
+                    data: 'symbol'
+                },
+                {
+                    title: 'Name',
+                    type: 'text', 
+                    data: 'name'
+                },
+                {
+                    title: 'Sector',
+                    type: 'text', 
+                    data: 'sector'
+                },
+                {
+                    title: 'Industry',
+                    type: 'text', 
+                    data: 'industry'
+                },
+                {
+                    title: 'SCTR',
+                    type: 'numeric', 
+                    data: 'SCTR',
+                    numericFormat: {
+                        pattern: '0,0.00',
+                        culture: 'en-US',
+                    }
+                },
+                {
+                    title: 'Vol',
+                    type: 'text', 
+                    data: 'vol'
+                },
+                {
+                    title: 'Close',
+                    type: 'numeric',
+                    data: 'close',
+                    numericFormat: {
+                        pattern: '$ 0,0.00',
+                        culture: 'en-US',
+                    }
+                },
+                {
+                    title: 'Delta',
+                    type: 'numeric', 
+                    data: 'delta',
+                    numericFormat: {
+                        pattern: '0,0.00',
+                        culture: 'en-US',
+                    }
+                },
+                {
+                    title: 'MarketCap',
+                    type: 'numeric', 
+                    data: 'marketCap',
+                    numericFormat: {
+                        pattern: '$ 0,0.00',
+                        culture: 'en-US',
+                    }
+                }
             ],
             licenseKey: 'non-commercial-and-evaluation',
             afterChange(change, source) {
@@ -94,6 +146,10 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
             },
             autoWrapRow: true,
             autoWrapCol: true,
+            // enable filtering
+            filters: true,
+            // enable the column menu, but display only the filter menu items
+            dropdownMenu: ['filter_by_condition', 'filter_by_value', 'filter_action_bar']
         });
 
         load.addEventListener('click', () => {
