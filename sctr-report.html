@@ -182,8 +182,9 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
 
         load.addEventListener('change', () => {
             console.log(load.value);
+            let url = 'https://render-ealy.onrender.com/dscan/sctr?view=' + load.value;
 
-            fetch('https://render-ealy.onrender.com/dscan/sctr?view=L').then((response) => {
+            fetch(url).then((response) => {
                 response.json().then((rows) => {
                     const firstElement = rows.data.shift();
 
