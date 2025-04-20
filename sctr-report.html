@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+https://stockcharts.com/j-sum/sum?cmd=sctr&view=S&timeframe=E&r=1745130832563
+https://render-ealy.onrender.com/stockcharts/def/servlet/SC.uscan?
+https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe=E&r=1745130832563
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read JSON File</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong|Platypi|Noto Sans Traditional Chinese">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+	<link rel="manifest" href="icon/site.webmanifest">
+	<link rel="mask-icon" href="icon/safari-pinned-tab.svg" color="#5bbad5">
+
+    <!-- data table -->
+    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+
+    <!-- progress bar -->
+    <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
+    <script type="text/javascript" src="js-3rd-party/loading-bar.js"></script>
+
+    <!-- CSV -->    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js-3rd-party/papaparse.min.js"></script>
+
+    <!-- yaml -->
+    <script type="text/javascript" src="js-3rd-party/js-yaml.min.js"></script>
+
+    <!-- handsondtable -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/styles/handsontable.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/styles/ht-theme-main.min.css" />
+
+</head>
+
+<body>
+    <h1>SCTR REPORTS</h1>
+
+    <div id="example" class="ht-theme-main-dark-auto"></div>
+
+    <script type="module">
+        import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle } from "/stayinvest-for-dummy/js/main.js";
+        import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
+
+        const container = document.querySelector('#example');
+
+        const hot = new Handsontable(container, {
+            data: [
+                ['', 'Tesla', 'Volvo', 'Toyota', 'Ford'],
+                ['2019', 10, 11, 12, 13],
+                ['2020', 20, 11, 14, 13],
+                ['2021', 30, 15, 12, 13]
+            ],
+            rowHeaders: true,
+            colHeaders: true,
+            height: 'auto',
+            autoWrapRow: true,
+            autoWrapCol: true,
+            licenseKey: 'non-commercial-and-evaluation' // for non-commercial use only
+        });
+    
+
+    </script>
+
+</body>
