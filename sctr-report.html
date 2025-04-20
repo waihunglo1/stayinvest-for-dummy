@@ -66,23 +66,22 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
         const hot = new Handsontable(container, {
             startRows: 8,
             startCols: 6,
-            dataSchema: model,
             rowHeaders: true,
             colHeaders: true,
             height: 'auto',
             widht: 'auto',
-            colHeaders: ['symbol', 'name','sector','industry','SCTR','vol','close','delta','marketCap'],
+            colHeaders: ['symbol', 'name', 'sector', 'industry', 'SCTR', 'vol', 'close', 'delta', 'marketCap'],
             columns: [
-                { data: property('symbol') },
-                { data: property('name') },
-                { data: property('sector') },
-                { data: property('industry') },
-                { data: property('SCTR') },
-                { data: property('vol') },
-                { data: property('close') },
-                { data: property('delta') },
-                { data: property('marketCap') }
-            ],            
+                { data: 'symbol' },
+                { data: 'name' },
+                { data: 'sector' },
+                { data: 'industry' },
+                { data: 'SCTR' },
+                { data: 'vol' },
+                { data: 'close' },
+                { data: 'delta' },
+                { data: 'delta' }
+            ],
             licenseKey: 'non-commercial-and-evaluation',
             afterChange(change, source) {
                 if (source === 'loadData') {
@@ -107,48 +106,8 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
                 });
             });
         });
-        
-        function model(stock) {
-            const _pub = {
-                symbol: undefined,
-                sector: undefined,
-                name: undefined,
-                marketCap: undefined,
-                industry: undefined,
-                delta: undefined,
-                close: undefined,
-                SCTR: undefined,
-                vol: undefined,
-                attr: () => _pub,
-            };
 
-            const _priv = {};
 
-            for (const prop in stock) {
-                if (stock.hasOwnProperty(prop)) {
-                    _priv[prop] = person[prop];
-                }
-            }
-
-            _pub.attr = (attr, val) => {
-                if (typeof val === 'undefined') {
-                    window.console && console.log('GET the', attr, 'value of', _pub);
-
-                    return _priv[attr];
-                }
-
-                window.console && console.log('SET the', attr, 'value of', _pub);
-                _priv[attr] = val;
-
-                return _pub;
-            };
-
-            return _pub;
-        }
-
-        function property(attr) {
-            return (row, value) => row.attr(attr, value);
-        }
 
     </script>
 
