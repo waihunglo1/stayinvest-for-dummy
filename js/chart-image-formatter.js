@@ -25,7 +25,7 @@ const hkConf3m = {
     techIndicatorRSI: "2"
 };    
 
-export function createImageElement(stockCode, period, taIndicator) {
+export function createImageElement(stockCode, period, taIndicator, desc) {
     var chartImg = resolveStockChartImageLink(stockCode, period, taIndicator);
     var imageElement = document.createElement("img");
     imageElement.setAttribute("src", chartImg.imageLinkAddr);
@@ -48,7 +48,7 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
         period = "6m";
     }
 
-    var imageElement = createImageElement(stockCode, period, taIndicator);
+    var imageElement = createImageElement(stockCode, period, taIndicator, desc);
 
     imageElement.addEventListener("click", function () {
         gotoPage(stockCode, universe);

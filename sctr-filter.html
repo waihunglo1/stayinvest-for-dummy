@@ -101,7 +101,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
             href.setAttribute('style', 'margin: 5px 5px 0 -2px;');
             href.setAttribute('target', '_blank');
             var symbol = _instance.getSourceDataAtRow(_row).symbol;
-            var imageElement = createImageElement(symbol, "2m", "B14");
+            var imageElement = createImageElement(symbol, "2m", "B14", "");
             href.appendChild(imageElement);
 
             td.innerText = '';
