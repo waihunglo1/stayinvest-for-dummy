@@ -25,6 +25,22 @@ const hkConf3m = {
     techIndicatorRSI: "2"
 };    
 
+export function createImageElement(stockCode, period, taIndicator) {
+    var chartImg = resolveStockChartImageLink(stockCode, period, taIndicator);
+    var imageElement = document.createElement("img");
+    imageElement.setAttribute("src", chartImg.imageLinkAddr);
+    imageElement.setAttribute("width", chartImg.imageWidth);
+    imageElement.setAttribute("height", chartImg.imageHeight);
+    imageElement.setAttribute("alt", stockCode + " Chart Image");
+    imageElement.setAttribute("title", stockCode + " Chart Image");
+    imageElement.setAttribute("referrerpolicy","no-referrer");
+    imageElement.setAttribute("alt", desc);
+    imageElement.src = chartImg.imageLinkAddr;
+    imageElement.title = desc;
+
+    return imageElement;
+}
+
 export function appendImageToParent(parentId, chartType, stockCode, universe, desc, taIndicator, borderStyle) {
     var period = "2m";
 
@@ -32,14 +48,7 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
         period = "6m";
     }
 
-    const chartImg = resolveStockChartImageLink(stockCode, period, taIndicator);
-
-    // create image element
-    var imageElement = new Image();
-    imageElement.setAttribute("referrerpolicy","no-referrer");
-    imageElement.setAttribute("alt", desc);
-    imageElement.src = chartImg.imageLinkAddr;
-    imageElement.title = desc;
+    var imageElement = createImageElement(stockCode, period, taIndicator);
 
     imageElement.addEventListener("click", function () {
         gotoPage(stockCode, universe);

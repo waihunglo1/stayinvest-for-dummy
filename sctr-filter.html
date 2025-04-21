@@ -63,7 +63,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
     <script type="module">
         import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
-        import { gotoPage } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
+        import { gotoPage, createImageElement } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
         import { emoji, isEmpty, fixedDecimalPlaces } from "/stayinvest-for-dummy/js/utils.js";
 
         const capMap = new Map([
@@ -87,6 +87,22 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
                 var capValue = _instance.getSourceDataAtRow(_row).cap;
                 gotoPage(symbol, capValue);
             });
+
+            td.innerText = '';
+            td.appendChild(href);
+            return td;
+        };
+
+        const snapshotRenderer = (_instance, td, _row, _col, _prop, value) => {
+            let href = document.createElement('a');
+            let text = document.createTextNode(value);
+            href.appendChild(text);
+            href.setAttribute('class', 'snapshot');
+            href.setAttribute('style', 'margin: 5px 5px 0 -2px;');
+            href.setAttribute('target', '_blank');
+            var symbol = _instance.getSourceDataAtRow(_row).symbol;
+            var imageElement = createImageElement(symbol, "2m", "B14");
+            href.appendChild(imageElement);
 
             td.innerText = '';
             td.appendChild(href);
@@ -147,7 +163,8 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
                 {
                     title: 'Symbol',
                     type: 'text',
-                    data: 'symbol'
+                    data: 'symbol',
+                    renderer: snapshotRenderer
                 },
                 {
                     title: 'Name',

@@ -135,3 +135,23 @@ p { display: inline }
     grid-gap: 10px;
     grid-template-columns: repeat(3, 400px);
 }
+
+a.snapchat {
+    position: relative;
+    background: lightgrey;
+}
+
+a.snapchat img {
+    position: absolute;
+    opacity: 0;
+    width: 305px;
+    height: 225px;
+    left: 0;
+    top: -20px;
+    transition: opacity .5s, top .5s;
+}
+
+a.snapchat:hover img {
+    opacity: 1;
+    top: 20px;
+}
