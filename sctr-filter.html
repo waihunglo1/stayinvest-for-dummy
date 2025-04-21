@@ -243,7 +243,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
             }
             consoleText.innerText = 'API Loading ...';
 
-            let url = 'https://render-ealy.onrender.com/dscan/sctr?view=' + load.value;
+            let url = 'https://render-ealy.onrender.com/dscan/v1/sctr?view=' + load.value;
 
             fetch(url).then((response) => {
                 response.json().then((rows) => {
@@ -251,13 +251,11 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
 
                     // modify data
                     rows.data.forEach(dataRow => {
-                        dataRow.htmlSymbol = "";
                         dataRow.marketCapInBillion = dataRow.marketCap / 1.0e+9;
                         dataRow.turnOverInMillion = dataRow.vol * dataRow.close / 1.0e+6;
                     });
 
                     hot.loadData(rows.data)
-                    // or, use `updateData()` to replace `data` without resetting states
                     consoleText.innerText = 'Date :' + firstElement.date;
                 });
             });
