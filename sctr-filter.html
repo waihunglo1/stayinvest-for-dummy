@@ -247,7 +247,6 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
 
             fetch(url).then((response) => {
                 response.json().then((rows) => {
-                    progressBar.set(50);
                     const firstElement = rows.data.shift();
 
                     // modify data
