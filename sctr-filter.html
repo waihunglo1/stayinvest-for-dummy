@@ -83,8 +83,10 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
             href.appendChild(text);
 
             href.addEventListener('click', (event) => {
-                var symbol = _instance.getSourceDataAtRow(_row).symbol;
-                var capValue = _instance.getSourceDataAtRow(_row).cap;
+                // var symbol = _instance.getSourceDataAtRow(_row).symbol;
+                // var capValue = _instance.getSourceDataAtRow(_row).cap;
+                var symbol = value;
+                var capValue = capMap.get(load.value);
                 gotoPage(symbol, capValue);
             });
 
@@ -163,13 +165,13 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
                 {
                     title: 'Symbol',
                     type: 'text',
-                    data: 'symbol'
+                    data: 'symbol',
+                    renderer: linkRenderer
                 },
                 {
                     title: 'Name',
                     type: 'text', 
-                    data: 'name', 
-                    renderer: linkRenderer
+                    data: 'name'
                 },
                 {
                     title: 'Sector',
