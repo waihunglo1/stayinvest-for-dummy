@@ -37,7 +37,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
     <!-- yaml -->
     <script type="text/javascript" src="js-3rd-party/js-yaml.min.js"></script>
 
-    <!-- handsondtable -->
+    <!-- handsontable -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/styles/handsontable.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/styles/ht-theme-main.min.css" />
@@ -88,6 +88,14 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
                 var symbol = value;
                 var capValue = capMap.get(load.value);
                 gotoPage(symbol, capValue);
+                switch (event.which) {
+                    case 3:
+                        console.log('Right Mouse button pressed.');
+                        break;
+                    default:
+                        console.log('You have a strange Mouse!');
+                        break
+                }
             });
 
             td.innerText = '';
