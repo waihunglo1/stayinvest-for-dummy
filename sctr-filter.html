@@ -66,7 +66,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
         import { gotoPage, createImageElement } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
         import { emoji, isEmpty, fixedDecimalPlaces } from "/stayinvest-for-dummy/js/utils.js";
 
-        const capMap = new Map([
+        const universeMap = new Map([
             ['L', 'lrg'],
             ['M', 'mid'],
             ['S', 'sml'],
@@ -83,19 +83,13 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
             href.appendChild(text);
 
             href.addEventListener('click', (event) => {
-                // var symbol = _instance.getSourceDataAtRow(_row).symbol;
-                // var capValue = _instance.getSourceDataAtRow(_row).cap;
                 var symbol = value;
-                var capValue = capMap.get(load.value);
-                gotoPage(symbol, capValue);
-                switch (event.which) {
-                    case 3:
-                        console.log('Right Mouse button pressed.');
-                        break;
-                    default:
-                        console.log('You have a strange Mouse!');
-                        break
+                var universe = universeMap.get(load.value);
+                if(event.altKey && event.preventDefault()) {
+                    universe = 'und'
                 }
+
+                gotoPage(symbol, capValue);
             });
 
             td.innerText = '';
@@ -279,7 +273,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
                     rows.data.forEach(dataRow => {
                         dataRow.marketCapInBillion = dataRow.marketCap / 1.0e+9;
                         dataRow.turnOverInMillion = dataRow.vol * dataRow.close / 1.0e+6;
-                        dataRow.cap = capMap.get(load.value);
+                        dataRow.cap = universeMap.get(load.value);
                     });
 
                     hot.loadData(rows.data)
