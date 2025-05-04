@@ -81,8 +81,8 @@ export function resolveStockChartImageLink(stockCode, period, taIndicator) {
         chartConf = scConf6m;
     }
 
-    // SC not support other than B14 / M12
-    if("M12" != taIndicator && "B14" != taIndicator) {
+    // SC not support other than B14 / M12 / U
+    if("M12" != taIndicator && "B14" != taIndicator && "U" != taIndicator) {
         taIndicator = "M12";
     }
 
