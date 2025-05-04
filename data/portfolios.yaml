@@ -204,12 +204,7 @@ data:
     chartDataSource: SC
     category: US-SECTOR
     data: RSP,RSPC,RSPD,RSPS,RSPG,RSPF,RSPH,RSPN,RSPM,RSPR,RSPT,RSPU
-    shouldSort: true 
-  - desc: SECTOR-AND-EQUAL
-    chartDataSource: SC
-    category: US-SECTOR
-    data: XLY,XLC,XLK,XLI,XLB,XLE,XLP,XLV,XLU,XLF,XLRE,RSP,RSPC,RSPD,RSPS,RSPG,RSPF,RSPH,RSPN,RSPM,RSPR,RSPT,RSPU
-    shouldSort: true 
+    shouldSort: true
     #
     # HK-THEME
     #
