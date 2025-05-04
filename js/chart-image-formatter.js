@@ -50,7 +50,10 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
 
     var imageElement = createImageElement(stockCode, period, taIndicator, desc);
 
-    imageElement.addEventListener("click", function () {
+    imageElement.addEventListener('click', (event) => {
+        if(event.altKey) {
+            universe = 'und'
+        }
         gotoPage(stockCode, universe);
     });
 

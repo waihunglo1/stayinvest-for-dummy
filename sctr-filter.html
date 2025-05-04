@@ -85,7 +85,7 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
             href.addEventListener('click', (event) => {
                 var symbol = value;
                 var universe = universeMap.get(load.value);
-                if(event.altKey && event.preventDefault()) {
+                if(event.altKey) {
                     universe = 'und'
                 }
 
