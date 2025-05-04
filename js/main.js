@@ -46,6 +46,7 @@ export function handleInputParameters() {
     }
 
     return {
+        title,
         inputStockCodes,
         taIndicator,
         chartType, 
