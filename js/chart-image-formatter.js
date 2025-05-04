@@ -66,6 +66,13 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
     document.getElementById(parentId).appendChild(imageElement);
 }
 
+/**
+ * this function is used to resolve the stock chart image link
+ * @param {*} stockCode 
+ * @param {*} period 
+ * @param {*} taIndicator 
+ * @returns 
+ */
 export function resolveStockChartImageLink(stockCode, period, taIndicator) {
     var stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[{chartWidth},a]dacayaci[pb20!b50][{period}][il{taIndicator}]";
     var chartConf = scConf2m;
