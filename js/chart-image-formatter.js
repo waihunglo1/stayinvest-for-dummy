@@ -23,7 +23,7 @@ const hkConf3m = {
     period: "7",
     techIndicatorROC: "5",
     techIndicatorRSI: "2"
-};    
+};
 
 export function createImageElement(stockCode, period, taIndicator, desc) {
     var chartImg = resolveStockChartImageLink(stockCode, period, taIndicator);
@@ -51,14 +51,17 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
     var imageElement = createImageElement(stockCode, period, taIndicator, desc);
 
     imageElement.addEventListener('click', (event) => {
-        gotoPage(stockCode, universe);
+        // gotoPage(stockCode, universe);
+        tinyPopupMenu.open(event);
     });
 
+    /**
     imageElement.addEventListener('contextmenu', function(ev) {
         ev.preventDefault();
         gotoPage(stockCode, 'und');
         return false;
     }, false);    
+     */
 
     // border style
     if (borderStyle != null) {
