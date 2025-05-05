@@ -58,7 +58,7 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
         period = "6m";
     }
 
-    var btn = createTestBtn('Click', (event) => tinyPopupMenu.open(event));
+    var btn = createTestBtn('Click', (event) => tinyPopupMenu.open({ event }));
     var imageElement = createImageElement(stockCode, period, taIndicator, desc);
   /**
     imageElement.addEventListener('click', (event) => {
