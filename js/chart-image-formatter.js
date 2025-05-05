@@ -51,9 +51,6 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
     var btn = document.createElement('button');
     btn.type = 'button';
     btn.innerHTML = "test";
-    if (isContextMenu) btn.oncontextmenu = onClick;
-    else btn.onclick = onClick;
-  
 
     var imageElement = createImageElement(stockCode, period, taIndicator, desc);
 
