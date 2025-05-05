@@ -50,9 +50,9 @@
             console.log("tingPopupMenu", tinyPopupMenu);
 
             if(sort == "N") {
-                loadStockCodesImageWithProgressBar(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home", false);
+                loadStockCodesImageWithProgressBar(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home", tinyPopupMenu, false);
             } else {
-                sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home");
+                sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home", tinyPopupMenu);
             }
         }
 

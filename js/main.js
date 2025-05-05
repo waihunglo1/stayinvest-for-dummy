@@ -57,7 +57,7 @@ export function handleInputParameters() {
 /**
  * sort by taIndicator and add show chart to parent element
  */
-export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, imageHome, progressHome) {
+export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, imageHome, progressHome, tinyPopupMenu) {
     if (inputStockCodes == null) {
         console.error("parameter o is null!!"); //show 1
         return;
@@ -90,7 +90,7 @@ export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicat
                 if (stockCode.symbol == '2800.HK' || stockCode.symbol == 'SPY' || stockCode.symbol == '$SPX') {
                     borderStyle = "5px solid green";
                 }
-                appendImageToParent(imageHome, chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
+                appendImageToParent(imageHome, chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle, tinyPopupMenu);
             });
         })
         .catch(function (error) {
@@ -310,13 +310,13 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDes
 /**
  * load stock codes image as input codes list
  */
-export const loadStockCodesImageWithProgressBar = (inputStockCodes, chartType, taIndicator, imageHome, ldBarName, shouldSort) => {
+export const loadStockCodesImageWithProgressBar = (inputStockCodes, chartType, taIndicator, imageHome, ldBarName, tinyPopupMenu, shouldSort) => {
     partitionStockCodesAndSort(inputStockCodes, taIndicator, ldBarName, shouldSort)
         .then(function (sortedStockCodes) {
             sortedStockCodes.forEach(stockCode => {
                 var desc = stockCode.industry + "|" + stockCode.sector + "|" + stockCode.name;
                 var borderStyle = null;
-                appendImageToParent(imageHome, chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle);
+                appendImageToParent(imageHome, chartType, stockCode.symbol, stockCode.universe, desc, taIndicator, borderStyle, tinyPopupMenu);
             });
         })
     .catch(function (error) {

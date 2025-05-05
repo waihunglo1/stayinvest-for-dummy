@@ -41,7 +41,7 @@ export function createImageElement(stockCode, period, taIndicator, desc) {
     return imageElement;
 }
 
-export function appendImageToParent(parentId, chartType, stockCode, universe, desc, taIndicator, borderStyle) {
+export function appendImageToParent(parentId, chartType, stockCode, universe, desc, taIndicator, borderStyle, tinyPopupMenu) {
     var period = "2m";
 
     if("SC6M" == chartType) {
