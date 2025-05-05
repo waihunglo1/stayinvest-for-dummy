@@ -23,9 +23,6 @@
     <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
     <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
 
-    <!-- menu -->
-    <script src="https://unpkg.com/tiny-popup-menu@1.0.10"></script>
-    <link rel="stylesheet" href="https://unpkg.com/tiny-popup-menu@1.0.10/dist/css/tiny-popup-menu.min.css" />
 </head>
 
 <body>
@@ -36,7 +33,6 @@
     <script type="module">
         import { sortStockCodesAndShowChart, handleInputParameters, loadStockCodesImageWithProgressBar } from "/stayinvest-for-dummy/js/main.js";
         import { gotoPage } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
-        import { tinyPopupMenu } from "/stayinvest-for-dummy/js/context-menu.js";
 
         function parseLocationAndShowCharts() {
             let { 
@@ -48,12 +44,10 @@
 
             addButtons("top_row_home", chartType, title);
 
-            console.log("tingPopupMenu", tinyPopupMenu);
-
             if(sort == "N") {
-                loadStockCodesImageWithProgressBar(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home", tinyPopupMenu, false);
+                loadStockCodesImageWithProgressBar(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home", false);
             } else {
-                sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home", tinyPopupMenu);
+                sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home");
             }
         }
 

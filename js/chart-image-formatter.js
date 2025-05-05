@@ -51,19 +51,17 @@ function createTestBtn(name, onClick, isContextMenu = false) {
     return btn;
 }
 
-export function appendImageToParent(parentId, chartType, stockCode, universe, desc, taIndicator, borderStyle, tinyPopupMenu) {
+export function appendImageToParent(parentId, chartType, stockCode, universe, desc, taIndicator, borderStyle) {
     var period = "2m";
 
     if("SC6M" == chartType) {
         period = "6m";
     }
 
-    var btn = createTestBtn('Click', (event) => tinyPopupMenu.open({ event }));
     var imageElement = createImageElement(stockCode, period, taIndicator, desc);
-  /**
+
     imageElement.addEventListener('click', (event) => {
-        // gotoPage(stockCode, universe);
-        tinyPopupMenu.open(event);
+        gotoPage(stockCode, universe);
     });
 
   
@@ -72,7 +70,6 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
         gotoPage(stockCode, 'und');
         return false;
     }, false);    
-     */
 
     // border style
     if (borderStyle != null) {
@@ -80,7 +77,6 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
     }
     
     // add the parent
-    document.getElementById(parentId).appendChild(btn);
     document.getElementById(parentId).appendChild(imageElement);
 }
 
