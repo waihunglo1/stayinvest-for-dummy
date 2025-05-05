@@ -48,9 +48,16 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
         period = "6m";
     }
 
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.innerHTML = "test";
+    if (isContextMenu) btn.oncontextmenu = onClick;
+    else btn.onclick = onClick;
+  
+
     var imageElement = createImageElement(stockCode, period, taIndicator, desc);
 
-    imageElement.onclick = function(event) {
+    btn.onclick = function(event) {
         // gotoPage(stockCode, universe);
         tinyPopupMenu.open(event);
     }
@@ -74,6 +81,7 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
     }
     
     // add the parent
+    document.getElementById(parentId).appendChild(btn);
     document.getElementById(parentId).appendChild(imageElement);
 }
 
