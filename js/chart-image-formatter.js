@@ -35,7 +35,6 @@ export function createImageElement(stockCode, period, taIndicator, desc) {
     imageElement.setAttribute("title", stockCode + " Chart Image");
     imageElement.setAttribute("referrerpolicy","no-referrer");
     imageElement.setAttribute("alt", desc);
-    imageElement.setAttribute("onContextMenu", "return false;");
     imageElement.src = chartImg.imageLinkAddr;
     imageElement.title = desc;
 
@@ -62,6 +61,12 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
 
         gotoPage(stockCode, universe);
     });
+
+    imageElement.addEventListener('contextmenu', function(ev) {
+        ev.preventDefault();
+        alert('success!');
+        return false;
+    }, false);    
 
     // border style
     if (borderStyle != null) {
