@@ -82,13 +82,10 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
             let text = document.createTextNode(value);
             href.appendChild(text);
 
-            href.addEventListener('click', (event) => {
-                var symbol = value;
-                var universe = universeMap.get(load.value);
-                if(event.altKey) {
-                    universe = 'und'
-                }
+            var symbol = value;
+            var universe = universeMap.get(load.value);
 
+            href.addEventListener('click', (event) => {
                 gotoPage(symbol, universe);
             });
 
