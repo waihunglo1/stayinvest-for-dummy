@@ -35,6 +35,7 @@ export function createImageElement(stockCode, period, taIndicator, desc) {
     imageElement.setAttribute("title", stockCode + " Chart Image");
     imageElement.setAttribute("referrerpolicy","no-referrer");
     imageElement.setAttribute("alt", desc);
+    imageElement.setAttribute("oncontextmenu", false);
     imageElement.src = chartImg.imageLinkAddr;
     imageElement.title = desc;
 
@@ -51,9 +52,14 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
     var imageElement = createImageElement(stockCode, period, taIndicator, desc);
 
     imageElement.addEventListener('click', (event) => {
-        if(event.altKey) {
+        if(event.button === 1) { // left click
+            // universe = 'und' // do nothing
+        } 
+
+        if(event.button === 3) { // right click
             universe = 'und'
-        }
+        }         
+
         gotoPage(stockCode, universe);
     });
 
@@ -118,5 +124,5 @@ export function resolveStockChartImageLink(stockCode, period, taIndicator) {
  */
 export function gotoPage(stockCode, universe, tradingViewSymbol) {
     const hrefLink = resolveTargetPageLink(stockCode, universe, tradingViewSymbol);
-    window.open(hrefLink, '_blank').focus();
+    window.open(hrefLink, Date.now()).focus();
 }
