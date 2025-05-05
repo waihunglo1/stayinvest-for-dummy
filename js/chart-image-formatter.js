@@ -51,20 +51,12 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
     var imageElement = createImageElement(stockCode, period, taIndicator, desc);
 
     imageElement.addEventListener('click', (event) => {
-        if(event.button === 1) { // left click
-            // universe = 'und' // do nothing
-        } 
-
-        if(event.button === 3) { // right click
-            universe = 'und'
-        }         
-
         gotoPage(stockCode, universe);
     });
 
     imageElement.addEventListener('contextmenu', function(ev) {
         ev.preventDefault();
-        alert('success!');
+        gotoPage(stockCode, 'und');
         return false;
     }, false);    
 

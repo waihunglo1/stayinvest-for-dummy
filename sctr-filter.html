@@ -92,6 +92,12 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
                 gotoPage(symbol, universe);
             });
 
+            href.addEventListener('contextmenu', function (ev) {
+                ev.preventDefault();
+                gotoPage(symbol, 'und');
+                return false;
+            }, false);    
+
             td.innerText = '';
             td.appendChild(href);
             return td;
