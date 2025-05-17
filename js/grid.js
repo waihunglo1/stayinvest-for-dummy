@@ -4,14 +4,14 @@ import { fixedDecimalPlaces } from "./utils.js";
 /**
  * async fetch index close
  * yahoo data support only
- * https://render-ealy.onrender.com/yahoo?cgo=^IXIC,^GSPC,^DJI|S50&p=1&format=json&order=d
+ * https://vercel-express-azure-gamma.vercel.app/api/v1/yahoo?cgo=^IXIC,^GSPC,^DJI|S50&p=1&format=json&order=d
  */
 export function fetchInGrid(parentId, stockCodes, taIndicator, shouldShowMarketBreadth) {
     if(stockCodes.includes("$")) {
         return;
     }
 
-    var dataLink = "https://render-ealy.onrender.com/yahoo/taIndicator?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+    var dataLink = "https://vercel-express-azure-gamma.vercel.app/api/v1/yahoo/taIndicator?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     const tempSortByLink = dataLink
         .replace(/{stockCodes}/i, stockCodes)
         .replace(/{taIndicator}/i, taIndicator);

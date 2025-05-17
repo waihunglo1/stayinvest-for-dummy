@@ -180,9 +180,9 @@ const fetchStockCodesSortBy = async (stockCodes, taIndicator) => {
     const stockCodesStr = stockCodes.join(",");
     var sortBylink = "";
     if(stockCodesStr.includes(".HK")) {
-        sortBylink = "https://render-ealy.onrender.com/yahoo/taIndicator?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+        sortBylink = "https://vercel-express-azure-gamma.vercel.app/api/v1/yahoo/taIndicator?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     } else {
-        sortBylink = "https://render-ealy.onrender.com/stockcharts/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
+        sortBylink = "https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/def/servlet/SC.uscan?cgo={stockCodes}|{taIndicator}&p=1&format=json&order=d";
     }
 
     const tempSortByLink = sortBylink
