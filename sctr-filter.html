@@ -266,7 +266,8 @@ https://render-ealy.onrender.com/stockcharts/j-sum/sum?cmd=sctr&view=L&timeframe
             }
             consoleText.innerText = 'API Loading ...';
 
-            let url = 'https://render-ealy.onrender.com/dscan/v1/sctr?view=' + load.value;
+            // let url = 'https://render-ealy.onrender.com/dscan/v1/sctr?view=' + load.value;
+            let url = 'https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/sctr?view=' + load.value;
 
             fetch(url).then((response) => {
                 response.json().then((rows) => {
