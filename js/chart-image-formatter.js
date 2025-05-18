@@ -51,6 +51,19 @@ function createTestBtn(name, onClick, isContextMenu = false) {
     return btn;
 }
 
+export function addMouseEventListenerToImage(element, stockCode, universe) {
+    element.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+        gotoPage(stockCode, universe);
+    });
+
+    element.addEventListener('click', function(ev) {
+        ev.preventDefault();
+        gotoPage(stockCode, 'und');
+        return false;
+    }, false);    
+}
+
 export function appendImageToParent(parentId, chartType, stockCode, universe, desc, taIndicator, borderStyle) {
     var period = "2m";
 
@@ -59,17 +72,7 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
     }
 
     var imageElement = createImageElement(stockCode, period, taIndicator, desc);
-
-    imageElement.addEventListener('click', (event) => {
-        gotoPage(stockCode, universe);
-    });
-
-  
-    imageElement.addEventListener('contextmenu', function(ev) {
-        ev.preventDefault();
-        gotoPage(stockCode, 'und');
-        return false;
-    }, false);    
+    addMouseEventListenerToImage(imageElement, stockCode, universe);  
 
     // border style
     if (borderStyle != null) {
