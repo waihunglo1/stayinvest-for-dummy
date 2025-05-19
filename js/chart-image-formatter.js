@@ -35,6 +35,7 @@ export function createImageElement(stockCode, period, taIndicator, desc) {
     imageElement.setAttribute("title", stockCode + " Chart Image");
     imageElement.setAttribute("referrerpolicy","no-referrer");
     imageElement.setAttribute("alt", desc);
+    imageElement.setAttribute("loading", "lazy");
     imageElement.src = chartImg.imageLinkAddr;
     imageElement.title = desc;
 
