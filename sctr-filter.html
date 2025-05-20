@@ -47,7 +47,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
     <div class="controls-container">
         <div id="top_row_home"></div>
         <div class="controls">
-            <select id="load">
+            <select id="marketCapSelect">
                 <option value=""></option>
                 <option value="L">LARGE CAP</option>
                 <option value="M">MID CAP</option>
@@ -75,7 +75,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
         const container = document.querySelector('#example1');
         const consoleText = document.querySelector('#output');
-        const load = document.querySelector('#load');
+        const marketCapSelect = document.querySelector('#marketCapSelect');
 
         const linkRenderer = (_instance, td, _row, _col, _prop, value) => {
             let href = document.createElement('a');
@@ -83,8 +83,8 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             href.appendChild(text);
 
             var symbol = value;
-            var universe = universeMap.get(load.value);
-            addMouseEventListenerToImage(href, symbol, universe);  
+            var universe = universeMap.get(marketCapSelect.value);
+            addMouseEventListenerToImage(href, symbol, universe);
             td.innerText = '';
             td.appendChild(href);
             return td;
@@ -250,8 +250,8 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             dropdownMenu: ['filter_by_condition', 'filter_by_value', 'filter_action_bar']
         });
 
-        load.addEventListener('change', () => {
-            if (isEmpty(load.value)) {
+        marketCapSelect.addEventListener('change', () => {
+            if (isEmpty(marketCapSelect.value)) {
                 return;
             }
             consoleText.innerText = 'API Loading ...';
@@ -270,7 +270,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         dataRow.cap = universeMap.get(load.value);
                     });
 
-                    this.insertSectorsButtons(rows);
+                    insertSectorsButtons(rows);
 
                     hot.loadData(rows.data)
                     consoleText.innerText = 'Date :' + firstElement.date;
