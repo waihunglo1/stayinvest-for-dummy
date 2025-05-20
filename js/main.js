@@ -320,7 +320,7 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDes
  * @returns 
  */
 const query13f = async (s13f) => {
-    var link = "https://fintel.io/api/i/alloc/{s13f}";
+    var link = "https://vercel-express-azure-gamma.vercel.app/api/v1/whalewisdom/portfolios/filer/holdings?id={s13f}&q1=-1&type_filter=1,2,3,4&symbol=&change_filter=&minimum_ranking=&minimum_shares=&minimum_mv=&is_etf=0&sc=false&sort=current_mv&order=desc&offset=0&limit=100&exclude_subadvisor=false";
 
     const formatLink = link
         .replace(/{s13f}/i, s13f);
@@ -332,8 +332,8 @@ const query13f = async (s13f) => {
         throw new Error(`HTTP error! Status: ${res.status}`);
     } else {
         const data = await res.json();
-        var names = data.map(function (item) {
-            return item['name'];
+        var names = data.rows.map(function (item) {
+            return item['symbol'];
         });
         return names;
     }
