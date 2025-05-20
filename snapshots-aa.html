@@ -56,15 +56,15 @@
             const params = new URLSearchParams(document.location.search);
 
             if(chartType == "HK") {
-                addButton(parentId,"🚿 ROC - 2M", "M12", "HK", title);
-                addButton(parentId,"📈 RSI - 2M", "B14", "HK", title);
+                addButton(parentId,"🚿 ROC - 2M", "M12", "HK", title, inputStockCodes);
+                addButton(parentId,"📈 RSI - 2M", "B14", "HK", title, inputStockCodes);
             } else {
-                addButton(parentId,"🚿 RSI14 - 2M", "B14",  "SC"  , title);
-                addButton(parentId,"📈 RSI14 - 6M", "B14",  "SC6M", title);
-                addButton(parentId,"📟 ROC12 - 2M", "M12",  "SC"  , title);
-                addButton(parentId,"🕛 ROC12 - 6M", "M12",  "SC6M", title);
-                addButton(parentId,"🔂 VOLUME",     "VOL",  "SC"  , title);
-                addButton(parentId,"💢 SCTR",       "U",    "SC"  , title);
+                addButton(parentId,"🚿 RSI14 - 2M", "B14",  "SC"  , title, inputStockCodes);
+                addButton(parentId,"📈 RSI14 - 6M", "B14",  "SC6M", title, inputStockCodes);
+                addButton(parentId,"📟 ROC12 - 2M", "M12",  "SC"  , title, inputStockCodes);
+                addButton(parentId,"🕛 ROC12 - 6M", "M12",  "SC6M", title, inputStockCodes);
+                addButton(parentId,"🔂 VOLUME",     "VOL",  "SC"  , title, inputStockCodes);
+                addButton(parentId,"💢 SCTR",       "U",    "SC"  , title, inputStockCodes);
             }
 
             if(inputStockCodes.includes(".HK")) {
@@ -74,18 +74,17 @@
             }            
         }
 
-        function addButton(parentId, buttonLabel, taIndicator, chartType, title) {
+        function addButton(parentId, buttonLabel, taIndicator, chartType, title, inputStockCodes) {
             const buttonElement = document.createElement("button");
             buttonElement.setAttribute("class","button-6");
             buttonElement.innerText = buttonLabel;
-            buttonElement.onclick = function() { snapshotsForStockCodes(taIndicator, chartType, title); };
+            buttonElement.onclick = function() { snapshotsForStockCodes(taIndicator, chartType, title, inputStockCodes); };
             document.getElementById(parentId).appendChild(buttonElement);
         }
 
-        function snapshotsForStockCodes(taIndicator, period, title) {
+        function snapshotsForStockCodes(taIndicator, period, title, inputStockCodes) {
             const stockChartLink = "snapshots-aa.html?d={title}&t={type}&a={taIndicator}&o={stockCodes}";
             const params = new URLSearchParams(document.location.search);
-            const inputStockCodes = params.get("o");
 
             const tempChartLink = stockChartLink
                     .replace(/{title}/i, title)
@@ -97,18 +96,17 @@
             window.location = tempChartLink;
         }
 
-        function addButtonTableLink(parentId, buttonLabel, taIndicator, chartType, title) {
+        function addButtonTableLink(parentId, buttonLabel, taIndicator, chartType, title, inputStockCodes) {
             const buttonElement = document.createElement("button");
             buttonElement.setAttribute("class","button-6");
             buttonElement.innerText = buttonLabel;
-            buttonElement.onclick = function() { gotoTablePage(taIndicator, chartType, title); };
+            buttonElement.onclick = function() { gotoTablePage(taIndicator, chartType, title, inputStockCodes); };
             document.getElementById(parentId).appendChild(buttonElement);
-        }        
+        }
 
-        function gotoTablePage(taIndicator, period, title) {
+        function gotoTablePage(taIndicator, period, title, inputStockCodes) {
             const stockChartLink = "sma50.html?d={title}&t={type}&a={taIndicator}&o={stockCodes}";
             const params = new URLSearchParams(document.location.search);
-            const inputStockCodes = params.get("o");
 
             const tempChartLink = stockChartLink
                     .replace(/{title}/i, title)
