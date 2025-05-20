@@ -112,3 +112,14 @@ function isCcyPair(ccypair) {
     
     return false;    
 }
+
+export function uniqueArray3(a) {
+  function onlyUnique(value, index, self) { 
+      return self.indexOf(value) === index;
+  }
+  
+  // usage
+  var unique = a.filter( onlyUnique ); // returns ['a', 1, 2, '1']
+  
+  return unique;
+}

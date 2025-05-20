@@ -33,7 +33,7 @@
 
     <script type="module">
         import { sortStockCodesAndShowChart, handleInputParameters, loadStockCodesImageWithProgressBar } from "/stayinvest-for-dummy/js/main.js";
-        import { gotoPage } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
+        import { gotoPage, addButton, addButtonTableLink } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
 
         async function parseLocationAndShowCharts() {
             let { 
@@ -72,51 +72,6 @@
                 addButton(parentId,"🚋 S50-DIFF","S50DF","SC", title);
                 addButtonTableLink(parentId,"🔟SMA50","S50DF","SC", title);
             }            
-        }
-
-        function addButton(parentId, buttonLabel, taIndicator, chartType, title, inputStockCodes) {
-            const buttonElement = document.createElement("button");
-            buttonElement.setAttribute("class","button-6");
-            buttonElement.innerText = buttonLabel;
-            buttonElement.onclick = function() { snapshotsForStockCodes(taIndicator, chartType, title, inputStockCodes); };
-            document.getElementById(parentId).appendChild(buttonElement);
-        }
-
-        function snapshotsForStockCodes(taIndicator, period, title, inputStockCodes) {
-            const stockChartLink = "snapshots-aa.html?d={title}&t={type}&a={taIndicator}&o={stockCodes}";
-            const params = new URLSearchParams(document.location.search);
-
-            const tempChartLink = stockChartLink
-                    .replace(/{title}/i, title)
-                    .replace(/{type}/i, period)
-                    .replace(/{taIndicator}/i, taIndicator)
-                    .replace(/{stockCodes}/i, inputStockCodes);
-
-            console.log(tempChartLink);
-            window.location = tempChartLink;
-        }
-
-        function addButtonTableLink(parentId, buttonLabel, taIndicator, chartType, title, inputStockCodes) {
-            const buttonElement = document.createElement("button");
-            buttonElement.setAttribute("class","button-6");
-            buttonElement.innerText = buttonLabel;
-            buttonElement.onclick = function() { gotoTablePage(taIndicator, chartType, title, inputStockCodes); };
-            document.getElementById(parentId).appendChild(buttonElement);
-        }
-
-        function gotoTablePage(taIndicator, period, title, inputStockCodes) {
-            const stockChartLink = "sma50.html?d={title}&t={type}&a={taIndicator}&o={stockCodes}";
-            const params = new URLSearchParams(document.location.search);
-
-            const tempChartLink = stockChartLink
-                    .replace(/{title}/i, title)
-                    .replace(/{type}/i, period)
-                    .replace(/{taIndicator}/i, taIndicator)
-                    .replace(/{stockCodes}/i, inputStockCodes);
-
-            console.log(tempChartLink);
-            // window.location = tempChartLink;
-            window.open(tempChartLink, '_blank').focus();
         }
 
         window.onload = await parseLocationAndShowCharts();

@@ -138,3 +138,48 @@ export function gotoPage(stockCode, universe, tradingViewSymbol) {
     const hrefLink = resolveTargetPageLink(stockCode, universe, tradingViewSymbol);
     window.open(hrefLink, Date.now()).focus();
 }
+
+export function addButton(parentId, buttonLabel, taIndicator, chartType, title, inputStockCodes) {
+    const buttonElement = document.createElement("button");
+    buttonElement.setAttribute("class","button-6");
+    buttonElement.innerText = buttonLabel;
+    buttonElement.onclick = function() { snapshotsForStockCodes(taIndicator, chartType, title, inputStockCodes); };
+    document.getElementById(parentId).appendChild(buttonElement);
+}
+
+function snapshotsForStockCodes(taIndicator, period, title, inputStockCodes) {
+    const stockChartLink = "snapshots-aa.html?d={title}&t={type}&a={taIndicator}&o={stockCodes}";
+    const params = new URLSearchParams(document.location.search);
+
+    const tempChartLink = stockChartLink
+            .replace(/{title}/i, title)
+            .replace(/{type}/i, period)
+            .replace(/{taIndicator}/i, taIndicator)
+            .replace(/{stockCodes}/i, inputStockCodes);
+
+    console.log(tempChartLink);
+    window.location = tempChartLink;
+}
+
+export function addButtonTableLink(parentId, buttonLabel, taIndicator, chartType, title, inputStockCodes) {
+    const buttonElement = document.createElement("button");
+    buttonElement.setAttribute("class","button-6");
+    buttonElement.innerText = buttonLabel;
+    buttonElement.onclick = function() { gotoTablePage(taIndicator, chartType, title, inputStockCodes); };
+    document.getElementById(parentId).appendChild(buttonElement);
+}
+
+function gotoTablePage(taIndicator, period, title, inputStockCodes) {
+    const stockChartLink = "sma50.html?d={title}&t={type}&a={taIndicator}&o={stockCodes}";
+    const params = new URLSearchParams(document.location.search);
+
+    const tempChartLink = stockChartLink
+            .replace(/{title}/i, title)
+            .replace(/{type}/i, period)
+            .replace(/{taIndicator}/i, taIndicator)
+            .replace(/{stockCodes}/i, inputStockCodes);
+
+    console.log(tempChartLink);
+    // window.location = tempChartLink;
+    window.open(tempChartLink, '_blank').focus();
+}

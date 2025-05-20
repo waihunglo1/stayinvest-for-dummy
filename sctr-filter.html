@@ -62,7 +62,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
         import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
         import { gotoPage, createImageElement, addMouseEventListenerToImage } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
-        import { emoji, isEmpty, fixedDecimalPlaces } from "/stayinvest-for-dummy/js/utils.js";
+        import { emoji, isEmpty, fixedDecimalPlaces, uniqueArray3 } from "/stayinvest-for-dummy/js/utils.js";
 
         const universeMap = new Map([
             ['L', 'lrg'],
@@ -267,6 +267,12 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         dataRow.turnOverInMillion = dataRow.vol * dataRow.close / 1.0e+6;
                         dataRow.cap = universeMap.get(load.value);
                     });
+
+                    var sectors = rows.data.map(function (item) {
+                        return item['sector'];
+                    });
+
+                    sectors = uniqueArray3(sectors);
 
                     hot.loadData(rows.data)
                     consoleText.innerText = 'Date :' + firstElement.date;
