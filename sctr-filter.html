@@ -45,7 +45,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 <body>
     
     <div class="controls-container">
-        <div id="top_row_home" class="topRow"></div>
+        <div id="top_row_home"></div>
         <div class="controls">
             <select id="load">
                 <option value=""></option>
@@ -283,7 +283,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             }
                         });
 
-                        addButton(parentId, sector, "U", "SC", sector, symbols.join(","));
+                        addButton("top_row_home", sector, "U", "SC", sector, symbols.join(","));
                     });
 
                     hot.loadData(rows.data)
