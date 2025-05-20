@@ -43,7 +43,9 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 </head>
 
 <body>
+    
     <div class="controls-container">
+        <div id="top_row_home" class="topRow"></div>
         <div class="controls">
             <select id="load">
                 <option value=""></option>
@@ -61,7 +63,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
     <script type="module">
         import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
-        import { gotoPage, createImageElement, addMouseEventListenerToImage } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
+        import { gotoPage, createImageElement, addMouseEventListenerToImage, addButton } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
         import { emoji, isEmpty, fixedDecimalPlaces, uniqueArray3 } from "/stayinvest-for-dummy/js/utils.js";
 
         const universeMap = new Map([
@@ -273,6 +275,16 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     });
 
                     sectors = uniqueArray3(sectors);
+
+                    sectors.forEach(function (sector) {
+                        var symbols = rows.data.map(function (item) {
+                            if (item.sector == sector && item.SCTR >= 75 && item.turnOverInMillion >= 20) {
+                                return item['symbol'];
+                            }
+                        });
+
+                        addButton(parentId, sector, "U", "SC", sector, symbols.join(","));
+                    });
 
                     hot.loadData(rows.data)
                     consoleText.innerText = 'Date :' + firstElement.date;

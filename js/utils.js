@@ -118,8 +118,11 @@ export function uniqueArray3(a) {
       return self.indexOf(value) === index;
   }
   
-  // usage
-  var unique = a.filter( onlyUnique ); // returns ['a', 1, 2, '1']
-  
+  var unique = a
+    .filter( onlyUnique )
+    .filter(function (item) {
+        return item !== undefined && item !== null && item !== '';
+    });
+
   return unique;
 }
