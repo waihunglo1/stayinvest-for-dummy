@@ -320,7 +320,7 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDes
  * @returns 
  */
 const query13f = async (s13f) => {
-    var link = "https://fintel.io/api/i/alloc/${s13f}";
+    var link = "https://fintel.io/api/i/alloc/{s13f}";
 
     const formatLink = link
         .replace(/{s13f}/i, s13f);
