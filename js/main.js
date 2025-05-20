@@ -41,7 +41,8 @@ export function handleInputParameters() {
 
     if(isEmpty(inputStockCodes) && !isEmpty(s13f)) {
         console.info("s13f processing");
-        inputStockCodes = query13f(s13f).join(",");
+        var stocks = query13f(s13f);
+        inputStockCodes = stocks.join(",");
         console.log("s13f stock codes : " + inputStockCodes);
     }
 
