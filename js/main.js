@@ -12,13 +12,15 @@ export function handleInputParameters() {
     var taIndicator = params.get("a");
     var chartType = params.get("t");
     var sort = params.get("s");
+    var s13f = params.get("f");
 
     // stock codes
     console.log("parseLocationAndShowCharts o = " + inputStockCodes);
     console.log("parseLocationAndShowCharts t = " + taIndicator);
     console.log("parseLocationAndShowCharts a = " + chartType);
     console.log("parseLocationAndShowCharts d = " + title);
-    console.log("parseLocationAndShowCharts s = " + sort)
+    console.log("parseLocationAndShowCharts s = " + sort);
+    console.log("parseLocationAndShowCharts f = " + s13f);
 
     // chart type
     if (chartType == null) {
@@ -35,6 +37,12 @@ export function handleInputParameters() {
     if(sort == null) {
         console.info("sort is null");
         sort = "Y";
+    }
+
+    if(inputStockCodes == null && s13f != null) {
+        console.info("s13f processing");
+        inputStockCodes = query13f(s13f).join(",");
+        console.log("s13f stock codes : " + inputStockCodes);
     }
 
     // title description
@@ -304,6 +312,30 @@ function appendThemesLinkToParent(parentId, hrefAddr, linkDesc, shouldReplaceDes
         para1.appendChild(linkElement);
         para1.appendChild(document.createElement("br"));
         parent.appendChild(para1); 
+    }
+}
+
+/**
+ * async 13F query
+ * @returns 
+ */
+const query13f = async (s13f) => {
+    var link = "https://fintel.io/api/i/alloc/${s13f}";
+
+    const formatLink = link
+        .replace(/{s13f}/i, s13f);
+
+    console.log(formatLink);
+    const res = await fetch(formatLink);
+
+    if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+    } else {
+        const data = await res.json();
+        var names = data.map(function (item) {
+            return item['name'];
+        });
+        return names;
     }
 }
 
