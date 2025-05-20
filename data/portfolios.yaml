@@ -1,33 +1,6 @@
 # portfolios settings
 data:
     #
-    # CELEBRITY
-    #
-  - desc: STANLEY
-    chartDataSource: SC  
-    category: US-CELEBRITY
-    data: CCCS,CZR,DOCU,EQT,ROKU,BBIO,TWLO,AR,COF,PI,TEVA,PCT,INSM,BCS,NAMS,TSM,DAKT,CPNG,YPF,FLUT
-    id: duquesne-family-office-llc
-    shouldSort: true 
-  - desc: WARREN
-    chartDataSource: SC
-    category: US-CELEBRITY
-    data: AAPL,BAC,AXP,KO,CVX,OXY,KHC,MCO,CB,DVA,C,KR,VRSN,V,AMZN,MA,LSXMK,NU,COF,AON,ALLY,CHTR,TMUS,LSXMA,LPX,LLYVK,FND,SIRI,ULTA,LLYVA,HEIA,NVR,DEO,LILA,JEF,VOO,SPY,LENB,LILAK,BATRK
-    id: berkshire-hathaway-inc
-    shouldSort: true 
-  - desc: MICHAEL
-    chartDataSource: SC  
-    category: US-CELEBRITY
-    data: BABA,FOUR,MOH,BIDU,JD,HPP,REAL,ACIC,OLPX,BCAB
-    id: scion-asset-management-llc
-    shouldSort: true 
-  - desc: DAVID
-    chartDataSource: SC  
-    category: US-CELEBRITY  
-    data: GM,GOOG,DAL,HCA,WHR,LUV,ALL,SXL,OC,KMI,BKNG,AAPL,AY,HUN,PFE,PPG,AMLP,GT,NXPI,WPZ,IR,HPE,URI,CBI,EMN,COOP,RRC,TGI,UAL,SWN,CYH,COG,FCX,KYN,EQT,EXP,AR,TOO,SPY,TGP,TYG,XCEMX,CWEN,BAC,LEN,RF,DHI,MAS,BABA,MHK
-    id: appaloosa-management-lp
-    shouldSort: true 
-    #
     # US INDEX
     #
   - desc: DOW30
