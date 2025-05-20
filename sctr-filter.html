@@ -257,7 +257,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             consoleText.innerText = 'API Loading ...';
 
             // let url = 'https://render-ealy.onrender.com/dscan/v1/sctr?view=' + load.value;
-            let url = 'https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/sctr?view=' + load.value;
+            let url = 'https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/sctr?view=' + marketCapSelect.value;
 
             fetch(url).then((response) => {
                 response.json().then((rows) => {
@@ -267,7 +267,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     rows.data.forEach(dataRow => {
                         dataRow.marketCapInBillion = dataRow.marketCap / 1.0e+9;
                         dataRow.turnOverInMillion = dataRow.vol * dataRow.close / 1.0e+6;
-                        dataRow.cap = universeMap.get(load.value);
+                        dataRow.cap = universeMap.get(marketCapSelect.value);
                     });
 
                     insertSectorsButtons(rows);
