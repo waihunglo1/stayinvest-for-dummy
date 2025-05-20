@@ -43,7 +43,7 @@
                 chartType,
                 sort } = await handleInputParameters();
 
-            addButtons("top_row_home", chartType, title);
+            addButtons("top_row_home", chartType, title, inputStockCodes);
 
             if(sort == "N") {
                 loadStockCodesImageWithProgressBar(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home", false);
@@ -52,9 +52,8 @@
             }
         }
 
-        function addButtons(parentId, chartType, title) {
+        function addButtons(parentId, chartType, title, inputStockCodes) {
             const params = new URLSearchParams(document.location.search);
-            const inputStockCodes = params.get("o");
 
             if(chartType == "HK") {
                 addButton(parentId,"🚿 ROC - 2M", "M12", "HK", title);
