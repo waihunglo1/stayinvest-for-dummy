@@ -270,27 +270,40 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         dataRow.cap = universeMap.get(load.value);
                     });
 
-                    var sectors = rows.data.map(function (item) {
-                        return item['sector'];
-                    });
-
-                    sectors = uniqueArray3(sectors);
-
-                    sectors.forEach(function (sector) {
-                        var symbols = rows.data.map(function (item) {
-                            if (item.sector == sector && item.SCTR >= 75 && item.turnOverInMillion >= 20) {
-                                return item['symbol'];
-                            }
-                        });
-
-                        addButton("top_row_home", sector, "U", "SC", sector, symbols.join(","));
-                    });
+                    this.insertSectorsButtons(rows);
 
                     hot.loadData(rows.data)
                     consoleText.innerText = 'Date :' + firstElement.date;
                 });
             });
         });
+
+        function insertSectorsButtons(rows) {
+            const parentId = "top_row_home";
+            var sectors = rows.data.map(function (item) {
+                return item['sector'];
+            });
+
+            const parent = document.getElementById(parentId);
+            while (parent.firstChild) {
+                parent.firstChild.remove();
+            }
+
+            sectors = uniqueArray3(sectors);
+            sectors.forEach(function (sector) {
+                var symbols = rows.data
+                    .map(function (item) {
+                        if (item.sector == sector && item.SCTR >= 75 && item.turnOverInMillion >= 20) {
+                            return item['symbol'];
+                        } else {
+                            return null;
+                        }
+                    }).filter(item => item !== null);
+                symbols = uniqueArray3(symbols);
+
+                addButton(parentId, sector, "U", "SC", sector, symbols.join(","));
+            });
+        }
     </script>
 
 </body>
