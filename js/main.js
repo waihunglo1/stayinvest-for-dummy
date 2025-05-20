@@ -39,7 +39,7 @@ export function handleInputParameters() {
         sort = "Y";
     }
 
-    if(isEmpty(inputStockCodes) && isEmpty(s13f)) {
+    if(isEmpty(inputStockCodes) && !isEmpty(s13f)) {
         console.info("s13f processing");
         inputStockCodes = query13f(s13f).join(",");
         console.log("s13f stock codes : " + inputStockCodes);
