@@ -7,8 +7,8 @@ import { appendImageToParent } from "./chart-image-formatter.js";
 export async function handleInputParameters() {
     // handler input parameter
     const params = new URLSearchParams(document.location.search);
-    const inputStockCodes = params.get("o");
-    const title = params.get("d");
+    var inputStockCodes = params.get("o");
+    var title = params.get("d");
     var taIndicator = params.get("a");
     var chartType = params.get("t");
     var sort = params.get("s");
