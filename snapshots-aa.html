@@ -35,13 +35,13 @@
         import { sortStockCodesAndShowChart, handleInputParameters, loadStockCodesImageWithProgressBar } from "/stayinvest-for-dummy/js/main.js";
         import { gotoPage } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
 
-        function parseLocationAndShowCharts() {
+        async function parseLocationAndShowCharts() {
             let { 
                 title,
                 inputStockCodes,
                 taIndicator,
                 chartType,
-                sort } = handleInputParameters();
+                sort } = await handleInputParameters();
 
             addButtons("top_row_home", chartType, title);
 
@@ -122,7 +122,7 @@
             window.open(tempChartLink, '_blank').focus();
         }
 
-        window.onload = parseLocationAndShowCharts;    
+        window.onload = await parseLocationAndShowCharts();
     </script>
 </body>
 

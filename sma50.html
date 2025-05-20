@@ -32,18 +32,18 @@
         import { handleInputParameters } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";	
 
-        function parseLocationAndShowTable() {
-            let { 
+        async function parseLocationAndShowTable() {
+            let {
                 title,
                 inputStockCodes,
                 taIndicator,
                 chartType,
-                sort } = handleInputParameters();
+                sort } = await handleInputParameters();
 
             fetchInGrid("grid_home", inputStockCodes, "S50DF", false);
         }
 
-        window.onload = parseLocationAndShowTable;
+        window.onload = await parseLocationAndShowTable();
     </script>
 </body>
 

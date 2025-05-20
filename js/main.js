@@ -4,7 +4,7 @@ import { appendImageToParent } from "./chart-image-formatter.js";
 /**
  * general input parameter for pages
  */
-export function handleInputParameters() {
+export async function handleInputParameters() {
     // handler input parameter
     const params = new URLSearchParams(document.location.search);
     const inputStockCodes = params.get("o");
@@ -41,7 +41,7 @@ export function handleInputParameters() {
 
     if(isEmpty(inputStockCodes) && !isEmpty(s13f)) {
         console.info("s13f processing");
-        var stocks = query13f(s13f);
+        var stocks = await query13f(s13f);
         inputStockCodes = stocks.join(",");
         console.log("s13f stock codes : " + inputStockCodes);
     }
