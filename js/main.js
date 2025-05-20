@@ -23,23 +23,23 @@ export function handleInputParameters() {
     console.log("parseLocationAndShowCharts f = " + s13f);
 
     // chart type
-    if (chartType == null) {
+    if (isEmpty(chartType)) {
         console.info("parameter t is null!!"); //show t
         chartType = "HK";
     }
 
     // taIndicator
-    if (taIndicator == null) {
+    if (isEmpty(taIndicator)) {
         console.info("taIndicator is null");
         taIndicator = "B14";
     }
 
-    if(sort == null) {
+    if(isEmpty(sort)) {
         console.info("sort is null");
         sort = "Y";
     }
 
-    if(inputStockCodes == null && s13f != null) {
+    if(isEmpty(inputStockCodes) && isEmpty(s13f)) {
         console.info("s13f processing");
         inputStockCodes = query13f(s13f).join(",");
         console.log("s13f stock codes : " + inputStockCodes);
@@ -66,7 +66,7 @@ export function handleInputParameters() {
  * sort by taIndicator and add show chart to parent element
  */
 export function sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, imageHome, progressHome) {
-    if (inputStockCodes == null) {
+    if (isEmpty(inputStockCodes) ) {
         console.error("parameter o is null!!"); //show 1
         return;
     }
