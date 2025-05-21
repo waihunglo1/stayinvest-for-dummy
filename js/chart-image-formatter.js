@@ -139,17 +139,17 @@ export function gotoPage(stockCode, universe, tradingViewSymbol) {
     window.open(hrefLink, Date.now()).focus();
 }
 
-export function addButton(parentId, buttonLabel, taIndicator, chartType, title, inputStockCodes) {
+export function addButton(parentId, buttonLabel, taIndicator, chartType, title, inputStockCodes, needNewTab) {
     const buttonElement = document.createElement("button");
     buttonElement.setAttribute("class","button-6");
     buttonElement.innerText = buttonLabel;
-    buttonElement.onclick = function() { snapshotsForStockCodes(taIndicator, chartType, title, inputStockCodes); };
+    buttonElement.onclick = function() { snapshotsForStockCodes(taIndicator, chartType, title, inputStockCodes, needNewTab); };
     document.getElementById(parentId).appendChild(buttonElement);
 }
 
-function snapshotsForStockCodes(taIndicator, period, title, inputStockCodes) {
+function snapshotsForStockCodes(taIndicator, period, title, inputStockCodes, needNewTab) {
     const stockChartLink = "snapshots-aa.html?d={title}&t={type}&a={taIndicator}&o={stockCodes}";
-    const params = new URLSearchParams(document.location.search);
+    // const params = new URLSearchParams(document.location.search);
 
     const tempChartLink = stockChartLink
             .replace(/{title}/i, title)
@@ -158,7 +158,14 @@ function snapshotsForStockCodes(taIndicator, period, title, inputStockCodes) {
             .replace(/{stockCodes}/i, inputStockCodes);
 
     console.log(tempChartLink);
-    window.location = tempChartLink;
+
+    if(needNewTab) {
+        window.open(tempChartLink, Date.now()).focus();
+    } else {
+        window.location = tempChartLink;
+    }
+
+    
 }
 
 export function addButtonTableLink(parentId, buttonLabel, taIndicator, chartType, title, inputStockCodes) {
