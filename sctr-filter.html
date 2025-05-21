@@ -301,7 +301,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     }).filter(item => item !== null);
                 symbols = uniqueArray3(symbols);
 
-                addButton(parentId, sector, "U", "SC", sector, symbols.join(","));
+                addButton(parentId, sector, "U", "SC", sector, symbols.join(","), true);
             });
         }
     </script>
