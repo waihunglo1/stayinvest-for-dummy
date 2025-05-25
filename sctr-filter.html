@@ -257,7 +257,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             consoleText.innerText = 'API Loading ...';
 
             // let url = 'https://render-ealy.onrender.com/dscan/v1/sctr?view=' + load.value;
-            let url = 'https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/sctr?view=' + marketCapSelect.value;
+            let url = 'https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/sctr/us?view=' + marketCapSelect.value;
 
             fetch(url).then((response) => {
                 response.json().then((rows) => {
