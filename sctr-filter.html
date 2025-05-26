@@ -76,6 +76,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
         const container = document.querySelector('#example1');
         const consoleText = document.querySelector('#output');
         const marketCapSelect = document.querySelector('#marketCapSelect');
+        var selectedChartType = 'SC';
 
         const linkRenderer = (_instance, td, _row, _col, _prop, value) => {
             let href = document.createElement('a');
@@ -237,6 +238,16 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
         });
 
         marketCapSelect.addEventListener('change', () => {
+            if (selectedChartType === 'SC') {
+                handleMarketCapSelectForSC();
+            } else if (selectedChartType === 'HK') {
+                handleMarketCapSelectForHK();
+            } else {
+                consoleText.innerText = 'Please select a valid chart type.';
+            }
+        });
+
+        function handleMarketCapSelectForSC() {
             if (isEmpty(marketCapSelect.value)) {
                 return;
             }
@@ -262,7 +273,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     consoleText.innerText = 'Date :' + firstElement.date;
                 });
             });
-        });
+        }
 
         function insertSectorsButtons(rows) {
             const parentId = "top_row_home";
@@ -290,6 +301,19 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 addButton(parentId, sector, "U", "SC", sector, symbols.join(","), true);
             });
         }
+
+        async function parseLocationAndShowTable() {
+            let {
+                title,
+                inputStockCodes,
+                taIndicator,
+                chartType,
+                sort } = await handleInputParameters();
+            
+            selectedChartType = chartType || "SC";
+        }
+
+        window.onload = await parseLocationAndShowTable();
     </script>
 
 </body>
