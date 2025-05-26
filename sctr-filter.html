@@ -263,7 +263,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         dataRow.cap = universeMap.get(marketCapSelect.value);
                     });
 
-                    insertSectorsButtons(rows);
+                    insertSectorsButtons(rows, selectedChartType);
 
                     hot.loadData(rows)
                     consoleText.innerText = 'Date :' + firstElement.date;
@@ -291,7 +291,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         dataRow.cap = universeMap.get(marketCapSelect.value);
                     });
 
-                    insertSectorsButtons(rows);
+                    insertSectorsButtons(rows.data, selectedChartType);
 
                     hot.loadData(rows.data)
                     consoleText.innerText = 'Date :' + firstElement.date;
@@ -299,9 +299,9 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             });
         }
 
-        function insertSectorsButtons(rows) {
+        function insertSectorsButtons(dataRow, chartType) {
             const parentId = "top_row_home";
-            var sectors = rows.data.map(function (item) {
+            var sectors = dataRow.map(function (item) {
                 return item['sector'];
             });
 
@@ -312,7 +312,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
             sectors = uniqueArray3(sectors);
             sectors.forEach(function (sector) {
-                var symbols = rows.data
+                var symbols = dataRow
                     .map(function (item) {
                         if (item.sector == sector && item.SCTR >= 75 && item.turnOverInMillion >= 20) {
                             return item['symbol'];
@@ -322,7 +322,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     }).filter(item => item !== null);
                 symbols = uniqueArray3(symbols);
 
-                addButton(parentId, sector, "U", "SC", sector, symbols.join(","), true);
+                addButton(parentId, sector, "U", chartType, sector, symbols.join(","), true);
             });
         }
 
