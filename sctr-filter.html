@@ -61,7 +61,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
     <div id="example1" class="ht-theme-main"></div>
 
     <script type="module">
-        import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle } from "/stayinvest-for-dummy/js/main.js";
+        import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle, handleInputParameters } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
         import { gotoPage, createImageElement, addMouseEventListenerToImage, addButton } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
         import { emoji, isEmpty, fixedDecimalPlaces, uniqueArray3 } from "/stayinvest-for-dummy/js/utils.js";
@@ -258,8 +258,8 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
                     // modify data
                     rows.forEach(dataRow => {
-                        dataRow.marketCapInBillion = dataRow.marketCap / 1.0e+9;
-                        dataRow.turnOverInMillion = dataRow.vol * dataRow.close / 1.0e+6;
+                        dataRow.marketCapInBillion = 0;
+                        dataRow.turnOverInMillion = dataRow.sma10turnover / 1.0e+6;
                         dataRow.cap = universeMap.get(marketCapSelect.value);
                     });
 
