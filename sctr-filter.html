@@ -67,23 +67,21 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
         </div>
     </div>
 
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div>    
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+        </button>
+        <div id="drop_down_home" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+        </div>
+    </div>    
 
     <div id="example1" class="ht-theme-main"></div>
 
     <script type="module">
         import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle, handleInputParameters } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
-        import { gotoPage, createImageElement, addMouseEventListenerToImage, addButton } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
+        import { gotoPage, createImageElement, addMouseEventListenerToImage, addButton, addHref } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
         import { emoji, isEmpty, fixedDecimalPlaces, uniqueArray3 } from "/stayinvest-for-dummy/js/utils.js";
 
         const universeMap = new Map([
@@ -323,22 +321,25 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
         }
 
         function insertSectorsButtons(dataRow, chartType) {
-            const parentId = "top_row_home";
-            var sctrThreshold = 75;
-            var taIndicator = "U";
-            var sectors = dataRow.map(function (item) {
-                return item['sector'];
-            });
+            const parentId = "drop_down_home";
 
+            // remove all existing children from the parent element
             const parent = document.getElementById(parentId);
             while (parent.firstChild) {
                 parent.firstChild.remove();
             }
 
+            var sctrThreshold = 75;
+            var taIndicator = "U";
+            
             if(chartType === 'HK') {
                 sctrThreshold = 25;
                 taIndicator = "SCTR";
             }
+
+            var sectors = dataRow.map(function (item) {
+                return item['sector'];
+            });
 
             sectors = uniqueArray3(sectors);
             sectors.forEach(function (sector) {
@@ -352,7 +353,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     }).filter(item => item !== null);
                 symbols = uniqueArray3(symbols);
 
-                addButton(parentId, sector, taIndicator, chartType, sector, symbols.join(","), true);
+                addHref(parentId, sector, taIndicator, chartType, sector, symbols.join(","), true);
             });
         }
 

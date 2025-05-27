@@ -147,6 +147,15 @@ export function addButton(parentId, buttonLabel, taIndicator, chartType, title, 
     document.getElementById(parentId).appendChild(buttonElement);
 }
 
+export function addHref(parentId, buttonLabel, taIndicator, chartType, title, inputStockCodes, needNewTab) {
+    const hrefElement = document.createElement("a");
+    hrefElement.setAttribute("class","dropdown-item");
+    hrefElement.innerText = buttonLabel;
+    hrefElement.setAttribute('href', 'javascript:void(0);');
+    hrefElement.onclick = function() { snapshotsForStockCodes(taIndicator, chartType, title, inputStockCodes, needNewTab); };
+    document.getElementById(parentId).appendChild(hrefElement);
+}
+
 function snapshotsForStockCodes(taIndicator, period, title, inputStockCodes, needNewTab) {
     const stockChartLink = "snapshots-aa.html?d={title}&t={type}&a={taIndicator}&o={stockCodes}";
     // const params = new URLSearchParams(document.location.search);
