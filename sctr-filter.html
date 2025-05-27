@@ -56,6 +56,14 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
     <div class="controls-container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">SCTR-Filter</a>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sectors
+                </button>
+                <div id="drop_down_home" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                </div>
+            </div>
+
             <select id="marketCapSelect">
                 <option value=""></option>
                 <option value="L">LARGE CAP</option>
@@ -65,13 +73,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             </select>
             <output class="console" id="output"></output>
         
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Sectors
-                </button>
-                <div id="drop_down_home" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                </div>
-            </div>
+
         </nav>
     
         <div id="example1" class="ht-theme-main"></div>
