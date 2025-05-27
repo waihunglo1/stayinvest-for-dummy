@@ -315,11 +315,17 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 parent.firstChild.remove();
             }
 
+            if(chartType === 'HK') {
+                sctrThreshold = 25;
+            }  else {
+                sctrThreshold = 75;
+            }
+
             sectors = uniqueArray3(sectors);
             sectors.forEach(function (sector) {
                 var symbols = dataRow
                     .map(function (item) {
-                        if (item.sector == sector && item.SCTR >= 75 && item.turnOverInMillion >= 20) {
+                        if (item.sector == sector && item.SCTR >= sctrThreshold && item.turnOverInMillion >= 20) {
                             return item['symbol'];
                         } else {
                             return null;
