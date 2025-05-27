@@ -54,7 +54,6 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
     <div class="controls-container">
-        <div id="top_row_home"></div>
         <div class="controls">
             <select id="marketCapSelect">
                 <option value=""></option>
@@ -65,17 +64,17 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             </select>
             <output class="console" id="output"></output>
         </div>
-    </div>
-
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Sectors
-        </button>
-        <div id="drop_down_home" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sectors
+            </button>
+            <div id="drop_down_home" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            </div>
         </div>
-    </div>    
-
-    <div id="example1" class="ht-theme-main"></div>
+    
+        <div id="example1" class="ht-theme-main"></div>
+    </div>
 
     <script type="module">
         import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle, handleInputParameters } from "/stayinvest-for-dummy/js/main.js";
@@ -90,7 +89,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             ['E', 'undefine']
         ]);
 
-        const container = document.querySelector('#example1');
+        // const container = document.querySelector('#example1');
         const consoleText = document.querySelector('#output');
         const marketCapSelect = document.querySelector('#marketCapSelect');
         var selectedChartType = 'SC';
