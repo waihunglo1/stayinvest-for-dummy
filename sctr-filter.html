@@ -307,6 +307,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
         function insertSectorsButtons(dataRow, chartType) {
             const parentId = "top_row_home";
             var sctrThreshold = 75;
+            var taIndicator = "U";
             var sectors = dataRow.map(function (item) {
                 return item['sector'];
             });
@@ -318,6 +319,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
             if(chartType === 'HK') {
                 sctrThreshold = 25;
+                taIndicator = "SCTR";
             }
 
             sectors = uniqueArray3(sectors);
@@ -332,7 +334,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     }).filter(item => item !== null);
                 symbols = uniqueArray3(symbols);
 
-                addButton(parentId, sector, "U", chartType, sector, symbols.join(","), true);
+                addButton(parentId, sector, taIndicator, chartType, sector, symbols.join(","), true);
             });
         }
 
