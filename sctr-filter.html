@@ -82,7 +82,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
     <script type="module">
         import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle, handleInputParameters } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
-        import { gotoPage, createImageElement, addMouseEventListenerToImage, addButton, addHref } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
+        import { gotoPage, createImageElement, addMouseEventListenerToImage, addButton, addHref, addSelectedRangeButton } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
         import { emoji, isEmpty, fixedDecimalPlaces, uniqueArray3 } from "/stayinvest-for-dummy/js/utils.js";
 
         const universeMap = new Map([
@@ -358,25 +358,6 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             });
 
             addSelectedRangeButton(parentId, taIndicator, chartType, "Selected Range", true);
-        }
-
-        function addSelectedRangeButton(parentId, taIndicator, chartType, title, needNewTab) {
-            const hrefElement = document.createElement("a");
-            hrefElement.setAttribute("class","dropdown-item");
-            hrefElement.innerText = title;
-            hrefElement.setAttribute('href', 'javascript:void(0);');
-            hrefElement.onclick = function() 
-            {
-                const selected = hot.getSelected() || [];
-                const data = [];
-
-                for (let i = 0; i < selected.length; i += 1) {
-                    const item = selected[i];
-                    data.push(hot.getData(...item));
-                }
-                snapshotsForStockCodes(taIndicator, chartType, title, data.join(","), needNewTab); 
-            };
-            document.getElementById(parentId).appendChild(hrefElement);
         }
 
         async function parseLocationAndShowTable() {
