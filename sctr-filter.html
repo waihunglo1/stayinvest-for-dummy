@@ -356,6 +356,27 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
                 addHref(parentId, sector, taIndicator, chartType, sector, symbols.join(","), true);
             });
+
+            addSelectedRangeButton(parentId, taIndicator, chartType, "Selected Range", true);
+        }
+
+        function addSelectedRangeButton(parentId, taIndicator, chartType, title, needNewTab) {
+            const hrefElement = document.createElement("a");
+            hrefElement.setAttribute("class","dropdown-item");
+            hrefElement.innerText = title;
+            hrefElement.setAttribute('href', 'javascript:void(0);');
+            hrefElement.onclick = function() 
+            {
+                const selected = hot.getSelected() || [];
+                const data = [];
+
+                for (let i = 0; i < selected.length; i += 1) {
+                    const item = selected[i];
+                    data.push(hot.getData(...item));
+                }
+                snapshotsForStockCodes(taIndicator, chartType, title, data.join(","), needNewTab); 
+            };
+            document.getElementById(parentId).appendChild(hrefElement);
         }
 
         async function parseLocationAndShowTable() {
