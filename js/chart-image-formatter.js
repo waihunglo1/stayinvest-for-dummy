@@ -92,7 +92,8 @@ export function appendImageToParent(parentId, chartType, stockCode, universe, de
  * @returns 
  */
 export function resolveStockChartImageLink(stockCode, period, taIndicator) {
-    var stockChartLink = "https://stockcharts.com/c-sc/sc?r=1717221704662&chart={stockCode},uu[{chartWidth},a]dacayaci[pb20!b50][{period}][il{taIndicator}]";
+    var timestamp = unixTimestamp();
+    var stockChartLink = "https://stockcharts.com/c-sc/sc?r={timestamp}&chart={stockCode},uu[{chartWidth},a]dacayaci[pb20!b50][{period}][il{taIndicator}]";
     var chartConf = scConf2m;
 
     if("6m" == period) {
@@ -115,6 +116,7 @@ export function resolveStockChartImageLink(stockCode, period, taIndicator) {
     }
 
     const tempChartLink = stockChartLink
+      .replace(/{timestamp}/i, timestamp)
       .replace(/{chartWidth}/i, chartConf.chartWidth)
       .replace(/{chartHeight}/i, chartConf.chartHeight)
       .replace(/{stockCode}/i, stockCode)
@@ -217,4 +219,8 @@ function gotoTablePage(taIndicator, period, title, inputStockCodes) {
     console.log(tempChartLink);
     // window.location = tempChartLink;
     window.open(tempChartLink, '_blank').focus();
+}
+
+function unixTimestamp() {
+    return Math.floor(Date.now() / 1000);
 }
