@@ -96,6 +96,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
         const consoleText = document.querySelector('#output');
         const marketCapSelect = document.querySelector('#marketCapSelect');
         var selectedChartType = 'SC';
+        var handSonTable;        
 
         const linkRenderer = (_instance, td, _row, _col, _prop, value) => {
             let href = document.createElement('a');
@@ -170,95 +171,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 if (parseInt(value, 10) < 20) {
                     td.style.background = 'rgb(255, 102, 102, 0.4)';
                 }   
-            };
-
-        const hot = new Handsontable(container, {
-            startRows: 0,
-            startCols: 6,
-            rowHeaders: true,
-            colHeaders: true,
-            height: 'auto',
-            widht: 'auto',
-            columns: [
-                {
-                    title: 'Symbol',
-                    type: 'text',
-                    data: 'symbol',
-                    renderer: linkRenderer
-                },
-                {
-                    title: 'Name',
-                    type: 'text', 
-                    data: 'name'
-                },
-                {
-                    title: 'Sector',
-                    type: 'text', 
-                    data: 'sector'
-                },
-                {
-                    title: 'Industry',
-                    type: 'text', 
-                    data: 'industry'
-                },
-                {
-                    title: 'SCTR',
-                    type: 'numeric', 
-                    data: 'SCTR',
-                    numericFormat: {
-                        pattern: '0,0.00',
-                        culture: 'en-US',
-                    }, 
-                    renderer: sctrRender
-                },
-                {
-                    title: 'Delta',
-                    type: 'numeric', 
-                    data: 'delta',
-                    numericFormat: {
-                        pattern: '0,0.00',
-                        culture: 'en-US',
-                    }
-                },
-                {
-                    title: 'MarketCap',
-                    type: 'numeric', 
-                    data: 'marketCapInBillion',
-                    numericFormat: {
-                        pattern: '$ 0,0.00',
-                        culture: 'en-US',
-                    }
-                },
-                {
-                    title: 'Turnover',
-                    type: 'numeric', 
-                    data: 'turnOverInMillion',
-                    numericFormat: {
-                        pattern: '$ 0,0.00',
-                        culture: 'en-US',
-                    }
-                }
-            ],
-            licenseKey: 'non-commercial-and-evaluation',
-            afterChange(change, source) {
-                if (source === 'loadData') {
-                    return; // don't save this change
-                }
-
-                if (!change) {
-                    return;
-                }
-            },
-            autoWrapRow: true,
-            autoWrapCol: true,
-            multiColumnSorting: true,
-            outsideClickDeselects: false,
-            readOnly: true,
-            // enable filtering
-            filters: true,
-            // enable the column menu, but display only the filter menu items
-            dropdownMenu: ['filter_by_condition', 'filter_by_value', 'filter_action_bar']
-        });
+            };   
 
         marketCapSelect.addEventListener('change', () => {
             if (selectedChartType === 'SC') {
@@ -288,7 +201,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
                     insertSectorsButtons(rows, selectedChartType);
 
-                    hot.loadData(rows)
+                    handSonTable.loadData(rows)
                     consoleText.innerText = 'Date :' + firstElement.date;
                 });
             });            
@@ -316,7 +229,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
                     insertSectorsButtons(rows.data, selectedChartType);
 
-                    hot.loadData(rows.data)
+                    handSonTable.loadData(rows.data)
                     consoleText.innerText = 'Date :' + firstElement.date;
                 });
             });
@@ -358,7 +271,220 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 addHref(parentId, sector, taIndicator, chartType, sector, symbols.join(","), true);
             });
 
-            addSelectedRangeButton(parentId, hot, taIndicator, chartType, "SELECTED RANGE", true);
+            addSelectedRangeButton(parentId, handSonTable, taIndicator, chartType, "SELECTED RANGE", true);
+        }
+
+        function initHandSonTable() {
+            if (selectedChartType === 'US') {
+                handSonTable = new Handsontable(container, {
+                    startRows: 0,
+                    startCols: 6,
+                    rowHeaders: true,
+                    colHeaders: true,
+                    height: 'auto',
+                    widht: 'auto',
+                    columns: [
+                        {
+                            title: 'Symbol',
+                            type: 'text',
+                            data: 'symbol',
+                            renderer: linkRenderer
+                        },
+                        {
+                            title: 'Name',
+                            type: 'text',
+                            data: 'name'
+                        },
+                        {
+                            title: 'Sector',
+                            type: 'text',
+                            data: 'sector'
+                        },
+                        {
+                            title: 'Industry',
+                            type: 'text',
+                            data: 'industry'
+                        },
+                        {
+                            title: 'SCTR',
+                            type: 'numeric',
+                            data: 'SCTR',
+                            numericFormat: {
+                                pattern: '0,0.00',
+                                culture: 'en-US',
+                            },
+                            renderer: sctrRender
+                        },
+                        {
+                            title: 'Delta',
+                            type: 'numeric',
+                            data: 'delta',
+                            numericFormat: {
+                                pattern: '0,0.00',
+                                culture: 'en-US',
+                            }
+                        },
+                        {
+                            title: 'MarketCap',
+                            type: 'numeric',
+                            data: 'marketCapInBillion',
+                            numericFormat: {
+                                pattern: '$ 0,0.00',
+                                culture: 'en-US',
+                            }
+                        },
+                        {
+                            title: 'Turnover',
+                            type: 'numeric',
+                            data: 'turnOverInMillion',
+                            numericFormat: {
+                                pattern: '$ 0,0.00',
+                                culture: 'en-US',
+                            }
+                        }
+                    ],
+                    licenseKey: 'non-commercial-and-evaluation',
+                    afterChange(change, source) {
+                        if (source === 'loadData') {
+                            return; // don't save this change
+                        }
+
+                        if (!change) {
+                            return;
+                        }
+                    },
+                    autoWrapRow: true,
+                    autoWrapCol: true,
+                    multiColumnSorting: true,
+                    outsideClickDeselects: false,
+                    readOnly: true,
+                    // enable filtering
+                    filters: true,
+                    // enable the column menu, but display only the filter menu items
+                    dropdownMenu: ['filter_by_condition', 'filter_by_value', 'filter_action_bar']
+                });
+            }
+
+            if (selectedChartType == 'HK') {
+                handSonTable = new Handsontable(container, {
+                    startRows: 0,
+                    startCols: 6,
+                    rowHeaders: true,
+                    colHeaders: true,
+                    height: 'auto',
+                    widht: 'auto',
+                    columns: [
+                        {
+                            title: 'Symbol',
+                            type: 'text',
+                            data: 'symbol',
+                            renderer: linkRenderer
+                        },
+                        {
+                            title: 'Name',
+                            type: 'text',
+                            data: 'name'
+                        },
+                        {
+                            title: 'Sector',
+                            type: 'text',
+                            data: 'sector'
+                        },
+                        {
+                            title: 'Industry',
+                            type: 'text',
+                            data: 'industry'
+                        },
+                        {
+                            title: 'SCTR1',
+                            type: 'numeric',
+                            data: 'SCTR',
+                            numericFormat: {
+                                pattern: '0,0.00',
+                                culture: 'en-US',
+                            },
+                            renderer: sctrRender
+                        },
+                        {
+                            title: 'SCTR2',
+                            type: 'numeric',
+                            data: 'SCTR',
+                            numericFormat: {
+                                pattern: '0,0.00',
+                                culture: 'en-US',
+                            },
+                            renderer: sctrRender
+                        },
+                        {
+                            title: 'SCTR3',
+                            type: 'numeric',
+                            data: 'SCTR',
+                            numericFormat: {
+                                pattern: '0,0.00',
+                                culture: 'en-US',
+                            },
+                            renderer: sctrRender
+                        },
+                        {
+                            title: 'SCTR4',
+                            type: 'numeric',
+                            data: 'SCTR',
+                            numericFormat: {
+                                pattern: '0,0.00',
+                                culture: 'en-US',
+                            },
+                            renderer: sctrRender
+                        },
+                        {
+                            title: 'SCTR5',
+                            type: 'numeric',
+                            data: 'SCTR',
+                            numericFormat: {
+                                pattern: '0,0.00',
+                                culture: 'en-US',
+                            },
+                            renderer: sctrRender
+                        },                                                                                                
+                        {
+                            title: 'Delta',
+                            type: 'numeric',
+                            data: 'delta',
+                            numericFormat: {
+                                pattern: '0,0.00',
+                                culture: 'en-US',
+                            }
+                        },
+                        {
+                            title: 'Turnover',
+                            type: 'numeric',
+                            data: 'turnOverInMillion',
+                            numericFormat: {
+                                pattern: '$ 0,0.00',
+                                culture: 'en-US',
+                            }
+                        }
+                    ],
+                    licenseKey: 'non-commercial-and-evaluation',
+                    afterChange(change, source) {
+                        if (source === 'loadData') {
+                            return; // don't save this change
+                        }
+
+                        if (!change) {
+                            return;
+                        }
+                    },
+                    autoWrapRow: true,
+                    autoWrapCol: true,
+                    multiColumnSorting: true,
+                    outsideClickDeselects: false,
+                    readOnly: true,
+                    // enable filtering
+                    filters: true,
+                    // enable the column menu, but display only the filter menu items
+                    dropdownMenu: ['filter_by_condition', 'filter_by_value', 'filter_action_bar']
+                });
+            }
         }
 
         async function parseLocationAndShowTable() {
@@ -370,6 +496,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 sort } = await handleInputParameters();
             
             selectedChartType = chartType || "SC";
+            initHandSonTable();
         }
 
         window.onload = await parseLocationAndShowTable();
