@@ -160,7 +160,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             fetch(url).then((response) => {
                 response.json().then((rows) => {
                     // modify data
-                    rows.data.forEach(dataRow => {
+                    rows.forEach(dataRow => {
                         // dataRow.marketCapInBillion = dataRow.marketCap / 1.0e+9;
                         // dataRow.turnOverInMillion = dataRow.vol * dataRow.close / 1.0e+6;
                         // dataRow.cap = universeMap.get(marketCapSelect.value);
@@ -184,19 +184,27 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 widht: 'auto',
                 columns: [
                     {
-                        title: 'Symbol',
+                        title: 'Date',
                         type: 'text',
-                        data: 'symbol'
+                        data: 'date'
                     },
                     {
-                        title: 'Name',
+                        title: 'Up4pct1d',
                         type: 'text',
-                        data: 'name'
+                        data: 'up4pct1d',
+                        numericFormat: {
+                            pattern: '00',
+                            culture: 'en-US',
+                        }
                     },
                     {
-                        title: 'Sector',
+                        title: 'dn4pct1d',
                         type: 'text',
-                        data: 'sector'
+                        data: 'dn4pct1d',
+                        numericFormat: {
+                            pattern: '00',
+                            culture: 'en-US',
+                        }
                     },
                     {
                         title: 'Industry',
