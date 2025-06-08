@@ -137,15 +137,15 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 if(col == 1) 
                 {
                     var upValue = statPct.up4pct1d;
-                    if (upValue < 0.03) {
+                    if (upValue < 0.07) {
                         td.style.background = 'rgb(255, 255, 204, 0.4)';
                     }
 
-                    if (upValue >= 0.03) {
+                    if (upValue >= 0.07) {
                         td.style.background = 'rgb(193, 241, 214, 1)';
                     }
 
-                    if (upValue >= 0.05) {
+                    if (upValue >= 0.09) {
                         td.style.background = 'rgb(183, 231, 204, 1)';
                     }
                 }
