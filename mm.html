@@ -117,7 +117,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         td.style.background = 'rgb(255, 153, 153, 0.4)';
                     }
 
-                    if (value < 0.07) {
+                    if (value >= 0.05) {
                         td.style.background = 'rgb(255, 255, 204, 0.4)';
                     }
 
@@ -136,7 +136,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         td.style.background = 'rgb(255, 255, 204, 0.4)';
                     }
 
-                    if (value < 0.07) {
+                    if (value >= 0.05) {
                         td.style.background = 'rgb(255, 153, 153, 0.4)';
                     }
 
@@ -194,7 +194,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         data: 'date'
                     },
                     {
-                        title: 'Up4p1d',
+                        title: 'U41d',
                         type: 'numeric',
                         data: 'percentUp4pct1d',
                         numericFormat: {
@@ -204,7 +204,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         renderer: sctrRender
                     },
                     {
-                        title: 'Dn4p1d',
+                        title: 'D41d',
                         type: 'numeric',
                         data: 'percentDn4pct1d',
                         numericFormat: {
@@ -214,7 +214,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         renderer: sctrRender
                     },
                     {
-                        title: 'Up25p100d',
+                        title: 'U25100d',
                         type: 'numeric',
                         data: 'percentUp25pctin100d',
                         numericFormat: {
@@ -223,7 +223,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         }
                     },
                     {
-                        title: 'Dn25p100d',
+                        title: 'D25100d',
                         type: 'numeric',
                         data: 'percentDn25pctin100d',
                         numericFormat: {
@@ -232,7 +232,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         }
                     },                    
                     {
-                        title: 'Up25p20d',
+                        title: 'U2520d',
                         type: 'numeric',
                         data: 'percentUp25pctin20d',
                         numericFormat: {
@@ -242,7 +242,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         renderer: sctrRender
                     },
                     {
-                        title: 'Dn25p20d',
+                        title: 'D2520d',
                         type: 'numeric',
                         data: 'percentDn25pctin20d',
                         numericFormat: {
@@ -251,7 +251,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         }
                     },
                     {
-                        title: 'Up50p20d',
+                        title: 'U5020d',
                         type: 'numeric',
                         data: 'percentUp50pctin20d',
                         numericFormat: {
@@ -260,7 +260,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         }
                     },
                     {
-                        title: 'Dn50p20d',
+                        title: 'D5020d',
                         type: 'numeric',
                         data: 'percentDn50pctin20d',
                         numericFormat: {
