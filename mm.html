@@ -198,7 +198,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         type: 'numeric',
                         data: 'percentUp4pct1d',
                         numericFormat: {
-                            pattern: '0.00',
+                            pattern: '0.00%',
                             culture: 'en-US',
                         },
                         renderer: sctrRender
@@ -208,16 +208,17 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         type: 'numeric',
                         data: 'percentDn4pct1d',
                         numericFormat: {
-                            pattern: '0.00',
+                            pattern: '0.00%',
                             culture: 'en-US',
-                        }
+                        },
+                        renderer: sctrRender
                     },
                     {
                         title: 'Up25p100d',
                         type: 'numeric',
                         data: 'percentUp25pctin100d',
                         numericFormat: {
-                            pattern: '0.00',
+                            pattern: '0.00%',
                             culture: 'en-US',
                         }
                     },
@@ -226,7 +227,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         type: 'numeric',
                         data: 'percentDn25pctin100d',
                         numericFormat: {
-                            pattern: '0.00',
+                            pattern: '0.00%',
                             culture: 'en-US',
                         }
                     },                    
@@ -235,7 +236,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         type: 'numeric',
                         data: 'percentUp25pctin20d',
                         numericFormat: {
-                            pattern: '0.00',
+                            pattern: '0.00%',
                             culture: 'en-US',
                         },
                         renderer: sctrRender
@@ -245,7 +246,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         type: 'numeric',
                         data: 'percentDn25pctin20d',
                         numericFormat: {
-                            pattern: '0.00',
+                            pattern: '0.00%',
                             culture: 'en-US',
                         }
                     },
@@ -254,7 +255,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         type: 'numeric',
                         data: 'percentUp50pctin20d',
                         numericFormat: {
-                            pattern: '0.00',
+                            pattern: '0.00%',
                             culture: 'en-US',
                         }
                     },
@@ -263,7 +264,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         type: 'numeric',
                         data: 'percentDn50pctin20d',
                         numericFormat: {
-                            pattern: '0.00',
+                            pattern: '0.00%',
                             culture: 'en-US',
                         }
                     },
