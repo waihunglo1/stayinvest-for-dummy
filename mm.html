@@ -59,22 +59,6 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
         const container = document.querySelector('#example1');
         const consoleText = document.querySelector('#output');
         var handSonTable;        
-
-        const snapshotRenderer = (_instance, td, _row, _col, _prop, value) => {
-            let href = document.createElement('a');
-            let text = document.createTextNode(value);
-            href.appendChild(text);
-            href.setAttribute('class', 'hover-img');
-            var symbol = _instance.getSourceDataAtRow(_row).symbol;
-            var imageElement = createImageElement(symbol, "2m", "B14", "");
-            var spanElement = document.createElement('span')
-            spanElement.appendChild(imageElement);
-            href.appendChild(spanElement);
-
-            td.innerText = '';
-            td.appendChild(href);
-            return td;
-        };
         
         const sctrRender = (
                 instance,
@@ -168,7 +152,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
         function initHandSonTable() {
             handSonTable = new Handsontable(container, {
-                startRows: 0,
+                startRows: 1,
                 startCols: 6,
                 rowHeaders: true,
                 colHeaders: true,
@@ -283,23 +267,12 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     }
                 ],
                 licenseKey: 'non-commercial-and-evaluation',
-                afterChange(change, source) {
-                    if (source === 'loadData') {
-                        return; // don't save this change
-                    }
-
-                    if (!change) {
-                        return;
-                    }
-                },
                 autoWrapRow: true,
                 autoWrapCol: true,
                 multiColumnSorting: true,
                 outsideClickDeselects: false,
                 readOnly: true,
-                // enable filtering
                 filters: true,
-                // enable the column menu, but display only the filter menu items
                 dropdownMenu: ['filter_by_condition', 'filter_by_value', 'filter_action_bar']
             });
         }
