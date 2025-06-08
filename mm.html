@@ -113,38 +113,38 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
                 if(col == 1) 
                 {
-                    if (parseInt(value, 10) < 5) {
+                    if (parseInt(value, 10) < 0.05) {
                         td.style.background = 'rgb(255, 153, 153, 0.4)';
                     }
 
-                    if (parseInt(value, 10) < 7) {
+                    if (parseInt(value, 10) < 0.07) {
                         td.style.background = 'rgb(255, 255, 204, 0.4)';
                     }
 
-                    if (parseInt(value, 10) >= 7) {
+                    if (parseInt(value, 10) >= 0.07) {
                         td.style.background = 'rgb(193, 241, 214, 1)';
                     }
 
-                    if (parseInt(value, 10) >= 9) {
+                    if (parseInt(value, 10) >= 0.09) {
                         td.style.background = 'rgb(50,152,102,255)';
                     }
                 }
 
                 if(col == 2) 
                 {
-                    if (parseInt(value, 10) < 5) {
+                    if (parseInt(value, 10) < 0.05) {
                         td.style.background = 'rgb(255, 255, 204, 0.4)';
                     }
 
-                    if (parseInt(value, 10) < 7) {
+                    if (parseInt(value, 10) < 0.07) {
                         td.style.background = 'rgb(255, 153, 153, 0.4)';
                     }
 
-                    if (parseInt(value, 10) >= 7) {
+                    if (parseInt(value, 10) >= 0.07) {
                         td.style.background = 'rgb(255, 102, 102, 0.4)';
                     }
 
-                    if (parseInt(value, 10) >= 9) {
+                    if (parseInt(value, 10) >= 0.09) {
                         td.style.background = 'rgb(225,102,103,255)';
                     }
                 }                
@@ -158,17 +158,17 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 response.json().then((rows) => {
                     // modify data
                     rows.forEach(dataRow => {
-                        dataRow.percentUp4pct1d = dataRow.up4pct1d / dataRow.noofstocks * 100;
-                        dataRow.percentDn4pct1d = dataRow.dn4pct1d / dataRow.noofstocks * 100;
-                        dataRow.percentUp25pctin100d = dataRow.up25pctin100d / dataRow.noofstocks * 100;
-                        dataRow.percentDn25pctin100d = dataRow.dn25pctin100d / dataRow.noofstocks * 100;
-                        dataRow.percentUp25pctin20d = dataRow.up25pctin20d / dataRow.noofstocks * 100;
-                        dataRow.percentDn25pctin20d = dataRow.dn25pctin20d / dataRow.noofstocks * 100;
-                        dataRow.percentUp50pctin20d = dataRow.up50pctin20d / dataRow.noofstocks * 100;
-                        dataRow.percentDn50pctin20d = dataRow.dn50pctin20d / dataRow.noofstocks * 100;
-                        dataRow.percentAbove200smapct = dataRow.above200smapct / dataRow.noofstocks * 100;
-                        dataRow.percentAbove150smapct = dataRow.above150smapct / dataRow.noofstocks * 100;
-                        dataRow.percentAbove20smapct = dataRow.above20smapct / dataRow.noofstocks * 100;   
+                        dataRow.percentUp4pct1d = dataRow.up4pct1d / dataRow.noofstocks;
+                        dataRow.percentDn4pct1d = dataRow.dn4pct1d / dataRow.noofstocks;
+                        dataRow.percentUp25pctin100d = dataRow.up25pctin100d / dataRow.noofstocks;
+                        dataRow.percentDn25pctin100d = dataRow.dn25pctin100d / dataRow.noofstocks;
+                        dataRow.percentUp25pctin20d = dataRow.up25pctin20d / dataRow.noofstocks;
+                        dataRow.percentDn25pctin20d = dataRow.dn25pctin20d / dataRow.noofstocks;
+                        dataRow.percentUp50pctin20d = dataRow.up50pctin20d / dataRow.noofstocks;
+                        dataRow.percentDn50pctin20d = dataRow.dn50pctin20d / dataRow.noofstocks;
+                        dataRow.percentAbove200smapct = dataRow.above200smapct / dataRow.noofstocks;
+                        dataRow.percentAbove150smapct = dataRow.above150smapct / dataRow.noofstocks;
+                        dataRow.percentAbove20smapct = dataRow.above20smapct / dataRow.noofstocks;   
                     });
 
                     handSonTable.loadData(rows)
