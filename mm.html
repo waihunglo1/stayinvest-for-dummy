@@ -55,7 +55,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
     
     <div class="controls-container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">SCTR-Filter</a>
+            <a class="navbar-brand" href="#">Market Breadth</a>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Sectors
@@ -63,17 +63,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 <div id="drop_down_home" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 </div>
             </div>
-
-            <select id="marketCapSelect">
-                <option value=""></option>
-                <option value="L">LARGE CAP</option>
-                <option value="M">MID CAP</option>
-                <option value="S">SMALL CAP</option>
-                <option value="E">ETF</option>
-            </select>
             <output class="console" id="output"></output>
-        
-
         </nav>
     
         <div id="example1" class="ht-theme-main"></div>
@@ -124,7 +114,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     cellProperties
                 );
 
-                var sourceRow = hot.getSourceDataAtRow(row);
+                var sourceRow = handSonTable.getSourceDataAtRow(row);
 
                 td.style.fontWeight = 'bold';
                 td.style.textAlign = 'right';
@@ -155,8 +145,6 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
         function callApi() {
             consoleText.innerText = 'API Loading ...';
-
-            // let url = 'https://render-ealy.onrender.com/dscan/v1/sctr?view=' + load.value;
             let url = 'https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/mm/hk';
 
             fetch(url).then((response) => {
