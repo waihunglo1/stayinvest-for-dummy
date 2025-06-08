@@ -43,8 +43,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
     <!-- handsontable -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/styles/handsontable.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/styles/ht-theme-main.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@12.0/dist/handsontable.full.min.css" /> 
 
 </head>
 
@@ -179,7 +178,6 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
         }
 
         function initHandSonTable() {
-
             handSonTable = new Handsontable(container, {
                 startRows: 0,
                 startCols: 6,
@@ -194,7 +192,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         data: 'date'
                     },
                     {
-                        title: 'U41d',
+                        title: 'U4%1d',
                         type: 'numeric',
                         data: 'percentUp4pct1d',
                         numericFormat: {
@@ -204,7 +202,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         renderer: sctrRender
                     },
                     {
-                        title: 'D41d',
+                        title: 'D4%1d',
                         type: 'numeric',
                         data: 'percentDn4pct1d',
                         numericFormat: {
@@ -214,7 +212,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         renderer: sctrRender
                     },
                     {
-                        title: 'U25100d',
+                        title: 'U25%100d',
                         type: 'numeric',
                         data: 'percentUp25pctin100d',
                         numericFormat: {
@@ -223,7 +221,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         }
                     },
                     {
-                        title: 'D25100d',
+                        title: 'D25%100d',
                         type: 'numeric',
                         data: 'percentDn25pctin100d',
                         numericFormat: {
@@ -232,17 +230,16 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         }
                     },                    
                     {
-                        title: 'U2520d',
+                        title: 'U25%20d',
                         type: 'numeric',
                         data: 'percentUp25pctin20d',
                         numericFormat: {
                             pattern: '0.00%',
                             culture: 'en-US',
-                        },
-                        renderer: sctrRender
+                        }
                     },
                     {
-                        title: 'D2520d',
+                        title: 'D25%20d',
                         type: 'numeric',
                         data: 'percentDn25pctin20d',
                         numericFormat: {
@@ -251,7 +248,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         }
                     },
                     {
-                        title: 'U5020d',
+                        title: 'U50%20d',
                         type: 'numeric',
                         data: 'percentUp50pctin20d',
                         numericFormat: {
@@ -260,7 +257,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         }
                     },
                     {
-                        title: 'D5020d',
+                        title: 'D50%20d',
                         type: 'numeric',
                         data: 'percentDn50pctin20d',
                         numericFormat: {
@@ -269,7 +266,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         }
                     },
                     {
-                        title: '#stocks',
+                        title: '##',
                         type: 'numeric',
                         data: 'noofstocks',
                         numericFormat: {
