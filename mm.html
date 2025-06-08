@@ -84,31 +84,39 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 td.style.textAlign = 'right';
                 td.style.color = 'black';
 
-                if(col == 1) 
-                {
+                if (col == 1) {
                     if (value < 0.05) {
                         td.style.background = 'rgb(255, 153, 153, 0.4)';
-                    } else if (value >= 0.05) {
+                    }
+
+                    if (value >= 0.05) {
                         td.style.background = 'rgb(255, 255, 204, 0.4)';
-                    } else if (value >= 0.07) {
+                    }
+
+                    if (value >= 0.07) {
                         td.style.background = 'rgb(193, 241, 214, 1)';
-                    } else if (value >= 0.09) {
+                    }
+
+                    if (value >= 0.09) {
                         td.style.background = 'rgb(50,152,102,255)';
                     }
                 }
 
-                if(col == 2) 
-                {
+                if (col == 2) {
+                    if (value >= 0.097) {
+                        td.style.background = 'rgb(225,102,103,255)';
+                    }
+                    if (value >= 0.077) {
+                        td.style.background = 'rgb(255, 102, 102, 0.4)';
+                    }      
+                    if (value >= 0.067) {
+                        td.style.background = 'rgb(255, 153, 153, 0.4)';
+                    }                                  
+                    if (value < 0.067) {
+                        td.style.background = 'rgb(255, 255, 204, 0.4)';
+                    }
                     if (value < 0.057) {
                         td.style.background = 'rgb(255, 153, 153, 0.4)';
-                    } else if (value < 0.067) {
-                        td.style.background = 'rgb(255, 255, 204, 0.4)';
-                    } else if (value >= 0.067) {
-                        td.style.background = 'rgb(255, 153, 153, 0.4)';
-                    } else if (value >= 0.077) {
-                        td.style.background = 'rgb(255, 102, 102, 0.4)';
-                    } else if (value >= 0.097) {
-                        td.style.background = 'rgb(225,102,103,255)';
                     }
                 }                
             };   
