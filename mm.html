@@ -137,6 +137,8 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         dataRow.percentDn25pctin20d = dataRow.dn25pctin20d / dataRow.noofstocks;
                         dataRow.percentUp50pctin20d = dataRow.up50pctin20d / dataRow.noofstocks;
                         dataRow.percentDn50pctin20d = dataRow.dn50pctin20d / dataRow.noofstocks;
+                        dataRow.above20smapctindecimal = dataRow.above20smapct / 100;
+                        dataRow.above200smapctindecimal = dataRow.above200smapct / 100;
                     });
 
                     handSonTable.loadData(rows)
@@ -219,7 +221,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     {
                         title: 'T020',
                         type: 'numeric',
-                        data: 'above20smapct',
+                        data: 'above20smapctindecimal',
                         numericFormat: {
                             pattern: '0.00%',
                             culture: 'en-US',
@@ -228,7 +230,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     {
                         title: 'T200',
                         type: 'numeric',
-                        data: 'above200smapct',
+                        data: 'above200smapctindecimal',
                         numericFormat: {
                             pattern: '0.00%',
                             culture: 'en-US',
