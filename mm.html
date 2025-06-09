@@ -120,12 +120,16 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     }
                 }  
                 
-                if (col == 7 && value <= 0.2) {
-                    td.style.background = 'rgb(193, 241, 214, 1)';
+                if (col == 7) {
+                    if (value <= 0.2) {
+                        td.style.background = 'rgb(193, 241, 214, 1)';
+                    }
                 }
 
-                if (col == 8 && value <= 0.3) {
-                    td.style.background = 'rgb(193, 241, 214, 1)';
+                if (col == 8) {
+                    if (value <= 0.3) {
+                        td.style.background = 'rgb(193, 241, 214, 1)';
+                    }
                 }                
             };   
 
