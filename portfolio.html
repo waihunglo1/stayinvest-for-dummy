@@ -184,7 +184,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
         function initHandSonTable() {
             handSonTable = new Handsontable(container, {
-                startRows: 1,
+                startRows: 0,
                 startCols: 6,
                 rowHeaders: true,
                 colHeaders: true,
@@ -229,6 +229,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
             initHandSonTable();
             callApi();
+
         }
 
         window.onload = await parseLocationAndShowTable();
