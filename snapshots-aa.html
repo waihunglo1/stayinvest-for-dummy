@@ -30,14 +30,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/styles/handsontable.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/styles/ht-theme-main.min.css" />
 
-    <!-- script type="module" -->
-    <script type="text/javascript">
+    <script type="module">
         import { sortStockCodesAndShowChart, handleInputParameters, loadStockCodesImageWithProgressBar } from "/stayinvest-for-dummy/js/main.js";
         import { gotoPage, addButton, addButtonTableLink, addHref } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
         import { emoji, isEmpty, fixedDecimalPlaces, uniqueArray3 } from "/stayinvest-for-dummy/js/utils.js";
 
         const consoleText = document.querySelector('#output');
         var stockCodes = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('postButton'); // Get your button by its ID
+
+            if (btn) {
+                btn.addEventListener('click', handleButtonClick);
+            }
+        });
 
         async function parseLocationAndShowCharts() {
             let {
@@ -72,17 +79,17 @@
             stockCodes = inputStockCodes; // Store the stock codes for later use
         }
 
-        async function postAndUpdate() {
+        async function handleButtonClick() {
             const remark = document.getElementById("remark").value;
 
-            if(isEmpty(remark)) {
+            if (isEmpty(remark)) {
                 consoleText.innerText = "Please add a remark.";
                 return;
             } else {
                 consoleText.innerText = "Posting data...";
             }
 
-            const apiEndpoint = 'https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/pp/store'; 
+            const apiEndpoint = 'https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/pp/store';
             const portfolioData = {
                 symbols: stockCodes.join(','), // Join the stock codes into a comma-separated string
                 remark: remark
@@ -112,7 +119,7 @@
         }
 
         window.onload = await parseLocationAndShowCharts();
-    </script>    
+    </script>
 </head>
 
 <body>
@@ -131,7 +138,7 @@
             </div>
 
             <textarea cols="15" name="original" rows="1" style="width: 50%;" id="remark"></textarea>
-            <button class="button-6" role="button" onclick="postAndUpdate()">✅</button>
+            <button class="button-6" role="button" id="postButton">✅</button>
 
             <output class="console" id="output"></output>
 
