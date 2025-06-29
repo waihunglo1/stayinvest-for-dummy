@@ -13,21 +13,21 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
     <title>Portfolio</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong|Platypi|Noto Sans Traditional Chinese">
-	<link rel="stylesheet" href="css/styles.css">
-	<link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
-	<link rel="manifest" href="icon/site.webmanifest">
-	<link rel="mask-icon" href="icon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+    <link rel="manifest" href="icon/site.webmanifest">
+    <link rel="mask-icon" href="icon/safari-pinned-tab.svg" color="#5bbad5">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- progress bar -->
-    <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
+    <link rel="stylesheet" type="text/css" href="css/loading-bar.css" />
     <script type="text/javascript" src="js-3rd-party/loading-bar.js"></script>
 
     <!-- handsontable -->
@@ -41,13 +41,13 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
+
     <div class="controls-container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Portfolio</a>
             <output class="console" id="output"></output>
         </nav>
-    
+
         <div id="example1" class="disable-auto-theme"></div>
     </div>
 
@@ -59,9 +59,18 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
         const container = document.querySelector('#example1');
         const consoleText = document.querySelector('#output');
-        var handSonTable;        
-        
+        var handSonTable;
+
         const sctrRender = (
+            instance,
+            td,
+            row,
+            col,
+            prop,
+            value,
+            cellProperties
+        ) => {
+            Handsontable.renderers.NumericRenderer(
                 instance,
                 td,
                 row,
@@ -69,77 +78,91 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 prop,
                 value,
                 cellProperties
-            ) => {
-                Handsontable.renderers.NumericRenderer(
-                    instance,
-                    td,
-                    row,
-                    col,
-                    prop,
-                    value,
-                    cellProperties
-                );
+            );
 
-                td.style.fontWeight = 'bold';
-                td.style.textAlign = 'right';
-                td.style.color = 'black';
+            td.style.fontWeight = 'bold';
+            td.style.textAlign = 'right';
+            td.style.color = 'black';
 
-                if (col == 1) {
-                    if (value < 0.05) {
-                        td.style.background = 'rgb(255, 153, 153, 0.4)';
-                    }
-
-                    if (value >= 0.05) {
-                        td.style.background = 'rgb(255, 255, 204, 0.4)';
-                    }
-
-                    if (value >= 0.07) {
-                        td.style.background = 'rgb(193, 241, 214, 1)';
-                    }
-
-                    if (value >= 0.09) {
-                        td.style.background = 'rgb(50,152,102,255)';
-                    }
+            if (col == 1) {
+                if (value < 0.05) {
+                    td.style.background = 'rgb(255, 153, 153, 0.4)';
                 }
 
-                if (col == 2) {
-                    if (value >= 0.097) {
-                        td.style.background = 'rgb(225,102,103,255)';
-                    }
-                    if (value >= 0.077) {
-                        td.style.background = 'rgb(255, 102, 102, 0.4)';
-                    }      
-                    if (value >= 0.067) {
-                        td.style.background = 'rgb(255, 153, 153, 0.4)';
-                    }                                  
-                    if (value < 0.067) {
-                        td.style.background = 'rgb(255, 255, 204, 0.4)';
-                    }
-                    if (value < 0.057) {
-                        td.style.background = 'rgb(193, 241, 214, 1)';
-                    }
-                }  
-                
-                if (col == 7) {
-                    if (value <= 0.2) {
-                        td.style.background = 'rgb(193, 241, 214, 1)';
-                    }
-
-                    if (value >= 0.8) {
-                        td.style.background = 'rgb(225,102,103,255)';
-                    }
+                if (value >= 0.05) {
+                    td.style.background = 'rgb(255, 255, 204, 0.4)';
                 }
 
-                if (col == 8) {
-                    if (value <= 0.3) {
-                        td.style.background = 'rgb(193, 241, 214, 1)';
-                    }
+                if (value >= 0.07) {
+                    td.style.background = 'rgb(193, 241, 214, 1)';
+                }
 
-                    if (value >= 0.7) {
-                        td.style.background = 'rgb(225,102,103,255)';
-                    }                    
-                }                
-            };   
+                if (value >= 0.09) {
+                    td.style.background = 'rgb(50,152,102,255)';
+                }
+            }
+
+            if (col == 2) {
+                if (value >= 0.097) {
+                    td.style.background = 'rgb(225,102,103,255)';
+                }
+                if (value >= 0.077) {
+                    td.style.background = 'rgb(255, 102, 102, 0.4)';
+                }
+                if (value >= 0.067) {
+                    td.style.background = 'rgb(255, 153, 153, 0.4)';
+                }
+                if (value < 0.067) {
+                    td.style.background = 'rgb(255, 255, 204, 0.4)';
+                }
+                if (value < 0.057) {
+                    td.style.background = 'rgb(193, 241, 214, 1)';
+                }
+            }
+
+            if (col == 7) {
+                if (value <= 0.2) {
+                    td.style.background = 'rgb(193, 241, 214, 1)';
+                }
+
+                if (value >= 0.8) {
+                    td.style.background = 'rgb(225,102,103,255)';
+                }
+            }
+
+            if (col == 8) {
+                if (value <= 0.3) {
+                    td.style.background = 'rgb(193, 241, 214, 1)';
+                }
+
+                if (value >= 0.7) {
+                    td.style.background = 'rgb(225,102,103,255)';
+                }
+            }
+        };
+
+        const linkRenderer = (_instance, td, _row, _col, _prop, value) => {
+            var rowData = handSonTable.getSourceDataAtRow(_row);
+
+            let linkElement = document.createElement('a');
+            let text = document.createTextNode(value);
+            linkElement.appendChild(text);
+
+            const stockChartLink = "snapshots-aa.html?d={linkDesc}&t={type}&o={stockCodes}&s={sort}";
+            const tempChartLink = stockChartLink
+                .replace(/{type}/i, rowData.chartType)
+                .replace(/{stockCodes}/i, rowData.symbolArray.join(','))
+                .replace(/{sort}/i, "Y");
+
+            linkElement.href = tempChartLink;
+            linkElement.setAttribute("target", "_" + rowData.remark.replace(" ","_"));
+            linkElement.text = rowData.remark;
+
+            var symbol = value;
+            td.innerText = '';
+            td.appendChild(linkElement);
+            return td;
+        };
 
         function callApi() {
             consoleText.innerText = 'API Loading ...';
@@ -174,107 +197,15 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         data: 'date'
                     },
                     {
-                        title: 'U4%1d',
-                        type: 'numeric',
-                        data: 'percentUp4pct1d',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        },
-                        renderer: sctrRender
+                        title: 'Remark',
+                        type: 'text',
+                        data: 'remark',
+                        renderer: linkRenderer
                     },
                     {
-                        title: 'D4%1d',
-                        type: 'numeric',
-                        data: 'percentDn4pct1d',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        },
-                        renderer: sctrRender
-                    },
-                    {
-                        title: 'U25%100d',
-                        type: 'numeric',
-                        data: 'percentUp25pctin100d',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        }
-                    },
-                    {
-                        title: 'D25%100d',
-                        type: 'numeric',
-                        data: 'percentDn25pctin100d',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        }
-                    },                    
-                    {
-                        title: 'U25%20d',
-                        type: 'numeric',
-                        data: 'percentUp25pctin20d',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        }
-                    },
-                    {
-                        title: 'D25%20d',
-                        type: 'numeric',
-                        data: 'percentDn25pctin20d',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        }
-                    },
-                    {
-                        title: 'T020',
-                        type: 'numeric',
-                        data: 'above20smapctindecimal',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        },
-                        renderer: sctrRender
-                    },
-                    {
-                        title: 'T200',
-                        type: 'numeric',
-                        data: 'above200smapctindecimal',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        },
-                        renderer: sctrRender
-                    },
-                    {
-                        title: '##',
-                        type: 'numeric',
-                        data: 'noofstocks',
-                        numericFormat: {
-                            pattern: '0',
-                            culture: 'en-US',
-                        }
-                    },
-                    {
-                        title: 'hsi',
-                        type: 'numeric',
-                        data: 'hsi',
-                        numericFormat: {
-                            pattern: '0.00',
-                            culture: 'en-US',
-                        }
-                    },
-                    {
-                        title: 'hsce',
-                        type: 'numeric',
-                        data: 'hsce',
-                        numericFormat: {
-                            pattern: '0',
-                            culture: 'en-US',
-                        }
+                        title: 'Symbols',
+                        type: 'text',
+                        data: 'symbols'
                     }
                 ],
                 licenseKey: 'non-commercial-and-evaluation',
@@ -295,7 +226,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 taIndicator,
                 chartType,
                 sort } = await handleInputParameters();
-            
+
             initHandSonTable();
             callApi();
         }
