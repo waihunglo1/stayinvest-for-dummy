@@ -81,6 +81,7 @@
 
         async function handleButtonClick() {
             const remark = document.getElementById("remark").value;
+            const strStockCodes = stockCodes.join(','); // Convert array to comma-separated string
 
             if (isEmpty(remark)) {
                 consoleText.innerText = "Please add a remark.";
@@ -91,7 +92,7 @@
 
             const apiEndpoint = 'https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/pp/store';
             const portfolioData = {
-                symbols: stockCodes.join(','), // Join the stock codes into a comma-separated string
+                symbols: strStockCodes,
                 remark: remark
             };
 
