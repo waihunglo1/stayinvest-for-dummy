@@ -149,11 +149,15 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             deleteButton.innerText = 'Delete';
             deleteButton.onclick = () => {
                 if (confirm("Are you sure to delete this record?")) {
-                    fetch(`https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/pp/delete/${value}`, {
+                    fetch(`https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/pp/delete?id=${value}`, {
                         method: 'DELETE'
-                    }).then(() => {
-                        instance.alter('remove_row', row);
-                    });
+                    }).then((response) => {
+                        if (response.ok) {
+                            instance.alter('remove_row', row);
+                        } else {
+                            console.error("Error:", response.statusText);
+                        }
+                    }).catch((error) => console.error("Error:", error));
                 }
             };
             td.appendChild(deleteButton);
