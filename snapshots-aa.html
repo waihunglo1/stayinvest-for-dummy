@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
     <title>AA Snapshots</title>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong|Platypi|Noto Sans Traditional Chinese">
-	<link rel="stylesheet" href="css/styles.css">
-	<link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
-	<link rel="manifest" href="icon/site.webmanifest">
-	<link rel="mask-icon" href="icon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong|Platypi|Noto Sans Traditional Chinese">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+    <link rel="manifest" href="icon/site.webmanifest">
+    <link rel="mask-icon" href="icon/safari-pinned-tab.svg" color="#5bbad5">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- progress bar -->
-    <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
+    <link rel="stylesheet" type="text/css" href="css/loading-bar.css" />
     <script type="text/javascript" src="js-3rd-party/loading-bar.js"></script>
 
     <!-- data table -->
@@ -47,17 +47,17 @@
                 </div>
             </div>
 
-            <textarea cols="15" name="original" rows="1" style="width: 80%;" id="remark"></textarea>
-            <button class="button-6" role="button" onclick="javascript:void(0)">✅</button>
+            <textarea cols="15" name="original" rows="1" style="width: 50%;" id="remark"></textarea>
+            <button class="button-6" role="button" onclick="javascript:postAndUpdate()">✅</button>
 
             <output class="console" id="output"></output>
-        
+
 
         </nav>
-    
+
         <div id="example1" class="ht-theme-main"></div>
     </div>
-    
+
     <div id="top_row_home"></div>
     <div id="img_home"></div>
     <div id="progress_home"></div>
@@ -66,16 +66,20 @@
         import { sortStockCodesAndShowChart, handleInputParameters, loadStockCodesImageWithProgressBar } from "/stayinvest-for-dummy/js/main.js";
         import { gotoPage, addButton, addButtonTableLink, addHref } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
 
+        const consoleText = document.querySelector('#output');
+        const stockCodes = [];
+
         async function parseLocationAndShowCharts() {
-            let { 
+            let {
                 title,
                 inputStockCodes,
                 taIndicator,
                 chartType,
                 sort } = await handleInputParameters();
 
-            addButtons("top_row_home", chartType, title, inputStockCodes);
-
+            /**
+             * Add buttons for technical indicators
+             */
             if (chartType == "HK") {
                 addHref("drop_down_home", "ROC - 2M", "M12", "HK", title, inputStockCodes, true);
                 addHref("drop_down_home", "RSI - 2M", "B14", "HK", title, inputStockCodes, true);
@@ -89,28 +93,44 @@
                 addHref("drop_down_home", "SCTR", "U", "SC", title, inputStockCodes, true);
             }
 
-            if(sort == "N") {
+            if (sort == "N") {
                 loadStockCodesImageWithProgressBar(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home", false);
             } else {
                 sortStockCodesAndShowChart(inputStockCodes, chartType, taIndicator, "img_home", "#progress_home");
             }
+
+            stockCodes = inputStockCodes; // Store the stock codes for later use
         }
 
-        function addButtons(parentId, chartType, title, inputStockCodes) {
-            const params = new URLSearchParams(document.location.search);
+        async function postAndUpdate() {
+            const remark = document.getElementById("remark").value;
+            const apiEndpoint = 'https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/pp/store'; 
+            const portfolioData = {
+                symbols: stockCodes.join(','), // Join the stock codes into a comma-separated string
+                remark: remark
+            };
 
-            if(chartType == "HK") {
-                addButton(parentId,"🚿 ROC - 2M", "M12", "HK", title, inputStockCodes, false);
-                addButton(parentId,"📈 RSI - 2M", "B14", "HK", title, inputStockCodes, false);
-                addButton(parentId,"💢 SCTR",     "SCTR",   "HK", title, inputStockCodes, false);
-            } else {
-                addButton(parentId,"🚿 RSI14 - 2M", "B14",  "SC"  , title, inputStockCodes, false);
-                addButton(parentId,"📈 RSI14 - 6M", "B14",  "SC6M", title, inputStockCodes, false);
-                addButton(parentId,"📟 ROC12 - 2M", "M12",  "SC"  , title, inputStockCodes, false);
-                addButton(parentId,"🕛 ROC12 - 6M", "M12",  "SC6M", title, inputStockCodes, false);
-                addButton(parentId,"🔂 VOLUME",     "VOL",  "SC"  , title, inputStockCodes, false);
-                addButton(parentId,"💢 SCTR",       "U",    "SC"  , title, inputStockCodes, false);
-            }       
+            try {
+                const response = await fetch(apiEndpoint, {
+                    method: 'POST', // Specify the HTTP method as POST
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(portfolioData) // Convert the data object to a JSON string
+                });
+
+                if (!response.ok) {
+                    // Handle HTTP errors (e.g., 404 Not Found, 500 Internal Server Error)
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const responseData = await response.json(); // Parse the JSON response
+                console.log('Success:', responseData);
+                consoleText.innerText = responseData.message || 'Data posted successfully!';
+            } catch (error) {
+                console.error('Error during POST request:', error);
+                throw error; // Re-throw the error for further handling
+            }
         }
 
         window.onload = await parseLocationAndShowCharts();
