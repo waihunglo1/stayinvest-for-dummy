@@ -71,7 +71,7 @@
             stockCodes = inputStockCodes; // Store the stock codes for later use
         }
 
-        function postAndUpdate() {
+        async function postAndUpdate() {
             const remark = document.getElementById("remark").value;
 
             if(isEmpty(remark)) {
