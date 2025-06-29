@@ -165,6 +165,14 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             return td;
         };
 
+        const truncateTextRenderer = (instance, td, row, col, prop, value, cellProperties) => {
+            Handsontable.renderers.TextRenderer(instance, td, row, col, prop, value, cellProperties);
+            td.style.whiteSpace = 'nowrap';
+            td.style.overflow = 'hidden';
+            td.style.textOverflow = 'ellipsis';
+            td.style.maxWidth = '150px'; // Adjust the width as needed
+        };
+
         function callApi() {
             consoleText.innerText = 'API Loading ...';
             let url = 'https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/pp/list';
@@ -206,7 +214,8 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     {
                         title: 'Symbols',
                         type: 'text',
-                        data: 'symbols'
+                        data: 'symbols',
+                        renderer: truncateTextRenderer
                     }
                 ],
                 licenseKey: 'non-commercial-and-evaluation',
