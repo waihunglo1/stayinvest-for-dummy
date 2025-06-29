@@ -114,6 +114,33 @@ stayinvest-for-dummy - A simple web app to help you stay invested in the stock m
 						
 					</td>
 				</tr>
+			</table>
+		</div>
+
+		<div class="grid-item" style="color: #666666;">
+			<!-- Column 02 -->
+
+			<table>
+				<!-- Sector Performance -->
+				<tr>
+					<td><img src="images/rocket.gif" width="50" height="50" style="width: 100px; height: 90px;" />
+					</td>
+					<td>
+						<!-- MAKRET LIST -->	
+						<span id="SENTIMENT_DIV"><h2>SENTIMENT</h2></span> 					
+						<span id="MARKET_LIST_DIV"><h2>OTHER MARKETS</h2></span>
+
+						<!-- US FOCUS LIST START -->
+						<span id="US_INDEX_DIV"><h2>US-INDEX</h2></span>
+						<span id="US_ROUTINE_DIV"><h2>US-ROUTINE</h2></span>					
+						<span id="US_AI_ROUTINE_DIV"><h2>US-AI-ROUTINE</h2></span>
+						<span id="US_OTH_ROUTINE_DIV"><h2>US-OTH-ROUTINE</h2></span>
+						<!-- US FOCUS LIST END -->
+
+					</td>
+				</tr>
+
+				<!-- empty row -->
 				<!-- empty row -->
 				<tr>
 					<td>&nbsp;</td>
@@ -159,37 +186,6 @@ stayinvest-for-dummy - A simple web app to help you stay invested in the stock m
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 				</tr>
-			</table>
-		</div>
-
-		<div class="grid-item" style="color: #666666;">
-			<!-- Column 02 -->
-
-			<table>
-				<!-- Sector Performance -->
-				<tr>
-					<td><img src="images/rocket.gif" width="50" height="50" style="width: 100px; height: 90px;" />
-					</td>
-					<td>
-						<!-- MAKRET LIST -->	
-						<span id="SENTIMENT_DIV"><h2>SENTIMENT</h2></span> 					
-						<span id="MARKET_LIST_DIV"><h2>OTHER MARKETS</h2></span>
-
-						<!-- US FOCUS LIST START -->
-						<span id="US_INDEX_DIV"><h2>US-INDEX</h2></span>
-						<span id="US_ROUTINE_DIV"><h2>US-ROUTINE</h2></span>					
-						<span id="US_AI_ROUTINE_DIV"><h2>US-AI-ROUTINE</h2></span>
-						<span id="US_OTH_ROUTINE_DIV"><h2>US-OTH-ROUTINE</h2></span>
-						<!-- US FOCUS LIST END -->
-
-					</td>
-				</tr>
-
-				<!-- empty row -->
-				<tr>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-				</tr>
 
 				<tr>
 					<td><img src="images/tool.png" width="50" height="50" style="width: 100px; height: 90px;" />
@@ -229,9 +225,6 @@ stayinvest-for-dummy - A simple web app to help you stay invested in the stock m
 		// US THEME
 		appendLinkAndUpdateTitle(portfolios, stockChartLink, "US_INDEX_DIV", "US-INDEX");
 		appendLinkAndUpdateTitle(portfolios, stockChartLink, "US_ROUTINE_DIV", "US-ROUTINE");
-		appendLinkAndUpdateTitle(portfolios, stockChartLink, "US_AI_ROUTINE_DIV", "US-AI-ROUTINE");
-		appendLinkAndUpdateTitle(portfolios, stockChartLink, "US_OTH_ROUTINE_DIV", "US-OTHER-ROUTINE");
-		appendLinkAndUpdateTitle(portfolios, stockChartLink, "US_CELEBRITY_DIV", "US-CELEBRITY");
 	</script>	
 </body>
 
