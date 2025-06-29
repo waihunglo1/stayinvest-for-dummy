@@ -152,7 +152,8 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             const tempChartLink = stockChartLink
                 .replace(/{type}/i, rowData.chartType)
                 .replace(/{stockCodes}/i, rowData.symbolArray.join(','))
-                .replace(/{sort}/i, "Y");
+                .replace(/{sort}/i, "Y")
+                .replace(/{linkDesc}/i, rowData.remark);
 
             linkElement.href = tempChartLink;
             linkElement.setAttribute("target", "_" + rowData.remark.replace(" ","_"));
