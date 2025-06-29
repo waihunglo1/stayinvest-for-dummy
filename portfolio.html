@@ -141,6 +141,25 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             }
         };
 
+        const deleteRenderer = (instance, td, row, col, prop, value) => {
+            var rowData = instance.getSourceDataAtRow(row);
+            td.innerHTML = '';
+            let deleteButton = document.createElement('button');
+            deleteButton.className = 'btn btn-danger btn-sm';
+            deleteButton.innerText = 'Delete';
+            deleteButton.onclick = () => {
+                if (confirm("Are you sure to delete this record?")) {
+                    fetch(`https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/pp/delete/${value}`, {
+                        method: 'DELETE'
+                    }).then(() => {
+                        instance.alter('remove_row', row);
+                    });
+                }
+            };
+            td.appendChild(deleteButton);
+            return td;
+        };
+        
         const linkRenderer = (_instance, td, _row, _col, _prop, value) => {
             var rowData = _instance.getSourceDataAtRow(_row);
 
@@ -216,6 +235,12 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         type: 'text',
                         data: 'symbols',
                         renderer: truncateTextRenderer
+                    },
+                    {
+                        title: 'Delete',
+                        type: 'text',
+                        data: 'id',
+                        renderer: deleteRenderer
                     }
                 ],
                 licenseKey: 'non-commercial-and-evaluation',
