@@ -142,7 +142,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
         };
 
         const linkRenderer = (_instance, td, _row, _col, _prop, value) => {
-            var rowData = handSonTable.getSourceDataAtRow(_row);
+            var rowData = _instance.getSourceDataAtRow(_row);
 
             let linkElement = document.createElement('a');
             let text = document.createTextNode(value);
