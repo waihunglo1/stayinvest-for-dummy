@@ -45,12 +45,8 @@
             </div>
 
             <select id="marketCapSelect">
-                <option value=""></option>
-                <option value="L">LARGE CAP</option>
-                <option value="M">MID CAP</option>
-                <option value="S">SMALL CAP</option>
-                <option value="E">ETF</option>
             </select>
+            
             <output class="console" id="output"></output>
         
 
@@ -466,7 +462,6 @@
                 });
             }
         }
-
         async function parseLocationAndShowTable() {
             let {
                 title,
@@ -477,6 +472,23 @@
             
             selectedChartType = chartType || "SC";
             initHandSonTable();
+
+            const options = [];
+
+            if(selectedChartType == 'SC')  {
+                options.push(new Option('', ''));
+                options.push(new Option('LARGE CAP', 'L'));
+                options.push(new Option('MID CAP', 'M'));
+                options.push(new Option('SMALL CAP', 'S'));
+                options.push(new Option('ETF', 'E'));
+            } else {
+                options.push(new Option('', ''));
+                options.push(new Option('DEFAULT', 'default'));
+                options.push(new Option('ABOVE SMA', 'sma'));
+            }
+
+            var marketCapSelect = document.getElementById('marketCapSelect');
+            options.forEach(option => marketCapSelect.appendChild(option));
         }
 
         window.onload = await parseLocationAndShowTable();
