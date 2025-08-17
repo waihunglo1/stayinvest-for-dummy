@@ -85,37 +85,37 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 td.style.color = 'black';
 
                 if (col % 2 == 1) {
-                    if (value < 0.05) {
+                    if (value < 0.10) {
                         td.style.background = 'rgb(255, 153, 153, 0.4)';
                     }
 
-                    if (value >= 0.05) {
+                    if (value >= 0.10) {
                         td.style.background = 'rgb(255, 255, 204, 0.4)';
                     }
 
-                    if (value >= 0.10) {
+                    if (value >= 0.20) {
                         td.style.background = 'rgb(193, 241, 214, 1)';
                     }
 
-                    if (value >= 0.15) {
+                    if (value >= 0.25) {
                         td.style.background = 'rgb(50,152,102,255)';
                     }
                 }
 
                 if (col % 2 == 0) {
-                    if (value >= 0.15) {
+                    if (value >= 0.25) {
                         td.style.background = 'rgb(225,102,103,255)';
                     }
-                    if (value >= 0.10) {
+                    if (value >= 0.20) {
                         td.style.background = 'rgb(255, 102, 102, 0.4)';
                     }      
-                    if (value >= 0.05) {
+                    if (value >= 0.15) {
                         td.style.background = 'rgb(255, 153, 153, 0.4)';
                     }                                  
-                    if (value < 0.05) {
+                    if (value < 0.10) {
                         td.style.background = 'rgb(255, 255, 204, 0.4)';
                     }
-                    if (value < 0.03) {
+                    if (value < 0.05) {
                         td.style.background = 'rgb(193, 241, 214, 1)';
                     }
                 }          
