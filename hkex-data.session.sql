@@ -35,4 +35,27 @@ select
             order by sector
         ) order by dt desc, sector
 
-select * from stock        
+select * from stock       
+
+
+select dt, count(1) from "DAILY_STOCK_PRICE"
+group by dt 
+order by dt desc
+
+select * from DAILY_MARKET_STATS
+order by dt desc
+
+delete from "daily_stock_stats"
+where dt >= '20250813'
+
+commit
+
+
+        select dt from ( 
+            SELECT dt FROM DAILY_STOCK_PRICE 
+            group by dt 
+            order by dt desc 
+            limit 200 
+        ) 
+        except 
+        select dt from daily_stock_stats group by dt`;
