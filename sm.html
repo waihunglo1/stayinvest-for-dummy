@@ -147,6 +147,32 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
             fetch(url).then((response) => {
                 response.json().then((rows) => {
+                    rows.forEach(dataRow => {
+                        dataRow.xlb_u4sm_dp = dataRow.xlb_u4sm / 100;
+                        dataRow.xlb_d4sm_dp = dataRow.xlb_d4sm / 100;
+                        dataRow.xlc_u4sm_dp = dataRow.xlc_u4sm / 100;
+                        dataRow.xlc_d4sm_dp = dataRow.xlc_d4sm / 100;
+                        dataRow.xly_u4sm_dp = dataRow.xly_u4sm / 100;
+                        dataRow.xly_d4sm_dp = dataRow.xly_d4sm / 100;
+                        dataRow.xlp_u4sm_dp = dataRow.xlp_u4sm / 100;
+                        dataRow.xlp_d4sm_dp = dataRow.xlp_d4sm / 100;
+                        dataRow.xle_u4sm_dp = dataRow.xle_u4sm / 100;
+                        dataRow.xle_d4sm_dp = dataRow.xle_d4sm / 100;
+                        dataRow.xlf_u4sm_dp = dataRow.xlf_u4sm / 100;
+                        dataRow.xlf_d4sm_dp = dataRow.xlf_d4sm / 100;
+                        dataRow.xlv_u4sm_dp = dataRow.xlv_u4sm / 100;
+                        dataRow.xlv_d4sm_dp = dataRow.xlv_d4sm / 100;
+                        dataRow.xli_u4sm_dp = dataRow.xli_u4sm / 100;
+                        dataRow.xli_d4sm_dp = dataRow.xli_d4sm / 100;    
+                        dataRow.xlre_u4sm_dp = dataRow.xlre_u4sm / 100;
+                        dataRow.xlre_d4sm_dp = dataRow.xlre_d4sm / 100;
+                        dataRow.xlk_u4sm_dp = dataRow.xlk_u4sm / 100;
+                        dataRow.xlk_d4sm_dp = dataRow.xlk_d4sm / 100;   
+                        dataRow.xlu_u4sm_dp = dataRow.xlu_u4sm / 100;
+                        dataRow.xlu_d4sm_dp = dataRow.xlu_d4sm / 100;
+                        dataRow.xlx_u4sm_dp = dataRow.xlx_u4sm / 100;
+                        dataRow.xlx_d4sm_dp = dataRow.xlx_d4sm / 100;                                                                                                                                             
+                    });                    
                     handSonTable.loadData(rows)
                 });
 
@@ -171,7 +197,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     {
                         title: 'XLB-U4%',
                         type: 'numeric',
-                        data: 'xlb_u4sm',
+                        data: 'xlb_u4sm_dp',
                         numericFormat: {
                             pattern: '0.00%',
                             culture: 'en-US',
@@ -181,7 +207,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     {
                         title: 'XLB-D4%',
                         type: 'numeric',
-                        data: 'xlb_d4sm',
+                        data: 'xlb_d4sm_dp',
                         numericFormat: {
                             pattern: '0.00%',
                             culture: 'en-US',
@@ -191,7 +217,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     {
                         title: 'XLC-U4%',
                         type: 'numeric',
-                        data: 'xlc_u4sm',
+                        data: 'xlc_u4sm_dp',
                         numericFormat: {
                             pattern: '0.00%',
                             culture: 'en-US',
@@ -201,7 +227,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     {
                         title: 'XLC-D4%',
                         type: 'numeric',
-                        data: 'xlc_d4sm',
+                        data: 'xlc_d4sm_dp',
                         numericFormat: {
                             pattern: '0.00%',
                             culture: 'en-US',
