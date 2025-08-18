@@ -160,7 +160,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             });
         }
 
-        function initHandSonTable() {
+        function initHandSonTableForUp() {
             handSonTable = new Handsontable(container, {
                 startRows: 0,
                 startCols: 6,
@@ -185,29 +185,9 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         renderer: sctrRender
                     },
                     {
-                        title: 'XLBD',
-                        type: 'numeric',
-                        data: 'xlb_d4sm_dp',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        },
-                        renderer: sctrRender
-                    } ,
-                    {
                         title: 'XLCU',
                         type: 'numeric',
                         data: 'xlc_u4sm_dp',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        },
-                        renderer: sctrRender
-                    },
-                    {
-                        title: 'XLCD',
-                        type: 'numeric',
-                        data: 'xlc_d4sm_dp',
                         numericFormat: {
                             pattern: '0.00%',
                             culture: 'en-US',
@@ -225,29 +205,9 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         renderer: sctrRender
                     },
                     {
-                        title: 'XLYD',
-                        type: 'numeric',
-                        data: 'xly_d4sm_dp',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        },
-                        renderer: sctrRender
-                    } ,
-                    {
                         title: 'XLPU',
                         type: 'numeric',
                         data: 'xlp_u4sm_dp',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        },
-                        renderer: sctrRender
-                    },
-                    {
-                        title: 'XLPD',
-                        type: 'numeric',
-                        data: 'xlp_d4sm_dp',
                         numericFormat: {
                             pattern: '0.00%',
                             culture: 'en-US',
@@ -265,29 +225,9 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         renderer: sctrRender
                     },
                     {
-                        title: 'XLED',
-                        type: 'numeric',
-                        data: 'xle_d4sm_dp',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        },
-                        renderer: sctrRender
-                    } ,
-                    {
                         title: 'XLFU',
                         type: 'numeric',
                         data: 'xlf_u4sm_dp',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        },
-                        renderer: sctrRender
-                    },
-                    {
-                        title: 'XLFD',
-                        type: 'numeric',
-                        data: 'xlf_d4sm_dp',
                         numericFormat: {
                             pattern: '0.00%',
                             culture: 'en-US',
@@ -305,29 +245,9 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         renderer: sctrRender
                     },
                     {
-                        title: 'XLVD',
-                        type: 'numeric',
-                        data: 'xlv_d4sm_dp',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        },
-                        renderer: sctrRender
-                    } ,
-                    {
                         title: 'XLIU',
                         type: 'numeric',
                         data: 'xli_u4sm_dp',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        },
-                        renderer: sctrRender
-                    },
-                    {
-                        title: 'XLID',
-                        type: 'numeric',
-                        data: 'xli_d4sm_dp',
                         numericFormat: {
                             pattern: '0.00%',
                             culture: 'en-US',
@@ -345,19 +265,135 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         renderer: sctrRender
                     },
                     {
-                        title: 'XLRED',
+                        title: 'XLKU',
                         type: 'numeric',
-                        data: 'xlre_d4sm_dp',
+                        data: 'xlk_u4sm_dp',
                         numericFormat: {
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
                         renderer: sctrRender
-                    } ,
+                    },
                     {
-                        title: 'XLKU',
+                        title: 'XLUU',
                         type: 'numeric',
-                        data: 'xlk_u4sm_dp',
+                        data: 'xlu_u4sm_dp',
+                        numericFormat: {
+                            pattern: '0.00%',
+                            culture: 'en-US',
+                        },
+                        renderer: sctrRender
+                    }                                                
+                ],
+                licenseKey: 'non-commercial-and-evaluation',
+                autoWrapRow: true,
+                autoWrapCol: true,
+                multiColumnSorting: true,
+                outsideClickDeselects: false,
+                readOnly: true,
+                filters: true,
+                dropdownMenu: ['filter_by_condition', 'filter_by_value', 'filter_action_bar']
+            });
+        }
+
+        function initHandSonTableForDn() {
+            handSonTable = new Handsontable(container, {
+                startRows: 0,
+                startCols: 6,
+                rowHeaders: true,
+                colHeaders: true,
+                height: 'auto',
+                width: 'auto',
+                columns: [
+                    {
+                        title: 'Date',
+                        type: 'numeric',
+                        data: 'date'
+                    },
+                    {
+                        title: 'XLBD',
+                        type: 'numeric',
+                        data: 'xlb_d4sm_dp',
+                        numericFormat: {
+                            pattern: '0.00%',
+                            culture: 'en-US',
+                        },
+                        renderer: sctrRender
+                    },
+                    {
+                        title: 'XLCD',
+                        type: 'numeric',
+                        data: 'xlc_d4sm_dp',
+                        numericFormat: {
+                            pattern: '0.00%',
+                            culture: 'en-US',
+                        },
+                        renderer: sctrRender
+                    },
+                    {
+                        title: 'XLYD',
+                        type: 'numeric',
+                        data: 'xly_d4sm_dp',
+                        numericFormat: {
+                            pattern: '0.00%',
+                            culture: 'en-US',
+                        },
+                        renderer: sctrRender
+                    },
+                    {
+                        title: 'XLPD',
+                        type: 'numeric',
+                        data: 'xlp_d4sm_dp',
+                        numericFormat: {
+                            pattern: '0.00%',
+                            culture: 'en-US',
+                        },
+                        renderer: sctrRender
+                    },
+                    {
+                        title: 'XLED',
+                        type: 'numeric',
+                        data: 'xle_d4sm_dp',
+                        numericFormat: {
+                            pattern: '0.00%',
+                            culture: 'en-US',
+                        },
+                        renderer: sctrRender
+                    },
+                    {
+                        title: 'XLFD',
+                        type: 'numeric',
+                        data: 'xlf_d4sm_dp',
+                        numericFormat: {
+                            pattern: '0.00%',
+                            culture: 'en-US',
+                        },
+                        renderer: sctrRender
+                    },
+                    {
+                        title: 'XLVD',
+                        type: 'numeric',
+                        data: 'xlv_d4sm_dp',
+                        numericFormat: {
+                            pattern: '0.00%',
+                            culture: 'en-US',
+                        },
+                        renderer: sctrRender
+                    },
+                    {
+                        title: 'XLID',
+                        type: 'numeric',
+                        data: 'xli_d4sm_dp',
+                        numericFormat: {
+                            pattern: '0.00%',
+                            culture: 'en-US',
+                        },
+                        renderer: sctrRender
+                    },
+                    {
+                        title: 'XLRED',
+                        type: 'numeric',
+                        data: 'xlre_d4sm_dp',
                         numericFormat: {
                             pattern: '0.00%',
                             culture: 'en-US',
@@ -373,16 +409,6 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             culture: 'en-US',
                         },
                         renderer: sctrRender
-                    } ,
-                    {
-                        title: 'XLUU',
-                        type: 'numeric',
-                        data: 'xlu_u4sm_dp',
-                        numericFormat: {
-                            pattern: '0.00%',
-                            culture: 'en-US',
-                        },
-                        renderer: sctrRender
                     },
                     {
                         title: 'XLUD',
@@ -393,7 +419,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             culture: 'en-US',
                         },
                         renderer: sctrRender
-                    }                                                 
+                    }                                                
                 ],
                 licenseKey: 'non-commercial-and-evaluation',
                 autoWrapRow: true,
@@ -404,7 +430,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 filters: true,
                 dropdownMenu: ['filter_by_condition', 'filter_by_value', 'filter_action_bar']
             });
-        }
+        }        
 
         async function parseLocationAndShowTable() {
             let {
@@ -414,7 +440,12 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 chartType,
                 sort } = await handleInputParameters();
             
-            initHandSonTable();
+            if (taIndicator === 'U') {
+                initHandSonTableForUp();
+            } else {
+                initHandSonTableForDn();
+            }
+            
             callApi();
         }
 
