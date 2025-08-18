@@ -61,7 +61,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
         const consoleText = document.querySelector('#output');
         var handSonTable;        
         
-        const sctrRender = (
+        const sctrRenderUp = (
                 instance,
                 td,
                 row,
@@ -84,42 +84,62 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 td.style.textAlign = 'right';
                 td.style.color = 'black';
 
-                if (col % 2 == 1) {
-                    if (value < 0.10) {
-                        td.style.background = 'rgb(255, 153, 153, 0.4)';
-                    }
 
-                    if (value >= 0.10) {
-                        td.style.background = 'rgb(255, 255, 204, 0.4)';
-                    }
-
-                    if (value >= 0.20) {
-                        td.style.background = 'rgb(193, 241, 214, 1)';
-                    }
-
-                    if (value >= 0.25) {
-                        td.style.background = 'rgb(50,152,102,255)';
-                    }
+                if (value < 0.10) {
+                    td.style.background = 'rgb(255, 153, 153, 0.4)';
                 }
 
-                if (col % 2 == 0) {
-                    if (value >= 0.25) {
-                        td.style.background = 'rgb(225,102,103,255)';
-                    }
-                    if (value >= 0.20) {
-                        td.style.background = 'rgb(255, 102, 102, 0.4)';
-                    }      
-                    if (value >= 0.15) {
-                        td.style.background = 'rgb(255, 153, 153, 0.4)';
-                    }                                  
-                    if (value < 0.10) {
-                        td.style.background = 'rgb(255, 255, 204, 0.4)';
-                    }
-                    if (value < 0.05) {
-                        td.style.background = 'rgb(193, 241, 214, 1)';
-                    }
-                }          
+                if (value >= 0.10) {
+                    td.style.background = 'rgb(255, 255, 204, 0.4)';
+                }
+
+                if (value >= 0.20) {
+                    td.style.background = 'rgb(193, 241, 214, 1)';
+                }
+
+                if (value >= 0.25) {
+                    td.style.background = 'rgb(50,152,102,255)';
+                }      
             };   
+        const sctrRenderDown = (
+                instance,
+                td,
+                row,
+                col,
+                prop,
+                value,
+                cellProperties
+            ) => {
+                Handsontable.renderers.NumericRenderer(
+                    instance,
+                    td,
+                    row,
+                    col,
+                    prop,
+                    value,
+                    cellProperties
+                );
+
+                td.style.fontWeight = 'bold';
+                td.style.textAlign = 'right';
+                td.style.color = 'black';
+
+                if (value >= 0.25) {
+                    td.style.background = 'rgb(225,102,103,255)';
+                }
+                if (value >= 0.20) {
+                    td.style.background = 'rgb(255, 102, 102, 0.4)';
+                }      
+                if (value >= 0.15) {
+                    td.style.background = 'rgb(255, 153, 153, 0.4)';
+                }                                  
+                if (value < 0.10) {
+                    td.style.background = 'rgb(255, 255, 204, 0.4)';
+                }
+                if (value < 0.05) {
+                    td.style.background = 'rgb(193, 241, 214, 1)';
+                }
+            };               
 
         function callApi() {
             consoleText.innerText = 'API Loading ...';
@@ -182,7 +202,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderUp
                     },
                     {
                         title: 'XLCU',
@@ -192,7 +212,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderUp
                     },
                     {
                         title: 'XLYU',
@@ -202,7 +222,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderUp
                     },
                     {
                         title: 'XLPU',
@@ -212,7 +232,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderUp
                     },
                     {
                         title: 'XLEU',
@@ -222,7 +242,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderUp
                     },
                     {
                         title: 'XLFU',
@@ -232,7 +252,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderUp
                     },
                     {
                         title: 'XLVU',
@@ -242,7 +262,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderUp
                     },
                     {
                         title: 'XLIU',
@@ -252,7 +272,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderUp
                     },
                     {
                         title: 'XLREU',
@@ -262,7 +282,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderUp
                     },
                     {
                         title: 'XLKU',
@@ -272,7 +292,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderUp
                     },
                     {
                         title: 'XLUU',
@@ -282,7 +302,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderUp
                     }                                                
                 ],
                 licenseKey: 'non-commercial-and-evaluation',
@@ -318,7 +338,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderDown
                     },
                     {
                         title: 'XLCD',
@@ -328,7 +348,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderDown
                     },
                     {
                         title: 'XLYD',
@@ -338,7 +358,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderDown
                     },
                     {
                         title: 'XLPD',
@@ -348,7 +368,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderDown
                     },
                     {
                         title: 'XLED',
@@ -358,7 +378,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderDown
                     },
                     {
                         title: 'XLFD',
@@ -368,7 +388,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderDown
                     },
                     {
                         title: 'XLVD',
@@ -378,7 +398,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderDown
                     },
                     {
                         title: 'XLID',
@@ -388,7 +408,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderDown
                     },
                     {
                         title: 'XLRED',
@@ -398,7 +418,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderDown
                     },
                     {
                         title: 'XLKD',
@@ -408,7 +428,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderDown
                     },
                     {
                         title: 'XLUD',
@@ -418,7 +438,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                             pattern: '0.00%',
                             culture: 'en-US',
                         },
-                        renderer: sctrRender
+                        renderer: sctrRenderDown
                     }                                                
                 ],
                 licenseKey: 'non-commercial-and-evaluation',
@@ -440,7 +460,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 chartType,
                 sort } = await handleInputParameters();
             
-            if (taIndicator === 'U') {
+            if (taIndicator == 'U') {
                 initHandSonTableForUp();
             } else {
                 initHandSonTableForDn();
