@@ -46,16 +46,12 @@ select * from DAILY_MARKET_STATS
 order by dt desc
 
 delete from "daily_stock_stats"
-where dt >= '20250813'
+where dt >= '20250822'
 
-commit
+select * from "DAILY_STOCK_STATS"
+where dt = '20250822'
 
-
-        select dt from ( 
-            SELECT dt FROM DAILY_STOCK_PRICE 
-            group by dt 
-            order by dt desc 
-            limit 200 
-        ) 
-        except 
-        select dt from daily_stock_stats group by dt`;
+and vp_low > 0 or vp_low is not null
+and close > 0
+order by (close - vp_low) / close desc
+order by dt desc
