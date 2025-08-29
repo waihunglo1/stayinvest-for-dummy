@@ -79,6 +79,9 @@
 
             strChartType = chartType; // Store the chart type for later use
             strStockCodes = inputStockCodes; // Store the stock codes for later use
+
+            const remark = document.getElementById("remark").value;
+            remark.innerText = inpuStockCodes;
         }
 
         async function handleButtonClick() {
