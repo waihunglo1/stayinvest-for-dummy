@@ -46,10 +46,10 @@ select * from DAILY_MARKET_STATS
 order by dt desc
 
 delete from "daily_stock_stats"
-where dt >= '20250822'
+where dt >= '20250818'
 
 select * from "DAILY_STOCK_STATS"
-where dt = '20250822'
+where dt >= '20250818'
 
 and vp_low > 0 or vp_low is not null
 and close > 0
