@@ -103,15 +103,15 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 }
 
                 if (col == 2) {
-                    if (value >= 0.097) {
-                        td.style.background = 'rgb(225,102,103,255)';
-                    }
-                    if (value >= 0.077) {
-                        td.style.background = 'rgb(255, 102, 102, 0.4)';
-                    }      
                     if (value >= 0.067) {
                         td.style.background = 'rgb(255, 153, 153, 0.4)';
-                    }                                  
+                    }                       
+                    if (value >= 0.077) {
+                        td.style.background = 'rgb(255, 102, 102, 0.4)';
+                    }                       
+                    if (value >= 0.097) {
+                        td.style.background = 'rgb(225, 102, 103, 255)';
+                    }       
                     if (value < 0.067) {
                         td.style.background = 'rgb(255, 255, 204, 0.4)';
                     }
