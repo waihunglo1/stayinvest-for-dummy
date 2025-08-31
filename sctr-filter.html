@@ -60,7 +60,7 @@
     <script type="module">
         import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle, handleInputParameters } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
-        import { gotoPage, createImageElement, addMouseEventListenerToImage, addButton, addHref, addSelectedRangeButton } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
+        import { gotoPage, createImageElement, addMouseEventListenerToImage, addButton, addHref, addSelectedRangeButton, addFilterDataButton } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
         import { emoji, isEmpty, fixedDecimalPlaces, uniqueArray3 } from "/stayinvest-for-dummy/js/utils.js";
 
         const universeMap = new Map([
@@ -249,6 +249,7 @@
                 addHref(parentId, sector, taIndicator, chartType, sector, symbols.join(","), true);
             });
 
+            addFilterDataButton(parentId, handSonTable, taIndicator, chartType, "FILTER DATA", true);
             addSelectedRangeButton(parentId, handSonTable, taIndicator, chartType, "SELECTED RANGE", true);
         }
 

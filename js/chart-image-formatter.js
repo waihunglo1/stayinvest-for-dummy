@@ -177,6 +177,25 @@ export function addSelectedRangeButton(parentId, hottable, taIndicator, chartTyp
     document.getElementById(parentId).appendChild(hrefElement);
 }
 
+export function addFilterDataButton(parentId, hottable, taIndicator, chartType, title, needNewTab) {
+    const hrefElement = document.createElement("a");
+    hrefElement.setAttribute("class","dropdown-item");
+    hrefElement.innerText = title;
+    hrefElement.setAttribute('href', 'javascript:void(0);');
+    hrefElement.onclick = function() 
+    {
+        const selected = hottable.getDataAtCol(0) || [];
+        const data = [];
+
+        for (let i = 0; i < selected.length; i += 1) {
+            const item = selected[i];
+            data.push(hottable.getData(...item));
+        }
+        snapshotsForStockCodes(taIndicator, chartType, title, data.join(","), needNewTab); 
+    };
+    document.getElementById(parentId).appendChild(hrefElement);
+}
+
 function snapshotsForStockCodes(taIndicator, period, title, inputStockCodes, needNewTab) {
     const stockChartLink = "snapshots-aa.html?d={title}&t={type}&a={taIndicator}&o={stockCodes}";
     // const params = new URLSearchParams(document.location.search);
