@@ -189,7 +189,7 @@ export function addFilterDataButton(parentId, hottable, taIndicator, chartType, 
 
         for (let i = 0; i < selected.length; i += 1) {
             const item = selected[i];
-            data.push(hottable.getData(...item));
+            data.push(item);
         }
         snapshotsForStockCodes(taIndicator, chartType, title, data.join(","), needNewTab); 
     };
