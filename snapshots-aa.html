@@ -36,6 +36,7 @@
         import { emoji, isEmpty, fixedDecimalPlaces, uniqueArray3 } from "/stayinvest-for-dummy/js/utils.js";
 
         const consoleText = document.querySelector('#output');
+        const strStockCodesText = document.querySelector('#strStockCodesText');
         var strStockCodes = "";
         var strChartType = "";
 
@@ -80,7 +81,7 @@
             strChartType = chartType; // Store the chart type for later use
             strStockCodes = inputStockCodes; // Store the stock codes for later use
 
-            document.getElementById("remark").value = inputStockCodes; 
+            strStockCodesText.innerText = inputStockCodes;
         }
 
         async function handleButtonClick() {
@@ -156,7 +157,7 @@
     <div id="top_row_home"></div>
     <div id="img_home"></div>
     <div id="progress_home"></div>
-
+    <div id="strStockCodesText"></div>
 </body>
 
 </html>
