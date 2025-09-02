@@ -55,3 +55,14 @@ and vp_low > 0 or vp_low is not null
 and close > 0
 order by (close - vp_low) / close desc
 order by dt desc
+
+select * from "DAILY_STOCK_STATS"
+where symbol = '2228.HK'
+order by dt desc
+
+
+select symbol, (vp_high - close) / close  from "DAILY_STOCK_STATS"
+where dt = '20250901'
+and (vp_high - close) / close > 0
+and (vp_high - close) / close < 0.05
+and sma10turnover > 20000000
