@@ -425,9 +425,23 @@
                             renderer: sctrRender
                         },                                                                                                
                         {
-                            title: 'Delta',
+                            title: 'BO',
+                            type: 'boolean',
+                            data: 'area_breakout'
+                        },
+                        {
+                            title: 'VPL',
                             type: 'numeric',
-                            data: 'delta',
+                            data: 'vp_low',
+                            numericFormat: {
+                                pattern: '0,0.00',
+                                culture: 'en-US',
+                            }
+                        },
+                        {
+                            title: 'VPH',
+                            type: 'numeric',
+                            data: 'vp_high',
                             numericFormat: {
                                 pattern: '0,0.00',
                                 culture: 'en-US',
