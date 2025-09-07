@@ -156,9 +156,13 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             let url = 'https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/mm/hk';
 
             fetch(url).then((response) => {
+                var consoleText = "";
                 response.json().then((rows) => {
                     // modify data
                     rows.forEach(dataRow => {
+                        if(consoleText == "") {
+                            consoleText = dataRow.date;
+                        }
                         dataRow.percentUp4pct1d = dataRow.up4pct1d / dataRow.noofstocks;
                         dataRow.percentDn4pct1d = dataRow.dn4pct1d / dataRow.noofstocks;
                         dataRow.percentUp25pctin100d = dataRow.up25pctin100d / dataRow.noofstocks;
@@ -175,7 +179,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     handSonTable.loadData(rows)
                 });
 
-                consoleText.innerText = 'API called';
+                consoleText.innerText = consoleText;
             });
         }
 
