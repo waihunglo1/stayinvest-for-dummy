@@ -55,12 +55,12 @@ function createTestBtn(name, onClick, isContextMenu = false) {
 export function addMouseEventListenerToImage(element, stockCode, universe) {
     element.addEventListener('contextmenu', (event) => {
         event.preventDefault();
-        gotoPage(stockCode, universe, 'leftClick');
+        gotoPage(stockCode, universe, null, 'leftClick');
     });
 
     element.addEventListener('click', function(ev) {
         ev.preventDefault();
-        gotoPage(stockCode, 'und', 'rightClick');
+        gotoPage(stockCode, 'und', null, 'rightClick');
         return false;
     }, false);    
 }

@@ -65,7 +65,7 @@ export function resolveTargetPageLink(stockCode, universe, tradingViewCode, clic
         refLink = "https://stockcharts.com/sc3/ui/?s={stockCode}";
     } else if (shouldTradingViewSupport(universe, stockCode)) {
         refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
-        if(!isEmpty(tradingViewCode, stockCode)) {
+        if(!isEmpty(tradingViewCode)) {
             refStockCode = tradingViewCode;
         }
         refStockCode = refStockCode.replace("^","");
