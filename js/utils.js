@@ -57,6 +57,7 @@ export function resolveTargetPageLink(stockCode, universe, tradingViewCode, clic
     if (stockCode.includes(".HK") && clickType === 'leftClick') {
         refLink = "https://www.stockfisher.com.hk/ticker/{stockCode}";
     } else if (stockCode.includes(".HK") && clickType === 'rightClick') {
+        var refStockCode = stockCode.replace(".HK", "").replace(/^0+/, '');
         refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
     } else if (isCcyPair(stockCode)) {
         refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
