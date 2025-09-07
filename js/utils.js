@@ -50,12 +50,14 @@ export function isEmpty(value) {
     );
 }
 
-export function resolveTargetPageLink(stockCode, universe, tradingViewCode) {
+export function resolveTargetPageLink(stockCode, universe, tradingViewCode, clickType) {
     var refLink = "https://www.stockfisher.com.hk/us-stock/ticker/{stockCode}";
     var refStockCode = stockCode;
 
-    if (stockCode.includes(".HK")) {
+    if (stockCode.includes(".HK") && clickType === 'leftClick') {
         refLink = "https://www.stockfisher.com.hk/ticker/{stockCode}";
+    } else if (stockCode.includes(".HK") && clickType === 'rightClick') {
+        refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
     } else if (isCcyPair(stockCode)) {
         refLink = "https://www.tradingview.com/chart/?symbol={stockCode}";
         refStockCode = refStockCode.replace("$","");

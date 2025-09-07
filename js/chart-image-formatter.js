@@ -55,12 +55,12 @@ function createTestBtn(name, onClick, isContextMenu = false) {
 export function addMouseEventListenerToImage(element, stockCode, universe) {
     element.addEventListener('contextmenu', (event) => {
         event.preventDefault();
-        gotoPage(stockCode, universe);
+        gotoPage(stockCode, universe, 'leftClick');
     });
 
     element.addEventListener('click', function(ev) {
         ev.preventDefault();
-        gotoPage(stockCode, 'und');
+        gotoPage(stockCode, 'und', 'rightClick');
         return false;
     }, false);    
 }
@@ -136,8 +136,8 @@ export function resolveStockChartImageLink(stockCode, period, taIndicator) {
  * @param {*} stockCode 
  * @param {*} universe 
  */
-export function gotoPage(stockCode, universe, tradingViewSymbol) {
-    const hrefLink = resolveTargetPageLink(stockCode, universe, tradingViewSymbol);
+export function gotoPage(stockCode, universe, tradingViewSymbol, clickType = 'leftClick') {
+    const hrefLink = resolveTargetPageLink(stockCode, universe, tradingViewSymbol, clickType);
     window.open(hrefLink, Date.now()).focus();
 }
 
