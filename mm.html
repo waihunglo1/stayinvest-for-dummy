@@ -131,6 +131,16 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 }
 
                 if (col == 8) {
+                    if (value <= 0.25) {
+                        td.style.background = 'rgb(193, 241, 214, 1)';
+                    }
+
+                    if (value >= 0.75) {
+                        td.style.background = 'rgb(225,102,103,255)';
+                    }                    
+                } 
+                
+                if (col == 9) {
                     if (value <= 0.3) {
                         td.style.background = 'rgb(193, 241, 214, 1)';
                     }
@@ -138,7 +148,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                     if (value >= 0.7) {
                         td.style.background = 'rgb(225,102,103,255)';
                     }                    
-                }                
+                }                   
             };   
 
         function callApi() {
@@ -158,6 +168,7 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         dataRow.percentUp50pctin20d = dataRow.up50pctin20d / dataRow.noofstocks;
                         dataRow.percentDn50pctin20d = dataRow.dn50pctin20d / dataRow.noofstocks;
                         dataRow.above20smapctindecimal = dataRow.above20smapct / 100;
+                        dataRow.above50smapctindecimal = dataRow.above50smapct / 100;
                         dataRow.above200smapctindecimal = dataRow.above200smapct / 100;
                     });
 
@@ -242,6 +253,16 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         title: 'T020',
                         type: 'numeric',
                         data: 'above20smapctindecimal',
+                        numericFormat: {
+                            pattern: '0.00%',
+                            culture: 'en-US',
+                        },
+                        renderer: sctrRender
+                    },
+                    {
+                        title: 'T050',
+                        type: 'numeric',
+                        data: 'above50smapctindecimal',
                         numericFormat: {
                             pattern: '0.00%',
                             culture: 'en-US',
