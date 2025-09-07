@@ -156,8 +156,9 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
             let url = 'https://vercel-express-azure-gamma.vercel.app/api/v1/dscan/mm/hk';
 
             fetch(url).then((response) => {
-                var strConsole = "";
+                
                 response.json().then((rows) => {
+                    var strConsole = "";
                     // modify data
                     rows.forEach(dataRow => {
                         if(strConsole == "") {
@@ -175,11 +176,9 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                         dataRow.above50smapctindecimal = dataRow.above50smapct / 100;
                         dataRow.above200smapctindecimal = dataRow.above200smapct / 100;
                     });
-
-                    handSonTable.loadData(rows)
+                    handSonTable.loadData(rows);
+                    consoleText.innerText = strConsole;
                 });
-
-                consoleText.innerText = strConsole;
             });
         }
 
