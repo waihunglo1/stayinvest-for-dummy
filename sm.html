@@ -84,6 +84,9 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 td.style.textAlign = 'right';
                 td.style.color = 'black';
 
+                if (value < 0.05) {
+                    td.style.background = 'rgb(165, 42, 42, 1)';
+                }
 
                 if (value < 0.10) {
                     td.style.background = 'rgb(255, 153, 153, 0.4)';
