@@ -84,13 +84,6 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
                 td.style.textAlign = 'right';
                 td.style.color = 'black';
 
-                if (value < 0.05) {
-                    td.style.background = 'rgb(165, 42, 42, 1)';
-                }
-
-                if (value < 0.10) {
-                    td.style.background = 'rgb(255, 153, 153, 0.4)';
-                }
 
                 if (value >= 0.10) {
                     td.style.background = 'rgb(255, 255, 204, 0.4)';
@@ -102,7 +95,16 @@ https://vercel-express-azure-gamma.vercel.app/api/v1/stockcharts/j-sum/sum?cmd=s
 
                 if (value >= 0.25) {
                     td.style.background = 'rgb(50,152,102,255)';
-                }      
+                }
+                
+                if (value < 0.10) {
+                    td.style.background = 'rgb(255, 153, 153, 0.4)';
+                }
+
+                if (value < 0.05) {
+                    td.style.background = 'rgb(165, 42, 42, 1)';
+                }                
+                
             };   
         const sctrRenderDown = (
                 instance,
