@@ -234,10 +234,10 @@
 
             var sectorsFreq = arrayReduce(sectors);
             // var sectorsUniq = uniqueArray3(sectors);
-            sectorsFreq.forEach(function (sectorFreq) {
+            sectorsFreq.forEach((value, key) => {
                 var symbols = dataRow
                     .map(function (item) {
-                        if (item.sector == sectorFreq.key && item.SCTR >= sctrThreshold && item.turnOverInMillion >= 20) {
+                        if (item.sector == key && item.SCTR >= sctrThreshold && item.turnOverInMillion >= 20) {
                             return item['symbol'];
                         } else {
                             return null;
@@ -245,7 +245,7 @@
                     }).filter(item => item !== null);
                 var symbolsUniq = uniqueArray3(symbols);
 
-                addHref(parentId, sectorFreq.key, taIndicator, chartType, sectorFreq.key, symbolsUniq.join(","), true);
+                addHref(parentId, key, taIndicator, chartType, key, symbolsUniq.join(","), true);
             });
 
             addFilterDataButton(parentId, handSonTable, taIndicator, chartType, "FILTER DATA", true);
