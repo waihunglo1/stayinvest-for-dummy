@@ -233,11 +233,11 @@
             });
 
             var sectorsFreq = arrayReduce(sectors);
-            var sectorsUniq = uniqueArray3(sectors);
-            sectorsUniq.forEach(function (sector) {
+            // var sectorsUniq = uniqueArray3(sectors);
+            sectorsFreq.forEach(function (sectorFreq) {
                 var symbols = dataRow
                     .map(function (item) {
-                        if (item.sector == sector && item.SCTR >= sctrThreshold && item.turnOverInMillion >= 20) {
+                        if (item.sector == sectorFreq.key && item.SCTR >= sctrThreshold && item.turnOverInMillion >= 20) {
                             return item['symbol'];
                         } else {
                             return null;
@@ -245,7 +245,7 @@
                     }).filter(item => item !== null);
                 var symbolsUniq = uniqueArray3(symbols);
 
-                addHref(parentId, sector, taIndicator, chartType, sector, symbolsUniq.join(","), true);
+                addHref(parentId, sectorFreq.key, taIndicator, chartType, sectorFreq.key, symbolsUniq.join(","), true);
             });
 
             addFilterDataButton(parentId, handSonTable, taIndicator, chartType, "FILTER DATA", true);
