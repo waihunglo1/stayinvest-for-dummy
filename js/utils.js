@@ -138,6 +138,6 @@ export function arrayReduce(arr) {
         return accumulator;
     }, {});
 
-    console.log(uniqueGroupCount);
+    // console.log(uniqueGroupCount);
     return uniqueGroupCount;
 }

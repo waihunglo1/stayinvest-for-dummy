@@ -233,8 +233,8 @@
             });
 
             var sectorsFreq = arrayReduce(sectors);
-            // var sectorsUniq = uniqueArray3(sectors);
-            sectorsFreq.forEach((value, key) => {
+            var sectorsUniq = uniqueArray3(sectors);
+            sectorsUniq.forEach((key) => {
                 var symbols = dataRow
                     .map(function (item) {
                         if (item.sector == key && item.SCTR >= sctrThreshold && item.turnOverInMillion >= 20) {
