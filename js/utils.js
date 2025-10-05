@@ -129,3 +129,15 @@ export function uniqueArray3(a) {
 
   return unique;
 }
+
+export function arrayReduce(arr) {
+    const uniqueGroupCount = arr.reduce((accumulator, currentValue) => {
+        // If the element already exists as a key in the accumulator object, increment its count.
+        // Otherwise, initialize its count to 1.
+        accumulator[currentValue] = (accumulator[currentValue] || 0) + 1;
+        return accumulator;
+    }, {});
+
+    console.log(uniqueGroupCount);
+    return uniqueGroupCount;
+}

@@ -59,7 +59,7 @@
         import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle, handleInputParameters } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
         import { gotoPage, createImageElement, addMouseEventListenerToImage, addButton, addHref, addSelectedRangeButton, addFilterDataButton } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
-        import { emoji, isEmpty, fixedDecimalPlaces, uniqueArray3 } from "/stayinvest-for-dummy/js/utils.js";
+        import { emoji, isEmpty, fixedDecimalPlaces, uniqueArray3, arrayReduce } from "/stayinvest-for-dummy/js/utils.js";
 
         const universeMap = new Map([
             ['L', 'lrg'],
@@ -232,8 +232,9 @@
                 return item['sector'];
             });
 
-            sectors = uniqueArray3(sectors);
-            sectors.forEach(function (sector) {
+            var sectorsFreq = arrayReduce(sectors);
+            var sectorsUniq = uniqueArray3(sectors);
+            sectorsUniq.forEach(function (sector) {
                 var symbols = dataRow
                     .map(function (item) {
                         if (item.sector == sector && item.SCTR >= sctrThreshold && item.turnOverInMillion >= 20) {
@@ -242,9 +243,9 @@
                             return null;
                         }
                     }).filter(item => item !== null);
-                symbols = uniqueArray3(symbols);
+                var symbolsUniq = uniqueArray3(symbols);
 
-                addHref(parentId, sector, taIndicator, chartType, sector, symbols.join(","), true);
+                addHref(parentId, sector, taIndicator, chartType, sector, symbolsUniq.join(","), true);
             });
 
             addFilterDataButton(parentId, handSonTable, taIndicator, chartType, "FILTER DATA", true);
