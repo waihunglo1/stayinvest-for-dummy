@@ -104,11 +104,6 @@ data:
     chartDataSource: SC
     category: SENTIMENT
     data: $XDN,$XDA,$XDB,SZAR,$XDC,$XDE,$XDS,$USDSEK,$USD,UUP,$USDJPY
-    shouldSort: true    
-  - desc: CRYPTO-CURRENCY
-    chartDataSource: SC
-    category: SENTIMENT
-    data: $BTCUSD,$ETHUSD,$XRPUSD,$BCHUSD,$USDTUSD,$LTCUSD,$BNBUSD,$LINKUSD,$TRXUSD,$XLMUSD,$XMRUSD,$DOGEUSD
-    shouldSort: true     
+    shouldSort: true
 
 
