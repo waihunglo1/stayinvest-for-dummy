@@ -167,18 +167,23 @@
             fetch(url).then((response) => {
                 response.json().then((rows) => {
                     const firstElement = rows.shift();
+                    var sctr_2800_HK = 0;
 
                     // modify data
                     rows.forEach(dataRow => {
                         dataRow.marketCapInBillion = 0;
                         dataRow.turnOverInMillion = dataRow.sma10turnover / 1.0e+6;
                         dataRow.cap = universeMap.get(marketCapSelect.value);
+
+                        if(dataRow.symbol == '2800.HK') {
+                            sctr_2800_HK = dataRow.SCTR;
+                        }
                     });
 
                     insertSectorsButtons(rows, selectedChartType);
 
                     handSonTable.loadData(rows)
-                    consoleText.innerText = 'Date :' + firstElement.date;
+                    consoleText.innerText = 'Date :' + firstElement.date + (sctr_2800_HK != 0 ? " / " + sctr_2800_HK : "");
                 });
             });            
         }
