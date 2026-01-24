@@ -344,7 +344,21 @@
                     // enable filtering
                     filters: true,
                     // enable the column menu, but display only the filter menu items
-                    dropdownMenu: ['filter_by_condition', 'filter_by_value', 'filter_action_bar']
+                    dropdownMenu: ['filter_by_condition', 'filter_by_value', 'filter_action_bar'],
+                    multiColumnSorting: {
+                        initialConfig: [
+                            // at initialization, sort the data by the 'Brand' column, in ascending order
+                            {
+                                column: 2,
+                                sortOrder: 'desc',
+                            },
+                            // at initialization, sort the data by the 'Model' column, in descending order
+                            {
+                                column: 4,
+                                sortOrder: 'desc',
+                            },
+                        ],
+                    }
                 });
             }
 
@@ -475,7 +489,21 @@
                     // enable filtering
                     filters: true,
                     // enable the column menu, but display only the filter menu items
-                    dropdownMenu: ['filter_by_condition', 'filter_by_value', 'filter_action_bar']
+                    dropdownMenu: ['filter_by_condition', 'filter_by_value', 'filter_action_bar'],
+                    multiColumnSorting: {
+                        initialConfig: [
+                            // at initialization, sort the data by the 'Brand' column, in ascending order
+                            {
+                                column: 2,
+                                sortOrder: 'desc',
+                            },
+                            // at initialization, sort the data by the 'Model' column, in descending order
+                            {
+                                column: 4,
+                                sortOrder: 'desc',
+                            },
+                        ],
+                    }
                 });
             }
         }
