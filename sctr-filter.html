@@ -480,7 +480,7 @@
             }
 
             handSonTable.addHook('afterLoadData', () => {
-                const columnSorting = hot.getPlugin('columnSorting');
+                const columnSorting = handSonTable.getPlugin('columnSorting');
 
                 // Define the desired sort configuration: e.g., column 0, ascending
                 const sortConfig = [
