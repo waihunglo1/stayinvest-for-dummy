@@ -171,3 +171,21 @@ a:hover.hover-img span {
     top: 20px;
     left: 0;
 }
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Creates a responsive grid */
+    gap: 10px; /* Adds space between images */
+}
+
+.gallery img {
+    width: 100%; /* Ensures images fill their grid container */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 8px; /* Optional: adds rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow */
+    transition: transform 0.2s; /* Optional: smooth transition for hover effect */
+}
+
+.gallery img:hover {
+    transform: scale(1.05); /* Optional: makes images slightly larger on hover */
+}
