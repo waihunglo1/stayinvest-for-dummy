@@ -478,28 +478,6 @@
                     dropdownMenu: ['filter_by_condition', 'filter_by_value', 'filter_action_bar']
                 });
             }
-
-            handSonTable.addHook('afterLoadData', () => {
-                const columnSorting = handSonTable.getPlugin('columnSorting');
-
-                // Define the desired sort configuration: e.g., column 0, ascending
-                const sortConfig = [
-                    // at initialization, sort the data by the 'Brand' column, in ascending order
-                    {
-                        column: 2,
-                        sortOrder: 'desc',
-                    },
-                    // at initialization, sort the data by the 'Model' column, in descending order
-                    {
-                        column: 4,
-                        sortOrder: 'desc',
-                    },
-                ];
-
-                // Apply the sort configuration
-                columnSorting.sort(sortConfig);
-            });
-
         }
         async function parseLocationAndShowTable() {
             let {
