@@ -93,7 +93,7 @@ data:
   - desc: MARKET-BREATH
     chartDataSource: SC
     category: SENTIMENT
-    data: $NAA20R,$NAA50R,$NAA200R,$SPXA20R,$SPXA50R,$SPXA200R,$DOWA20R,$DOWA50R,$DOWA200R
+    data: $NAA20R,$NAA50R,$NAA200R,$SPXA20R,$SPXA50R,$SPXA200R,$DOWA20R,$DOWA50R,$DOWA200R,!NAAIM
     shouldSort: false    
   - desc: BOND-YIELD
     chartDataSource: SC
