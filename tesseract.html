@@ -81,7 +81,8 @@
         }  
 
         function cleanStringWithoutDollar() {
-            var commaString = removeLineBreakThenJoinByComma();
+            var tempStr = document.getElementById("convertedText").value;
+            var commaString = tempStr.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
             var formatString = commaString
                 .split(",")
                 .filter(entry => entry.includes("$"))
@@ -91,7 +92,8 @@
         }
 
         function removeDollarSign() {
-            var commaString = removeLineBreakThenJoinByComma();
+            var tempStr = document.getElementById("convertedText").value;
+            var commaString = tempStr.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
             var formatString = commaString
                 .split(",")
                 .map(entry => entry.replace("$", ""))
