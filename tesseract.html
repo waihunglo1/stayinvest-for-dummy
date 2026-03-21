@@ -60,15 +60,28 @@
             window.location = tempChartLink;
         }        
 
-        function removeLinesCommaJoin() {
+        function removeDuplicate() {
+            // 1. Split the string into an array of values
+            const valuesArray = document.getElementById("convertedText").value.split(",");
+
+            // 2. Use a Set to store only unique values
+            const uniqueValues = new Set(valuesArray);
+
+            // 3. Convert the Set back into an array using the spread syntax
+            const uniqueArray = [...uniqueValues];
+
+            // 4. put it back to converted text
+            document.getElementById("convertedText").value = uniqueArray.join(',');;
+        }
+
+        function removeLineBreakThenJoinByComma() {
             var tempStr = document.getElementById("convertedText").value;
             var commaString = tempStr.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
             document.getElementById("convertedText").value = commaString;
         }  
 
-        function removeStringWithoutDollar() {
-            var tempStr = document.getElementById("convertedText").value;
-            var commaString = tempStr.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
+        function cleanStringWithoutDollar() {
+            var commaString = removeLineBreakThenJoinByComma();
             var formatString = commaString
                 .split(",")
                 .filter(entry => entry.includes("$"))
@@ -78,8 +91,7 @@
         }
 
         function removeDollarSign() {
-            var tempStr = document.getElementById("convertedText").value;
-            var commaString = tempStr.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
+            var commaString = removeLineBreakThenJoinByComma();
             var formatString = commaString
                 .split(",")
                 .map(entry => entry.replace("$", ""))
@@ -139,8 +151,8 @@
     <div class="topRow">
         <textarea cols="20" name="original" rows="10" style="width: 80%;" id="convertedText"></textarea>
         <br/>
-        <button class="button-6" role="button" onclick="removeLinesCommaJoin()" >🚿 Clean Data</button>
-        <button class="button-6" role="button" onclick="removeStringWithoutDollar();removeDollarSign();" >✂️ Filter $$ Data</button>
+        <button class="button-6" role="button" onclick="removeLineBreakThenJoinByComma();removeDuplicate();" >🚿 rm linebreak</button>
+        <button class="button-6" role="button" onclick="cleanStringWithoutDollar();removeDollarSign();removeDuplicate();" >✂️ Filter $Data</button>
         <button class="button-6" role="button" onclick="gotoStockCharts2M()" >📈 See Charts 2M</button>
         <button class="button-6" role="button" onclick="gotoStockCharts6M()" >🈷️ See Charts 6M</button>
         <button class="button-6" role="button" onclick="addDoubleQuote()" >🎵 Add Quotes</button>
