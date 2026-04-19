@@ -60,9 +60,9 @@
             window.location = tempChartLink;
         }        
 
-        function removeDuplicate() {
+        function removeDuplicate(str) {
             // 1. Split the string into an array of values
-            const valuesArray = document.getElementById("convertedText").value.split(",");
+            const valuesArray = str.split(",");
 
             // 2. Use a Set to store only unique values
             const uniqueValues = new Set(valuesArray);
@@ -71,35 +71,31 @@
             const uniqueArray = [...uniqueValues];
 
             // 4. put it back to converted text
-            document.getElementById("convertedText").value = uniqueArray.join(',');;
+            return uniqueArray.join(',');;
         }
 
-        function removeLineBreakThenJoinByComma() {
+        function handleConvertedTextField() {
+            // (1) removeLineBreakThenJoinByComma
             var tempStr = document.getElementById("convertedText").value;
             var commaString = tempStr.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
-            document.getElementById("convertedText").value = commaString;
-        }  
 
-        function cleanStringWithoutDollar() {
-            var tempStr = document.getElementById("convertedText").value;
-            var commaString = tempStr.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
-            var formatString = commaString
-                .split(",")
-                .filter(entry => entry.includes("$"))
-                .join(",");
+            // (2) if include $
+            if (commaString.includes('$')) {
+                // remove strings without dollar sign
+                var fieldsWithDollar = commaString
+                    .split(",")
+                    .filter(entry => entry.includes("$"))
+                    .join(",");
+                
+                // left out fields, and remove $
+                commaString = fieldsWithDollar
+                    .split(",")
+                    .map(entry => entry.replace("$", ""))
+                    .join(",");
+            }
 
-            document.getElementById("convertedText").value = formatString;
-        }
-
-        function removeDollarSign() {
-            var tempStr = document.getElementById("convertedText").value;
-            var commaString = tempStr.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, "").replace(/[\n\r| ]/g, ',');
-            var formatString = commaString
-                .split(",")
-                .map(entry => entry.replace("$", ""))
-                .join(",");
-
-            document.getElementById("convertedText").value = formatString;
+            // (3) rermove duplicate
+            document.getElementById("convertedText").value = removeDuplicate(commaString);
         }
 
         function addDoubleQuote() {
@@ -153,8 +149,7 @@
     <div class="topRow">
         <textarea cols="20" name="original" rows="10" style="width: 80%;" id="convertedText"></textarea>
         <br/>
-        <button class="button-6" role="button" onclick="removeLineBreakThenJoinByComma();removeDuplicate();" >🚿 rm linebreak</button>
-        <button class="button-6" role="button" onclick="cleanStringWithoutDollar();removeDollarSign();removeDuplicate();" >✂️ Filter $Data</button>
+        <button class="button-6" role="button" onclick="handleConvertedTextField()" >✂️ Clean</button>
         <button class="button-6" role="button" onclick="gotoStockCharts2M()" >📈 See Charts 2M</button>
         <button class="button-6" role="button" onclick="gotoStockCharts6M()" >🈷️ See Charts 6M</button>
         <button class="button-6" role="button" onclick="addDoubleQuote()" >🎵 Add Quotes</button>
