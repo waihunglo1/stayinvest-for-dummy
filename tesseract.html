@@ -41,9 +41,14 @@
         function gotoStockCharts2M() {
             var stockCodes = document.getElementById("convertedText").value;
             console.log("goto", stockCodes);
+            var t = "SC";
+            if (stockCodes.includes('.HK')) {
+                t = "HK";
+            }
 
-            const stockChartLink = "snapshots-aa.html?d=aasnapsnap&t=SC&o={stockCodes}";
+            const stockChartLink = "snapshots-aa.html?d=aasnapsnap&t={type}&o={stockCodes}";
             const tempChartLink = stockChartLink
+              .replace(/{type}/i, t)
               .replace(/{stockCodes}/i, stockCodes);
 
             window.location = tempChartLink;
@@ -53,8 +58,14 @@
             var stockCodes = document.getElementById("convertedText").value;
             console.log("goto", stockCodes);
 
-            const stockChartLink = "snapshots-aa.html?d=aasnapsnap&t=SC6M&o={stockCodes}";
+            var t = "SC";
+            if (stockCodes.includes('.HK')) {
+                t = "HK";
+            }
+
+            const stockChartLink = "snapshots-aa.html?d=aasnapsnap&t={type}6M&o={stockCodes}";
             const tempChartLink = stockChartLink
+              .replace(/{type}/i, t)            
               .replace(/{stockCodes}/i, stockCodes);
 
             window.location = tempChartLink;
@@ -71,7 +82,7 @@
             const uniqueArray = [...uniqueValues];
 
             // 4. put it back to converted text
-            return uniqueArray.join(',');;
+            return uniqueArray.join(',');
         }
 
         function handleConvertedTextField() {
