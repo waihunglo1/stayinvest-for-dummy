@@ -126,9 +126,12 @@
                 td.style.textAlign = 'right';
                 td.style.color = 'black';
 
-                if (parseInt(value, 10) >= 90) {
-                    td.style.background = 'rgb(183, 231, 204, 1)';
+                if (parseInt(value, 10) > 90) {
+                    td.style.background = 'rgb(173, 221, 194, 1)';
                 }
+                if (parseInt(value, 10) <= 90) {
+                    td.style.background = 'rgb(183, 231, 204, 1)';
+                }                
                 if (parseInt(value, 10) < 80) {
                     td.style.background = 'rgb(193, 241, 214, 1)';
                 }
