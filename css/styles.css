@@ -192,12 +192,10 @@ a:hover.hover-img span {
 
 /* Change font for all cells and headers */
 .handsontable {
-  font-family: 'Arial', sans-serif;
-  font-size: 10px;
+  font-size: 8px;
 }
 
 /* Change font specifically for headers */
 .handsontable th {
-  font-family: 'Courier New', monospace;
-  font-size: 12px;
+  font-size: 10px;
 }
