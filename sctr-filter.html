@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
     <title>SCTR REPORT FILTER PAGE</title>
+    <!-- handsontable -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/handsontable@15.3.0/dist/handsontable.full.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@15.3.0/styles/handsontable.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@15.3.0/styles/ht-theme-main.min.css" />
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong|Platypi|Noto Sans Traditional Chinese">
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
@@ -20,12 +25,6 @@
     <!-- progress bar -->
     <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
     <script type="text/javascript" src="js-3rd-party/loading-bar.js"></script>
-
-    <!-- handsontable -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/handsontable@15.3.0/dist/handsontable.full.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@15.3.0/styles/handsontable.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@15.3.0/styles/ht-theme-main.min.css" />
-
 </head>
 
 <body>
@@ -44,7 +43,7 @@
                 </div>
             </div>
 
-            <select id="marketCapSelect">
+            <select id="marketCapSelect" aria-label="Market Cap">
             </select>
             
             <output class="console" id="output"></output>
