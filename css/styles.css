@@ -192,5 +192,5 @@ a:hover.hover-img span {
 
 /* Apply globally or target a specific container wrapper */
 .handsontable {
-  --ht-font-size: 9px;
+  --ht-font-size: 12px;
 }
