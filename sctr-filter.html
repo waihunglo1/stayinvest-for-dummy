@@ -59,7 +59,7 @@
         import { loadStockCodesImageWithProgressBar, fetchPortfolios, appendLinkAndUpdateTitle, handleInputParameters } from "/stayinvest-for-dummy/js/main.js";
         import { fetchInGrid } from "/stayinvest-for-dummy/js/grid.js";
         import { gotoPage, createImageElement, addMouseEventListenerToImage, addButton, addHref, addSelectedRangeButton, addFilterDataButton } from "/stayinvest-for-dummy/js/chart-image-formatter.js";
-        import { emoji, isEmpty, fixedDecimalPlaces, uniqueArray3, arrayReduce } from "/stayinvest-for-dummy/js/utils.js";
+        import { emoji, isEmpty, fixedDecimalPlaces, uniqueArray3, arrayReduce, removeFirstPortion } from "/stayinvest-for-dummy/js/utils.js";
 
         const universeMap = new Map([
             ['L', 'lrg'],
@@ -206,6 +206,8 @@
 
                     // modify data
                     rows.data.forEach(dataRow => {
+                        dataRow.name = dataRow.name.length > 10 ? dataRow.name.slice(0, 10) : dataRow.name;
+                        dataRow.industry = removeFirstPortion(dataRow.industry);
                         dataRow.marketCapInBillion = dataRow.marketCap / 1.0e+9;
                         dataRow.turnOverInMillion = dataRow.vol * dataRow.close / 1.0e+6;
                         dataRow.cap = universeMap.get(marketCapSelect.value);

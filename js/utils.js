@@ -141,3 +141,16 @@ export function arrayReduce(arr) {
     // console.log(uniqueGroupCount);
     return uniqueGroupCount;
 }
+
+export function removeFirstPortion(str) {
+  // If the symbol isn't found, return the original string
+  if (!str.includes(' - ')) 
+    return str;
+  else
+    return str.split(' - ').slice(1).join(' - ');
+
+  if (!str.includes('—')) 
+    return str;
+  else
+    return str.split('—').slice(1).join('—');
+}
