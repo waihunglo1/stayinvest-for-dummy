@@ -27,41 +27,57 @@ stayinvest-for-dummy - A simple web app to help you stay invested in the stock m
     <!-- yaml -->
     <script type="text/javascript" src="js-3rd-party/js-yaml.min.js"></script>
 
-    <style>
-        .icon-large {
-            width: 100px;
-            height: 90px;
-        }
-    </style> 
-						🏈 <a href="https://docs.google.com/spreadsheets/d/18EWLoHkh2aiJIKQsJnjOjPo63QFxkUE2U_K8ffHCn1E/edit?usp=sharing" target="_BLANK" rel="noopener noreferrer">美股動能排序</a> /
-					        <a href="https://docs.google.com/spreadsheets/d/1BK5HUIL-6tJU2Kxlg5D9PNv1ZqPyqAU2SV48faL9bOQ/edit?usp=sharing" target="_BLANK" rel="noopener noreferrer">ETF動能排序</a>
+</head>
+
+<!-- body -->
+<body>
+	<h1>Stay Invest for Dummy</h1>
+	<div class="grid-container">
+		<div class="grid-item" style="color: #666666;">
+			<!-- Column 01 -->
+			<table>
+				<!-- Market Sentiment -->
+				<tr>
+					<td><img src="images/icons/presentation.gif" width="50" height="50" alt="Market sentiment icon" />
+					</td>
+					<td>	
+						<h2>MARKET SENTIMENT</h2>
+						😱 <a href="https://edition.cnn.com/markets/fear-and-greed" target="_BLANK" rel="noopener noreferrer">Fear And Greed</a>  
+					        <a href="https://en.macromicro.me/collections/34/us-stock-relative/50108/cnn-fear-and-greed" target="_BLANK">[Chart]</a>
+					       </br>
+						🪙 <a href="https://coinmarketcap.com/charts/fear-and-greed-index/" target="_BLANK">Crypto Fear and Greed</a></br>
+						⛅ <a href="https://www.barchart.com/stocks/momentum" target="_BLANK">Momentum</a> /
+					        <a href="https://docs.google.com/spreadsheets/d/1O6OhS7ciA8zwfycBfGPbP2fWJnR0pn2UUvFZVDP9jpE/edit?gid=1082103394#gid=1082103394" target="_BLANK">Stockbee</a>
 							</br>
-						🦋 <a href="/stayinvest-for-dummy/snapshots-aa.html?d=SECTOR&t=SC&a=U&o=XLY,XLC,XLK,XLI,XLB,XLE,XLP,XLV,XLU,XLF,XLRE" target="_BLANK" rel="noopener noreferrer">XLX</a> / 
-						    <a href="/stayinvest-for-dummy/snapshots-aa.html?d=EQUAL-WEIGHT&t=SC&a=U&o=RSP,RSPC,RSPD,RSPS,RSPG,RSPF,RSPH,RSPN,RSPM,RSPR,RSPT,RSPU" target="_BLANK" rel="noopener noreferrer">RSP</a></br>
-                        🏭 <a href="https://finviz.com/groups.ashx?g=industry&v=210&o=name" target="_blank" rel="noopener noreferrer">INDUSTRY</a> / 
-						    <a href="https://finviz.com/crypto.ashx?c=USD" target="_BLANK" rel="noopener noreferrer">CRYPTO</a>
+						🏈 <a href="https://docs.google.com/spreadsheets/d/18EWLoHkh2aiJIKQsJnjOjPo63QFxkUE2U_K8ffHCn1E/edit?usp=sharing" target="_BLANK">美股動能排序</a> /
+					        <a href="https://docs.google.com/spreadsheets/d/1BK5HUIL-6tJU2Kxlg5D9PNv1ZqPyqAU2SV48faL9bOQ/edit?usp=sharing" target="_BLANK">ETF動能排序</a>
+							</br>
+						🦋 <a href="/stayinvest-for-dummy/snapshots-aa.html?d=SECTOR&t=SC&a=U&o=XLY,XLC,XLK,XLI,XLB,XLE,XLP,XLV,XLU,XLF,XLRE" target="_BLANK">XLX</a> / 
+						    <a href="/stayinvest-for-dummy/snapshots-aa.html?d=EQUAL-WEIGHT&t=SC&a=U&o=RSP,RSPC,RSPD,RSPS,RSPG,RSPF,RSPH,RSPN,RSPM,RSPR,RSPT,RSPU" target="_BLANK">RSP</a></br>
+                        🏭 <a href="https://finviz.com/groups.ashx?g=industry&v=210&o=name" target="_blank">INDUSTRY</a> / 
+						    <a href="https://finviz.com/crypto.ashx?c=USD" target="_BLANK">CRYPTO</a>
 					        </br>
-						🦁 <a href="https://www.marketinout.com/chart/market.php?breadth=mcclellan-oscillator" target="_BLANK" rel="noopener noreferrer">McClellan Oscillator</a></br>
-						🚐 <a href="https://www.marketinout.com/chart/market.php?breadth=advance-decline-volume-line" target="_BLANK" rel="noopener noreferrer">Advance / Decline Volume Line</a></br>
-                        🤖 <a href="https://adanos.org/x-top-100-stocks#top100" target="_BLANK" rel="noopener noreferrer">Twitter T100</a> / <a href="https://adanos.org/reddit-stock-sentiment" target="_BLANK" rel="noopener noreferrer">Reddit T100</a></br>
+						🦁 <a href="https://www.marketinout.com/chart/market.php?breadth=mcclellan-oscillator" target="_BLANK">McClellan Oscillator</a></br>
+						🚐 <a href="https://www.marketinout.com/chart/market.php?breadth=advance-decline-volume-line" target="_BLANK">Advance / Decline Volume Line</a></br>
+                        🤖 <a href="https://adanos.org/x-top-100-stocks#top100" target="_BLANK">Twitter T100</a> / <a href="https://adanos.org/reddit-stock-sentiment" target="_BLANK">Reddit T100</a></br>
 
 						<h2>UNDERLYING SENTIMENT</h2>
-						💥 <a href="https://finviz.com/screener.ashx?v=710&p=w&f=cap_smallover,ind_stocksonly,sh_avgvol_o100,sh_price_o7,ta_highlow52w_a70h,ta_sma50_pa&ft=4&ta=0&o=-low52w" target="_BLANK" rel="noopener noreferrer">D-HMap</a> 
-						  / <a href="https://finviz.com/screener.ashx?v=710&p=w&f=cap_smallover%2Cind_stocksonly%2Csh_avgvol_o100%2Csh_price_o7%2Cta_highlow52w_a70h%2Cta_sma50_pa&ft=4&ta=0&o=-low52w&st=w1" target="_BLANK" rel="noopener noreferrer">W-HMap</a></br>						
-						㏠  <a href="https://finviz.com/map.ashx?t=sec" target="_BLANK" rel="noopener noreferrer">S&P500 HMap</a> / <a href="https://finviz.com/map.ashx?t=etf" target="_BLANK" rel="noopener noreferrer">ETF HMap</a></br>
-						㏤ <a href="https://finviz.com/map.ashx?t=sec&st=w1" target="_BLANK" rel="noopener noreferrer">S&P500 HMap</a> / <a href="https://finviz.com/map.ashx?t=etf&st=w1" target="_BLANK" rel="noopener noreferrer">ETF HMap</a></br>
-						📻 <a href="https://stockcharts.com/freecharts/sctr.html" target="_BLANK" rel="noopener noreferrer">SCTR</a> / 
-						    <a href="/stayinvest-for-dummy/sctr-filter.html?t=SC&d=SCTR-FILTER-US" target="_BLANK" rel="noopener noreferrer">US Filter</a> 
+						💥 <a href="https://finviz.com/screener.ashx?v=710&p=w&f=cap_smallover,ind_stocksonly,sh_avgvol_o100,sh_price_o7,ta_highlow52w_a70h,ta_sma50_pa&ft=4&ta=0&o=-low52w" target="_BLANK">D-HMap</a> 
+						  / <a href="https://finviz.com/screener.ashx?v=710&p=w&f=cap_smallover%2Cind_stocksonly%2Csh_avgvol_o100%2Csh_price_o7%2Cta_highlow52w_a70h%2Cta_sma50_pa&ft=4&ta=0&o=-low52w&st=w1" target="_BLANK">W-HMap</a></br>						
+						㏠  <a href="https://finviz.com/map.ashx?t=sec" target="_BLANK">S&P500 HMap</a> / <a href="https://finviz.com/map.ashx?t=etf" target="_BLANK">ETF HMap</a></br>
+						㏤ <a href="https://finviz.com/map.ashx?t=sec&st=w1" target="_BLANK">S&P500 HMap</a> / <a href="https://finviz.com/map.ashx?t=etf&st=w1" target="_BLANK">ETF HMap</a></br>
+						📻 <a href="https://stockcharts.com/freecharts/sctr.html" target="_BLANK">SCTR</a> / 
+						    <a href="/stayinvest-for-dummy/sctr-filter.html?t=SC&d=SCTR-FILTER-US" target="_BLANK">US Filter</a> 
 					        </br>
-						⭐ <a href="/stayinvest-for-dummy/portfolio.html" target="_blank" rel="noopener noreferrer">WatchList</a> |
-							<a href="tesseract.html" target="_BLANK" rel="noopener noreferrer">New WL</a></br>
+						⭐ <a href="/stayinvest-for-dummy/portfolio.html" target="_blank">WatchList</a> |
+							<a href="tesseract.html" target="_BLANK">New WL</a></br>
 					        </br>
 
 						<h2>WEEKLY MARKET SENTIMENT</h2> 
-						📊 <a href="https://www.aaii.com/sentimentsurvey" target="_BLANK" rel="noopener noreferrer">AAII sentiment Survery</a></br>
-						💩 <a href="https://en.macromicro.me/charts/87237/USSmart-Money-Dumb-Money-Confidence-vs-S-P-500" target="_BLANK" rel="noopener noreferrer">Smart/Dumb $$ confidence</a></br>
-						📆 <a href="https://www.futunn.com/en/quote/calendar" target="_BLANK" rel="noopener noreferrer">Earning Calendlar</a></br>
-						💱 <a href="https://www.google.com/finance/quote/nzd-HKD?comparison=JPY-HKD%2CAUD-HKD%2CCAD-HKD%2CGBP-HKD&window=6M" target="_BLANK" rel="noopener noreferrer">Currency</a></br>
+						📊 <a href="https://www.aaii.com/sentimentsurvey" target="_BLANK">AAII sentiment Survery</a></br>
+						💩 <a href="https://en.macromicro.me/charts/87237/USSmart-Money-Dumb-Money-Confidence-vs-S-P-500" target="_BLANK">Smart/Dumb $$ confidence</a></br>
+						📆 <a href="https://www.futunn.com/en/quote/calendar" target="_BLANK">Earning Calendlar</a></br>
+						💱 <a href="https://www.google.com/finance/quote/nzd-HKD?comparison=JPY-HKD%2CAUD-HKD%2CCAD-HKD%2CGBP-HKD&window=6M" target="_BLANK">Currency</a></br>
 					</td>					
 				</tr>
 				<!-- empty row -->
@@ -70,31 +86,32 @@ stayinvest-for-dummy - A simple web app to help you stay invested in the stock m
 					<td>&nbsp;</td>
 				</tr>
 
-				<!-- row 06 香港地產  -->
+				<!-- row 06 香港地產 -->
 				<tr>
-					<td><img alt="deal" src="images/icons/deal.png" width="50" height="50" style="width: 100px; height: 90px;" />
+					<td><img src="images/icons/deal.png" width="50" height="50" style="width: 100px; height: 90px;" />
 					</td>
 					<td>
 						<h2>香港股市</h2>
-						📈 <a href="/stayinvest-for-dummy/mm.html" target="_BLANK" rel="noopener noreferrer">市場寬度01</a> | <a href="https://hkstockwiki.com/stat_marketbreadth.html" target="_BLANK" rel="noopener noreferrer">市場寬度02</a></br>			
-						🔎 <a href="https://docs.google.com/spreadsheets/d/124UC9XXgFJXo9yGqsJPlVeVC2NnBlTn9uNJsEaOc140/edit?usp=drive_link" target="_blank" rel="noopener noreferrer">市場寬度03</a> |
-						    <a href="/stayinvest-for-dummy/sctr-filter.html?t=HK&d=SCTR-FILTER-HK" target="_BLANK" rel="noopener noreferrer">港股 Filter</a></br>
-						🐮 <a href="https://hk.warrants.com/tc/cbbc/outstanding-distribution" target="_BLANK" rel="noopener noreferrer">牛証總街貨量</a></br>
-						🐉  <a href="https://finviz.com/screener.ashx?v=711&f=geo_chinahongkong" target="_BLANK" rel="noopener noreferrer">中國 / 港股</a> |
-						    <a href="https://www.futunn.com/hk/heatmap-hk/stock?global_content=%7B%22promote_id%22%3A13766,%22sub_promote_id%22%3A2%7D" target="_BLANK" rel="noopener noreferrer">熱力圖</a>
+						📈 <a href="/stayinvest-for-dummy/mm.html" target="_BLANK">市場寬度01</a> | <a href="https://hkstockwiki.com/stat_marketbreadth.html" target="_BLANK">市場寬度02</a></br>
+						👽 <a href="/stayinvest-for-dummy/sm.html?t=U" target="_BLANK">板塊寬度01</a> | <a href="/stayinvest-for-dummy/sm.html?t=D" target="_BLANK">板塊寬度02</a></br>					
+						🔎 <a href="https://docs.google.com/spreadsheets/d/124UC9XXgFJXo9yGqsJPlVeVC2NnBlTn9uNJsEaOc140/edit?usp=drive_link" target="_blank">市場寬度03</a> |
+						    <a href="/stayinvest-for-dummy/sctr-filter.html?t=HK&d=SCTR-FILTER-HK" target="_BLANK">港股 Filter</a></br>
+						🐮 <a href="https://hk.warrants.com/tc/cbbc/outstanding-distribution" target="_BLANK">牛証總街貨量</a></br>
+						🐉  <a href="https://finviz.com/screener.ashx?v=711&f=geo_chinahongkong" target="_BLANK">中國 / 港股</a> |
+						    <a href="https://www.futunn.com/hk/heatmap-hk/stock?global_content=%7B%22promote_id%22%3A13766,%22sub_promote_id%22%3A2%7D" target="_BLANK">熱力圖</a>
 						    </br>
-						📰 <a href="https://www.stheadline.com/opinion/%E5%B0%88%E6%AC%84" target="_BLANK" rel="noopener noreferrer">鮮股落鑊</a> |
-						   <a href="https://www1.hkej.com/dailynews/headline" target="_BLANK" rel="noopener noreferrer">今日信報</a></br>
+						📰 <a href="https://www.stheadline.com/opinion/%E5%B0%88%E6%AC%84" target="_BLANK">鮮股落鑊</a> |
+						   <a href="https://www1.hkej.com/dailynews/headline" target="_BLANK">今日信報</a></br>
 
 						<h2>香港地產</h2>
-						📈 <a href="https://www.house730.com/market-data/" target="_BLANK" rel="noopener noreferrer">地產市場動向</a></br>
-						🏠 <a href="https://hk.centanet.com/CCI/index" target="_BLANK" rel="noopener noreferrer">領先指數</a> |
-					       <a href="https://hk.centanet.com/CCI/CRI" target="_BLANK" rel="noopener noreferrer">租金指數</a></br>
-						🏢 <a href="https://finance.mingpao.com/fin/specialpage3.php?tag=%E9%A6%99%E6%B8%AF%E5%9C%B0%E7%94%A2" target="_BLANK" rel="noopener noreferrer">明報 - 香港地產</a></br>
-						🏪 <a href="https://www.midlandici.com.hk/ics/property/research/trend" target="_BLANK" rel="noopener noreferrer">工商舖指數走勢圖</a></br>
-						🔊 <a href="https://hk.centanet.com/findproperty/list/transaction" target="_BLANK" rel="noopener noreferrer">成交概況</a></br>
-						👌 <a href="https://www.midland.com.hk/zh-hk/market-insight/confidence-index" target="_BLANK" rel="noopener noreferrer">美聯信心指數</a></br>
-						💡 <a href="https://www.midland.com.hk/zh-hk/market-insight" target="_BLANK" rel="noopener noreferrer">美聯樓價指數</a>
+						📈 <a href="https://www.house730.com/market-data/" target="_BLANK">地產市場動向</a></br>
+						🏠 <a href="https://hk.centanet.com/CCI/index" target="_BLANK">領先指數</a> |
+					       <a href="https://hk.centanet.com/CCI/CRI" target="_BLANK">租金指數</a></br>
+						🏢 <a href="https://finance.mingpao.com/fin/specialpage3.php?tag=%E9%A6%99%E6%B8%AF%E5%9C%B0%E7%94%A2" target="_BLANK">明報 - 香港地產</a></br>
+						🏪 <a href="https://www.midlandici.com.hk/ics/property/research/trend" target="_BLANK">工商舖指數走勢圖</a></br>
+						🔊 <a href="https://hk.centanet.com/findproperty/list/transaction" target="_BLANK">成交概況</a></br>
+						👌 <a href="https://www.midland.com.hk/zh-hk/market-insight/confidence-index" target="_BLANK"">美聯信心指數</a></br>
+						💡 <a href="https://www.midland.com.hk/zh-hk/market-insight" target="_BLANK"">美聯樓價指數</a>
 						
 					</td>
 				</tr>
@@ -107,7 +124,7 @@ stayinvest-for-dummy - A simple web app to help you stay invested in the stock m
 			<table>
 				<!-- Sector Performance -->
 				<tr>
-					<td><img alt="rocket" src="images/icons/rocket.gif" width="50" height="50" style="width: 100px; height: 90px;" />
+					<td><img src="images/icons/rocket.gif" width="50" height="50" style="width: 100px; height: 90px;" />
 					</td>
 					<td>
 						<!-- MAKRET LIST -->	
@@ -122,13 +139,13 @@ stayinvest-for-dummy - A simple web app to help you stay invested in the stock m
 					</td>
 				</tr>
 				<tr>
-					<td><img alt="tool" src="images/icons/tool.png" width="50" height="50" style="width: 100px; height: 90px;" />
+					<td><img src="images/icons/tool.png" width="50" height="50" style="width: 100px; height: 90px;" />
 					</td>
 					<td>
 						<h2>DATA</h2>
-						💼 <a href="https://stooq.com/db/h/" target="_BLANK" rel="noopener noreferrer">Stooq data download</a></br>
-						📉 <a href="https://www.hkex.com.hk/chi/services/trading/securities/securitieslists/ListOfSecurities_c.xlsx" target="_BLANK rel="noopener noreferrer">證券名單</a></br>
-						⏳ <a href="https://www.hkex.com.hk/eng/stat/smstat/dayquot/qtn.asp" target="_BLANK" rel="noopener noreferrer">日報表（主板）</a></br>
+						💼 <a href="https://stooq.com/db/h/" target="_BLANK">Stooq data download</a></br>
+						📉 <a href="https://www.hkex.com.hk/chi/services/trading/securities/securitieslists/ListOfSecurities_c.xlsx" target="_BLANK">證券名單</a></br>
+						⏳ <a href="https://www.hkex.com.hk/eng/stat/smstat/dayquot/qtn.asp" target="_BLANK">日報表（主板）</a></br>
 
 					</td>
 				</tr>	
@@ -141,18 +158,18 @@ stayinvest-for-dummy - A simple web app to help you stay invested in the stock m
 
 				<!-- row 04 Celebrity Ideas -->
 				<tr>
-					<td><img alt="investing" src="images/icons/investing.png" width="50" height="50" style="width: 100px; height: 90px;" />
+					<td><img src="images/icons/investing.png" width="50" height="50" style="width: 100px; height: 90px;" />
 					</td>
 					<td>
 						<h2>CELEBRITY IDEAS</h2>
-						🔤 <a href="https://fintel.io/i/alphabet" target="_BLANK" rel="noopener noreferrer">Alphabet Inc.</a></br>
-						📟 <a href="https://fintel.io/i/duquesne-family-office-llc" target="_BLANK" rel="noopener noreferrer">Stanley Druckenmiller</a></br>
-						🍜 <a href="https://fintel.io/i/appaloosa-management-lp" target="_BLANK" rel="noopener noreferrer">David Tepper</a></br>
-						😋 <a href="https://fintel.io/i/berkshire-hathaway" target="_BLANK" rel="noopener noreferrer">Warren Buffett</a></br>
-						🔎 <a href="https://fintel.io/i/scion-asset-management-llc" target="_BLANK" rel="noopener noreferrer">Michael Burry</a></br>
-						💡 <a href="https://fintel.io/top-investors" target="_BLANK" rel="noopener noreferrer">Top Investors</a></br>
-						👄 <a href="https://stockcircle.com/" target="_BLANK" rel="noopener noreferrer">Stock Circles</a></br>
-						👿 <a href="https://www.capitoltrades.com/" target="_BLANK" rel="noopener noreferrer">Capitol Hill Trades</a></br>
+						🔤 <a href="https://fintel.io/i/alphabet" target="_BLANK">Alphabet Inc.</a></br>
+						📟 <a href="https://fintel.io/i/duquesne-family-office-llc" target="_BLANK">Stanley Druckenmiller</a></br>
+						🍜 <a href="https://fintel.io/i/appaloosa-management-lp" target="_BLANK">David Tepper</a></br>
+						😋 <a href="https://fintel.io/i/berkshire-hathaway" target="_BLANK">Warren Buffett</a></br>
+						🔎 <a href="https://fintel.io/i/scion-asset-management-llc" target="_BLANK">Michael Burry</a></br>
+						💡 <a href="https://fintel.io/top-investors" target="_BLANK">Top Investors</a></br>
+						👄 <a href="https://stockcircle.com/" target="_BLANK">Stock Circles</a></br>
+						👿 <a href="https://www.capitoltrades.com/" target="_BLANK">Capitol Hill Trades</a></br>
 					</td>
 				</tr>
 				<!-- empty row -->
@@ -163,14 +180,14 @@ stayinvest-for-dummy - A simple web app to help you stay invested in the stock m
 
 				<!-- magazine -->
 				<tr>
-					<td><img alt="magazine" src="images/icons/magazine.png" width="50" height="50" style="width: 100px; height: 90px;" />
+					<td><img src="images/icons/magazine.png" width="50" height="50" style="width: 100px; height: 90px;" />
 					</td>
 					<td>
 						<h2>MAGAZINE</h2>
-						🎴 <a href="https://magazinelib.com/?s=barron" target="_BLANK" rel="noopener noreferrer">Barron's</a></br>
-						📢 <a href="https://magazinelib.com/?s=Economist" target="_BLANK" rel="noopener noreferrer">Economist</a></br>
-						🅱️ <a href="https://magazinelib.com/?s=bloomberg" target="_BLANK" rel="noopener noreferrer">Bloomberg</a></br>
-						📖 <a href="https://annas-archive.gl/" target="_BLANK" rel="noopener noreferrer">Anna's Archive</a></br>
+						🎴 <a href="https://magazinelib.com/?s=barron" target="_BLANK">Barron's</a></br>
+						📢 <a href="https://magazinelib.com/?s=Economist" target="_BLANK">Economist</a></br>
+						🅱️ <a href="https://magazinelib.com/?s=bloomberg" target="_BLANK">Bloomberg</a></br>
+						📖 <a href="https://annas-archive.gl/" target="_BLANK">Anna's Archive</a></br>
 					</td>
 				</tr>
 				<!-- empty row -->
