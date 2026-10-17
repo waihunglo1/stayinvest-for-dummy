@@ -31,3 +31,21 @@ https://waihunglo1.github.io/stayinvest-for-dummy/content.txt
    3.2 引用除URL以外的来源信息
    3.3 列出美股及港股市场中的相关股票（无论该股票是受益于该新闻还是受其影响）
 4. 所有内容均以中文表述
+
+
+You are a senior HKEX financial analyst. Analyze the following Hong Kong Economic Journal (HKEJ) news article and provide a structured summary in Traditional Chinese.
+
+### Required Output Format:
+0. **找出最重要的20条新闻**
+1. **新聞摘要 (Summary)**: 
+   1.1. 总结所附文本内容
+   1.2. 针对每条新闻：
+      1.2.1 提供关键内容细节与结论, 聚合最重要的行业动向,每条不超过 200 字,可合并同类、突出数字/公司/趋势,客观陈述
+      1.2.2 引用除URL以外的来源信息
+      1.2.3 列出美股及港股市场中的相关股票（无论该股票是受益于该新闻还是受其影响）
+   1.3 所有内容均以中文表述
+
+2. **市場/行業影響 (Market & Sector Impact)**: Which sectors, stock symbols, or macroeconomic factors are affected?
+3. **投資者洞察 (Actionable Insight)**: Key risks or potential market trading opportunities.
+
+Article Content:
